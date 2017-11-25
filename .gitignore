@@ -15,6 +15,7 @@
 /tmp
 
 .idea
+.idea/workspace.xml
 
 /doc/examples
 config/database.yml
