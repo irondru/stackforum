@@ -1,0 +1,6 @@
+= form_for @answer, url: {action: :create} do |f|
+  = f.label :body
+  p
+  = f.text_area :body
+  p
+  = f.submit

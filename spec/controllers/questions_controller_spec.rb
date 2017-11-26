@@ -105,7 +105,7 @@ describe QuestionsController, type: :controller do
       end
 
       it 're-renders edit view' do
-        expect(response).to render_template(:edit)
+        expect(response).to render_template :edit
       end
     end
   end
@@ -117,8 +117,8 @@ describe QuestionsController, type: :controller do
     end
 
     it 'redirect to index view' do
-      delete :destroy
-      expect(response).to redirect_to :index
+      delete :destroy, params: { id: question }
+      expect(response).to redirect_to questions_path
     end
   end
 end
