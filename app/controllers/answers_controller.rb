@@ -1,21 +1,15 @@
 class AnswersController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :update]
   before_action :set_answer, only: [:show, :edit, :update, :destroy]
-  before_action :set_question, only: [:create]
-
-  def index
-    @answers = Answer.all
-  end
-
-  def new
-    @answer = Answer.new
-  end
+  before_action :set_question, only: [:edit, :create, :update]
 
   def create
     @answer = @question.answers.new(answer_params)
+    @answer.user = current_user
     if @answer.save
       redirect_to @answer.question
     else
-      render :new
+      render template: 'questions/show'
     end
   end
 
@@ -24,11 +18,17 @@ class AnswersController < ApplicationController
   end
 
   def update
-
+    if @answer.update(answer_params)
+      redirect_to @answer.question
+    else
+      render :edit
+    end
   end
 
   def destroy
-
+    question = @answer.question
+    @answer.destroy if @answer.user == current_user
+    redirect_to question
   end
 
   private

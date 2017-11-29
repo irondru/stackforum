@@ -1,0 +1,24 @@
+ru:
+  devise:
+    shared:
+      links:
+        forgot_password: 'Забыли пароль?'
+        sign_up: 'Регистрация'
+        log_in: 'Войти'
+        didnt_receive: 'Не получили подтверждения?'
+    sessions:
+      new:
+        title: 'Вход'
+    registrations:
+      new:
+        title: 'Регистрация'
+        password: 'Пароль (минимум %{min_length} символов)'
+        password_again: 'Повторите пароль'
+        submit: 'Зарегистрировться'
+    passwords:
+      new:
+        title: 'Забыли пароль?'
+        send: 'Отправить инструкции по сбросу пароля'
+    confirmations:
+      new:
+        title: 'Повторная отправка инструкций'

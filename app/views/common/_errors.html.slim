@@ -1,0 +1,6 @@
+- if res.errors.any?
+  div id='error_explanation'
+  h2= pluralize(res.errors.count, "error") + ' prohibited this railway_station from being saved:'
+  ul
+  - res.errors.full_messages.each do |message|
+    li= message
