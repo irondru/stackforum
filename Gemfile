@@ -33,6 +33,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'slim-rails'
+gem 'jquery-rails'
 gem 'devise'
 
 group :development, :test do
@@ -47,6 +48,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'database_cleaner'
   gem 'launchy'
+  gem 'capybara-webkit'
 end
 
 

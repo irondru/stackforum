@@ -1,45 +1,45 @@
 class AnswersController < ApplicationController
   before_action :authenticate_user!, only: [:create, :update]
-  before_action :set_answer, only: [:show, :edit, :update, :destroy]
-  before_action :set_question, only: [:edit, :create, :update]
+  before_action :set_answer, only: [:update, :destroy, :best]
 
   def create
+    @question = Question.find(params[:question_id])
     @answer = @question.answers.new(answer_params)
     @answer.user = current_user
-    if @answer.save
-      redirect_to @answer.question
-    else
-      render template: 'questions/show'
-    end
-  end
-
-  def edit
-
+    @answer.save
   end
 
   def update
-    if @answer.update(answer_params)
-      redirect_to @answer.question
+    if @answer.user == current_user
+      @answer.update(answer_params)
     else
-      render :edit
+      render nothing: true, status: 403
     end
   end
 
   def destroy
-    question = @answer.question
-    @answer.destroy if @answer.user == current_user
-    redirect_to question
+    if @answer.user == current_user
+      @answer_id = @answer.id
+      @answer.destroy
+    else
+      render nothing: true, status: 403
+    end
+  end
+
+  def best
+    if @answer.user == current_user
+      @answer.set_best
+    else
+      render nothing: true, status: 403
+    end
   end
 
   private
 
-  def set_question
-    @question = Question.find(params[:question_id])
-  end
-
   def set_answer
     @answer = Answer.find(params[:id])
   end
+
 
   def answer_params
     params.require(:answer).permit(:body)

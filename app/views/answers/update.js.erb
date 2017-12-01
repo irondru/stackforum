@@ -1,0 +1,5 @@
+<% if @answer.errors.present? %>
+  $('#answer_body').before('<%= j render 'common/errors', res: @answer %>');
+<% else %>
+  $('#answer-id-<%= @answer.id %> textarea').val('<%= @answer.body %>');
+<% end %>

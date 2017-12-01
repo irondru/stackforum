@@ -1,4 +1,4 @@
-require 'rails_helper'
+require_relative 'features_helper'
 
 feature 'Add answer' do
 
@@ -6,15 +6,18 @@ feature 'Add answer' do
   let(:question) { create(:question) }
   let(:answer) { create (:answer) }
 
-  scenario 'Add valid answer' do
+  scenario 'Add valid answer', js: true do
     sign_in(user)
     visit question_path(question)
+    save_and_open_page
     fill_in 'answer_body', with: answer.body
     click_on 'Create Answer'
-    expect(page).to have_content(answer.body)
+    within "#answer-id-#{answer.id + 1}" do
+      expect(find_field('answer_body').value).to eq answer.body
+    end
   end
 
-  scenario 'Add invalid answer' do
+  scenario 'Add invalid answer', js: true do
     sign_in(user)
     visit question_path(question)
     click_on 'Create Answer'
