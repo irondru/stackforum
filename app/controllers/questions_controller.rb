@@ -9,10 +9,12 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.find(params[:id])
     @answer = @question.answers.new
+    @answer.attachments.build
   end
 
   def new
     @question = Question.new
+    @question.attachments.build
   end
 
   def edit
@@ -37,7 +39,10 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    @question.destroy if @question.user == current_user
+    if @question.user == current_user
+      @question.attachments.each { |ath| ath.destroy }
+      @question.destroy
+    end
     redirect_to questions_path
   end
 
@@ -48,7 +53,7 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:title, :body)
+    params.require(:question).permit(:title, :body, attachments_attributes: [:id, :file, :_destroy])
   end
 
 end

@@ -1,9 +1,12 @@
 class Answer < ApplicationRecord
 
+  has_many :attachments, as: :attachmentable
   belongs_to :question
   belongs_to :user
 
   validates :body, presence: true
+
+  accepts_nested_attributes_for :attachments
 
   scope :ordered, -> {order('best desc, created_at')}
 

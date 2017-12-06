@@ -3,4 +3,9 @@
 <% else %>
   $('.answers').append('<%= j render 'answer', answer: @answer %>');
   $('div.ask-question #answer_body').val('');
+  var attachments = $('div.ask-question input:file').toArray();
+  attachments.forEach(function (elem, index) {
+      if (index == 0) elem.value = ''
+      else elem.remove();
+  })
 <% end %>

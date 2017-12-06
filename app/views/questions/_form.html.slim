@@ -1,10 +1,12 @@
 = render 'common/errors', res: @question
 = form_for @question do |f|
   p
-  = f.label :title
-  = f.text_field :title
+    = f.label :title
+    = f.text_field :title
   p
-  = f.label :body
-  = f.text_area :body
-  p
-  = f.submit
+    = f.label :body
+    = f.text_area :body
+
+    = render 'common/attachment', form: f
+
+    = f.submit

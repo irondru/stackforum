@@ -20,6 +20,7 @@ class AnswersController < ApplicationController
   def destroy
     if @answer.user == current_user
       @answer_id = @answer.id
+      @answer.attachments.each { |ath| ath.destroy }
       @answer.destroy
     else
       render nothing: true, status: 403
@@ -42,7 +43,7 @@ class AnswersController < ApplicationController
 
 
   def answer_params
-    params.require(:answer).permit(:body)
+    params.require(:answer).permit(:body, attachments_attributes: [:file])
   end
 
 end

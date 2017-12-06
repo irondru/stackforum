@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
 
   get '/bestanswer/:id', to: 'answers#best', as: 'best_answer'
+  delete '/attach/:id', to: 'attachments#destroy', as: 'attachment_destroy'
 
   root 'questions#index'
 end
