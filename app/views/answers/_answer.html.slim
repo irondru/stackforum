@@ -4,6 +4,10 @@ div id="answer-id-#{answer.id}"
           method: :delete, remote: true if answer.user == current_user
 
   = link_to 'Best', best_answer_path(answer), remote: true
+  = link_to 'UP', up_vote_path(:answer, answer), remote: true
+  = link_to 'DOWN', down_vote_path(:answer, answer), remote: true
+  p Score:
+  = answer.score
   ul
     - answer.attachments.each do |a|
       li id="attach-#{a.id}"
