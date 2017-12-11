@@ -1,8 +1,8 @@
 = render 'common/errors', res: @answer
 h1= @question.title
 p= @question.body
-= link_to 'UP', up_vote_path(:question, @question), remote: true
-= link_to 'DOWN', down_vote_path(:question, @question), remote: true
+= link_to 'UP', up_vote_question_path(@question), method: :patch, remote: true
+= link_to 'DOWN', down_vote_question_path(@question), method: :patch, remote: true
 p score:
 = @question.score
 p Attachments:

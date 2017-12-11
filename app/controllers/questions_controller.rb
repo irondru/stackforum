@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  include Voted
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_question, only: [:show, :edit, :update, :destroy]
 
@@ -40,7 +41,6 @@ class QuestionsController < ApplicationController
 
   def destroy
     if @question.user == current_user
-      @question.attachments.each { |ath| ath.destroy }
       @question.destroy
     end
     redirect_to questions_path

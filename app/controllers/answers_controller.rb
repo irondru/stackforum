@@ -1,4 +1,5 @@
 class AnswersController < ApplicationController
+  include Voted
   before_action :authenticate_user!, only: [:create, :update]
   before_action :set_answer, only: [:update, :destroy, :best]
 
@@ -20,7 +21,6 @@ class AnswersController < ApplicationController
   def destroy
     if @answer.user == current_user
       @answer_id = @answer.id
-      @answer.attachments.each { |ath| ath.destroy }
       @answer.destroy
     else
       render nothing: true, status: 403
