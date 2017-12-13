@@ -35651,3 +35651,69 @@ Processing by QuestionsController#show as HTML
 Completed 200 OK in 91ms (Views: 84.6ms | ActiveRecord: 1.8ms)
 
 
+Started GET "/answers/106/edit" for 127.0.0.1 at 2017-12-13 11:56:55 +0300
+Processing by AnswersController#edit as JS
+  Parameters: {"id"=>"106"}
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT  "answers".* FROM "answers" WHERE "answers"."id" = ? LIMIT ?[0m  [["id", 106], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  Rendering answers/edit.js.erb
+  Rendered answers/_form.html.slim (6.5ms)
+  Rendered answers/edit.js.erb (12.8ms)
+Completed 200 OK in 135ms (Views: 21.3ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/answers/106" for 127.0.0.1 at 2017-12-13 11:56:58 +0300
+Processing by AnswersController#show as JS
+  Parameters: {"id"=>"106"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT  "answers".* FROM "answers" WHERE "answers"."id" = ? LIMIT ?[0m  [["id", 106], ["LIMIT", 1]]
+  Rendering answers/show.js.erb
+  Rendered answers/show.js.erb (0.6ms)
+Completed 200 OK in 16ms (Views: 7.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/answers/106/edit" for 127.0.0.1 at 2017-12-13 11:57:00 +0300
+Processing by AnswersController#edit as JS
+  Parameters: {"id"=>"106"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.1ms)[0m  [1m[34mSELECT  "answers".* FROM "answers" WHERE "answers"."id" = ? LIMIT ?[0m  [["id", 106], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  Rendering answers/edit.js.erb
+  Rendered answers/_form.html.slim (5.5ms)
+  Rendered answers/edit.js.erb (10.6ms)
+Completed 200 OK in 26ms (Views: 16.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/answers/106" for 127.0.0.1 at 2017-12-13 11:57:09 +0300
+Processing by AnswersController#show as JS
+  Parameters: {"id"=>"106"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.1ms)[0m  [1m[34mSELECT  "answers".* FROM "answers" WHERE "answers"."id" = ? LIMIT ?[0m  [["id", 106], ["LIMIT", 1]]
+  Rendering answers/show.js.erb
+  Rendered answers/show.js.erb (0.5ms)
+Completed 200 OK in 16ms (Views: 7.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/answers/106/edit" for 127.0.0.1 at 2017-12-13 11:57:14 +0300
+Processing by AnswersController#edit as JS
+  Parameters: {"id"=>"106"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.1ms)[0m  [1m[34mSELECT  "answers".* FROM "answers" WHERE "answers"."id" = ? LIMIT ?[0m  [["id", 106], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  Rendering answers/edit.js.erb
+  Rendered answers/_form.html.slim (4.7ms)
+  Rendered answers/edit.js.erb (10.2ms)
+Completed 200 OK in 26ms (Views: 16.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/answers/106" for 127.0.0.1 at 2017-12-13 11:57:18 +0300
+Processing by AnswersController#show as JS
+  Parameters: {"id"=>"106"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.1ms)[0m  [1m[34mSELECT  "answers".* FROM "answers" WHERE "answers"."id" = ? LIMIT ?[0m  [["id", 106], ["LIMIT", 1]]
+  Rendering answers/show.js.erb
+  Rendered answers/show.js.erb (0.6ms)
+Completed 200 OK in 17ms (Views: 7.4ms | ActiveRecord: 0.4ms)
+
+
