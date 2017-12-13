@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :answers, only: [:create, :update]
   end
 
-  resources :answers, concerns: :votable, only: :destroy do
+  resources :answers, concerns: :votable, only: [:edit, :destroy] do
     get :best, on: :member
   end
 

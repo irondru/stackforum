@@ -6,21 +6,22 @@ module Voted
   end
 
   def up_vote
-    @post.change_vote(current_user, 1)
+    render json: respond(1)
   end
 
   def down_vote
-    @post.change_vote(current_user, -1)
+    render json: respond(-1)
   end
 
   private
 
-  def model_class
-    controller_name.classify.constantize
+  def respond(change_to)
+    { elem_id: controller_name.singularize + '-' + @post.id.to_s,
+      score: @post.change_vote(current_user, change_to) }
   end
 
   def set_post
-    @post = model_class.find(params[:id])
+    @post = controller_name.classify.constantize.find(params[:id])
   end
 
 end

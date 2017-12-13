@@ -1,13 +1,17 @@
 class AnswersController < ApplicationController
   include Voted
-  before_action :authenticate_user!, only: [:create, :update]
-  before_action :set_answer, only: [:update, :destroy, :best]
+  before_action :authenticate_user!
+  before_action :set_answer, only: [:update, :edit, :destroy, :best]
 
   def create
     @question = Question.find(params[:question_id])
     @answer = @question.answers.new(answer_params)
     @answer.user = current_user
     @answer.save
+  end
+
+  def edit
+    @question = @answer.question
   end
 
   def update

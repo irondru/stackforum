@@ -9,7 +9,7 @@ function add_attachment(obj) {
         newobj.attr('name', name.replace(exp, parseInt(name.match(exp)[0]) + 1).toString());
         newobj.attr('id', id.replace(exp, parseInt(id.match(exp)[0]) + 1).toString());
         _obj.after(newobj);
-        _obj.after('<a href="#'+id+'" onclick="return del_attachment(this)">del</a>');
+        _obj.after('<a href="#'+id+'" id="del-link" onclick="return del_attachment(this)">del</a>');
     }
 }
 

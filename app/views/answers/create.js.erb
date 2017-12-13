@@ -3,9 +3,13 @@
 <% else %>
   $('.answers').append('<%= j render 'answer', answer: @answer %>');
   $('div.ask-question #answer_body').val('');
-  var attachments = $('div.ask-question input:file').toArray();
-  attachments.forEach(function (elem, index) {
-      if (index == 0) elem.value = ''
-      else elem.remove();
-  })
+  // удаляем лишние input file
+  $('div.ask-question input:file').toArray().forEach(function (elem, index) {
+      if (index == 0) elem.value = '';
+      if (index > 1) elem.remove(); //тут какая то магия, если удалять с 1-го - удалится нахрен все
+  });
+  //удаляем ссылки на удаление аттачментов
+  $('div.ask-question a').toArray().forEach(function (elem) {
+      elem.remove();
+  });
 <% end %>
