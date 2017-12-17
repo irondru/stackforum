@@ -6,12 +6,11 @@ p= @question.body
   = link_to 'DOWN', down_vote_question_path(@question), class: 'vote-link', remote: true
 p score:
 p id="question-#{@question.id}"= @question.score
-p Attachments:
+p Attachments:git
 ul
   - @question.attachments.each do |a|
     li= link_to a.file.filename, a.file.url
 
-
-div.answers= render @question.answers.ordered
+div#answers data="#{@question.id}"= render @question.answers.ordered
 
 div.ask-question= render 'answers/form', answer: @answer if user_signed_in?

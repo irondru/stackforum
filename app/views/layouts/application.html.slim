@@ -2,9 +2,11 @@ doctype html
 html
   head
     title Stackforum
+    = action_cable_meta_tag
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = Gon::Base.render_data
 
   body
     = link_to 'login', new_user_session_path

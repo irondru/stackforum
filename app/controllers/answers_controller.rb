@@ -8,6 +8,7 @@ class AnswersController < ApplicationController
     @answer = @question.answers.new(answer_params)
     @answer.user = current_user
     @answer.save
+    stream_answer(:create)
   end
 
   def show
@@ -29,6 +30,7 @@ class AnswersController < ApplicationController
   def destroy
     if @answer.user == current_user
       @answer_id = @answer.id
+      stream_answer(:destroy)
       @answer.destroy
     else
       render nothing: true, status: 403
@@ -44,6 +46,11 @@ class AnswersController < ApplicationController
   end
 
   private
+
+  def stream_answer(action)
+    AnswersChannel.broadcast_to(@answer.question,
+                                AnswerPresenter.new(@answer).as(action))
+  end
 
   def set_answer
     @answer = Answer.find(params[:id])

@@ -2,7 +2,7 @@ module Votable
   extend ActiveSupport::Concern
 
   included do
-    has_many :votes, as: :votable, dependent: :delete_all
+    has_many :votes, as: :votable, dependent: :destroy
   end
 
   def change_vote(user, change_to) # возможные варианты 1, -1

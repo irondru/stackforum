@@ -1,7 +1,7 @@
 <% if @answer.errors.present? %>
   $('#answer_body').before('<%= j render 'common/errors', res: @answer %>');
 <% else %>
-  $('.answers').append('<%= j render 'answer', answer: @answer %>');
+  // $('div#answers').append('<%= j render 'answer', answer: @answer %>'); //рендерится через кабель
   $('div.ask-question #answer_body').val('');
   // удаляем лишние input file
   $('div.ask-question input:file').toArray().forEach(function (elem, index) {
