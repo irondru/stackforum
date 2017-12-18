@@ -1,5 +1,7 @@
 class AnswersController < ApplicationController
   include Voted
+  include Commented
+
   before_action :authenticate_user!
   before_action :set_answer, except: :create
 
@@ -10,6 +12,8 @@ class AnswersController < ApplicationController
     @answer.save
     stream_answer(:create)
   end
+
+
 
   def show
 
@@ -58,7 +62,7 @@ class AnswersController < ApplicationController
 
 
   def answer_params
-    params.require(:answer).permit(:body, attachments_attributes: [:file])
+    params.require(:answer).permit(:body, attachments_attributes: [:id, :file])
   end
 
 end

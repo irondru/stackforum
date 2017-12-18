@@ -1,7 +1,8 @@
 document.addEventListener("turbolinks:load", function() {
-    if ($('div').is('#answers'))
-        App.cable.subscriptions.create({channel: 'AnswersChannel', id: $('div#answers').attr('data') }, {
-            connected: function() {
+    if ($('div').is('#answers')) {
+        clear_subscriptions();
+        App.cable.subscriptions.create({channel: 'AnswersChannel', id: $('div#answers').attr('data')}, {
+            connected: function () {
                 this.perform('subscribed');
             },
             received: function (data) {
@@ -15,4 +16,5 @@ document.addEventListener("turbolinks:load", function() {
                 }
             }
         });
+    }
 });

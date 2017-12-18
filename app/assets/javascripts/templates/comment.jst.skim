@@ -1,0 +1,5 @@
+form enctype="multipart/form-data" action="#{@action}" accept-charset="UTF-8" data-remote="true" method="post"
+  label for="comment" Comment
+  input id="comment" name="comment[body]" type="text"
+  input type="submit"
+button onclick="$('#{@id}').html('');" Cancel

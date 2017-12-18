@@ -1,8 +1,9 @@
 class Question < ApplicationRecord
   include Votable
   include Attachable
+  include Commentable
 
-  has_many :answers, dependent: :delete_all
+  has_many :answers, dependent: :destroy
   belongs_to :user
 
   validates :title, :body, presence: true
