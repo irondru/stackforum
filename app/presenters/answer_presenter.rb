@@ -10,7 +10,7 @@ class AnswerPresenter
 
   def present_as_create
     {
-        action: :create,
+        action: :create_answer,
         answer: @answer,
         attachments: attachments
     }
@@ -18,7 +18,7 @@ class AnswerPresenter
 
   def present_as_destroy
     {
-        action: :destroy,
+        action: :destroy_answer,
         answer_id: @answer.id
     }
   end

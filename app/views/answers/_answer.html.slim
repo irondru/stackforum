@@ -8,19 +8,10 @@ div id="answer-id-#{answer.id}"
     = link_to 'Best', best_answer_path(answer), remote: true
     = link_to 'UP', up_vote_answer_path(answer), class: 'vote-link', remote: true
     = link_to 'DOWN', down_vote_answer_path(answer), class: 'vote-link', remote: true
-    = link_to 'AddComment', new_comment_answer_path(answer), onclick: 'return new_comment(this)', data: answer.id
+
     br
-    div id="answer-comment-#{answer.id}"
   br
-  span Comments:
-  -answer.comments.each do |comment|
-    p= comment.body
-    = link_to 'Del comment', comment_destroy_path(comment), method: :delete
+  = render 'comments/comments', owner: answer
   i Score:
   p id="answer-#{answer.id}"= answer.score
-  ul
-    - answer.attachments.each do |a|
-      li id="attach-#{a.id}"
-        = link_to a.file.filename, a.file.url
-        = link_to 'delete', attachment_destroy_path(a),
-                method: :delete, remote: true if a.attachmentable.user == current_user
+  = render 'attachments/attachments', owner: answer

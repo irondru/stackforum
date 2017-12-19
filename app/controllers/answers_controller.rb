@@ -52,7 +52,7 @@ class AnswersController < ApplicationController
   private
 
   def stream_answer(action)
-    AnswersChannel.broadcast_to(@answer.question,
+    QuestionChannel.broadcast_to(@answer.question,
                                 AnswerPresenter.new(@answer).as(action))
   end
 
