@@ -6,19 +6,18 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   after_action :stream_question, only: [:create, :destroy]
 
+  respond_to :html
+
   def index
     @questions = Question.all
   end
 
   def show
-    @question = Question.find(params[:id])
     @answer = @question.answers.new
-    @answer.attachments.build
   end
 
   def new
     @question = Question.new
-    @question.attachments.build
   end
 
   def edit
@@ -26,27 +25,18 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    if @question.update(question_params)
-      redirect_to @question
-    else
-      render :edit
-    end
+    @question.update(question_params)
+    respond_with @question
   end
 
   def create
-    @question = current_user.questions.new(question_params)
-    if @question.save
-      redirect_to @question
-    else
-      render :new
-    end
+    respond_with(@question = current_user.questions.create(question_params))
   end
 
   def destroy
     if @question.user == current_user
       @question.destroy
     end
-    redirect_to questions_path
   end
 
   private

@@ -4,37 +4,27 @@ class AnswersController < ApplicationController
 
   before_action :authenticate_user!
   before_action :set_answer, except: :create
+  before_action :check_user, only: [:update, :destroy]
   after_action :stream_answer, only: [:create, :destroy]
 
+  respond_to :js
+
   def create
-    @question = Question.find(params[:question_id])
-    @answer = @question.answers.new(answer_params)
-    @answer.save
+    respond_with(@answer = Answer.create(answer_params))
   end
 
   def update
-    if @answer.user == current_user
-      @answer.update(answer_params)
-    else
-      render nothing: true, status: 403
-    end
+    @answer.update(answer_params)
+    respond_with(@answer)
   end
 
   def destroy
-    if @answer.user == current_user
-      @answer_id = @answer.id
-      @answer.destroy
-    else
-      render nothing: true, status: 403
-    end
+    @answer_id = @answer.id
+    @answer.destroy
   end
 
   def best
-    if @answer.user == current_user
-      @answer.set_best
-    else
-      render nothing: true, status: 403
-    end
+    @answer.set_best if @answer.question.user == current_user
   end
 
   private
@@ -45,13 +35,21 @@ class AnswersController < ApplicationController
                                  AnswerPresenter.new(@answer).as(action_name))
   end
 
+  def check_user
+    return if @answer.user != current_user
+  end
+
   def set_answer
     @answer = Answer.find(params[:id])
   end
 
+  def set_question
+    @question = Question.find(params[:question_id])
+  end
 
   def answer_params
-    params.require(:answer).permit(:body, attachments_attributes: [:id, :file]).merge(user: current_user)
+    params.require(:answer).permit(:body, attachments_attributes: [:id, :file])
+        .merge(user: current_user, question: set_question)
   end
 
 end

@@ -1,0 +1,10 @@
+i Score:
+p id="#{owner.class.to_s.downcase}-#{owner.id}"= owner.score
+- if user_signed_in?
+  - case owner
+    - when Answer
+      = link_to 'UP', up_vote_answer_path(owner), class: 'vote-link', remote: true
+      = link_to 'DOWN', down_vote_answer_path(owner), class: 'vote-link', remote: true
+    - when Question
+      = link_to 'UP', up_vote_question_path(owner), class: 'vote-link', remote: true
+      = link_to 'DOWN', down_vote_question_path(owner), class: 'vote-link', remote: true

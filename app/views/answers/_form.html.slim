@@ -2,5 +2,5 @@
   = f.label :body
   p
   = f.text_area :body
-  = render 'common/attachment', form: f if answer.new_record?
+  = render 'attachments/attachment_fields', form: f, owner: answer if answer.new_record?
   = f.submit

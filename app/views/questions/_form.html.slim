@@ -7,6 +7,6 @@
     = f.label :body
     = f.text_area :body
 
-    = render 'common/attachment', form: f
+    = render 'attachments/attachment_fields', form: f, owner: @question
 
     = f.submit
