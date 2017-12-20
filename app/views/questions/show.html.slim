@@ -11,5 +11,4 @@ div
   = render 'attachments/attachments', owner: @question
 
 div#answers data="#{@question.id}"= render @question.answers.ordered
-
 div.ask-question= render 'answers/form', answer: @answer if user_signed_in?

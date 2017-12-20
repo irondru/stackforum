@@ -4,23 +4,12 @@ class AnswersController < ApplicationController
 
   before_action :authenticate_user!
   before_action :set_answer, except: :create
+  after_action :stream_answer, only: [:create, :destroy]
 
   def create
     @question = Question.find(params[:question_id])
     @answer = @question.answers.new(answer_params)
-    @answer.user = current_user
     @answer.save
-    stream_answer(:create)
-  end
-
-
-
-  def show
-
-  end
-
-  def edit
-    @question = @answer.question
   end
 
   def update
@@ -34,7 +23,6 @@ class AnswersController < ApplicationController
   def destroy
     if @answer.user == current_user
       @answer_id = @answer.id
-      stream_answer(:destroy)
       @answer.destroy
     else
       render nothing: true, status: 403
@@ -51,9 +39,10 @@ class AnswersController < ApplicationController
 
   private
 
-  def stream_answer(action)
+  def stream_answer
+    return unless @answer.valid?
     QuestionChannel.broadcast_to(@answer.question,
-                                AnswerPresenter.new(@answer).as(action))
+                                 AnswerPresenter.new(@answer).as(action_name))
   end
 
   def set_answer
@@ -62,7 +51,7 @@ class AnswersController < ApplicationController
 
 
   def answer_params
-    params.require(:answer).permit(:body, attachments_attributes: [:id, :file])
+    params.require(:answer).permit(:body, attachments_attributes: [:id, :file]).merge(user: current_user)
   end
 
 end

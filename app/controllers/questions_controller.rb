@@ -4,6 +4,7 @@ class QuestionsController < ApplicationController
 
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_question, only: [:show, :edit, :update, :destroy]
+  after_action :stream_question, only: [:create, :destroy]
 
   def index
     @questions = Question.all
@@ -35,7 +36,6 @@ class QuestionsController < ApplicationController
   def create
     @question = current_user.questions.new(question_params)
     if @question.save
-      stream_question(:create)
       redirect_to @question
     else
       render :new
@@ -44,7 +44,6 @@ class QuestionsController < ApplicationController
 
   def destroy
     if @question.user == current_user
-      stream_question(:destroy)
       @question.destroy
     end
     redirect_to questions_path
@@ -52,16 +51,17 @@ class QuestionsController < ApplicationController
 
   private
 
-  def stream_question(action)
-    case action
-      when :create
+  def stream_question
+    return unless @question.valid?
+    case action_name
+      when 'create'
         ActionCable.server.broadcast(
             'questions',
             {action: :create, data: ApplicationController.render(
                 partial: 'questions/question',
                 locals: {question: @question, current_user: nil})}
         )
-      when :destroy
+      when 'destroy'
         ActionCable.server.broadcast(
             'questions',
             {action: :destroy, data: @question.id.to_s}

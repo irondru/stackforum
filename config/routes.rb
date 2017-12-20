@@ -10,17 +10,14 @@ Rails.application.routes.draw do
 
   concern :commentable do
     post :new_comment, on: :member
+    resources :comments, only: [:update, :destroy]
   end
 
-  resources :questions, concerns: [:votable, :commentable] do
-    resources :answers, only: [:create, :update]
+  resources :questions, concerns: [:votable, :commentable], shallow: true do
+    resources :answers, concerns: [:votable, :commentable], only: [:create, :update, :destroy] do
+      get :best, on: :member
+    end
   end
-
-  resources :answers, concerns: [:votable, :commentable], only: [:edit, :destroy, :show] do
-    get :best, on: :member
-  end
-
-  resources :comments, only: [:update, :destroy]
 
   delete '/attach/:id', to: 'attachments#destroy', as: 'attachment_destroy'
 

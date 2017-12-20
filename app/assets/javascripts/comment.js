@@ -1,4 +1,8 @@
 function new_comment(obj) {
+    $('div.new-comments').toArray().forEach(function (elem) {
+        elem.innerHTML = '';
+    });
+
     obj = jQuery(obj);
     var divid = obj.attr('data');
     $(divid).html(
