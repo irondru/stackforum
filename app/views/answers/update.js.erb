@@ -1,5 +1,5 @@
 <% if @answer.errors.present? %>
   $('#answer_body').before('<%= j render 'common/errors', res: @answer %>');
 <% else %>
-  $('#answer-body-<%= @answer.id %>').html('<%= @answer.body %>');
+  del_excess_forms();
 <% end %>

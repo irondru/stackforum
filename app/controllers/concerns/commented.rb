@@ -3,7 +3,7 @@ module Commented
 
   included do
     before_action :set_commentable, only: :new_comment
-    after_action :stream_comment, only: [:destroy, :new_comment]
+    after_action :stream_comment, only: [:update, :destroy, :new_comment]
   end
 
   def new_comment
@@ -22,7 +22,7 @@ module Commented
   end
 
   def stream_comment
-    return unless @comment.valid?
+    return if @comment.nil? || !@comment.valid?
     comment = CommentPresenter.new(@comment)
     QuestionChannel.broadcast_to(comment.question, comment.as(action_name))
   end

@@ -17,6 +17,14 @@ class CommentPresenter
     }
   end
 
+  def present_as_update
+    {
+        action: :update_comment,
+        comment: @comment,
+        destination_id: "#comment-#{@comment.id}"
+    }
+  end
+
   def present_as_destroy
     {
         action: :destroy_comment,

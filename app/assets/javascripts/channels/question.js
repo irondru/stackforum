@@ -10,11 +10,17 @@ document.addEventListener("turbolinks:load", function() {
                     case 'create_answer':
                         $('div#answers').append(JST["templates/answer"](data));
                         break;
+                    case 'update_answer':
+                        $(data.destination_id + ' > div.answer-body').html(data.answer.body);
+                        break;
                     case 'destroy_answer':
                         $('#answer-id-' + data.answer_id).remove();
                         break;
                     case 'create_comment':
                         $(data.destination_id).append(JST["templates/comment"](data));
+                        break;
+                    case 'update_comment':
+                        $(data.destination_id + ' > div.comment-body').html(data.comment.body);
                         break;
                     case 'destroy_comment':
                         $('#comment-'+data.comment_id).remove();

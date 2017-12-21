@@ -5,7 +5,7 @@ class AnswersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_answer, except: :create
   before_action :check_user, only: [:update, :destroy]
-  after_action :stream_answer, only: [:create, :destroy]
+  after_action :stream_answer, only: [:create, :update, :destroy]
 
   respond_to :js
 
@@ -49,7 +49,7 @@ class AnswersController < ApplicationController
 
   def answer_params
     params.require(:answer).permit(:body, attachments_attributes: [:id, :file])
-        .merge(user: current_user, question: set_question)
+        .merge(user: current_user)
   end
 
 end
