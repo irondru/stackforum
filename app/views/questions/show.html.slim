@@ -2,12 +2,8 @@
 div
   h1= @question.title
   p= @question.body
-  -if user_signed_in?
-    = link_to 'UP', up_vote_question_path(@question), class: 'vote-link', remote: true
-    = link_to 'DOWN', down_vote_question_path(@question), class: 'vote-link', remote: true
   = render 'comments/comments', owner: @question
-  p score:
-  p id="question-#{@question.id}"= @question.score
+  = render 'common/vote', owner: @question
   = render 'attachments/attachments', owner: @question
 
 div#answers data="#{@question.id}"= render @question.answers.ordered

@@ -3,7 +3,7 @@ div id="#{owner.class.to_s.downcase}-comments-#{owner.id}"
   -owner.comments.each do |comment|
     div id="comment-#{comment.id}"
       = comment.body
-      = link_to 'Del comment', comment_path(comment), method: :delete
+      = link_to 'Del comment', comment_path(comment), method: :delete, remote: true
       br
 
 - if user_signed_in?

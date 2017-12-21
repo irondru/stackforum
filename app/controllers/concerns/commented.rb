@@ -2,15 +2,13 @@ module Commented
   extend ActiveSupport::Concern
 
   included do
-     before_action :set_commentable, only: :new_comment
+    before_action :set_commentable, only: :new_comment
+    after_action :stream_comment, only: [:destroy, :new_comment]
   end
 
   def new_comment
     @comment = @commentable.comments.new(comment_params)
-    if @comment.save
-      stream_comment(:create)
-      render 'comments/new_comment'
-    end
+    render 'comments/new_comment' if @comment.save
   end
 
   private
@@ -23,8 +21,9 @@ module Commented
     params.require(:comment).permit(:body).merge(user: current_user)
   end
 
-  def stream_comment(action)
+  def stream_comment
+    return unless @comment.valid?
     comment = CommentPresenter.new(@comment)
-    QuestionChannel.broadcast_to(comment.question, comment.as(action))
+    QuestionChannel.broadcast_to(comment.question, comment.as(action_name))
   end
 end

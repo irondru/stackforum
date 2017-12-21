@@ -9,7 +9,7 @@ class CommentPresenter
     send("present_as_#{presence}")
   end
 
-  def present_as_create
+  def present_as_new_comment
     {
         action: :create_comment,
         comment: @comment,
