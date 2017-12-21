@@ -6,11 +6,12 @@ class CommentsController < ApplicationController
   before_action :check_user
 
   def update
-
+    @comment.update(comment_params)
   end
 
   def destroy
     @comment.destroy
+    render 'del_comment_form'
   end
 
   private

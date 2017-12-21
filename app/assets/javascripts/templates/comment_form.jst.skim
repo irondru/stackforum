@@ -1,0 +1,6 @@
+div.comment-form
+  form enctype="multipart/form-data" action="#{@action}" accept-charset="UTF-8" data-remote="true" method="#{@method}"
+    label for="comment" Comment
+    input id="comment" name="comment[body]" type="text" value="#{@value}"
+    input type="submit" hidden="true"
+  button onclick="del_excess_forms()" Cancel

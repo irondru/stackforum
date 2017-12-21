@@ -3,7 +3,7 @@ module Commented
 
   included do
     before_action :set_commentable, only: :new_comment
-    after_action :stream_comment, only: [:destroy, :new_comment]
+    after_action :stream_comment, only: [:update, :destroy, :new_comment]
   end
 
   def new_comment
