@@ -1,12 +1,3 @@
-function del_excess_forms(){
-    $('div.comment-body:hidden').toArray().forEach(function(elem) {
-        jQuery(elem).show();
-    });
-    $('div.comment-form').toArray().forEach(function (elem) {
-        jQuery(elem).remove();
-    });
-}
-
 function new_comment(refer) {
     del_excess_forms();
     refer = jQuery(refer);

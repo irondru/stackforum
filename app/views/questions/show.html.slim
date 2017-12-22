@@ -2,6 +2,7 @@
 div
   h1= @question.title
   p= @question.body
+  = link_to 'Edit', edit_question_path(@question)
   = render 'comments/comments', owner: @question
   = render 'common/vote', owner: @question
   = render 'attachments/attachments', owner: @question

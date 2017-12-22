@@ -17,6 +17,14 @@ class AnswerPresenter
     }
   end
 
+  def present_as_update
+    {
+        action: :update_answer,
+        answer: @answer,
+        destination_id: "#answer-#{@answer.id}"
+    }
+  end
+
   def present_as_destroy
     {
         action: :destroy_answer,

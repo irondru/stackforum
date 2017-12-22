@@ -1,2 +1,0 @@
-$('#answer-body-<%= @answer.id %>').html('<%= j render 'form', answer: @answer %>');
-$('#answer-body-<%= @answer.id %>').append('<%= link_to 'Cancel', answer_path(@answer), remote: true %>');

@@ -11,7 +11,6 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
-    render 'del_comment_form'
   end
 
   private

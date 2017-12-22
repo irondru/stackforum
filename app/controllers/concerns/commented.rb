@@ -22,7 +22,7 @@ module Commented
   end
 
   def stream_comment
-    return unless @comment.valid?
+    return if @comment.nil? || !@comment.valid?
     comment = CommentPresenter.new(@comment)
     QuestionChannel.broadcast_to(comment.question, comment.as(action_name))
   end

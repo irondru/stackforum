@@ -10,6 +10,9 @@ document.addEventListener("turbolinks:load", function() {
                     case 'create_answer':
                         $('div#answers').append(JST["templates/answer"](data));
                         break;
+                    case 'update_answer':
+                        $(data.destination_id + ' > div.answer-body').html(data.answer.body);
+                        break;
                     case 'destroy_answer':
                         $('#answer-id-' + data.answer_id).remove();
                         break;
