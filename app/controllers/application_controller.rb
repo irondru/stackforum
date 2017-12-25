@@ -9,4 +9,7 @@ class ApplicationController < ActionController::Base
     gon.user_id = current_user.id if current_user
   end
 
+  rescue_from CanCan::AccessDenied do |e|
+    redirect_to root_url, alert: e.message
+  end
 end

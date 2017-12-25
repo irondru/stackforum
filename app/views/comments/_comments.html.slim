@@ -3,11 +3,12 @@ div id="#{owner.class.to_s.downcase}-comments-#{owner.id}"
   -owner.comments.each do |comment|
     div id="comment-#{comment.id}"
       .comment-body = comment.body
-      = link_to 'Del comment', comment, method: :delete, remote: true
-      = link_to 'Edit comment', comment, onclick: 'return edit_comment(this)', data: comment.id
+      - if can?(:access, comment)
+        = link_to 'Del comment', comment, method: :delete, remote: true
+        = link_to 'Edit comment', comment, onclick: 'return edit_comment(this)', data: comment.id
       br
 
-  - if user_signed_in?
+  - if can?(:create, Comment)
     - case owner
       - when Answer then path = new_comment_answer_path(owner)
       - when Question then path = new_comment_question_path(owner)

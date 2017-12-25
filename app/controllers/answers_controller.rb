@@ -4,10 +4,11 @@ class AnswersController < ApplicationController
 
   before_action :authenticate_user!
   before_action :set_answer, except: :create
-  before_action :check_user, only: [:update, :destroy]
   after_action :stream_answer, only: [:create, :update, :destroy]
 
   respond_to :js
+
+  authorize_resource
 
   def create
     respond_with(@answer = Answer.create(answer_params))
@@ -34,10 +35,6 @@ class AnswersController < ApplicationController
     return unless @answer.valid?
     QuestionChannel.broadcast_to(@answer.question,
                                  AnswerPresenter.new(@answer).as(action_name))
-  end
-
-  def check_user
-    return if @answer.user != current_user
   end
 
   def set_answer
