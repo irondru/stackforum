@@ -25,6 +25,7 @@ class AnswersController < ApplicationController
 
   def best
     @answer.set_best if @answer.question.user == current_user
+    respond_with(@answer)
   end
 
   private
