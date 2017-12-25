@@ -15,7 +15,7 @@ class Ability
   private
 
   def guest_abilities
-    can [:read, :load_part], :all
+    can [:read, :load], :all
   end
 
   def user_abilities

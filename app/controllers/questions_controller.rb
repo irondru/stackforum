@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
 
-  before_action :authenticate_user!, except: [:index, :show, :load_part]
+  before_action :authenticate_user!, except: [:load, :show, :load_part]
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   after_action :stream_question, only: [:create, :destroy]
 
@@ -11,12 +11,11 @@ class QuestionsController < ApplicationController
 
   authorize_resource
 
-  def index
-    @questions = Question.load_part(0, 10)
-  end
-
-  def load_part
-    render json: Question.load_part(params[:start_id], 10)
+  def load
+    respond_to do |format|
+      format.html { @questions = Question.load_part(0, 10) }
+      format.json { render json: Question.load_part(params[:start_id], 10) }
+    end
   end
 
   def show

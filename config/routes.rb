@@ -13,16 +13,17 @@ Rails.application.routes.draw do
     resources :comments, only: [:update, :destroy]
   end
 
-  resources :questions, concerns: [:votable, :commentable], shallow: true do
+  resources :questions, concerns: [:votable, :commentable], except: [:index], shallow: true do
     resources :answers, concerns: [:votable, :commentable], only: [:create, :update, :destroy] do
       get :best, on: :member
     end
-    post :load_part, on: :collection
+    get :load, on: :collection
+    post :load, on: :collection
   end
 
   delete '/attach/:id', to: 'attachments#destroy', as: 'attachment_destroy'
 
-  root 'questions#index'
+  root 'questions#load'
 
   mount ActionCable.server => '/cable'
 

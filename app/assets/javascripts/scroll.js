@@ -7,7 +7,7 @@ document.addEventListener("turbolinks:load", function () {
         if ($(window).scrollTop() + $(window).height() >= $(document).height() - 200 && !inProgress) {
 
             $.ajax({
-                url: '/questions/load_part',
+                url: '/questions/load',
                 method: 'POST',
                 dataType: 'json',
                 data: {'start_id': startFrom},
@@ -16,7 +16,6 @@ document.addEventListener("turbolinks:load", function () {
                 }
             }).done(function (data) {
 
-                data = jQuery.parseJSON(data);
 
                 if (data.length > 0) {
 
