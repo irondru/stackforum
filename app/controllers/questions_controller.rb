@@ -1,15 +1,24 @@
 class QuestionsController < ApplicationController
-  include Voted
-  include Commented
 
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :load_part]
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   after_action :stream_question, only: [:create, :destroy]
 
+  include Voted
+  include Commented
+
+  PART_SIZE = 10
+
   respond_to :html
 
+  authorize_resource
+
   def index
-    @questions = Question.all
+    @questions = Question.load_part(0, PART_SIZE)
+  end
+
+  def load_part
+    render json: Question.load_part(params[:start_id], PART_SIZE)
   end
 
   def show
@@ -34,9 +43,7 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    if @question.user == current_user
-      @question.destroy
-    end
+    respond_with @question.destroy
   end
 
   private

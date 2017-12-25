@@ -1,9 +1,11 @@
 class CommentsController < ApplicationController
-  include Commented
 
   before_action :authenticate_user!
   before_action :set_comment
-  before_action :check_user
+
+  include Commented
+
+  authorize_resource
 
   def update
     @comment.update(comment_params)
@@ -19,7 +21,4 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
   end
 
-  def check_user
-    return if @comment.user != current_user
-  end
 end

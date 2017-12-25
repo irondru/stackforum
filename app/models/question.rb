@@ -8,4 +8,6 @@ class Question < ApplicationRecord
 
   validates :title, :body, presence: true
 
+  scope :load_part, ->(offset, count) {order(created_at: :desc).offset(offset).limit(count)}
+
 end
