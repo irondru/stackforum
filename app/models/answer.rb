@@ -8,7 +8,7 @@ class Answer < ApplicationRecord
 
   validates :body, presence: true
 
-  scope :ordered, -> {order('best desc, created_at')}
+  scope :ordered, -> { order('best desc, created_at') }
 
   def set_best
     question.answers.select {|answer| answer.best == true}.each do |answer|
