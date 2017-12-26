@@ -8,7 +8,10 @@ class Question < ApplicationRecord
 
   validates :title, :body, presence: true
 
-  scope :last_part, ->(count) { order(created_at: :desc).limit(count) }
-  scope :previews, ->(offset, count) { select(:id, :title).order(created_at: :desc).offset(offset).limit(count) }
+  PAGE_SIZE = 10
+
+  scope :last_part, -> { order(created_at: :desc).limit(PAGE_SIZE) }
+  scope :previews, ->(page) { select(:id, :title).order(created_at: :desc)
+                                  .offset(page.to_i * PAGE_SIZE).limit(PAGE_SIZE) }
 
 end

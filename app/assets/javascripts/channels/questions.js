@@ -8,7 +8,7 @@ document.addEventListener("turbolinks:load", function() {
           received: function (data) {
               switch (data.action) {
                   case 'create':
-                      $('#questions-list').append(data.data);
+                      $('#questions-list').prepend(data.data);
                       break;
                   case 'destroy':
                       $('#question-' + data.data).remove();

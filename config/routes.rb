@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  use_doorkeeper
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' } #sessions: custom_session_controller
 
   concern :votable do
@@ -17,8 +18,17 @@ Rails.application.routes.draw do
     resources :answers, concerns: [:votable, :commentable], only: [:create, :update, :destroy] do
       get :best, on: :member
     end
-    post :load_part, on: :collection
   end
+
+  namespace :api do
+    namespace :v1 do
+      resource :profiles do
+        get :me, on: :collection
+      end
+    end
+  end
+
+  get '/questions_pages/:page', to: 'questions#index'
 
   delete '/attach/:id', to: 'attachments#destroy', as: 'attachment_destroy'
 
