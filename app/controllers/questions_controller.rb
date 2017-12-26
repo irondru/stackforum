@@ -14,11 +14,11 @@ class QuestionsController < ApplicationController
   authorize_resource
 
   def index
-    @questions = Question.load_part(0, PART_SIZE)
+    @questions = Question.last_part(PART_SIZE)
   end
 
   def load_part
-    render json: Question.load_part(params[:start_id], PART_SIZE)
+    render json: Question.previews(params[:start_id], PART_SIZE)
   end
 
   def show

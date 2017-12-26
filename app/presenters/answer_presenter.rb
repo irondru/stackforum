@@ -5,7 +5,6 @@ class AnswerPresenter
   end
 
   def as(presence)
-
     send("present_as_#{presence}")
   end
 
