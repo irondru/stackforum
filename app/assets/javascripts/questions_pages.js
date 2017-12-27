@@ -8,10 +8,12 @@ document.addEventListener("turbolinks:load", function () {
             if ($(window).scrollTop() + $(window).height() >= $(document).height() - 200 && !loading) {
                 loading = true;
                 $.getJSON('/questions_pages/' + current_page.toString(), function(data) {
-                    data.forEach(function (elem) {
-                        $('div#questions-list').append('<p>' + elem.title + '</p>');
-                    });
-                    current_page++;
+                    if (data.length > 0) {
+                        data.forEach(function (elem) {
+                            $('#question-tmpl').tmpl(elem).appendTo('div#questions-list');
+                        });
+                        current_page++;
+                    }
                 }).always(function() {
                     loading = false;
                 });

@@ -8,10 +8,10 @@ document.addEventListener("turbolinks:load", function() {
           received: function (data) {
               switch (data.action) {
                   case 'create':
-                      $('#questions-list').prepend(data.data);
+                      $('#question-tmpl').tmpl(data.question).prependTo('#questions-list');
                       break;
                   case 'destroy':
-                      $('#question-' + data.data).remove();
+                      $('#question-' + data.question).remove();
                       break;
               }
           }

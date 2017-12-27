@@ -8,7 +8,7 @@ document.addEventListener("turbolinks:load", function() {
             received: function (data) {
                 switch (data.action) {
                     case 'create_answer':
-                        $('div#answers').append(JST["templates/answer"](data));
+                        $('#answer-tmpl').tmpl(data).appendTo('div#answers');
                         break;
                     case 'update_answer':
                         $(data.destination_id + ' > div.answer-body').html(data.answer.body);
@@ -17,7 +17,7 @@ document.addEventListener("turbolinks:load", function() {
                         $('#answer-id-' + data.answer_id).remove();
                         break;
                     case 'create_comment':
-                        $(data.destination_id).append(JST["templates/comment"](data));
+                        $('#comment-tmpl').tmpl(data).appendTo(data.destination_id)
                         break;
                     case 'update_comment':
                         $(data.destination_id + ' > div.comment-body').html(data.comment.body);

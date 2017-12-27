@@ -12,3 +12,8 @@ div
 
 div#answers data="#{@question.id}"= render @question.answers.ordered
 div.ask-question= render 'answers/form', answer: @answer if can?(:create, Answer)
+
+= render 'templates/answer'
+= render 'templates/answer_edit_form'
+= render 'templates/comment_form'
+= render 'templates/comment'

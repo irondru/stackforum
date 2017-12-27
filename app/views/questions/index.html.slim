@@ -1,3 +1,4 @@
 h1= t('.title')
 div#questions-list= render @questions
 = link_to t('.new_answer'), new_question_path if can?(:create, Question)
+= render 'templates/question'

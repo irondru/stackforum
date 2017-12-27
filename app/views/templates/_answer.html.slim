@@ -1,0 +1,14 @@
+script id='answer-tmpl' type='text/x-jquery-tmpl'
+  div id='answer-${answer.id}'
+    div.answer-body
+      | ${answer.body}
+    | {{if gon.user_id == answer.user_id}}
+    = link_to ' Delete', '/answers/${answer.id}', method: :delete, remote: true
+    = link_to 'Edit', '/answers/${answer.id}', onclick: 'return edit_answer(this)', data: '${answer.id}'
+    | {{/if}}
+    | {{if gon.user_id == question_user_id}}
+    = link_to 'Best', '/answers/${answer.id}/best', remote: true
+    | {{/if}}
+  = render 'templates/answer_comments'
+  = render 'templates/answer_vote'
+  = render 'templates/answer_attachments'

@@ -1,0 +1,7 @@
+i Score:
+p id='answer-${answer.id}'
+  | ${answer.score}
+| {{if gon.user_id != undefined}}
+= link_to 'UP', '/answers/${answer.id}/up_vote', class: 'vote-link', remote: true
+= link_to 'DOWN', '/answers/${answer.id}/down_vote', class: 'vote-link', remote: true
+| {{/if}}

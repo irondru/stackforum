@@ -1,4 +1,0 @@
-div id="comment-#{@comment.id}"
-  = @comment.body
-  - if gon.user_id == @comment.user_id
-    a rel="nofollow" data-method="delete" data-remote="true" href="/comments/#{@comment.id}" Del comment

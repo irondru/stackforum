@@ -12,6 +12,7 @@ class AnswerPresenter
     {
         action: :create_answer,
         answer: @answer,
+        question_user_id: @answer.question.user_id,
         attachments: attachments
     }
   end

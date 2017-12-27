@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-tmpl
 //= require jquery.remotipart
 //= require turbolinks
 //= require_tree .

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171226113617) do
+ActiveRecord::Schema.define(version: 20171227120653) do
 
   create_table "answers", force: :cascade do |t|
     t.integer "question_id"
@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 20171226113617) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["attachmentable_type", "attachmentable_id"], name: "index_attachments_on_attachmentable_type_and_attachmentable_id"
+  end
+
+  create_table "authorizations", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "provider"
+    t.string "uid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_authorizations_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -110,7 +119,7 @@ ActiveRecord::Schema.define(version: 20171226113617) do
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.boolean "admin"
+    t.boolean "admin", default: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

@@ -1,0 +1,6 @@
+script id='comment-tmpl' type='text/x-jquery-tmpl'
+  div id='comment-${comment.id}'
+    | ${comment.body}
+    | {{if gon.user_id == comment.user_id}}
+    = link_to 'del comment', 'comments/${comment.id}', method: :delete, remote: true
+    | {{/if}}

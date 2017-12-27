@@ -1,0 +1,10 @@
+ul
+  | {{each attachments}}
+  | <li id="attach-${$value.id}">
+  = link_to '${$value.name}', '${$value.url}'
+  | {{if gon.user_id == answer.user_id}}
+  = link_to 'delete', '/attach/${$value.id}',
+          method: :delete, remote: true
+  | {{/if}}
+  | </li>
+  | {{/each}}

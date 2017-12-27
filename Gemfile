@@ -37,7 +37,6 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'carrierwave'
 gem 'remotipart'
-gem 'skim'
 gem 'gon'
 gem 'omniauth'
 gem 'omniauth-facebook'
@@ -46,6 +45,8 @@ gem 'cancancan'
 gem 'doorkeeper'
 gem 'oj'
 gem 'oj_mimic_json'
+gem 'jquery-tmpl-rails'
+gem 'active_model_serializers'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

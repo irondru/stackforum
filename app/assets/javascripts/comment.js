@@ -3,7 +3,7 @@ function new_comment(refer) {
     refer = jQuery(refer);
     var divid = refer.attr('data');
     $(divid).append(
-        JST["templates/comment_form"]({action: refer.attr('href'), method: 'post'})
+        $('#comment-form-tmpl').tmpl({action: refer.attr('href'), method: 'post'})
     );
     return false;
 }
@@ -15,7 +15,7 @@ function edit_comment(refer) {
     var comment_body = $('div#comment-' + id + ' > div.comment-body');
     comment_body.hide();
     comment_body.after(
-        JST["templates/comment_form"]({action: refer.attr('href'), value: comment_body.text(), method: 'patch'})
+        $('#comment-form-tmpl').tmpl({action: refer.attr('href'), value: comment_body.text(), method: 'patch'})
     );
     return false;
 }

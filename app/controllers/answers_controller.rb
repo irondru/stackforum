@@ -11,7 +11,7 @@ class AnswersController < ApplicationController
   authorize_resource
 
   def create
-    respond_with(@answer = Answer.create(answer_params))
+    respond_with(@answer = Answer.create(answer_params.merge(question: set_question)))
   end
 
   def update

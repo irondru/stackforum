@@ -1,0 +1,9 @@
+script id='answer-edit-tmpl' type='text/x-jquery-tmpl'
+  div.answer-form
+    form enctype='multipart/form-data' action='${action}' accept-charset='UTF-8' data-remote='true' method='patch'
+      label for='answer_body' Body
+      p
+      textarea id='answer_body' name='answer[body]'
+        | ${value}
+      input type='submit'
+    button onclick='del_excess_forms()' Cancel
