@@ -1,6 +1,6 @@
 span Comments:
 div id='answer-comments-${answer.id}'
-  | {{if gon.user_id != undefined}}
+  | {{if can(-1)}}
   = link_to 'AddComment', '/answers/${answer.id}/new_comment', onclick: 'return new_comment(this)',
                 data: 'div#answer-comments-${answer.id}'
   | {{/if}}

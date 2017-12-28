@@ -10,7 +10,13 @@ function del_excess_forms(){
         'div.comment-form', 'div.answer-form'].forEach(function (id) {
         $(id).toArray().forEach(function(elem) {
             elem = jQuery(elem);
-            id.indexOf('form') > 0 ? elem.remove() : elem.show();
+            id.indexOf('form') > 0 ? elem.remove() : elem.show(); //если форма - удаляем, див - показываем
         });
     });
+}
+
+function can(user_id) {
+    if (gon.user_id == undefined) return false;
+    if (gon.user_id == -1) return true;
+    return (user_id == -1) ? true : gon.user_id == user_id;
 }
