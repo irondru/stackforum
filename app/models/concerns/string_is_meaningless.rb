@@ -52,8 +52,7 @@ class String
       end
       next if it == -1 # символ не найден
       next if CHAR_TYPES[:min_count][it] != -1 && char_count <= CHAR_TYPES[:min_count][it] #
-      char_relative_count = char_count / text.length.to_f # вычисляем коэфициэнт пояления симовола
-      next if char_relative_count <= CHAR_TYPES[:min_relative_count][it]
+      next if char_count / text.length.to_f <= CHAR_TYPES[:min_relative_count][it] # вычисляем коэфициэнт пояления симовола
       result += char_count * CHAR_TYPES[:mentic_factor][it]
     end
     result
