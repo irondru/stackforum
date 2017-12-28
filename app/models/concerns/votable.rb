@@ -5,7 +5,7 @@ module Votable
     has_many :votes, as: :votable, dependent: :destroy
   end
 
-  def change_vote(user, change_to) # возможные варианты 1, -1
+  def change_vote(user, change_to) # change_to возможные варианты 1, -1
     vote = votes.where(user: user).first_or_initialize
     if change_to != vote.changed_to # пользователь меняет или это новый голос?
       if vote.changed_to.nil? # если пользователь ранее не голосвал за данный пост
