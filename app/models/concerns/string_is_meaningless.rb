@@ -9,7 +9,7 @@ class String
   MAX_VALID_METRIC = 17.0
 
   # min_count: Минимальное число символов из заданного класса, чтобы начать считать метрику (-1 - всегда считаем)
-  # min_relative_count: Минимальное относительное число символов, чтобы начать считать метрику (-1.0 - всегда считаем)
+  # min_relative_count: Минимальное относительное число символов, чтобы начать считать метрику
   # mentic_factor: Коэффициент метрики, для класса символов
 
   CHAR_TYPES = {
@@ -53,7 +53,7 @@ class String
       next if it == -1 # символ не найден
       next if CHAR_TYPES[:min_count][it] != -1 && char_count <= CHAR_TYPES[:min_count][it] #
       char_relative_count = char_count / text.length.to_f # вычисляем коэфициэнт пояления симовола
-      next if CHAR_TYPES[:min_relative_count][it] != -1.0 && char_relative_count <= CHAR_TYPES[:min_relative_count][it]
+      next if char_relative_count <= CHAR_TYPES[:min_relative_count][it]
       result += char_count * CHAR_TYPES[:mentic_factor][it]
     end
     result
