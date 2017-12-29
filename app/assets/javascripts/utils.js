@@ -16,7 +16,7 @@ function del_excess_forms(){
 }
 
 function can(user_id) {
-    if (gon.user_id == undefined) return false;
-    if (gon.user_id == -1) return true;
-    return (user_id == -1) ? true : gon.user_id == user_id;
+    if (gon.user_id == undefined) return false; //guest
+    if (gon.user_id == -1) return true; //admin
+    return (user_id == -1) ? true : gon.user_id == user_id; // -1 любой залогиненый пользователь
 }

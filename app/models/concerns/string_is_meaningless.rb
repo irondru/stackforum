@@ -44,7 +44,7 @@ class String
     end
     chars_counts.each do |char, char_count|
       it = -1 # порядковый номер записи в таблице
-      CHAR_TYPES[:chars].each_with_index do |chars, index| # ищем его в таблице
+      CHAR_TYPES[:chars].each_with_index do |chars, index| # ищем в таблице
         if chars.include?(char)
           it = index
           break
