@@ -21,25 +21,3 @@ document.addEventListener("turbolinks:load", function () {
         });
     }
 });
-
-
-//$.ajax({
-//    url: '/questions_pages/' + current_page.toString(),
-//    method: 'GET',
-//    dataType: 'json',
-//    beforeSend: function () {
-//        in_progress = true;
-//    },
-//    success: function (data) {
-//        if (data.length > 0) {
-//            $.each(data, function (index, data) {
-//                $('div#questions-list').append('<p>' + data.title + '</p>');
-//            });
-//            in_progress = false;
-//            current_page++;
-//        }
-//    },
-//    error: function () {
-//        in_progress = false
-//    }
-//});

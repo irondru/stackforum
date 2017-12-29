@@ -7,8 +7,9 @@ class ApplicationController < ActionController::Base
   private
 
   def gon_user
-    gon.user_id = current_user.id if current_user
-    gon.access = can?(action_name.to_sym, controller_name.classify.constantize)
+    if current_user
+      gon.user_id = current_user.admin? ? -1 : current_user.id
+    end
   end
 
   rescue_from CanCan::AccessDenied do |e|
