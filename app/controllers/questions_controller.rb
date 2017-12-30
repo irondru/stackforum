@@ -51,12 +51,14 @@ class QuestionsController < ApplicationController
       when 'create'
         ActionCable.server.broadcast(
             'questions',
-            {action: :create, question: ActiveModelSerializers::SerializableResource.new(@question).as_json}
+              {action: :create,
+               question: ActiveModelSerializers::SerializableResource.new(@question).as_json}
         )
       when 'destroy'
         ActionCable.server.broadcast(
             'questions',
-            {action: :destroy, question: @question.id.to_s}
+              {action: :destroy,
+               question: @question.id.to_s}
         )
     end
   end
