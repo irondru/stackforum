@@ -8,7 +8,8 @@ class Question < ApplicationRecord
   has_many :answers, dependent: :destroy
   belongs_to :user
 
-  validates :title, :body, presence: true
+  validates :title, presence: true, length: { in: 3..80 }
+  validates :body, presence: true, length: { in: 3..1000 }
 
   PAGE_SIZE = 10
 

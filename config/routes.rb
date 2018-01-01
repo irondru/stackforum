@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resource :search, only: :show
+
   get '/questions_pages/:page', to: 'questions#index'
 
   delete '/attach/:id', to: 'attachments#destroy', as: 'attachment_destroy'

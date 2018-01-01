@@ -5,10 +5,10 @@ class Answer < ApplicationRecord
   include Commentable
   include Meaninglessable
 
-  belongs_to :question
+  belongs_to :question, touch: true
   belongs_to :user
 
-  validates :body, presence: true
+  validates :body, presence: true, length: { in: 3..1000 }
 
   scope :ordered, -> { order('best desc, created_at') }
 
