@@ -3974,3 +3974,7 @@ QuestionChannel#subscribed
 QuestionChannel stopped streaming from question:Z2lkOi8vc3RhY2tmb3J1bS9RdWVzdGlvbi8x
   [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
 QuestionChannel is streaming from question:Z2lkOi8vc3RhY2tmb3J1bS9RdWVzdGlvbi8x
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2018-01-01 22:07:30 +0300
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2018-01-01 22:07:30 +0300
+QuestionChannel stopped streaming from question:Z2lkOi8vc3RhY2tmb3J1bS9RdWVzdGlvbi8x
+QuestionsChannel stopped streaming from questions
