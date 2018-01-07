@@ -61,3 +61,7 @@ gem install rails
 
 *mysql
 sudo apt-get install mysql-server mysql-client libmysqlclient-dev
+
+*webpack
+npm install actioncable-modules --save
+            jquery jquery_ujs

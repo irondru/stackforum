@@ -14,6 +14,11 @@
 /log/*.log
 /tmp
 
+/node_modules
+/public/packs
+
+/public/uploads
+
 .idea
 /.idea
 
@@ -49,4 +54,6 @@ certs/
 
 dump.rdb
 config/*.sphinx.conf
-db/sphinx
+db/sphinx/public/packs
+/public/packs-test
+/node_modules

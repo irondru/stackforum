@@ -16,7 +16,7 @@ module Voted
   private
 
   def respond(change_to)
-    { elem_id: controller_name.singularize + '-' + @post.id.to_s,
+    { elem_id: controller_name.singularize + '-vote-' + @post.id.to_s,
       score: @post.change_vote(current_user, change_to) }
   end
 

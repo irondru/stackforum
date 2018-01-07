@@ -1,5 +1,5 @@
 i Score:
-p id="#{owner.class.to_s.downcase}-#{owner.id}"= owner.score
+p id="#{owner.class.to_s.downcase}-vote-#{owner.id}"= owner.score
 - if can?(:access, Vote)
   - case owner
     - when Answer
