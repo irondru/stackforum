@@ -1,5 +1,4 @@
 class QuestionsController < ApplicationController
-  
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   after_action :stream_question, only: [:create, :destroy]
@@ -12,10 +11,7 @@ class QuestionsController < ApplicationController
   authorize_resource
 
   def index
-    respond_to do |format|
-      format.html { @questions = Question.last_part }
-      format.json { render json: Question.previews(params[:page]) }
-    end
+      render component: 'Topics', props: { todos: Question.last_part }, tag: 'span', class: 'todo'
   end
 
   def show
