@@ -6,7 +6,7 @@ import thunkMiddleware from 'redux-thunk';
 import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerReducer  } from 'react-router-redux'
 import { routes } from '../routes';
-import match from 'react-router';
+import math from 'react-router';
 
 import App from '../components/app';
 
@@ -21,13 +21,11 @@ const store = createStore(reducer, applyMiddleware(thunkMiddleware));
 const history = syncHistoryWithStore(browserHistory, store)
 
 
-document.addEventListener('DOMContentLoaded', () => {
-  match({routes, history}, (error, redirectLocation, renderProps) => {
-    render(
-      <Provider store={store}>
-        <Router {...renderProps} />
-      </Provider>
-    )
-  })}
-  ,document.querySelector('#root')
+document.addEventListener('DOMContentLoaded', () =>
+  render(
+    <Provider store={store}>
+      <Router history={history} routes={routes} />
+    </Provider>,
+    document.querySelector('#root')
+  )
 )

@@ -12,18 +12,12 @@ class Topics extends React.Component {
     super(props)
   }
 
-  static fetchData(dispatch, uriParams, allProps = {}) {
-    console.log('hey');
-        const promiseArr = [
-            dispatch(actions.fetchTopics())
-        ];
-        return Promise.all(promiseArr);
-  }
-
   topicsList = () =>
     this.props.topics.map(
       topic => <TopicsListItem {...topic} />
     );
+
+  componentDidMount = () => this.props.fetchTopics()
 
   render = () =>
     <div>
