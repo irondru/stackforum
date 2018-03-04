@@ -4,15 +4,9 @@ html
     title Stackforum
     = action_cable_meta_tag
     = csrf_meta_tags
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    //= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     //= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-    = javascript_pack_tag 'main'
+    = javascript_pack_tag 'app'
     = Gon::Base.render_data
 
-  body
-    = link_to 'login', new_user_session_path
-    = link_to 'signout', destroy_user_session_path, method: :delete
-    = render 'common/flashes'
-    = render 'searches/search'
-    = yield
-
+  body#root

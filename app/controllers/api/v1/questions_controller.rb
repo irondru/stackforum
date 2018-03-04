@@ -1,25 +1,18 @@
-class QuestionsController < ApplicationController
+class Api::V1::QuestionsController < ApplicationController
 
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   after_action :stream_question, only: [:create, :destroy]
 
-  include Voted
-  include Commented
-
-  respond_to :html
 
   authorize_resource
 
   def index
-    respond_to do |format|
-      format.html { @questions = Question.last_part }
-      format.json { render json: Question.previews(params[:page]) }
-    end
+    render json: Question.last_part, each_serializer: QuestionsListItemSerializer
   end
 
   def show
-    @answer = @question.answers.new
+    render json: @question
   end
 
   def new

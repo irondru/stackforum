@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   get 'hello_world', to: 'hello_world#index'
   use_doorkeeper
-  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' } #sessions: custom_session_controller
+  devise_for :users, controllers: {
+    sessions: 'auth/sessions',
+    registrations: 'auth/registrations',
+    omniauth_callbacks: 'omniauth_callbacks'
+  }
 
   concern :votable do
     member do
@@ -26,6 +30,13 @@ Rails.application.routes.draw do
       resource :profiles do
         get :me, on: :collection
       end
+
+      resources :questions, concerns: [:votable, :commentable], shallow: true do
+        resources :answers, concerns: [:votable, :commentable], only: [:create, :update, :destroy] do
+          get :best, on: :member
+        end
+      end
+
     end
   end
 

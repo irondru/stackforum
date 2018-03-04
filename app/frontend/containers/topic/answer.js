@@ -1,6 +1,6 @@
 import React from 'react';
-import Comment from './comment';
-import AddComment from './add-comment';
+import Comment from '../../components/comment';
+import AddComment from '../../components/add-comment';
 
 export default class Answer extends React.Component {
   commentsList (comments) {
@@ -18,9 +18,8 @@ export default class Answer extends React.Component {
   render () {
     return (
       <div>
-        <h3>{this.props.author}</h3>
+        <h3>{this.props.created_at}</h3>
         <p>{this.props.body}</p>
-        {this.commentsList(this.props.comments)}
       </div>
     )
   }

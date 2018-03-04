@@ -1,1 +1,0 @@
-export { fetchQuestions } from './questions'

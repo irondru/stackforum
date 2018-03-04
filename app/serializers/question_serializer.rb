@@ -1,3 +1,13 @@
 class QuestionSerializer < ActiveModel::Serializer
-  attributes :id, :title
+  attributes :question
+
+  has_many :answers, each_serialiser: AnswerSerializer
+
+  def question
+    {
+      id: object.id,
+      body: object.body,
+      created_at: object.created_at
+    }
+  end
 end
