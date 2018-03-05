@@ -1,4 +1,4 @@
-import { GET_TOPICS, SUCCESS, PENDING } from '../actions/actionsTypes'
+import { GET_TOPICS, SUCCESS } from '../constants'
 
 export default function(state = [], action = {}) {
   switch (action.type) {

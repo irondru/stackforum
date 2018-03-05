@@ -10,7 +10,7 @@ environment.plugins.set('Provide',  new webpack.ProvidePlugin({
 )
 
 //environment.config.set('output.library', 'main')
-
+environment.config.set('output.filename', 'server-bundle.js')
 
 module.exports = environment
 

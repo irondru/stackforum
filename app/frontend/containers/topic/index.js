@@ -7,6 +7,7 @@ import AddComment from '../../components/add-comment';
 import Question from './question';
 
 class Topic extends React.Component {
+
   answersList() {
     if (this.props.answers)
       return this.props.answers.map (
@@ -16,8 +17,17 @@ class Topic extends React.Component {
 
   componentDidMount = () => this.props.fetchTopic(this.props.params.id)
 
+  isLoad() {
+    if (this.props.fetching) {
+      return (<h1>'loading'</h1>)
+    } else {
+      return (<h1>'complete'</h1>)
+    }
+  }
+
   render = () =>
     <div>
+      {this.isLoad()}
       <Question {...this.props.question} />
       <AddComment />
       {this.answersList()}
@@ -26,8 +36,9 @@ class Topic extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    question: state.topic.question,
-    answers: state.topic.answers
+    question: state.topic.topic.question,
+    answers: state.topic.topic.answers,
+    fetching: state.topic.fetching
   }
 }
 

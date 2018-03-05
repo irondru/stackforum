@@ -1,10 +1,23 @@
-import { GET_TOPIC } from '../actions/actionsTypes'
+import { GET_TOPIC, REQUEST, SUCCESS } from '../constants'
 
-export default function(state = {}, action) {
+const initialState = {
+  fetching: false,
+  topic: {},
+}
+
+export default function(state = initialState, action) {
   switch (action.type) {
-    case GET_TOPIC:
-      return action.payload
-      break;
+    case GET_TOPIC + REQUEST:
+      return {
+        ...state,
+        fetching: true,
+      }
+    case GET_TOPIC + SUCCESS:
+      return {
+        ...state,
+        fetching: false,
+        topic: action.payload
+      }
     default:
       return state
   }

@@ -3,8 +3,6 @@ import {connect} from 'react-redux';
 import * as actions from '../../actions';
 import UserLogin from '../user-login';
 
-
-
 import TopicsListItem from './topics-list-item';
 
 class Topics extends React.Component {

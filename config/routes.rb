@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'hello_world', to: 'hello_world#index'
+
   use_doorkeeper
   devise_for :users, controllers: {
     sessions: 'auth/sessions',
