@@ -1,12 +1,5 @@
 Rails.application.routes.draw do
 
-  use_doorkeeper
-  devise_for :users, controllers: {
-    sessions: 'auth/sessions',
-    registrations: 'auth/registrations',
-    omniauth_callbacks: 'omniauth_callbacks'
-  }
-
   concern :votable do
     member do
       get :up_vote
@@ -37,6 +30,10 @@ Rails.application.routes.draw do
         end
       end
 
+      devise_for :users, singular: :user, controllers: {
+        sessions: 'api/v1/sessions',
+        registrations: 'api/v1/registrations'
+      }
     end
   end
 

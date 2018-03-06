@@ -14,7 +14,7 @@ export const post = (url, params) =>
     body: JSON.stringify(params),
     headers: {
       'Content-Type': 'application/json',
-      'X-CSRF-Token': this.getCSRFToken(),
+      'X-CSRF-Token': getCSRFToken(),
     },
     credentials: 'same-origin'
   })

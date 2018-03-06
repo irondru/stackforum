@@ -6,20 +6,18 @@ const initialState = {
 }
 
 export default function(state = initialState, action) {
-  const new_states = {
-    [REQUEST]: () =>
-      ({
+  if (action.type & GET_TOPIC) return {
+    ...state,
+    ...{
+      [REQUEST]: () => ({
         fetching: true
       }),
-    [SUCCESS]: () =>
-      ({
+      [SUCCESS]: () => ({
         fetching: false,
         topic: action.payload
       })
-  }
-  if (action.type & GET_TOPIC) return {
-    ...state,
-    ...new_states[action.type & QUERY_TYPES]()
+    }
+    [action.type & QUERY_TYPES]()
   }
   return state
 }

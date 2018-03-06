@@ -1,17 +1,21 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
+import * as actions from '../../actions'
 
 class UserLogin extends React.Component {
+  constructor(props) {
+    super(props)
+  }
 
-  onSubmit (event) {
+  onSubmit = event => {
     event.preventDefault();
-    let fields = {}
-    Array.from(event.target).forEach(field => fields[field.name] = field.value)
+    let loginData = {}
+    Array.from(event.target).forEach(field => loginData[field.name] = field.value)
+    this.props.signIn(loginData);
+  }
 
-    console.log(fields);
-    };
-
-  render() {
-   return (
+  render = () =>
     <div>
       <form onSubmit={this.onSubmit}>
         <input type="text" name="email" />
@@ -19,8 +23,19 @@ class UserLogin extends React.Component {
         <input type="submit" name="submit" />
       </form>
     </div>
-  )
+}
+
+const mapStateToProps = state => {
+  return {
+    
   }
 }
 
-export default UserLogin;
+
+const mapDispatchToProps = dispatch => {
+  return {
+    signIn: (loginData) => { dispatch(actions.signIn(loginData)) }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserLogin);

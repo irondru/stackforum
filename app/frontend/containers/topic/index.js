@@ -1,10 +1,10 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import * as actions from '../../actions';
+import React from 'react'
+import { connect } from 'react-redux'
+import * as actions from '../../actions'
 
-import Answer from './answer';
-import AddComment from '../../components/add-comment';
-import Question from './question';
+import Answer from './answer'
+import AddComment from '../../components/add-comment'
+import Question from './question'
 
 class Topic extends React.Component {
 
@@ -15,7 +15,7 @@ class Topic extends React.Component {
       );
   }
 
-  componentDidMount = () => this.props.fetchTopic(this.props.params.id)
+  componentDidMount = () => this.props.getTopic(this.props.params.id)
 
   isLoad() {
     if (this.props.fetching) {
@@ -44,7 +44,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchTopic: (id) => { dispatch(actions.fetchTopic(id)) }
+    getTopic: (id) => { dispatch(actions.getTopic(id)) }
   }
 }
 

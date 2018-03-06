@@ -1,7 +1,7 @@
-class Auth::RegistrationsController < Devise::RegistrationsController
-  
+class Api::V1::RegistrationsController < Devise::RegistrationsController
+
   skip_before_action :authenticate_user!
-  
+
   def create
     if verify_captcha(params[:user][:recaptcha])
       build_resource(sign_up_params)
@@ -14,7 +14,7 @@ class Auth::RegistrationsController < Devise::RegistrationsController
         }, status: 403
       else
         sign_up(resource_name, resource)
-        
+
         render json: {
           msg: "Вы успешно зарегистрировались!",
           current_user: current_user.as_json

@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
 
   respond_to :html
 
-  authorize_resource
+  #authorize_resource
 
   def index
       render component: 'Topics', props: { todos: Question.last_part }, tag: 'span', class: 'todo'

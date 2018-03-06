@@ -1,6 +1,3 @@
-export {
-  fetchTopics,
-  updateTopics,
-  fetchTopic,
-  updateTopic
-} from './topics'
+export { getTopics } from './topics'
+export { getTopic } from './topic'
+export { signIn } from './user' 

@@ -1,9 +1,8 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import * as actions from '../../actions';
-import UserLogin from '../user-login';
+import React from 'react'
+import { connect } from 'react-redux'
+import * as actions from '../../actions'
 
-import TopicsListItem from './topics-list-item';
+import TopicsListItem from './topics-list-item'
 
 class Topics extends React.Component {
   constructor(props) {
@@ -15,24 +14,23 @@ class Topics extends React.Component {
       topic => <TopicsListItem {...topic} />
     );
 
-  componentDidMount = () => this.props.fetchTopics()
+  componentDidMount = () => this.props.getTopics()
 
   render = () =>
     <div>
-      <UserLogin />
       {this.topicsList()}
     </div>
 }
 
 const mapStateToProps = state => {
   return {
-    topics: state.topics
+    topics: state.topics.topics
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchTopics: () => { dispatch(actions.fetchTopics()) }
+    getTopics: () => { dispatch(actions.getTopics()) }
   }
 }
 

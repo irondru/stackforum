@@ -1,7 +1,19 @@
-export const REQUEST = 0x01
-export const SUCCESS = 0x02
-export const FAIL = 0x04
-export const QUERY_TYPES = SUCCESS + REQUEST + FAIL
-
-export const GET_TOPICS = 0x08
-export const GET_TOPIC = 0x10
+export {
+  REQUEST,
+  SUCCESS,
+  FAIL,
+  QUERY_TYPES,
+  GET_TOPIC,
+  GET_TOPICS,
+  SIGN_IN,
+  SIGN_UP
+} from './action_types'
+export {
+  TOPICS_PATH,
+  SIGN_IN_PATH
+} from './routes'
+export {
+  API_TOPICS_PATH,
+  API_SIGN_IN_PATH,
+  API_SIGN_UP_PATH
+} from './api_pathes'

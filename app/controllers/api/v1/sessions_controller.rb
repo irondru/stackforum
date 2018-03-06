@@ -1,4 +1,4 @@
-class Auth::SessionsController < Devise::SessionsController
+class Api::V1::SessionsController < Devise::SessionsController
   after_action :set_csrf_headers, only: [:create, :destroy]
 
   def create
