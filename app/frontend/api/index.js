@@ -4,7 +4,9 @@ import fetch from 'isomorphic-fetch'
 const getCSRFToken = () =>
   _.find(document.getElementsByTagName('meta'), meta => meta.name === 'csrf-token').content
 
-export const get = url => fetch(url, {credentials: 'same-origin'})
+export const getJSON = url =>
+  fetch(url, {credentials: 'same-origin'})
+    .then(respond => respond.json())
 
 export const post = (url, params) =>
   fetch(url, {

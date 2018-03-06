@@ -1,28 +1,32 @@
 import * as actions from './';
-import { get } from '../api';
-import { GET_TOPICS, GET_TOPIC, REQUEST, SUCCESS } from '../constants';
+import { getJSON } from '../api';
+import { GET_TOPICS, GET_TOPIC, REQUEST, SUCCESS, FAIL } from '../constants';
 
 export const fetchTopics = () => dispatch =>
-  get('/api/v1/questions')
-    .then(respond => respond.json())
+  getJSON('/api/v1/questions')
     .then(topics => dispatch({
           type: GET_TOPICS,
           payload: topics
          })
     )
 
-export function fetchTopic(id) {
-  return function(dispatch) {
+export const fetchTopic = (id) => dispatch => {
     dispatch({
       type: GET_TOPIC + REQUEST,
     })
-    get('/api/v1/questions/' + id)
-      .then(respond => respond.json())
+    getJSON('/api/v1/questions/' + id)
       .then(topic => {
         dispatch({
           type: GET_TOPIC + SUCCESS,
           payload: topic
         })
       })
+      .catch(error => {
+        dispatch({
+          type: GET_TOPIC + FAIL,
+          error: error
+        })
+      }
+
+      )
   }
-}

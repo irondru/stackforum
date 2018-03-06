@@ -1,24 +1,25 @@
-import { GET_TOPIC, REQUEST, SUCCESS } from '../constants'
+import { GET_TOPIC, REQUEST, SUCCESS, QUERY_TYPES } from '../constants'
 
 const initialState = {
   fetching: false,
-  topic: {},
+  topic: {}
 }
 
 export default function(state = initialState, action) {
-  switch (action.type) {
-    case GET_TOPIC + REQUEST:
-      return {
-        ...state,
-        fetching: true,
-      }
-    case GET_TOPIC + SUCCESS:
-      return {
-        ...state,
+  const new_states = {
+    [REQUEST]: () =>
+      ({
+        fetching: true
+      }),
+    [SUCCESS]: () =>
+      ({
         fetching: false,
         topic: action.payload
-      }
-    default:
-      return state
+      })
   }
+  if (action.type & GET_TOPIC) return {
+    ...state,
+    ...new_states[action.type & QUERY_TYPES]()
+  }
+  return state
 }
