@@ -5,8 +5,8 @@ const initialState = {
   topics: []
 }
 
-export default function(state = initialState, action) {
-  if (action.type & GET_TOPICS) return {
+export default (state = initialState, action) =>
+  action.type & GET_TOPICS ? {
     ...state,
     ...{
       [REQUEST]: () => ({
@@ -19,5 +19,4 @@ export default function(state = initialState, action) {
     }
     [action.type & QUERY_TYPES]()
   }
-  return state
-}
+  : state

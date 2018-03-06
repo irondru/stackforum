@@ -20,9 +20,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resource :profiles do
-        get :me, on: :collection
-      end
+
+      get 'profile', to: 'profile#show'
 
       resources :questions, concerns: [:votable, :commentable], shallow: true do
         resources :answers, concerns: [:votable, :commentable], only: [:create, :update, :destroy] do
@@ -40,6 +39,8 @@ Rails.application.routes.draw do
   resource :search, only: :show
 
   get '/questions_pages/:page', to: 'questions#index'
+
+  get '/user', to: 'questions#index'
 
   delete '/attach/:id', to: 'attachments#destroy', as: 'attachment_destroy'
 

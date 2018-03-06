@@ -4,7 +4,7 @@ import { Route, IndexRoute } from 'react-router'
 import Topic from '../containers/topic'
 import Topics from '../containers/topics'
 import App from '../components/app'
-import UserLogin from '../containers/user-login'
+import UserLogin from '../containers/user'
 import { TOPICS_PATH, SIGN_IN_PATH } from '../constants'
 
 export const routes = (

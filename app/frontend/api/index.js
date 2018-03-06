@@ -25,7 +25,17 @@ export const patch = (url, params) =>
     body: JSON.stringify(params),
     headers: {
       'Content-Type': 'application/json',
-      'X-CSRF-Token': this.getCSRFToken(),
+      'X-CSRF-Token': getCSRFToken(),
     },
     credentials: 'same-origin'
     })
+
+export const destroy = (url) =>
+  fetch(url, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRF-Token': getCSRFToken(),
+    },
+    credentials: 'same-origin'
+  })

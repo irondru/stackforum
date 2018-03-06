@@ -15,8 +15,11 @@ class UserLogin extends React.Component {
     this.props.signIn(loginData);
   }
 
+  componentDidMount = () => this.props.getProfile()
+
   render = () =>
     <div>
+      <br/>
       <form onSubmit={this.onSubmit}>
         <input type="text" name="email" />
         <input type="password" name="password" />
@@ -27,14 +30,16 @@ class UserLogin extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    
+    ...state.user
   }
 }
 
 
 const mapDispatchToProps = dispatch => {
   return {
-    signIn: (loginData) => { dispatch(actions.signIn(loginData)) }
+    signIn: (loginData) => { dispatch(actions.signIn(loginData)) },
+    signOut: () => { dispatch(actions.signOut()) },
+    getProfile: () => { dispatch(actions.getProfile()) }
   }
 }
 

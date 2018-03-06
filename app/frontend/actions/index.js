@@ -1,3 +1,7 @@
 export { getTopics } from './topics'
 export { getTopic } from './topic'
-export { signIn } from './user' 
+export {
+  signIn,
+  signOut,
+  getProfile
+} from './user'
