@@ -1,2 +1,11 @@
-export {default as topic} from './topic';
-export {default as topics} from './topics';
+import { routerReducer } from 'react-router-redux'
+import { combineReducers } from 'redux'
+
+import topic from './topic';
+import topics from './topics';
+
+export default combineReducers({
+    topic,
+    topics,
+    routing: routerReducer
+})
