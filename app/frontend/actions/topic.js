@@ -1,5 +1,5 @@
 import { getJSON } from '../api';
-import { GET_TOPIC, REQUEST, SUCCESS, FAIL, API_TOPICS_PATH } from '../constants';
+import { GET_TOPIC, GET_TOPICS, REQUEST, SUCCESS, FAIL, API_TOPICS_PATH } from '../constants';
 
 export const getTopic = (id) => dispatch => {
     dispatch({
@@ -18,5 +18,17 @@ export const getTopic = (id) => dispatch => {
           error: error
         })
       }
+      )
+  }
+
+  export const getTopics = () => dispatch => {
+    dispatch({
+      type: GET_TOPICS + REQUEST,
+    })
+    getJSON(API_TOPICS_PATH)
+      .then(topics => dispatch({
+          type: GET_TOPICS + SUCCESS,
+          payload: topics
+        })
       )
   }

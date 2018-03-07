@@ -2,7 +2,7 @@ import { GET_TOPICS, SUCCESS, REQUEST, QUERY_TYPES } from '../constants'
 
 const initialState = {
   fetching: false,
-  topics: []
+  data: []
 }
 
 export default (state = initialState, action) =>
@@ -14,7 +14,7 @@ export default (state = initialState, action) =>
       }),
       [SUCCESS]: () => ({
         fetching: false,
-        topics: action.payload
+        data: action.payload
       })
     }
     [action.type & QUERY_TYPES]()

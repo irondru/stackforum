@@ -8,5 +8,6 @@ import user from './user'
 export default combineReducers({
     topic,
     topics,
+    user,
     routing: routerReducer
 })

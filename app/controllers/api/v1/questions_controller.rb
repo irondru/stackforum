@@ -4,6 +4,7 @@ class Api::V1::QuestionsController < Api::V1::ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   after_action :stream_question, only: [:create, :destroy]
 
+  authorize_resource
 
   def index
     render json: Question.last_part, each_serializer: QuestionsListItemSerializer

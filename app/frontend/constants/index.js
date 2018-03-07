@@ -5,10 +5,7 @@ export {
   QUERY_TYPES,
   GET_TOPIC,
   GET_TOPICS,
-  SIGN_IN,
-  SIGN_UP,
-  SIGN_OUT,
-  GET_PROFILE
+  USER_QUERY
 } from './action_types'
 export {
   TOPICS_PATH,

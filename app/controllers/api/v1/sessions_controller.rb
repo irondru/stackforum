@@ -1,11 +1,11 @@
 class Api::V1::SessionsController < Devise::SessionsController
-  after_action :set_csrf_headers, only: [:create, :destroy]
+  #after_action :set_csrf_headers, only: [:create, :destroy]
 
   def create
       self.resource = warden.authenticate(auth_options)
       if self.resource
         sign_in(resource_name, self.resource)
-        render json: {msg: "Вы успешно авторизовались в системе", current_user: current_user.as_json}
+        render json: current_user
       else
         render json: {msg: "Email не найден, либо пароль неверен"}, status: 401
       end

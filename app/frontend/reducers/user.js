@@ -1,4 +1,4 @@
-import { GET_PROFILE, SUCCESS, REQUEST, QUERY_TYPES } from '../constants'
+import { USER_QUERY, SUCCESS, REQUEST, QUERY_TYPES } from '../constants'
 
 const initialState = {
   fetching: false,
@@ -6,7 +6,7 @@ const initialState = {
 }
 
 export default function(state = initialState, action) {
-  return action.type & GET_PROFILE ? {
+  return action.type & USER_QUERY ? {
     ...state,
     ...{
         [REQUEST]: () => ({

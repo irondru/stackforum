@@ -1,5 +1,7 @@
-export { getTopics } from './topics'
-export { getTopic } from './topic'
+export {
+  getTopic,
+  getTopics
+} from './topic'
 export {
   signIn,
   signOut,

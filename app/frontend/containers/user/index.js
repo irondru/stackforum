@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import * as actions from '../../actions'
+import FormLogin from './formLogin'
 
 class UserLogin extends React.Component {
   constructor(props) {
@@ -17,15 +18,27 @@ class UserLogin extends React.Component {
 
   componentDidMount = () => this.props.getProfile()
 
-  render = () =>
-    <div>
-      <br/>
-      <form onSubmit={this.onSubmit}>
-        <input type="text" name="email" />
-        <input type="password" name="password" />
-        <input type="submit" name="submit" />
-      </form>
-    </div>
+  click () {
+    alert('lol')
+  }
+
+  render() {
+    if (this.props.fetching) return (
+      <h1>Loading...</h1>
+    )
+  if (this.props.profile) {
+    return (
+      <div>
+      <h1>{this.props.profile.email}</h1>
+      <button onClick={this.props.signOut}>pij</button>
+      </div>
+    )
+  } else {
+    return (
+    <FormLogin onSubmit={this.onSubmit} />
+  )
+  }
+}
 }
 
 const mapStateToProps = state => {

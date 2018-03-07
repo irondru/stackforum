@@ -24,7 +24,7 @@ class Topics extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    topics: state.topics.topics
+    topics: state.topics.data
   }
 }
 

@@ -9,8 +9,8 @@ import Question from './question'
 class Topic extends React.Component {
 
   answersList() {
-    if (this.props.topic.answers)
-      return this.props.topic.answers.map (
+    if (this.props.answers)
+      return this.props.answers.map (
         (answer, id) => <Answer key={id} {...answer} />
       );
   }
@@ -28,7 +28,7 @@ class Topic extends React.Component {
   render = () =>
     <div>
       {this.isLoad()}
-      <Question {...this.props.topic.question} />
+      <Question {...this.props.question} />
       <AddComment />
       {this.answersList()}
     </div>
@@ -36,7 +36,8 @@ class Topic extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    ...state.topic
+    ...state.topic.data,
+    fetching: state.topic.fetching
   }
 }
 
