@@ -9,10 +9,11 @@ import { TOPICS_PATH } from '../../constants'
 class QuestionFrom extends React.Component {
 
   componentWillReceiveProps(nextProps) {
+    console.log(nextProps.id);
     if (nextProps.id) browserHistory.push(TOPICS_PATH + nextProps.id)
   }
 
-  onSubmit = event =>{
+  onSubmit = event => {
     event.preventDefault();
     this.props.postQuestion(parseForm(event.target));
   }

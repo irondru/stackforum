@@ -19,7 +19,7 @@ class Api::V1::QuestionsController < Api::V1::ApplicationController
     if @question.save
       render json: @question.id
     else
-      render json: 'validation error', status: 204
+      render json: 'validation error', status: 422
     end
   end
 

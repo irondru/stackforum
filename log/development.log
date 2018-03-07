@@ -33561,3 +33561,446 @@ Processing by Api::V1::QuestionsController#show as */*
 Completed 200 OK in 16ms (Views: 6.2ms | ActiveRecord: 1.2ms)
 
 
+Started GET "/questions/22" for 127.0.0.1 at 2018-03-07 21:57:11 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"22"}
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered common/_errors.html.slim (141.7ms)
+  [1m[36mComment Load (47.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 22], ["commentable_type", "Question"]]
+  Rendered comments/_comments.html.slim (211.2ms)
+  Rendered common/_vote.html.slim (9.2ms)
+  [1m[36mAttachment Load (111.8ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 22], ["attachmentable_type", "Question"]]
+  Rendered attachments/_attachments.html.slim (231.4ms)
+  [1m[36mAnswer Load (41.5ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 22]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered attachments/_attachment_fields.html.slim (23.7ms)
+  Rendered answers/_form.html.slim (49.1ms)
+  Rendered templates/_answer_comments.html.slim (28.3ms)
+  Rendered templates/_answer_vote.html.slim (9.3ms)
+  Rendered templates/_answer_attachments.html.slim (4.4ms)
+  Rendered templates/_answer.html.slim (55.1ms)
+  Rendered templates/_answer_edit_form.html.slim (104.6ms)
+  Rendered templates/_comment_form.html.slim (34.5ms)
+  Rendered templates/_comment.html.slim (5.2ms)
+  Rendered questions/show.html.slim within layouts/application (1156.8ms)
+Completed 200 OK in 1259ms (Views: 1014.5ms | ActiveRecord: 201.7ms)
+
+
+Started GET "/api/v1/questions/22" for 127.0.0.1 at 2018-03-07 21:57:13 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"22"}
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 22]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (11.97ms)
+Completed 200 OK in 34ms (Views: 14.7ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-08 00:13:05 +0300
+Processing by QuestionsController#index as HTML
+  [1m[36mUser Load (282.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/index.html.slim within layouts/application
+  Rendered questions/index.html.slim within layouts/application (232.7ms)
+Completed 200 OK in 2552ms (Views: 1054.2ms | ActiveRecord: 282.1ms)
+
+
+Started GET "/api/v1/questions/" for 127.0.0.1 at 2018-03-08 00:13:15 +0300
+Processing by Api::V1::QuestionsController#index as */*
+  [1m[36mUser Load (513.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (87.1ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1[0m  [["LIMIT", 10]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (12.79ms)
+Completed 200 OK in 2400ms (Views: 14.8ms | ActiveRecord: 600.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-08 00:13:49 +0300
+Processing by QuestionsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/index.html.slim within layouts/application
+  Rendered questions/index.html.slim within layouts/application (28.7ms)
+Completed 200 OK in 154ms (Views: 97.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/questions/" for 127.0.0.1 at 2018-03-08 00:13:50 +0300
+Processing by Api::V1::QuestionsController#index as */*
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (1.8ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1[0m  [["LIMIT", 10]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.93ms)
+Completed 200 OK in 14ms (Views: 3.7ms | ActiveRecord: 3.3ms)
+
+
+Started POST "/api/v1/questions/" for 127.0.0.1 at 2018-03-08 00:14:17 +0300
+Processing by Api::V1::QuestionsController#create as */*
+  Parameters: {"question"=>{"title"=>"ghjghj", "body"=>"ghjghjg", "submit"=>""}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Unpermitted parameter: :submit
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (220.7ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "ghjghj"], ["body", "ghjghjg"], ["user_id", 2], ["created_at", "2018-03-07 21:14:18.120257"], ["updated_at", "2018-03-07 21:14:18.120257"]]
+  [1m[35m (13.1ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Integer (15.74ms)
+Completed 200 OK in 469ms (Views: 16.4ms | ActiveRecord: 234.5ms)
+
+
+Started GET "/api/v1/questions/32" for 127.0.0.1 at 2018-03-08 00:14:18 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"32"}
+  [1m[36mQuestion Load (23.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (17.1ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 32]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (19.52ms)
+Completed 200 OK in 73ms (Views: 3.2ms | ActiveRecord: 41.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-08 00:28:08 +0300
+Started GET "/" for 127.0.0.1 at 2018-03-08 00:28:13 +0300
+Processing by QuestionsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/index.html.slim within layouts/application
+  Rendered questions/index.html.slim within layouts/application (3.5ms)
+Completed 200 OK in 439ms (Views: 34.4ms | ActiveRecord: 0.6ms)
+
+
+Processing by QuestionsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/index.html.slim within layouts/application
+  Rendered questions/index.html.slim within layouts/application (0.1ms)
+Completed 200 OK in 126ms (Views: 23.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/questions/" for 127.0.0.1 at 2018-03-08 00:28:18 +0300
+Processing by Api::V1::QuestionsController#index as */*
+  [1m[36mUser Load (6.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (39.7ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1[0m  [["LIMIT", 10]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.81ms)
+Completed 200 OK in 1869ms (Views: 430.6ms | ActiveRecord: 1347.5ms)
+
+
+Started GET "/api/v1/profile" for 127.0.0.1 at 2018-03-08 00:28:24 +0300
+Processing by Api::V1::ProfileController#show as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.83ms)
+Completed 200 OK in 618ms (Views: 412.5ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/api/v1/users/sign_out" for 127.0.0.1 at 2018-03-08 00:28:27 +0300
+Processing by Api::V1::SessionsController#destroy as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 200 OK in 314ms (Views: 6.0ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/api/v1/users/sign_in" for 127.0.0.1 at 2018-03-08 00:28:44 +0300
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"belora@nxt.ru", "password"=>"[FILTERED]", "submit"=>""}, "session"=>{"user"=>{"email"=>"belora@nxt.ru", "password"=>"[FILTERED]", "submit"=>""}}}
+  [1m[36mUser Load (90.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "belora@nxt.ru"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.51ms)
+Completed 200 OK in 813ms (Views: 1.2ms | ActiveRecord: 90.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-08 00:29:54 +0300
+Processing by QuestionsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/index.html.slim within layouts/application
+  Rendered questions/index.html.slim within layouts/application (20.1ms)
+Completed 200 OK in 168ms (Views: 98.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/questions/" for 127.0.0.1 at 2018-03-08 00:29:55 +0300
+Processing by Api::V1::QuestionsController#index as */*
+  [1m[36mUser Load (7.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.6ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1[0m  [["LIMIT", 10]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (24.6ms)
+Completed 200 OK in 2666ms (Views: 1835.5ms | ActiveRecord: 12.9ms)
+
+
+Started GET "/api/v1/profile" for 127.0.0.1 at 2018-03-08 00:30:08 +0300
+Processing by Api::V1::ProfileController#show as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.6ms)
+Completed 200 OK in 2098ms (Views: 1875.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/user/" for 127.0.0.1 at 2018-03-08 00:31:40 +0300
+Processing by QuestionsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/index.html.slim within layouts/application
+  Rendered questions/index.html.slim within layouts/application (3.4ms)
+Completed 200 OK in 102ms (Views: 14.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/profile" for 127.0.0.1 at 2018-03-08 00:31:42 +0300
+Processing by Api::V1::ProfileController#show as */*
+  [1m[36mUser Load (5.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 51ms (ActiveRecord: 5.5ms)
+
+
+  
+NameError (uninitialized constant Api::V1::ProfileController::UserSerializer):
+  
+app/controllers/api/v1/profile_controller.rb:5:in `show'
+Started GET "/user/" for 127.0.0.1 at 2018-03-08 00:33:38 +0300
+Processing by QuestionsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/index.html.slim within layouts/application
+  Rendered questions/index.html.slim within layouts/application (4.9ms)
+Completed 200 OK in 357ms (Views: 42.6ms | ActiveRecord: 191.4ms)
+
+
+Started GET "/api/v1/profile" for 127.0.0.1 at 2018-03-08 00:33:39 +0300
+Processing by Api::V1::ProfileController#show as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (122.36ms)
+Completed 500 Internal Server Error in 151ms (ActiveRecord: 0.6ms)
+
+
+  
+NoMethodError (undefined method `current_user' for #<User:0x00007fdec0a5f478>
+Did you mean?  current_password):
+  
+app/serializers/user_serializer.rb:6:in `abilities'
+app/controllers/api/v1/profile_controller.rb:5:in `show'
+Started GET "/user/" for 127.0.0.1 at 2018-03-08 00:34:17 +0300
+Processing by QuestionsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/index.html.slim within layouts/application
+  Rendered questions/index.html.slim within layouts/application (34.2ms)
+Completed 200 OK in 125ms (Views: 50.2ms | ActiveRecord: 16.4ms)
+
+
+Started GET "/api/v1/profile" for 127.0.0.1 at 2018-03-08 00:34:18 +0300
+Processing by Api::V1::ProfileController#show as */*
+  [1m[36mUser Load (12.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (34.0ms)
+Completed 500 Internal Server Error in 111ms (ActiveRecord: 12.0ms)
+
+
+  
+NoMethodError (undefined method `can?' for #<User:0x00007fdea463b480>):
+  
+app/serializers/user_serializer.rb:6:in `abilities'
+app/controllers/api/v1/profile_controller.rb:5:in `show'
+Started GET "/user/" for 127.0.0.1 at 2018-03-08 00:35:49 +0300
+Processing by QuestionsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/index.html.slim within layouts/application
+  Rendered questions/index.html.slim within layouts/application (16.5ms)
+Completed 200 OK in 104ms (Views: 42.1ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/api/v1/profile" for 127.0.0.1 at 2018-03-08 00:35:50 +0300
+Processing by Api::V1::ProfileController#show as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (73.32ms)
+Completed 500 Internal Server Error in 125ms (ActiveRecord: 0.6ms)
+
+
+  
+NoMethodError (undefined method `<<' for true:TrueClass):
+  
+app/serializers/user_serializer.rb:7:in `abilities'
+app/controllers/api/v1/profile_controller.rb:5:in `show'
+Started GET "/user/" for 127.0.0.1 at 2018-03-08 00:35:52 +0300
+Processing by QuestionsController#index as HTML
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/index.html.slim within layouts/application
+  Rendered questions/index.html.slim within layouts/application (7.9ms)
+Completed 200 OK in 58ms (Views: 48.9ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/v1/profile" for 127.0.0.1 at 2018-03-08 00:35:53 +0300
+Processing by Api::V1::ProfileController#show as */*
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (4.6ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 1.9ms)
+
+
+  
+NoMethodError (undefined method `<<' for true:TrueClass):
+  
+app/serializers/user_serializer.rb:7:in `abilities'
+app/controllers/api/v1/profile_controller.rb:5:in `show'
+Started GET "/user/" for 127.0.0.1 at 2018-03-08 00:36:39 +0300
+Processing by QuestionsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/index.html.slim within layouts/application
+  Rendered questions/index.html.slim within layouts/application (4.0ms)
+Completed 200 OK in 178ms (Views: 15.8ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/api/v1/profile" for 127.0.0.1 at 2018-03-08 00:36:41 +0300
+Processing by Api::V1::ProfileController#show as */*
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (2.27ms)
+Completed 500 Internal Server Error in 41ms (ActiveRecord: 0.9ms)
+
+
+  
+NoMethodError (undefined method `to_i' for true:TrueClass
+Did you mean?  to_s):
+  
+app/serializers/user_serializer.rb:6:in `abilities'
+app/controllers/api/v1/profile_controller.rb:5:in `show'
+Started GET "/user/" for 127.0.0.1 at 2018-03-08 00:36:43 +0300
+Processing by QuestionsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/index.html.slim within layouts/application
+  Rendered questions/index.html.slim within layouts/application (14.9ms)
+Completed 200 OK in 79ms (Views: 71.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/profile" for 127.0.0.1 at 2018-03-08 00:36:43 +0300
+Processing by Api::V1::ProfileController#show as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (2.29ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.5ms)
+
+
+  
+NoMethodError (undefined method `to_i' for true:TrueClass
+Did you mean?  to_s):
+  
+app/serializers/user_serializer.rb:6:in `abilities'
+app/controllers/api/v1/profile_controller.rb:5:in `show'
+Started GET "/user/" for 127.0.0.1 at 2018-03-08 00:36:47 +0300
+Processing by QuestionsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/index.html.slim within layouts/application
+  Rendered questions/index.html.slim within layouts/application (3.2ms)
+Completed 200 OK in 146ms (Views: 134.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/profile" for 127.0.0.1 at 2018-03-08 00:36:47 +0300
+Processing by Api::V1::ProfileController#show as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (17.48ms)
+Completed 500 Internal Server Error in 46ms (ActiveRecord: 0.7ms)
+
+
+  
+NoMethodError (undefined method `to_i' for true:TrueClass
+Did you mean?  to_s):
+  
+app/serializers/user_serializer.rb:6:in `abilities'
+app/controllers/api/v1/profile_controller.rb:5:in `show'
+Started GET "/user/" for 127.0.0.1 at 2018-03-08 00:39:06 +0300
+Processing by QuestionsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/index.html.slim within layouts/application
+  Rendered questions/index.html.slim within layouts/application (3.1ms)
+Completed 200 OK in 172ms (Views: 14.0ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/api/v1/profile" for 127.0.0.1 at 2018-03-08 00:39:07 +0300
+Processing by Api::V1::ProfileController#show as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 0.6ms)
+
+
+  
+SyntaxError (/home/amd/ruby_projects/stackforum/app/serializers/user_serializer.rb:7: syntax error, unexpected tIDENTIFIER, expecting ':'
+    ab += scope.can?(:create, Answer
+      ^
+/home/amd/ruby_projects/stackforum/app/serializers/user_serializer.rb:8: syntax error, unexpected tIDENTIFIER, expecting ':'
+    ab += scope.can?(:create, Commen
+      ^
+/home/amd/ruby_projects/stackforum/app/serializers/user_serializer.rb:9: syntax error, unexpected tIDENTIFIER, expecting ':'
+    ab
+      ^):
+  
+app/serializers/user_serializer.rb:7: syntax error, unexpected tIDENTIFIER, expecting ':'
+app/serializers/user_serializer.rb:8: syntax error, unexpected tIDENTIFIER, expecting ':'
+app/serializers/user_serializer.rb:9: syntax error, unexpected tIDENTIFIER, expecting ':'
+app/controllers/api/v1/profile_controller.rb:5:in `show'
+Started GET "/user/" for 127.0.0.1 at 2018-03-08 00:39:56 +0300
+Processing by QuestionsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/index.html.slim within layouts/application
+  Rendered questions/index.html.slim within layouts/application (21.0ms)
+Completed 200 OK in 193ms (Views: 36.6ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/api/v1/profile" for 127.0.0.1 at 2018-03-08 00:39:57 +0300
+Processing by Api::V1::ProfileController#show as */*
+  [1m[36mUser Load (7.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (101.99ms)
+Completed 200 OK in 155ms (Views: 107.1ms | ActiveRecord: 7.6ms)
+
+
+  [1m[35m (38.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4010662908424047540)[0m
+  [1m[35m (30.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddNameToUser (20180307215830)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (83.1ms)[0m  [1m[35mALTER TABLE "users" ADD "name" character varying[0m
+  [1m[35mSQL (33.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180307215830"]]
+  [1m[35m (29.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (107.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(4010662908424047540)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/user/" for 127.0.0.1 at 2018-03-08 01:06:39 +0300
+  [1m[35m (14.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by QuestionsController#index as HTML
+  [1m[36mUser Load (26.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/index.html.slim within layouts/application
+  Rendered questions/index.html.slim within layouts/application (3.6ms)
+Completed 200 OK in 213ms (Views: 46.0ms | ActiveRecord: 37.7ms)
+
+
+Started GET "/api/v1/profile" for 127.0.0.1 at 2018-03-08 01:06:41 +0300
+Processing by Api::V1::ProfileController#show as */*
+  [1m[36mUser Load (35.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (175.49ms)
+Completed 200 OK in 497ms (Views: 176.3ms | ActiveRecord: 35.0ms)
+
+
+Started GET "/user/" for 127.0.0.1 at 2018-03-08 01:08:15 +0300
+Processing by QuestionsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/index.html.slim within layouts/application
+  Rendered questions/index.html.slim within layouts/application (3.4ms)
+Completed 200 OK in 493ms (Views: 465.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/v1/profile" for 127.0.0.1 at 2018-03-08 01:08:16 +0300
+Processing by Api::V1::ProfileController#show as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.63ms)
+Completed 200 OK in 7ms (Views: 3.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/user/" for 127.0.0.1 at 2018-03-08 01:08:25 +0300
+Processing by QuestionsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/index.html.slim within layouts/application
+  Rendered questions/index.html.slim within layouts/application (7.0ms)
+Completed 200 OK in 26ms (Views: 19.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/v1/profile" for 127.0.0.1 at 2018-03-08 01:08:26 +0300
+Processing by Api::V1::ProfileController#show as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (6.42ms)
+Completed 200 OK in 28ms (Views: 9.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/user/" for 127.0.0.1 at 2018-03-08 01:10:52 +0300
+Processing by QuestionsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/index.html.slim within layouts/application
+  Rendered questions/index.html.slim within layouts/application (3.1ms)
+Completed 200 OK in 20ms (Views: 14.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/profile" for 127.0.0.1 at 2018-03-08 01:10:53 +0300
+Processing by Api::V1::ProfileController#show as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (3.36ms)
+Completed 200 OK in 9ms (Views: 4.3ms | ActiveRecord: 0.5ms)
+
+

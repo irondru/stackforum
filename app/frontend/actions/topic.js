@@ -1,5 +1,6 @@
 import { getJSON, post } from '../api';
-import { GET_TOPIC, QUERY_QUESTION, GET_TOPICS, REQUEST, SUCCESS, FAIL, API_TOPICS_PATH } from '../constants';
+import { GET_TOPIC, QUERY_QUESTION, GET_TOPICS, REQUEST, SUCCESS, FAIL,
+  API_TOPICS_PATH } from '../constants';
 
 export const getTopic = (id) => dispatch => {
     dispatch({
@@ -39,18 +40,18 @@ export const getTopic = (id) => dispatch => {
     })
 
     post(API_TOPICS_PATH, { question })
-      .then(responce => {
-        switch (responce.status) {
+      .then(response => {
+        switch (response.status) {
           case 200:
-            responce.json().then(id => {
+            response.json().then(id => {
               dispatch({
                 type: QUERY_QUESTION + SUCCESS,
                 payload: id
               })
             })
             break
-          case 204:
-            responce.json().then(msg => {
+          case 422:
+            response.json().then(msg => {
               dispatch({
                 type: QUERY_QUESTION + FAIL,
                 payload: msg
