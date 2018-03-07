@@ -1,8 +1,8 @@
 class Api::V1::QuestionsController < Api::V1::ApplicationController
 
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
-  after_action :stream_question, only: [:create, :destroy]
+  before_action :authenticate_user!, only: [:update, :create, :destroy]
+  before_action :set_question, only: [:show, :update, :destroy]
+  #after_action :stream_question, only: [:create, :destroy]
 
   authorize_resource
 
@@ -14,21 +14,18 @@ class Api::V1::QuestionsController < Api::V1::ApplicationController
     render json: @question
   end
 
-  def new
-    @question = Question.new
-  end
-
-  def edit
-
+  def create
+    @question = current_user.questions.new(question_params)
+    if @question.save
+      render json: @question.id
+    else
+      render json: 'validation error', status: 204
+    end
   end
 
   def update
     @question.update(question_params)
     respond_with @question
-  end
-
-  def create
-    respond_with(@question = current_user.questions.create(question_params))
   end
 
   def destroy

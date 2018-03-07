@@ -34,7 +34,7 @@ class Topic extends React.Component {
     </div>
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     ...state.topic.data,
     fetching: state.topic.fetching

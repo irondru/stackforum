@@ -1,6 +1,7 @@
 export {
   getTopic,
-  getTopics
+  getTopics,
+  postQuestion
 } from './topic'
 export {
   signIn,

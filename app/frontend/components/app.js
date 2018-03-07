@@ -8,6 +8,7 @@ export default class App extends Component {
     return (
       <div>
         <Link to={SIGN_IN_PATH}>Sign in</Link>
+        <Link to="/question/new"> new</Link>
         {this.props.children}
       </div>
     );

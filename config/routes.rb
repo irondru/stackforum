@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
       get 'profile', to: 'profile#show'
 
-      resources :questions, concerns: [:votable, :commentable], shallow: true do
+      resources :questions, concerns: [:votable, :commentable], except: [:new, :edit], shallow: true do
         resources :answers, concerns: [:votable, :commentable], only: [:create, :update, :destroy] do
           get :best, on: :member
         end
