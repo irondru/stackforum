@@ -44,7 +44,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getTopic: (id, actionType = GET_TOPIC) => { dispatch(actions.getTopic(id, actionType)) }
+    getTopic: (id, actionType = GET_TOPIC) => dispatch(actions.getTopic(id, actionType))
   }
 }
 

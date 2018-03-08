@@ -1,6 +1,6 @@
 import { getJSON, post, patch } from '../api';
 import { GET_TOPIC, QUERY_QUESTION, GET_TOPICS, PENDING, SUCCESS, ERROR,
-  API_TOPICS_PATH, EDIT_QUESTION } from '../constants';
+  API_TOPICS_PATH, EDIT_QUESTION, GET_QUESTION } from '../constants';
 
 export const getTopic = (id, actionType) => dispatch => {
     dispatch({
@@ -36,7 +36,7 @@ export const getTopic = (id, actionType) => dispatch => {
 
   export const postQuestion = (question, edit) => dispatch => {
     dispatch({
-      type: QUERY_QUESTION + PENDING
+      type: GET_QUESTION + PENDING
     })
 
     const query = edit ?
@@ -48,22 +48,22 @@ export const getTopic = (id, actionType) => dispatch => {
           case 200:
             response.json().then(id => {
               dispatch({
-                type: QUERY_QUESTION + SUCCESS,
-                payload: { id }
+                type: GET_QUESTION + SUCCESS,
+                payload: { question: { redirectTo: id } }
               })
             })
             break
           case 422:
             response.json().then(msg => {
               dispatch({
-                type: QUERY_QUESTION + ERROR,
+                type: GET_QUESTION + ERROR,
                 payload: msg
               })
             })
             break
           default:
             dispatch({
-              type: QUERY_QUESTION + ERROR,
+              type: GET_QUESTION + ERROR,
               payload: { msg: "error"}
             })
         }

@@ -8,7 +8,7 @@ export {
   USER_QUERY,
   QUERY_QUESTION,
   GET_QUESTION
-} from './action_types'
+} from './actionTypes'
 export {
   TOPICS_PATH,
   SIGN_IN_PATH
@@ -19,4 +19,4 @@ export {
   API_SIGN_UP_PATH,
   API_SIGN_OUT_PATH,
   API_PROFILE_PATH
-} from './api_pathes'
+} from './apiPathes'
