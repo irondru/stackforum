@@ -1,8 +1,9 @@
-export const REQUEST = 0x001
+export const PENDING = 0x001
 export const SUCCESS = 0x002
-export const FAIL = 0x004
-export const QUERY_TYPES = SUCCESS + REQUEST + FAIL
+export const ERROR = 0x004
+export const QUERY_TYPES = PENDING + SUCCESS + ERROR
 export const GET_TOPICS = 0x008
 export const GET_TOPIC = 0x010
 export const USER_QUERY = 0x020
 export const QUERY_QUESTION = 0x040
+export const GET_QUESTION = 0x080

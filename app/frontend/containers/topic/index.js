@@ -5,6 +5,7 @@ import * as actions from '../../actions'
 import Answer from './answer'
 import AddComment from '../../components/add-comment'
 import Question from './question'
+import { GET_TOPIC } from '../../constants'
 
 class Topic extends React.Component {
 
@@ -43,7 +44,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getTopic: (id) => { dispatch(actions.getTopic(id)) }
+    getTopic: (id, actionType = GET_TOPIC) => { dispatch(actions.getTopic(id, actionType)) }
   }
 }
 

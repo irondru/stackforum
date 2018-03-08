@@ -9,10 +9,12 @@ class Topics extends React.Component {
     super(props)
   }
 
-  topicsList = () =>
-    this.props.topics.map(
+  topicsList = () => {
+    if (this.props.topics)
+      return this.props.topics.map(
       topic => <TopicsListItem {...topic} />
     );
+  }
 
   componentDidMount = () => this.props.getTopics()
 
@@ -24,7 +26,7 @@ class Topics extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    topics: state.topics.data
+    topics: state.topics.data.topics
   }
 }
 

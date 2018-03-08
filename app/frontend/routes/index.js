@@ -12,7 +12,8 @@ export const routes = (
   <Route path='/' component={App}>
     <IndexRoute component={Topics} />
     <Route path={`${TOPICS_PATH}:id`} component={Topic} />
-    <Route path={SIGN_IN_PATH} component={UserLogin} />
     <Route path="/question/new" component={QuestionFrom} />
+    <Route path={`${TOPICS_PATH}:id/edit`} component={QuestionFrom} />
+    <Route path={SIGN_IN_PATH} component={UserLogin} />
   </Route>
 )

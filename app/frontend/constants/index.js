@@ -1,12 +1,13 @@
 export {
-  REQUEST,
+  PENDING,
   SUCCESS,
-  FAIL,
+  ERROR,
   QUERY_TYPES,
   GET_TOPIC,
   GET_TOPICS,
   USER_QUERY,
-  QUERY_QUESTION
+  QUERY_QUESTION,
+  GET_QUESTION
 } from './action_types'
 export {
   TOPICS_PATH,

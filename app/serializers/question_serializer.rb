@@ -6,6 +6,7 @@ class QuestionSerializer < ActiveModel::Serializer
   def question
     {
       id: object.id,
+      title: object.title,
       body: object.body,
       created_at: object.created_at
     }

@@ -4,13 +4,17 @@ import { browserHistory } from 'react-router'
 
 import * as actions from '../../actions'
 import { parseForm } from '../../helpers'
-import { TOPICS_PATH } from '../../constants'
+import { TOPICS_PATH, GET_QUESTION } from '../../constants'
 
 class QuestionFrom extends React.Component {
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.id);
-    if (nextProps.id) browserHistory.push(TOPICS_PATH + nextProps.id)
+    // if (nextProps.question.id) browserHistory.push(TOPICS_PATH + nextProps.question.id)
+  }
+
+  componentDidMount () {
+    const { id } = this.props.params
+    if (id) this.props.getTopic(id)
   }
 
   onSubmit = event => {
@@ -19,6 +23,8 @@ class QuestionFrom extends React.Component {
   }
 
   render = () => {
+    if (!this.props.fetching) console.log(this.props.id);
+
     return (
     <div>
       <form onSubmit={this.onSubmit}>
@@ -32,11 +38,12 @@ class QuestionFrom extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  ...state.question
+  ...state.question.data.question,
+  fetching: state.question.fetching
 })
 
 const mapDispatchToProps = dispatch => ({
-  postQuestion: (question) => { dispatch(actions.postQuestion(question)) }
+  getTopic: (id, actionType = GET_QUESTION) => { dispatch(actions.getTopic(id, actionType)) }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuestionFrom)

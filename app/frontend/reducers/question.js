@@ -2,7 +2,9 @@ import { QUERY_QUESTION, REQUEST, SUCCESS, FAIL, QUERY_TYPES } from '../constant
 
 const initialState = {
   fetching: false,
-  id: null,
+  question: {
+    id: null
+  },
   msg: ''
 }
 
@@ -15,7 +17,7 @@ export default (state = initialState, action) =>
       }),
       [SUCCESS]: () => ({
         fetching: false,
-        id: action.payload
+        question: action.payload
       }),
       [FAIL]: () => ({
         fetching: false,
