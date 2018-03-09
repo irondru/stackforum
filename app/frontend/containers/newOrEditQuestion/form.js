@@ -1,9 +1,7 @@
 import React from 'react'
 
-export default class QuestionForm extends React.Component {
-  render() {
-    const { title, body, handleSubmit } = this.props
-    return (
+export default function QuestionForm({ title, body, handleSubmit }) {
+  return (
       <div>
         <form onSubmit={handleSubmit}>
           <input type="text" name="title" defaultValue={title}/>
@@ -12,5 +10,4 @@ export default class QuestionForm extends React.Component {
         </form>
       </div>
     )
-  }
 }

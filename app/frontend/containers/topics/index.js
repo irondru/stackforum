@@ -12,7 +12,7 @@ class Topics extends React.Component {
   topicsList = () => {
     if (this.props.topics)
       return this.props.topics.map(
-      topic => <TopicsListItem {...topic} />
+      topic => <TopicsListItem key={topic.id} {...topic} />
     );
   }
 

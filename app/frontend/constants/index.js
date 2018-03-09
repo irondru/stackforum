@@ -5,9 +5,8 @@ export {
   QUERY_TYPES,
   GET_TOPIC,
   GET_TOPICS,
-  USER_QUERY,
-  QUERY_QUESTION,
-  GET_QUESTION
+  USER_REQUEST,
+  QUESTION_REQUEST,
 } from './actionTypes'
 export {
   TOPICS_PATH,

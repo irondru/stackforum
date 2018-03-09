@@ -23,7 +23,7 @@ class NewOrEditQuestion extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.postQuestion(parseForm(event.target), !!this.props.params.id);
+    this.props.postQuestion(parseForm(event.target), this.props.params.id);
   }
 
   render = () => {
@@ -41,7 +41,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   editQuestion: (id) => dispatch(actions.editQuestion(id)),
-  postQuestion: (question) => dispatch(actions.postQuestion(question))
+  postQuestion: (question, id) => dispatch(actions.postQuestion(question, id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewOrEditQuestion)

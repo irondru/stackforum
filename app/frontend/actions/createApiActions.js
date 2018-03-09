@@ -33,10 +33,13 @@ const createApiActions = (api_path, method, actionType, data = {}) => dispatch =
         payload
       }))
     )
-    .catch(errors => dispatch({
+    .catch(errors => {
+      console.log(errors)
+      dispatch({
       type: actionType + ERROR,
       errors
-    }))
+    })
+  })
 }
 
 export default createApiActions

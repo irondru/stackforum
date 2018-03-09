@@ -24,8 +24,11 @@ class Api::V1::QuestionsController < Api::V1::ApplicationController
   end
 
   def update
-    @question.update(question_params)
-    respond_with @question
+    if @question.update(question_params)
+      render json: { question: { redirectTo: @question.id } }
+    else
+      render json: 'validation error', status: 422
+    end    
   end
 
   def destroy

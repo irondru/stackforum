@@ -2,7 +2,7 @@ import { routerReducer } from 'react-router-redux'
 import { combineReducers } from 'redux'
 
 import universalReducer from './universalReducer'
-import { GET_TOPIC, GET_QUESTION, GET_TOPICS, USER_QUERY } from '../constants'
+import { GET_TOPIC, QUESTION_REQUEST, GET_TOPICS, USER_REQUEST } from '../constants'
 
 const getUniversalRudecer = actionType =>
   (state, action, _actionType = actionType) =>
@@ -10,8 +10,8 @@ const getUniversalRudecer = actionType =>
 
 export default combineReducers({
     topic: getUniversalRudecer(GET_TOPIC),
-    question: getUniversalRudecer(GET_QUESTION),
-    user: getUniversalRudecer(USER_QUERY),
+    question: getUniversalRudecer(QUESTION_REQUEST),
+    user: getUniversalRudecer(USER_REQUEST),
     topics: getUniversalRudecer(GET_TOPICS),
     routing: routerReducer
 })
