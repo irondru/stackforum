@@ -1,3 +1,7 @@
+export const GET = 'GET'
+export const POST = 'POST'
+export const PATCH = 'PATCH'
+export const DELETE = 'DELETE'
 const PREFIX = '/api/v1/'
 export const API_TOPICS_PATH = PREFIX + 'questions/'
 export const API_SIGN_IN_PATH = PREFIX + 'users/sign_in'

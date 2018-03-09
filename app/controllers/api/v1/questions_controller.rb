@@ -7,7 +7,7 @@ class Api::V1::QuestionsController < Api::V1::ApplicationController
   authorize_resource
 
   def index
-    render json: Question.last_part, each_serializer: QuestionsListItemSerializer
+    render json: { topics: Question.last_part }, each_serializer: QuestionsListItemSerializer
   end
 
   def show
@@ -17,7 +17,7 @@ class Api::V1::QuestionsController < Api::V1::ApplicationController
   def create
     @question = current_user.questions.new(question_params)
     if @question.save
-      render json: @question.id
+      render json: { question: { redirectTo: @question.id } }
     else
       render json: 'validation error', status: 422
     end

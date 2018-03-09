@@ -1,46 +1,12 @@
-import { post, destroy, getJSON } from '../api'
+import createApiActions from './createApiActions'
 import { USER_QUERY, API_SIGN_IN_PATH, API_SIGN_OUT_PATH, API_PROFILE_PATH,
-  PENDING, SUCCESS, ERROR } from '../constants'
+   POST, GET, DELETE } from '../constants'
 
-export const signIn = loginData => dispatch => {
-  dispatch({
-    type: USER_QUERY + PENDING
-  })
-  post(API_SIGN_IN_PATH, { user: loginData })
-    .then(respond => respond.json())
-    .then(payload => {
-      dispatch({
-        type: USER_QUERY + SUCCESS,
-        payload
-      })
-    })
-}
+export const signIn = user =>
+  createApiActions(API_SIGN_IN_PATH, POST, USER_QUERY, { user })
 
-export const signOut = () => dispatch => {
-  dispatch({
-    type: USER_QUERY + PENDING
-  })
+export const signOut = () =>
+  createApiActions(API_SIGN_OUT_PATH, DELETE, USER_QUERY)
 
-  destroy(API_SIGN_OUT_PATH)
-    .then(responce => {
-      if (responce.status == 200)
-        dispatch({
-          type: USER_QUERY + SUCCESS,
-          payload: null
-        })
-     })
-}
-
-export const getProfile = () => dispatch => {
-  dispatch({
-    type: USER_QUERY + PENDING
-  })
-
-  getJSON(API_PROFILE_PATH)
-    .then(payload => {
-      dispatch({
-        type: USER_QUERY + SUCCESS,
-        payload
-      })
-    })
-}
+export const getProfile = () =>
+  createApiActions(API_PROFILE_PATH, GET, USER_QUERY)

@@ -14,6 +14,7 @@ export {
   SIGN_IN_PATH
 } from './routes'
 export {
+  GET, POST, PATCH, DELETE,
   API_TOPICS_PATH,
   API_SIGN_IN_PATH,
   API_SIGN_UP_PATH,

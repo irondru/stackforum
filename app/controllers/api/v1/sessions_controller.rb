@@ -1,5 +1,11 @@
 class Api::V1::SessionsController < Devise::SessionsController
-  #after_action :set_csrf_headers, only: [:create, :destroy]
+  after_action :set_csrf_headers, only: [:create, :destroy]
+
+  serialization_scope :current_ability
+
+  def current_ability
+    @current_ability ||= Ability.new(current_user)
+  end
 
   def create
       self.resource = warden.authenticate(auth_options)

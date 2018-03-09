@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { parseForm } from '../../helpers'
 
 import * as actions from '../../actions'
 import FormLogin from './formLogin'
@@ -11,9 +12,7 @@ class UserLogin extends React.Component {
 
   onSubmit = event => {
     event.preventDefault();
-    let loginData = {}
-    Array.from(event.target).forEach(field => loginData[field.name] = field.value)
-    this.props.signIn(loginData);
+    this.props.signIn(parseForm(event.target));
   }
 
   componentDidMount = () => this.props.getProfile()
@@ -26,7 +25,7 @@ class UserLogin extends React.Component {
     if (this.props.fetching) return (
       <h1>Loading...</h1>
     )
-  if (this.props.data) {
+  if (this.props.data.id) {
     return (
       <div>
       <h1>{this.props.data.email}</h1>

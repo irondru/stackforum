@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
 
 import * as actions from '../../actions'
-import { parseForm } from '../../api'
+import { parseForm } from '../../helpers'
 import { TOPICS_PATH, GET_QUESTION } from '../../constants'
 import QuestionForm from './form'
 
@@ -18,7 +18,7 @@ class NewOrEditQuestion extends React.Component {
 
   componentDidMount() {
     const { id } = this.props.params
-    if (id) this.props.getTopic(id)
+    if (id) this.props.editQuestion(id)
   }
 
   handleSubmit = event => {
@@ -40,7 +40,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  getTopic: (id, actionType = GET_QUESTION) => dispatch(actions.getTopic(id, actionType)),
+  editQuestion: (id) => dispatch(actions.editQuestion(id)),
   postQuestion: (question) => dispatch(actions.postQuestion(question))
 })
 
