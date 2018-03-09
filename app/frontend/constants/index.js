@@ -7,6 +7,7 @@ export {
   GET_TOPICS,
   USER_REQUEST,
   QUESTION_REQUEST,
+  ANSWER_REQUEST
 } from './actionTypes'
 export {
   TOPICS_PATH,
@@ -18,5 +19,6 @@ export {
   API_SIGN_IN_PATH,
   API_SIGN_UP_PATH,
   API_SIGN_OUT_PATH,
-  API_PROFILE_PATH
+  API_PROFILE_PATH,
+  API_CREATE_ANSWER_PATH
 } from './apiPathes'

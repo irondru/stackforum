@@ -6,8 +6,8 @@ const initialState = {
   errors: null
 }
 
-export default (state = initialState, action, actionType) =>
-  action.type & actionType ? {
+export default (state = initialState, action, actionType) => {
+  return action.type & actionType ? {
     ...state,
     ...{
       [PENDING]: () => ({
@@ -25,3 +25,4 @@ export default (state = initialState, action, actionType) =>
     [action.type & QUERY_TYPES]()
   }
   : state
+}

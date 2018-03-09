@@ -6,3 +6,4 @@ export const GET_TOPICS = 0x008
 export const GET_TOPIC = 0x010
 export const USER_REQUEST = 0x020
 export const QUESTION_REQUEST = 0x040
+export const ANSWER_REQUEST = 0x080

@@ -5,11 +5,13 @@ import * as actions from '../../actions'
 import Answer from './answer'
 import AddComment from '../../components/add-comment'
 import Question from './question'
+import AnswerForm from './answerForm'
+import { parseForm } from '../../helpers'
 import { GET_TOPIC } from '../../constants'
 
 class Topic extends React.Component {
 
-  answersList() {
+  answersList(item) {
     if (this.props.answers)
       return this.props.answers.map (
         (answer, id) => <Answer key={id} {...answer} />
@@ -26,12 +28,18 @@ class Topic extends React.Component {
     }
   }
 
+  handleSubmitAnswer = (event) => {
+    event.preventDefault()
+    this.props.createAnswer(parseForm(event.target), this.props.question.id)
+  }
+
   render = () =>
     <div>
       {this.isLoad()}
       <Question {...this.props.question} />
       <AddComment />
       {this.answersList()}
+      <AnswerForm handleSubmit={this.handleSubmitAnswer} />
     </div>
 }
 
@@ -44,7 +52,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getTopic: (id) => dispatch(actions.getTopic(id))
+    getTopic: (id) => dispatch(actions.getTopic(id)),
+    createAnswer: (answer, questionId) => dispatch(actions.createAnswer(answer, questionId))
   }
 }
 

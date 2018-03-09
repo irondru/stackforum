@@ -10,7 +10,7 @@ const checkResponse = response => new Promise((resolve, reject) => {
    else response.json().then(json => reject(json))
 })
 
-const createApiActions = (api_path, method, actionType, data = {}) => dispatch => {
+export default (api_path, method, actionType, body = {}) => dispatch => {
   dispatch({
     type: actionType + PENDING,
   })
@@ -24,7 +24,7 @@ const createApiActions = (api_path, method, actionType, data = {}) => dispatch =
   }
   if (method != GET) options = {
     ...options,
-    body: JSON.stringify(data)
+    body: JSON.stringify(body)
   }
   fetch(api_path, options)
     .then(response => checkResponse(response)
@@ -41,5 +41,3 @@ const createApiActions = (api_path, method, actionType, data = {}) => dispatch =
     })
   })
 }
-
-export default createApiActions

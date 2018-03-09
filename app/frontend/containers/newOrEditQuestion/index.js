@@ -18,12 +18,12 @@ class NewOrEditQuestion extends React.Component {
 
   componentDidMount() {
     const { id } = this.props.params
-    if (id) this.props.editQuestion(id)
+    if (id) this.props.initialEditQuestion(id)
   }
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.postQuestion(parseForm(event.target), this.props.params.id);
+    this.props.newOrUpdateQuestion(parseForm(event.target), this.props.params.id);
   }
 
   render = () => {
@@ -40,8 +40,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  editQuestion: (id) => dispatch(actions.editQuestion(id)),
-  postQuestion: (question, id) => dispatch(actions.postQuestion(question, id))
+  initialEditQuestion: (id) => dispatch(actions.initialEditQuestion(id)),
+  newOrUpdateQuestion: (question, id) => dispatch(actions.newOrUpdateQuestion(question, id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewOrEditQuestion)
