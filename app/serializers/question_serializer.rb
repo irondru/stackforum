@@ -11,4 +11,9 @@ class QuestionSerializer < ActiveModel::Serializer
       created_at: object.created_at
     }
   end
+
+  def answers
+    object.answers.ordered
+  end
+  
 end

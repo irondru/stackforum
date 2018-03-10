@@ -2,7 +2,7 @@ import createApiActions from './createApiActions'
 import {
   GET_TOPIC, QUERY_QUESTION, GET_TOPICS, API_TOPICS_PATH, EDIT_QUESTION,
   QUESTION_REQUEST, USER_REQUEST, API_SIGN_IN_PATH, API_SIGN_OUT_PATH, API_PROFILE_PATH,
-  GET, POST, PATCH, DELETE, API_ANSWER_CREATE_PATH, API_ANSWERS_PATH, ANSWER_REQUEST, INITIAL_EDIT,
+  GET, POST, PATCH, DELETE, API_ANSWER_CREATE_PATH, API_ANSWERS_PATH, ANSWER_REQUEST, EDIT,
   CREATE, UPDATE, DESTROY, SUCCESS
 } from '../constants';
 
@@ -22,12 +22,12 @@ export const createAnswer = (answer, questionId) =>
   createApiActions(API_ANSWER_CREATE_PATH.replace('{questionId}', questionId),
     POST, ANSWER_REQUEST + CREATE, { answer })
 
-export const updateAnswer = (answer, id) => 
+export const updateAnswer = (answer, id) =>
   createApiActions(API_ANSWERS_PATH + id, PATCH, ANSWER_REQUEST + UPDATE, { answer })
 
 export const editAnswer = id => dispatch =>
   dispatch({
-    type: ANSWER_REQUEST + INITIAL_EDIT + SUCCESS,
+    type: ANSWER_REQUEST + EDIT + SUCCESS,
     id
   })
 

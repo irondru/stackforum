@@ -12,7 +12,7 @@ export {
   USER_REQUEST,
   QUESTION_REQUEST,
   ANSWER_REQUEST,
-  INITIAL_EDIT
+  EDIT
 } from './actionTypes'
 export {
   TOPICS_PATH,

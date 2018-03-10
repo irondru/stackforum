@@ -1,4 +1,4 @@
-import { SUCCESS, ANSWER_REQUEST, INITIAL_EDIT, ACTIONS, GET_TOPIC,
+import { SUCCESS, ANSWER_REQUEST, EDIT, ACTIONS, GET_TOPIC,
   CREATE, UPDATE, DESTROY } from '../constants'
 import apiReducer from './api'
 
@@ -9,6 +9,7 @@ export default (state, action) => {
         ...state,
         fetching: 0,
         payload: {
+          ...state.payload,
           answers: [...state.payload.answers, action.payload]
         }
       }
@@ -17,16 +18,16 @@ export default (state, action) => {
         ...state,
         fetching: 0,
         payload: {
-          answers: state.payload.answers.map(answer => {
-            //console.log(action.payload);
-          return answer.id === action.payload.answer.id ? action.payload.answer : answer
-        })
+          ...state.payload,
+          answers: state.payload.answers.map(answer =>
+            answer.id === action.payload.id ? action.payload : answer)
         }
       }
-    case INITIAL_EDIT:
+    case EDIT:
       return {
         ...state,
         payload: {
+          ...state.payload,
           answers: state.payload.answers.map(answer =>
             answer.id === action.id ? { ...answer, edit: !answer.edit }
              : { ...answer, edit: false }

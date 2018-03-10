@@ -17,7 +17,7 @@ class Api::V1::AnswersController < Api::V1::ApplicationController
 
   def update
     if @answer.update(answer_params)
-      render json: { answer: @answer }
+      render json: @answer, serializer: AnswerSerializer
     end
   end
 
