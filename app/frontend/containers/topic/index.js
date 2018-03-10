@@ -45,7 +45,7 @@ class Topic extends React.Component {
       <Question {...this.props.question} />
       <AddComment />
       {this.answersList()}
-      <AnswerForm handleSubmit={this.handleSubmitAnswer} />
+      <AnswerForm body="" handleSubmit={this.handleSubmitAnswer} />
     </div>
 }
 
@@ -58,10 +58,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getTopic: (id) => dispatch(actions.getTopic(id)),
+    getTopic: id => dispatch(actions.getTopic(id)),
     createAnswer: (answer, questionId) => dispatch(actions.createAnswer(answer, questionId)),
-    editAnswer: (id) => dispatch(actions.editAnswer(id))
+    updateAnswer: answer => dispatch(actions.updateAnswer),
+    editAnswer: id => dispatch(actions.editAnswer(id))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Topic); //соеденяем компонет с хранищем
+export default connect(mapStateToProps, mapDispatchToProps)(Topic);
