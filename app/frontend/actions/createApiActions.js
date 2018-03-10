@@ -34,7 +34,7 @@ export default (api_path, method, actionType, body = {}) => dispatch => {
       }))
     )
     .catch(errors => {
-      //console.log(errors)
+      console.log(errors)
       dispatch({
       type: actionType + ERROR,
       errors

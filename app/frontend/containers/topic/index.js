@@ -15,10 +15,15 @@ class Topic extends React.Component {
     this.props.editAnswer(id)
   }
 
+  handleUpadateAnswer = (event, id) => {
+   event.preventDefault()
+   this.props.updateAnswer(parseForm(event.target), id)
+  }
+
   answersList(item) {
     if (this.props.answers)
       return this.props.answers.map (answer => {
-        if (answer.edit) return <AnswerForm key={answer.id} {...answer} />
+        if (answer.edit) return <AnswerForm key={answer.id} handleSubmit={this.handleUpadateAnswer} {...answer} />
           else return <Answer key={answer.id} {...answer} handleEditAnswer={this.handleEditAnswer} />
       }
       );
@@ -60,7 +65,7 @@ const mapDispatchToProps = dispatch => {
   return {
     getTopic: id => dispatch(actions.getTopic(id)),
     createAnswer: (answer, questionId) => dispatch(actions.createAnswer(answer, questionId)),
-    updateAnswer: answer => dispatch(actions.updateAnswer),
+    updateAnswer: (answer, id) => dispatch(actions.updateAnswer(answer, id)),
     editAnswer: id => dispatch(actions.editAnswer(id))
   }
 }

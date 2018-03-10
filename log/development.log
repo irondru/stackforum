@@ -47252,3 +47252,1246 @@ Processing by Api::V1::QuestionsController#show as */*
 Completed 200 OK in 11ms (Views: 5.1ms | ActiveRecord: 1.1ms)
 
 
+Started GET "/questions/42" for 127.0.0.1 at 2018-03-10 19:06:13 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"42"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (11.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (163.7ms)
+Completed 200 OK in 280ms (Views: 226.1ms | ActiveRecord: 11.8ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 19:06:14 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (9.87ms)
+Completed 200 OK in 16ms (Views: 10.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/questions/42" for 127.0.0.1 at 2018-03-10 19:14:53 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"42"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (18.2ms)
+Completed 200 OK in 39ms (Views: 28.1ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 19:14:54 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (1.5ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (1.5ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (9.56ms)
+Completed 200 OK in 24ms (Views: 13.7ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/questions/42" for 127.0.0.1 at 2018-03-10 19:18:25 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"42"}
+  [1m[36mQuestion Load (1.5ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (27.6ms)
+Completed 200 OK in 87ms (Views: 73.1ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 19:18:25 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.9ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (3.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (0.8ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (41.28ms)
+Completed 200 OK in 75ms (Views: 41.8ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/questions/42" for 127.0.0.1 at 2018-03-10 19:25:10 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"42"}
+  [1m[36mQuestion Load (0.8ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (15.3ms)
+Completed 200 OK in 45ms (Views: 32.7ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 19:25:11 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (1.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (1.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (38.44ms)
+Completed 200 OK in 67ms (Views: 41.3ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/questions/42" for 127.0.0.1 at 2018-03-10 19:25:12 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"42"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (5.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (22.0ms)
+Completed 200 OK in 50ms (Views: 35.7ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 19:25:12 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (2.6ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (11.96ms)
+Completed 200 OK in 19ms (Views: 10.2ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/questions/42" for 127.0.0.1 at 2018-03-10 19:29:42 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"42"}
+  [1m[36mQuestion Load (0.9ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (53.7ms)
+Completed 200 OK in 134ms (Views: 121.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 19:29:43 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (26.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (30.69ms)
+Completed 200 OK in 48ms (Views: 11.0ms | ActiveRecord: 28.0ms)
+
+
+Started GET "/questions/42" for 127.0.0.1 at 2018-03-10 19:30:10 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"42"}
+  [1m[36mQuestion Load (2.8ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (49.8ms)
+Completed 200 OK in 78ms (Views: 63.0ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/questions/42" for 127.0.0.1 at 2018-03-10 19:31:40 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"42"}
+  [1m[36mQuestion Load (1.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (47.0ms)
+Completed 200 OK in 96ms (Views: 85.1ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 19:31:41 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (3.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (16.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (20.5ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (44.63ms)
+Completed 200 OK in 136ms (Views: 74.7ms | ActiveRecord: 39.9ms)
+
+
+Started GET "/questions/42" for 127.0.0.1 at 2018-03-10 19:32:44 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"42"}
+  [1m[36mQuestion Load (4.5ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (17.0ms)
+Completed 200 OK in 68ms (Views: 45.8ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 19:32:45 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.8ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (16.62ms)
+Completed 200 OK in 63ms (Views: 17.1ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/questions/42?body=fdgrerdsa&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 19:32:57 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"fdgrerdsa", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (15.4ms)
+Completed 200 OK in 31ms (Views: 23.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 19:32:57 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (9.51ms)
+Completed 200 OK in 22ms (Views: 9.9ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/questions/42?body=fdgrerdsa&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 19:41:12 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"fdgrerdsa", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (0.6ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (89.9ms)
+Completed 200 OK in 142ms (Views: 114.8ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 19:41:13 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (17.7ms)
+Completed 200 OK in 27ms (Views: 18.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/questions/42?body=fdgrerdsa&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 19:41:35 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"fdgrerdsa", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (0.9ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (100.9ms)
+Completed 200 OK in 141ms (Views: 116.4ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 19:41:36 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (3.5ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (9.1ms)
+Completed 200 OK in 36ms (Views: 9.7ms | ActiveRecord: 7.1ms)
+
+
+Started GET "/questions/42?body=vefeces&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 19:41:39 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"vefeces", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (21.6ms)
+Completed 200 OK in 41ms (Views: 31.1ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 19:41:40 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (12.5ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (48.09ms)
+Completed 200 OK in 90ms (Views: 57.1ms | ActiveRecord: 13.7ms)
+
+
+Started GET "/questions/42?body=vefeces&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 19:41:47 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"vefeces", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (1.7ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (44.0ms)
+Completed 200 OK in 67ms (Views: 53.1ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 19:41:47 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (1.7ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (15.46ms)
+Completed 200 OK in 62ms (Views: 37.9ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/questions/42?body=vefeces&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 19:42:20 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"vefeces", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (44.6ms)
+Completed 200 OK in 82ms (Views: 62.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 19:42:20 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (4.31ms)
+Completed 200 OK in 18ms (Views: 4.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/questions/42?body=vefeces&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 19:42:33 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"vefeces", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (49.5ms)
+Completed 200 OK in 84ms (Views: 71.9ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 19:42:34 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (4.6ms)
+Completed 200 OK in 11ms (Views: 5.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/questions/42?body=vefeces&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 19:42:37 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"vefeces", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (24.7ms)
+Completed 200 OK in 41ms (Views: 33.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 19:42:38 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (4.0ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (12.87ms)
+Completed 200 OK in 21ms (Views: 9.7ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/questions/42?body=vefeces&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 19:42:39 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"vefeces", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (44.0ms)
+Completed 200 OK in 71ms (Views: 54.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 19:42:40 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.9ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (6.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (5.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (11.2ms)
+Completed 200 OK in 52ms (Views: 22.6ms | ActiveRecord: 12.8ms)
+
+
+Started GET "/questions/42?body=vefeces&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 19:42:43 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"vefeces", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (19.7ms)
+Completed 200 OK in 44ms (Views: 33.7ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 19:42:44 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (4.61ms)
+Completed 200 OK in 16ms (Views: 5.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/questions/42?body=vefeces&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 19:42:45 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"vefeces", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (16.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (40.0ms)
+Completed 200 OK in 97ms (Views: 62.1ms | ActiveRecord: 16.6ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 19:42:46 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.6ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (2.7ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (16.9ms)
+Completed 200 OK in 73ms (Views: 53.9ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/questions/42?body=vefeces&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 19:57:08 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"vefeces", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (19.1ms)
+Completed 200 OK in 42ms (Views: 28.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 19:57:09 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (6.78ms)
+Completed 200 OK in 17ms (Views: 7.8ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/questions/42?body=vefeces&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 19:57:56 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"vefeces", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (1.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (18.4ms)
+Completed 200 OK in 52ms (Views: 28.0ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 19:57:57 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (6.73ms)
+Completed 200 OK in 14ms (Views: 7.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/questions/42?body=vefeces&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 21:02:27 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"vefeces", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (42.6ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (13.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (261.2ms)
+Completed 200 OK in 788ms (Views: 400.6ms | ActiveRecord: 55.8ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 21:02:28 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (1.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (14.8ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (33.72ms)
+Completed 200 OK in 49ms (Views: 22.0ms | ActiveRecord: 17.3ms)
+
+
+Started GET "/questions/42?body=vefeces&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 21:03:33 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"vefeces", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (187.4ms)
+Completed 200 OK in 303ms (Views: 288.9ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 21:03:34 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.7ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (7.1ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (15.92ms)
+Completed 200 OK in 31ms (Views: 12.8ms | ActiveRecord: 10.0ms)
+
+
+Started GET "/questions/42?body=vefeces&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 21:04:00 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"vefeces", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (94.9ms)
+Completed 200 OK in 146ms (Views: 128.0ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 21:04:01 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (4.47ms)
+Completed 200 OK in 21ms (Views: 6.9ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/questions/42?body=vefeces&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 21:05:58 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"vefeces", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (0.6ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (41.1ms)
+Completed 200 OK in 91ms (Views: 72.9ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 21:05:59 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (4.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (0.9ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (13.27ms)
+Completed 200 OK in 30ms (Views: 16.2ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/questions/42?body=vefeces&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 21:08:56 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"vefeces", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (46.5ms)
+Completed 200 OK in 74ms (Views: 56.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 21:08:57 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (5.84ms)
+Completed 200 OK in 12ms (Views: 6.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/questions/42?body=vefeces&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 21:09:37 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"vefeces", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (5.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (45.1ms)
+Completed 200 OK in 101ms (Views: 81.8ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 21:09:38 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (4.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (5.43ms)
+Completed 200 OK in 19ms (Views: 8.6ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/questions/42?body=vefeces&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 21:09:53 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"vefeces", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (6.1ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (29.8ms)
+Completed 200 OK in 84ms (Views: 57.0ms | ActiveRecord: 8.9ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 21:09:54 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (2.9ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (19.9ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (66.72ms)
+Completed 200 OK in 112ms (Views: 76.0ms | ActiveRecord: 23.4ms)
+
+
+Started GET "/questions/42?body=vefeces&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 21:10:21 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"vefeces", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (14.6ms)
+Completed 200 OK in 47ms (Views: 33.3ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 21:10:22 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (2.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (15.66ms)
+Completed 200 OK in 25ms (Views: 14.5ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/questions/42?body=vefeces&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 21:10:24 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"vefeces", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (37.1ms)
+Completed 200 OK in 86ms (Views: 52.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 21:10:24 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (6.0ms)
+Completed 200 OK in 29ms (Views: 19.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/questions/42?body=vefeces&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 21:10:25 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"vefeces", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (13.9ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (3.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (96.8ms)
+Completed 200 OK in 159ms (Views: 118.7ms | ActiveRecord: 17.3ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 21:10:26 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (2.9ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (11.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (36.36ms)
+Completed 200 OK in 72ms (Views: 43.4ms | ActiveRecord: 15.9ms)
+
+
+Started POST "/api/v1/questions/42/answers" for 127.0.0.1 at 2018-03-10 21:11:32 +0300
+Processing by Api::V1::AnswersController#create as */*
+  Parameters: {"answer"=>{"body"=>"gdgdf", "Create"=>""}, "question_id"=>"42"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Unpermitted parameter: :Create
+  [1m[36mQuestion Load (26.7ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (138.4ms)[0m  [1m[32mINSERT INTO "answers" ("question_id", "body", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["question_id", 42], ["body", "gdgdf"], ["user_id", 2], ["created_at", "2018-03-10 18:11:32.697476"], ["updated_at", "2018-03-10 18:11:32.697476"]]
+  [1m[35mSQL (50.2ms)[0m  [1m[33mUPDATE "questions" SET "updated_at" = '2018-03-10 18:11:32.850486' WHERE "questions"."id" = $1[0m  [["id", 42]]
+  [1m[35m (36.9ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered AnswerSerializer with ActiveModelSerializers::Adapter::Attributes (0.45ms)
+  [1m[36mAttachment Load (8.6ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 67], ["attachmentable_type", "Answer"]]
+[ActionCable] Broadcasting to question:Z2lkOi8vc3RhY2tmb3J1bS9RdWVzdGlvbi80Mg: {:action=>:create_answer, :answer=>#<Answer id: 67, question_id: 42, body: "gdgdf", user_id: 2, best: false, created_at: "2018-03-10 18:11:32", updated_at: "2018-03-10 18:11:32", score: 0>, :question_user_id=>2, :attachments=>[]}
+Completed 200 OK in 733ms (Views: 1.5ms | ActiveRecord: 262.2ms)
+
+
+Started GET "/questions/42?body=vefeces&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 21:14:29 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"vefeces", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (22.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered common/_errors.html.slim (10.1ms)
+  [1m[36mComment Load (37.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 42], ["commentable_type", "Question"]]
+  Rendered comments/_comments.html.slim (61.4ms)
+  Rendered common/_vote.html.slim (6.0ms)
+  [1m[36mAttachment Load (11.3ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 42], ["attachmentable_type", "Question"]]
+  Rendered attachments/_attachments.html.slim (21.0ms)
+  [1m[36mAnswer Load (8.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 42]]
+  [1m[36mUser Load (40.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mComment Load (21.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 67], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (24.0ms)
+  Rendered common/_vote.html.slim (0.5ms)
+  [1m[36mAttachment Load (0.5ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 67], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (3.4ms)
+  Rendered collection of answers/_answer.html.slim [5 times] (124.3ms)
+  Rendered attachments/_attachment_fields.html.slim (9.8ms)
+  Rendered answers/_form.html.slim (16.6ms)
+  Rendered templates/_answer_comments.html.slim (18.2ms)
+  Rendered templates/_answer_vote.html.slim (5.5ms)
+  Rendered templates/_answer_attachments.html.slim (15.3ms)
+  Rendered templates/_answer.html.slim (50.6ms)
+  Rendered templates/_answer_edit_form.html.slim (8.0ms)
+  Rendered templates/_comment_form.html.slim (7.0ms)
+  Rendered templates/_comment.html.slim (29.3ms)
+  Rendered questions/show.html.slim within layouts/application (414.0ms)
+Completed 200 OK in 464ms (Views: 309.2ms | ActiveRecord: 142.6ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 21:14:30 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (5.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (10.87ms)
+Completed 200 OK in 26ms (Views: 11.4ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/questions/42?body=vefeces&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 21:14:33 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"vefeces", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (37.4ms)
+Completed 200 OK in 130ms (Views: 106.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 21:14:34 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.6ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (18.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (60.99ms)
+Completed 200 OK in 73ms (Views: 44.6ms | ActiveRecord: 21.5ms)
+
+
+Started GET "/questions/42?body=vefeces&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 21:15:41 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"vefeces", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (3.0ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (40.8ms)
+Completed 200 OK in 88ms (Views: 69.4ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 21:15:42 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (1.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (4.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (5.8ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (10.47ms)
+Completed 200 OK in 22ms (Views: 5.4ms | ActiveRecord: 11.6ms)
+
+
+Started GET "/questions/42?body=vefeces&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 21:15:44 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"vefeces", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (0.6ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (15.6ms)
+Completed 200 OK in 32ms (Views: 25.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 21:15:44 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (2.5ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (12.63ms)
+Completed 200 OK in 22ms (Views: 12.8ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/questions/42?body=vefeces&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 21:15:46 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"vefeces", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (3.6ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (29.3ms)
+Completed 200 OK in 54ms (Views: 39.4ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 21:15:46 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (1.8ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (6.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (5.7ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (20.06ms)
+Completed 200 OK in 84ms (Views: 22.3ms | ActiveRecord: 14.2ms)
+
+
+Started GET "/questions/42?body=vefeces&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 21:15:48 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"vefeces", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (66.6ms)
+Completed 200 OK in 90ms (Views: 78.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 21:15:48 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.6ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (6.07ms)
+Completed 200 OK in 48ms (Views: 6.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/questions/42?body=vefeces&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 21:16:40 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"vefeces", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (0.9ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (6.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (31.8ms)
+Completed 200 OK in 125ms (Views: 67.3ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 21:16:41 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (1.5ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (22.34ms)
+Completed 200 OK in 40ms (Views: 27.0ms | ActiveRecord: 4.7ms)
+
+
+Started PATCH "/api/v1/answers/58" for 127.0.0.1 at 2018-03-10 21:16:46 +0300
+Processing by Api::V1::AnswersController#update as */*
+  Parameters: {"answer"=>{"body"=>"vefecesasd", "Create"=>""}, "id"=>"58"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.9ms)[0m  [1m[34mSELECT  "answers".* FROM "answers" WHERE "answers"."id" = $1 LIMIT $2[0m  [["id", 58], ["LIMIT", 1]]
+Unpermitted parameter: :Create
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[35mSQL (29.9ms)[0m  [1m[33mUPDATE "answers" SET "body" = $1, "updated_at" = $2 WHERE "answers"."id" = $3[0m  [["body", "vefecesasd"], ["updated_at", "2018-03-10 18:16:46.384352"], ["id", 58]]
+  [1m[35mSQL (6.7ms)[0m  [1m[33mUPDATE "questions" SET "updated_at" = '2018-03-10 18:16:46.482136' WHERE "questions"."id" = $1[0m  [["id", 42]]
+  [1m[35m (10.0ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (12.86ms)
+[ActionCable] Broadcasting to question:Z2lkOi8vc3RhY2tmb3J1bS9RdWVzdGlvbi80Mg: {:action=>:update_answer, :answer=>#<Answer id: 58, question_id: 42, body: "vefecesasd", user_id: 2, best: false, created_at: "2018-03-10 00:21:58", updated_at: "2018-03-10 18:16:46", score: 0>, :destination_id=>"#answer-58"}
+Completed 200 OK in 2034ms (Views: 1819.7ms | ActiveRecord: 48.8ms)
+
+
+Started GET "/questions/42?body=vefeces&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 21:37:46 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"vefeces", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (0.6ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered common/_errors.html.slim (13.6ms)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 42], ["commentable_type", "Question"]]
+  Rendered comments/_comments.html.slim (48.5ms)
+  Rendered common/_vote.html.slim (27.8ms)
+  [1m[36mAttachment Load (0.6ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 42], ["attachmentable_type", "Question"]]
+  Rendered attachments/_attachments.html.slim (17.8ms)
+  [1m[36mAnswer Load (0.9ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 42]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 58], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (76.3ms)
+  Rendered common/_vote.html.slim (0.5ms)
+  [1m[36mAttachment Load (0.5ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 58], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (74.0ms)
+  Rendered collection of answers/_answer.html.slim [5 times] (1272.2ms)
+  Rendered attachments/_attachment_fields.html.slim (57.8ms)
+  Rendered answers/_form.html.slim (430.3ms)
+  Rendered templates/_answer_comments.html.slim (179.1ms)
+  Rendered templates/_answer_vote.html.slim (259.0ms)
+  Rendered templates/_answer_attachments.html.slim (92.1ms)
+  Rendered templates/_answer.html.slim (1082.8ms)
+  Rendered templates/_answer_edit_form.html.slim (287.3ms)
+  Rendered templates/_comment_form.html.slim (193.2ms)
+  Rendered templates/_comment.html.slim (30.9ms)
+  Rendered questions/show.html.slim within layouts/application (3823.6ms)
+Completed 200 OK in 4072ms (Views: 4021.6ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 21:37:51 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.8ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (5.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (2.5ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (26.46ms)
+Completed 200 OK in 50ms (Views: 28.2ms | ActiveRecord: 9.1ms)
+
+
+Started PATCH "/api/v1/answers/59" for 127.0.0.1 at 2018-03-10 21:37:59 +0300
+Processing by Api::V1::AnswersController#update as */*
+  Parameters: {"answer"=>{"body"=>"fdgrer2321", "Create"=>""}, "id"=>"59"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT  "answers".* FROM "answers" WHERE "answers"."id" = $1 LIMIT $2[0m  [["id", 59], ["LIMIT", 1]]
+Unpermitted parameter: :Create
+  [1m[35m (3.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (1.7ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[35mSQL (15.2ms)[0m  [1m[33mUPDATE "answers" SET "body" = $1, "updated_at" = $2 WHERE "answers"."id" = $3[0m  [["body", "fdgrer2321"], ["updated_at", "2018-03-10 18:37:59.513947"], ["id", 59]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "questions" SET "updated_at" = '2018-03-10 18:37:59.531781' WHERE "questions"."id" = $1[0m  [["id", 42]]
+  [1m[35m (13.3ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.34ms)
+[ActionCable] Broadcasting to question:Z2lkOi8vc3RhY2tmb3J1bS9RdWVzdGlvbi80Mg: {:action=>:update_answer, :answer=>#<Answer id: 59, question_id: 42, body: "fdgrer2321", user_id: 2, best: false, created_at: "2018-03-10 00:23:09", updated_at: "2018-03-10 18:37:59", score: 0>, :destination_id=>"#answer-59"}
+Completed 200 OK in 64ms (Views: 3.2ms | ActiveRecord: 34.8ms)
+
+
+Started GET "/questions/42?body=vefeces&Create=%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%8C" for 127.0.0.1 at 2018-03-10 21:40:41 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"body"=>"vefeces", "Create"=>"Отправить", "id"=>"42"}
+  [1m[36mQuestion Load (0.7ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered common/_errors.html.slim (6.3ms)
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 42], ["commentable_type", "Question"]]
+  Rendered comments/_comments.html.slim (19.3ms)
+  Rendered common/_vote.html.slim (14.5ms)
+  [1m[36mAttachment Load (1.1ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 42], ["attachmentable_type", "Question"]]
+  Rendered attachments/_attachments.html.slim (30.0ms)
+  [1m[36mAnswer Load (0.5ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 42]]
+  [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mComment Load (3.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 59], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (6.4ms)
+  Rendered common/_vote.html.slim (0.5ms)
+  [1m[36mAttachment Load (2.3ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 59], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (3.7ms)
+  Rendered collection of answers/_answer.html.slim [5 times] (59.4ms)
+  Rendered attachments/_attachment_fields.html.slim (6.5ms)
+  Rendered answers/_form.html.slim (21.2ms)
+  Rendered templates/_answer_comments.html.slim (11.8ms)
+  Rendered templates/_answer_vote.html.slim (21.3ms)
+  Rendered templates/_answer_attachments.html.slim (18.4ms)
+  Rendered templates/_answer.html.slim (87.0ms)
+  Rendered templates/_answer_edit_form.html.slim (17.9ms)
+  Rendered templates/_comment_form.html.slim (17.8ms)
+  Rendered templates/_comment.html.slim (14.0ms)
+  Rendered questions/show.html.slim within layouts/application (393.4ms)
+Completed 200 OK in 446ms (Views: 424.9ms | ActiveRecord: 13.9ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 21:40:42 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.9ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (6.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (2.5ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (31.62ms)
+Completed 200 OK in 90ms (Views: 53.0ms | ActiveRecord: 9.5ms)
+
+
+Started GET "/questions/42" for 127.0.0.1 at 2018-03-10 21:40:56 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"42"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (30.9ms)
+Completed 200 OK in 73ms (Views: 65.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 21:40:56 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (1.7ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (0.8ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (28.49ms)
+Completed 200 OK in 84ms (Views: 40.5ms | ActiveRecord: 5.0ms)
+
+
+Started PATCH "/api/v1/answers/65" for 127.0.0.1 at 2018-03-10 21:41:14 +0300
+Processing by Api::V1::AnswersController#update as */*
+  Parameters: {"answer"=>{"body"=>"asdasw1234", "Create"=>""}, "id"=>"65"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAnswer Load (1.1ms)[0m  [1m[34mSELECT  "answers".* FROM "answers" WHERE "answers"."id" = $1 LIMIT $2[0m  [["id", 65], ["LIMIT", 1]]
+Unpermitted parameter: :Create
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[35mSQL (24.4ms)[0m  [1m[33mUPDATE "answers" SET "body" = $1, "updated_at" = $2 WHERE "answers"."id" = $3[0m  [["body", "asdasw1234"], ["updated_at", "2018-03-10 18:41:14.103929"], ["id", 65]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "questions" SET "updated_at" = '2018-03-10 18:41:14.130350' WHERE "questions"."id" = $1[0m  [["id", 42]]
+  [1m[35m (7.0ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.31ms)
+[ActionCable] Broadcasting to question:Z2lkOi8vc3RhY2tmb3J1bS9RdWVzdGlvbi80Mg: {:action=>:update_answer, :answer=>#<Answer id: 65, question_id: 42, body: "asdasw1234", user_id: 2, best: false, created_at: "2018-03-10 14:59:11", updated_at: "2018-03-10 18:41:14", score: 0>, :destination_id=>"#answer-65"}
+Completed 200 OK in 66ms (Views: 1.0ms | ActiveRecord: 35.1ms)
+
+
+Started GET "/questions/42" for 127.0.0.1 at 2018-03-10 21:42:48 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"42"}
+  [1m[36mQuestion Load (0.6ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered common/_errors.html.slim (60.9ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 42], ["commentable_type", "Question"]]
+  Rendered comments/_comments.html.slim (52.9ms)
+  Rendered common/_vote.html.slim (15.6ms)
+  [1m[36mAttachment Load (2.1ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 42], ["attachmentable_type", "Question"]]
+  Rendered attachments/_attachments.html.slim (20.5ms)
+  [1m[36mAnswer Load (0.8ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 42]]
+  [1m[36mUser Load (4.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 65], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (5.0ms)
+  Rendered common/_vote.html.slim (0.5ms)
+  [1m[36mAttachment Load (0.8ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 65], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (12.4ms)
+  Rendered collection of answers/_answer.html.slim [5 times] (91.0ms)
+  Rendered attachments/_attachment_fields.html.slim (27.0ms)
+  Rendered answers/_form.html.slim (38.6ms)
+  Rendered templates/_answer_comments.html.slim (14.1ms)
+  Rendered templates/_answer_vote.html.slim (21.3ms)
+  Rendered templates/_answer_attachments.html.slim (24.4ms)
+  Rendered templates/_answer.html.slim (153.6ms)
+  Rendered templates/_answer_edit_form.html.slim (6.1ms)
+  Rendered templates/_comment_form.html.slim (6.5ms)
+  Rendered templates/_comment.html.slim (4.2ms)
+  Rendered questions/show.html.slim within layouts/application (534.6ms)
+Completed 200 OK in 569ms (Views: 551.9ms | ActiveRecord: 10.9ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 21:42:49 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (13.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (18.01ms)
+Completed 200 OK in 61ms (Views: 10.6ms | ActiveRecord: 15.1ms)
+
+
+Started GET "/questions/42" for 127.0.0.1 at 2018-03-10 21:42:50 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"42"}
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (39.2ms)
+Completed 200 OK in 157ms (Views: 87.0ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 21:42:52 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (2.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (1.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (23.42ms)
+Completed 200 OK in 82ms (Views: 45.3ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/questions/42" for 127.0.0.1 at 2018-03-10 21:43:13 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"42"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (65.6ms)
+Completed 200 OK in 154ms (Views: 117.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 21:43:14 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (5.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (4.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (43.4ms)
+Completed 200 OK in 120ms (Views: 85.6ms | ActiveRecord: 10.3ms)
+
+
+Started PATCH "/api/v1/answers/66" for 127.0.0.1 at 2018-03-10 21:43:29 +0300
+Processing by Api::V1::AnswersController#update as */*
+  Parameters: {"answer"=>{"body"=>"66786fg675", "Create"=>""}, "id"=>"66"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT  "answers".* FROM "answers" WHERE "answers"."id" = $1 LIMIT $2[0m  [["id", 66], ["LIMIT", 1]]
+Unpermitted parameter: :Create
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[35mSQL (26.3ms)[0m  [1m[33mUPDATE "answers" SET "body" = $1, "updated_at" = $2 WHERE "answers"."id" = $3[0m  [["body", "66786fg675"], ["updated_at", "2018-03-10 18:43:29.959131"], ["id", 66]]
+  [1m[35mSQL (22.8ms)[0m  [1m[33mUPDATE "questions" SET "updated_at" = '2018-03-10 18:43:29.989000' WHERE "questions"."id" = $1[0m  [["id", 42]]
+  [1m[35m (10.0ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.34ms)
+[ActionCable] Broadcasting to question:Z2lkOi8vc3RhY2tmb3J1bS9RdWVzdGlvbi80Mg: {:action=>:update_answer, :answer=>#<Answer id: 66, question_id: 42, body: "66786fg675", user_id: 2, best: false, created_at: "2018-03-10 15:06:16", updated_at: "2018-03-10 18:43:29", score: 0>, :destination_id=>"#answer-66"}
+Completed 200 OK in 80ms (Views: 1.0ms | ActiveRecord: 60.5ms)
+
+
+Started GET "/questions/42" for 127.0.0.1 at 2018-03-10 21:44:01 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"42"}
+  [1m[36mQuestion Load (1.8ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered common/_errors.html.slim (28.1ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 42], ["commentable_type", "Question"]]
+  Rendered comments/_comments.html.slim (10.7ms)
+  Rendered common/_vote.html.slim (6.5ms)
+  [1m[36mAttachment Load (0.4ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 42], ["attachmentable_type", "Question"]]
+  Rendered attachments/_attachments.html.slim (8.2ms)
+  [1m[36mAnswer Load (0.6ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 42]]
+  [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mComment Load (2.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 66], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (4.6ms)
+  Rendered common/_vote.html.slim (0.5ms)
+  [1m[36mAttachment Load (1.7ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 66], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (23.0ms)
+  Rendered collection of answers/_answer.html.slim [5 times] (88.4ms)
+  Rendered attachments/_attachment_fields.html.slim (7.5ms)
+  Rendered answers/_form.html.slim (16.3ms)
+  Rendered templates/_answer_comments.html.slim (9.1ms)
+  Rendered templates/_answer_vote.html.slim (4.9ms)
+  Rendered templates/_answer_attachments.html.slim (15.4ms)
+  Rendered templates/_answer.html.slim (56.7ms)
+  Rendered templates/_answer_edit_form.html.slim (7.3ms)
+  Rendered templates/_comment_form.html.slim (6.8ms)
+  Rendered templates/_comment.html.slim (5.6ms)
+  Rendered questions/show.html.slim within layouts/application (284.8ms)
+Completed 200 OK in 306ms (Views: 286.5ms | ActiveRecord: 12.1ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 21:44:02 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.7ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (3.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (20.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (34.34ms)
+Completed 200 OK in 84ms (Views: 28.6ms | ActiveRecord: 24.8ms)
+
+
+Started PATCH "/api/v1/answers/67" for 127.0.0.1 at 2018-03-10 21:44:08 +0300
+Processing by Api::V1::AnswersController#update as */*
+  Parameters: {"answer"=>{"body"=>"gdgdf1", "Create"=>""}, "id"=>"67"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT  "answers".* FROM "answers" WHERE "answers"."id" = $1 LIMIT $2[0m  [["id", 67], ["LIMIT", 1]]
+Unpermitted parameter: :Create
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[35mSQL (36.1ms)[0m  [1m[33mUPDATE "answers" SET "body" = $1, "updated_at" = $2 WHERE "answers"."id" = $3[0m  [["body", "gdgdf1"], ["updated_at", "2018-03-10 18:44:08.300201"], ["id", 67]]
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "questions" SET "updated_at" = '2018-03-10 18:44:08.338459' WHERE "questions"."id" = $1[0m  [["id", 42]]
+  [1m[35m (32.0ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.95ms)
+[ActionCable] Broadcasting to question:Z2lkOi8vc3RhY2tmb3J1bS9RdWVzdGlvbi80Mg: {:action=>:update_answer, :answer=>#<Answer id: 67, question_id: 42, body: "gdgdf1", user_id: 2, best: false, created_at: "2018-03-10 18:11:32", updated_at: "2018-03-10 18:44:08", score: 0>, :destination_id=>"#answer-67"}
+Completed 200 OK in 93ms (Views: 3.7ms | ActiveRecord: 70.1ms)
+
+
+Started GET "/questions/42" for 127.0.0.1 at 2018-03-10 21:45:16 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"42"}
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (6.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered common/_errors.html.slim (23.0ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 42], ["commentable_type", "Question"]]
+  Rendered comments/_comments.html.slim (14.5ms)
+  Rendered common/_vote.html.slim (7.7ms)
+  [1m[36mAttachment Load (0.4ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 42], ["attachmentable_type", "Question"]]
+  Rendered attachments/_attachments.html.slim (22.4ms)
+  [1m[36mAnswer Load (0.6ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 42]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 67], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (2.7ms)
+  Rendered common/_vote.html.slim (0.6ms)
+  [1m[36mAttachment Load (0.5ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 67], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (1.9ms)
+  Rendered collection of answers/_answer.html.slim [5 times] (31.1ms)
+  Rendered attachments/_attachment_fields.html.slim (18.3ms)
+  Rendered answers/_form.html.slim (35.2ms)
+  Rendered templates/_answer_comments.html.slim (7.2ms)
+  Rendered templates/_answer_vote.html.slim (4.3ms)
+  Rendered templates/_answer_attachments.html.slim (4.7ms)
+  Rendered templates/_answer.html.slim (42.1ms)
+  Rendered templates/_answer_edit_form.html.slim (7.3ms)
+  Rendered templates/_comment_form.html.slim (23.6ms)
+  Rendered templates/_comment.html.slim (17.1ms)
+  Rendered questions/show.html.slim within layouts/application (273.4ms)
+Completed 200 OK in 340ms (Views: 304.7ms | ActiveRecord: 9.2ms)
+
+
+Started GET "/api/v1/questions/42" for 127.0.0.1 at 2018-03-10 21:45:17 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"42", "question"=>{}}
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 42]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (8.03ms)
+Completed 200 OK in 17ms (Views: 8.6ms | ActiveRecord: 2.4ms)
+
+
+Started PATCH "/api/v1/answers/58" for 127.0.0.1 at 2018-03-10 21:45:38 +0300
+Processing by Api::V1::AnswersController#update as */*
+  Parameters: {"answer"=>{"body"=>"vefecesasd2", "Create"=>""}, "id"=>"58"}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAnswer Load (1.1ms)[0m  [1m[34mSELECT  "answers".* FROM "answers" WHERE "answers"."id" = $1 LIMIT $2[0m  [["id", 58], ["LIMIT", 1]]
+Unpermitted parameter: :Create
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[33mUPDATE "answers" SET "body" = $1, "updated_at" = $2 WHERE "answers"."id" = $3[0m  [["body", "vefecesasd2"], ["updated_at", "2018-03-10 18:45:38.233666"], ["id", 58]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "questions" SET "updated_at" = '2018-03-10 18:45:38.237144' WHERE "questions"."id" = $1[0m  [["id", 42]]
+  [1m[35m (16.4ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.34ms)
+[ActionCable] Broadcasting to question:Z2lkOi8vc3RhY2tmb3J1bS9RdWVzdGlvbi80Mg: {:action=>:update_answer, :answer=>#<Answer id: 58, question_id: 42, body: "vefecesasd2", user_id: 2, best: false, created_at: "2018-03-10 00:21:58", updated_at: "2018-03-10 18:45:38", score: 0>, :destination_id=>"#answer-58"}
+Completed 200 OK in 62ms (Views: 3.0ms | ActiveRecord: 21.5ms)
+
+
+Started PATCH "/api/v1/answers/59" for 127.0.0.1 at 2018-03-10 21:46:05 +0300
+Processing by Api::V1::AnswersController#update as */*
+  Parameters: {"answer"=>{"body"=>"fdgrer23210000", "Create"=>""}, "id"=>"59"}
+  [1m[36mUser Load (25.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT  "answers".* FROM "answers" WHERE "answers"."id" = $1 LIMIT $2[0m  [["id", 59], ["LIMIT", 1]]
+Unpermitted parameter: :Create
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "answers" SET "body" = $1, "updated_at" = $2 WHERE "answers"."id" = $3[0m  [["body", "fdgrer23210000"], ["updated_at", "2018-03-10 18:46:05.767333"], ["id", 59]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "questions" SET "updated_at" = '2018-03-10 18:46:05.769745' WHERE "questions"."id" = $1[0m  [["id", 42]]
+  [1m[35m (19.8ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.32ms)
+[ActionCable] Broadcasting to question:Z2lkOi8vc3RhY2tmb3J1bS9RdWVzdGlvbi80Mg: {:action=>:update_answer, :answer=>#<Answer id: 59, question_id: 42, body: "fdgrer23210000", user_id: 2, best: false, created_at: "2018-03-10 00:23:09", updated_at: "2018-03-10 18:46:05", score: 0>, :destination_id=>"#answer-59"}
+Completed 200 OK in 62ms (Views: 0.9ms | ActiveRecord: 47.4ms)
+
+

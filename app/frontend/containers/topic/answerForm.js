@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function AnswerForm({ body, edit, handleSubmit }) {
+export default function AnswerForm({ id, body, edit, handleSubmit }) {
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e) => handleSubmit(e, id)}>
         <textarea name="body" defaultValue={body} />
         <br/>
         <input type="submit" name="Create" />
