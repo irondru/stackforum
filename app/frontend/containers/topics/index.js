@@ -26,7 +26,7 @@ class Topics extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    topics: state.topics.data.topics
+    topics: state.topics.payload.topics
   }
 }
 

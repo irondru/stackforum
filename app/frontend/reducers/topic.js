@@ -7,13 +7,13 @@ export default (state, action) => {
     case ANSWER_REQUEST + SUCCESS:
       return {
         fetching: 0,
-        data: {
+        payload: {
           answers: [...state.data.answers, action.payload]
         }
       }
     case ANSWER_EDIT:
       return {
-        data: {
+        payload: {
           answers: state.data.answers.map(answer =>
             answer.id === action.id ? { ...answer, edit: !answer.edit }
              : { ...answer, edit: false }

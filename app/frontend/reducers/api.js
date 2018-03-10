@@ -1,13 +1,13 @@
-import { PENDING, SUCCESS, ERROR, QUERY_TYPES } from '../constants'
+import { PENDING, SUCCESS, ERROR, REQUEST_STATUSES } from '../constants'
 
 const initialState = {
   fetching: 1,
-  data: {},
+  payload: {},
   errors: null
 }
 
-export default (state = initialState, action, actionType) => {
-  return action.type & actionType ? {
+export default (state = initialState, { type, payload, errors } = {}, actionType) =>
+  type & actionType ? {
     ...state,
     ...{
       [PENDING]: () => ({
@@ -15,14 +15,13 @@ export default (state = initialState, action, actionType) => {
       }),
       [SUCCESS]: () => ({
         fetching: 0,
-        data: action.payload
+        payload
       }),
       [ERROR]: () => ({
         fetching: 0,
-        errors: action.errors
+        errors
       })
     }
-    [action.type & QUERY_TYPES]()
+    [type & REQUEST_STATUSES]()
   }
   : state
-}

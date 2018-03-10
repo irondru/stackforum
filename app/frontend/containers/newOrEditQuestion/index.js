@@ -35,7 +35,7 @@ class NewOrEditQuestion extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  ...state.question.data.question,
+  ...state.question.payload.question,
   fetching: state.question.fetching
 })
 

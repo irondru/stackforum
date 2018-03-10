@@ -51,7 +51,7 @@ class Topic extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    ...state.topic.data,
+    ...state.topic.payload,
     fetching: state.topic.fetching
   }
 }
