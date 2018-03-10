@@ -11,10 +11,16 @@ import { GET_TOPIC } from '../../constants'
 
 class Topic extends React.Component {
 
+  handleEditAnswer = (id) => {
+    this.props.editAnswer(id)
+  }
+
   answersList(item) {
     if (this.props.answers)
-      return this.props.answers.map (
-        (answer, id) => <Answer key={id} {...answer} />
+      return this.props.answers.map (answer => {
+        if (answer.edit) return <AnswerForm key={answer.id} {...answer} />
+          else return <Answer key={answer.id} {...answer} handleEditAnswer={this.handleEditAnswer} />
+      }
       );
   }
 
@@ -28,7 +34,7 @@ class Topic extends React.Component {
     }
   }
 
-  handleSubmitAnswer = (event) => {
+  handleSubmitAnswer = event => {
     event.preventDefault()
     this.props.createAnswer(parseForm(event.target), this.props.question.id)
   }
@@ -53,7 +59,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getTopic: (id) => dispatch(actions.getTopic(id)),
-    createAnswer: (answer, questionId) => dispatch(actions.createAnswer(answer, questionId))
+    createAnswer: (answer, questionId) => dispatch(actions.createAnswer(answer, questionId)),
+    editAnswer: (id) => dispatch(actions.editAnswer(id))
   }
 }
 

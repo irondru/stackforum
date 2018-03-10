@@ -1,15 +1,26 @@
-import { PENDING, SUCCESS, ERROR, QUERY_TYPES, ANSWER_REQUEST, GET_TOPIC } from '../constants'
-import universalReducer from './universalReducer'
+import { SUCCESS, ANSWER_REQUEST, ANSWER_EDIT, ACTIONS, GET_TOPIC } from '../constants'
+import apiReducer from './api'
 
 
 export default (state, action) => {
-  if (action.type === ANSWER_REQUEST + SUCCESS) {
-    return {
-      ...state,
-      data: {
-        answers: [...state.data.answers, action.payload]
+  switch (action.type) {
+    case ANSWER_REQUEST + SUCCESS:
+      return {
+        fetching: 0,
+        data: {
+          answers: [...state.data.answers, action.payload]
+        }
       }
-    }
+    case ANSWER_EDIT:
+      return {
+        data: {
+          answers: state.data.answers.map(answer =>
+            answer.id === action.id ? { ...answer, edit: !answer.edit }
+             : { ...answer, edit: false }
+          )
+        }
+      }
+    default:
+      return apiReducer(state, action, GET_TOPIC + ANSWER_REQUEST)
   }
-  return universalReducer(state, action, GET_TOPIC)
 }

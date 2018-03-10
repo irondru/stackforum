@@ -1,4 +1,6 @@
-import React from 'react';
+import React from 'react'
+import { Link } from 'react-router'
+import { TOPICS_PATH } from '../../constants'
 
 export default class Question extends React.Component {
 
@@ -7,11 +9,12 @@ export default class Question extends React.Component {
   }
 
   render() {
+    const { title, body, id } = this.props
     return (
       <div>
-        <h3>created_at: {this.props.created_at}</h3>
-        <p>Body {this.props.body}</p>
-        <button onClick={this.onClick}>Edit</button>
+        <h3>{title}</h3>
+        <p>{body}</p>
+        <Link to={TOPICS_PATH + id + '/edit'}>Edit</Link>
       </div>
     )
   }

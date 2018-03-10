@@ -3,23 +3,12 @@ import Comment from '../../components/comment';
 import AddComment from '../../components/add-comment';
 
 export default class Answer extends React.Component {
-  commentsList (comments) {
-    return (
-      comments.map ((comment) => {
-        return(
-          <div>
-            <Comment {...comment} />
-            <AddComment />
-          </div>
-        )
-      })
-    )
-  }
   render () {
+    const { id, body, handleEditAnswer } = this.props
     return (
       <div>
-        <h3>{this.props.created_at}</h3>
-        <p>{this.props.body}</p>
+        <p>{body}</p>
+        <button onClick={handleEditAnswer.bind(null, id)}>Edit</button>
       </div>
     )
   }

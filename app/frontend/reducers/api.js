@@ -1,7 +1,7 @@
 import { PENDING, SUCCESS, ERROR, QUERY_TYPES } from '../constants'
 
 const initialState = {
-  fetching: true,
+  fetching: 1,
   data: {},
   errors: null
 }
@@ -11,14 +11,14 @@ export default (state = initialState, action, actionType) => {
     ...state,
     ...{
       [PENDING]: () => ({
-        fetching: true
+        fetching: actionType
       }),
       [SUCCESS]: () => ({
-        fetching: false,
+        fetching: 0,
         data: action.payload
       }),
       [ERROR]: () => ({
-        fetching: false,
+        fetching: 0,
         errors: action.errors
       })
     }
