@@ -1,13 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import * as actions from '../../actions'
+import * as actions from 'actions'
 
 import Answer from './answer'
 import AddComment from '../../components/add-comment'
 import Question from './question'
 import AnswerForm from './answerForm'
-import { parseForm } from '../../helpers'
-import { GET_TOPIC } from '../../constants'
+import { parseForm } from 'helpers'
 
 class Topic extends React.Component {
 
@@ -27,7 +26,7 @@ class Topic extends React.Component {
           handleSubmit={this.handleUpadateAnswer}
           handleCancelEdit={this.handleEditAnswer} />
         else return <Answer key={answer.id} {...answer} handleEditAnswer={this.handleEditAnswer} />
-      })
+      });
   }
 
   componentDidMount = () => this.props.getTopic(this.props.params.id)

@@ -25,8 +25,7 @@ export const createAnswer = (answer, questionId) =>
 export const updateAnswer = (answer, id) =>
   createApiActions(API_ANSWERS_PATH + id, PATCH, ANSWER_REQUEST + UPDATE, { answer })
 
-export const editAnswer = id => dispatch =>
-  dispatch({
+export const editAnswer = id => ({
     type: ANSWER_REQUEST + EDIT + SUCCESS,
     id
   })
