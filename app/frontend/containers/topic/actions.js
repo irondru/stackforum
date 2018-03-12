@@ -1,6 +1,6 @@
 import { createApiActions } from 'core'
 import { GET, PATCH, POST, CREATE, UPDATE, SUCCESS, API_ANSWER_CREATE_PATH,
-  ANSWER_REQUEST, API_ANSWERS_PATH, EDIT, GET_TOPIC } from 'constants'
+  ANSWER_REQUEST, API_ANSWERS_PATH, EDIT, GET_TOPIC } from 'core/constants'
 
 export const createAnswer = (answer, questionId) =>
   createApiActions(API_ANSWER_CREATE_PATH.replace('{questionId}', questionId),

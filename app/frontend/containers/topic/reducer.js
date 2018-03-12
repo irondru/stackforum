@@ -1,5 +1,5 @@
 import { SUCCESS, ANSWER_REQUEST, EDIT, ACTIONS, GET_TOPIC,
-  CREATE, UPDATE, DESTROY } from 'constants'
+  CREATE, UPDATE, DESTROY } from 'core/constants'
 import { apiReducer } from 'core'
 
 export default (state, action) => {

@@ -50143,3 +50143,130 @@ Processing by Api::V1::QuestionsController#show as */*
 Completed 200 OK in 71ms (Views: 56.5ms | ActiveRecord: 2.3ms)
 
 
+Started GET "/" for 127.0.0.1 at 2018-03-12 04:07:00 +0300
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by QuestionsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/index.html.slim within layouts/application
+  Rendered questions/index.html.slim within layouts/application (36.5ms)
+Completed 200 OK in 394ms (Views: 112.5ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-12 04:07:55 +0300
+Processing by QuestionsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/index.html.slim within layouts/application
+  Rendered questions/index.html.slim within layouts/application (7.5ms)
+Completed 200 OK in 25ms (Views: 19.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-12 04:11:05 +0300
+Processing by QuestionsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/index.html.slim within layouts/application
+  Rendered questions/index.html.slim within layouts/application (14.5ms)
+Completed 200 OK in 78ms (Views: 57.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/questions/" for 127.0.0.1 at 2018-03-12 04:11:05 +0300
+Processing by Api::V1::QuestionsController#index as */*
+  Parameters: {"question"=>{}}
+  [1m[36mUser Load (8.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mQuestion Load (1.0ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1[0m  [["LIMIT", 10]]
+[active_model_serializers] Rendered QuestionsListItemSerializer with Hash (65.46ms)
+Completed 200 OK in 221ms (Views: 95.1ms | ActiveRecord: 14.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-12 04:11:47 +0300
+Processing by QuestionsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/index.html.slim within layouts/application
+  Rendered questions/index.html.slim within layouts/application (3.0ms)
+Completed 200 OK in 32ms (Views: 26.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/questions/" for 127.0.0.1 at 2018-03-12 04:11:48 +0300
+Processing by Api::V1::QuestionsController#index as */*
+  Parameters: {"question"=>{}}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mQuestion Load (1.9ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1[0m  [["LIMIT", 10]]
+[active_model_serializers] Rendered QuestionsListItemSerializer with Hash (21.38ms)
+Completed 200 OK in 86ms (Views: 37.8ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-12 04:13:13 +0300
+Processing by QuestionsController#index as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/index.html.slim within layouts/application
+  Rendered questions/index.html.slim within layouts/application (7.5ms)
+Completed 200 OK in 62ms (Views: 44.7ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/v1/questions/" for 127.0.0.1 at 2018-03-12 04:13:14 +0300
+Processing by Api::V1::QuestionsController#index as */*
+  Parameters: {"question"=>{}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mQuestion Load (5.1ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1[0m  [["LIMIT", 10]]
+[active_model_serializers] Rendered QuestionsListItemSerializer with Hash (16.94ms)
+Completed 200 OK in 40ms (Views: 13.6ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-12 04:13:54 +0300
+Processing by QuestionsController#index as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/index.html.slim within layouts/application
+  Rendered questions/index.html.slim within layouts/application (3.5ms)
+Completed 200 OK in 30ms (Views: 14.5ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/v1/questions/" for 127.0.0.1 at 2018-03-12 04:13:54 +0300
+Processing by Api::V1::QuestionsController#index as */*
+  Parameters: {"question"=>{}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mQuestion Load (4.5ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1[0m  [["LIMIT", 10]]
+[active_model_serializers] Rendered QuestionsListItemSerializer with Hash (9.05ms)
+Completed 200 OK in 22ms (Views: 7.4ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-12 04:17:59 +0300
+Processing by QuestionsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/index.html.slim within layouts/application
+  Rendered questions/index.html.slim within layouts/application (4.2ms)
+Completed 200 OK in 40ms (Views: 35.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-12 04:18:47 +0300
+Processing by QuestionsController#index as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/index.html.slim within layouts/application
+  Rendered questions/index.html.slim within layouts/application (11.8ms)
+Completed 200 OK in 57ms (Views: 38.6ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/v1/questions/" for 127.0.0.1 at 2018-03-12 04:18:47 +0300
+Processing by Api::V1::QuestionsController#index as */*
+  Parameters: {"question"=>{}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1[0m  [["LIMIT", 10]]
+[active_model_serializers] Rendered QuestionsListItemSerializer with Hash (4.09ms)
+Completed 200 OK in 11ms (Views: 4.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-12 04:18:49 +0300
+Processing by QuestionsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/index.html.slim within layouts/application
+  Rendered questions/index.html.slim within layouts/application (7.8ms)
+Completed 200 OK in 91ms (Views: 84.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/v1/questions/" for 127.0.0.1 at 2018-03-12 04:18:50 +0300
+Processing by Api::V1::QuestionsController#index as */*
+  Parameters: {"question"=>{}}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mQuestion Load (3.8ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1[0m  [["LIMIT", 10]]
+[active_model_serializers] Rendered QuestionsListItemSerializer with Hash (22.35ms)
+Completed 200 OK in 62ms (Views: 23.7ms | ActiveRecord: 5.1ms)
+
+

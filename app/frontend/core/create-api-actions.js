@@ -1,4 +1,4 @@
-import { PENDING, SUCCESS, ERROR, GET } from '../constants'
+import { PENDING, SUCCESS, ERROR, GET } from './constants'
 import _ from 'underscore';
 import fetch from 'isomorphic-fetch'
 
