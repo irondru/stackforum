@@ -1,6 +1,7 @@
 import React from 'react';
 
 export class Answer extends React.Component {
+
   render () {
     const { id, body, handleEditAnswer } = this.props
     return (
