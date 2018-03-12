@@ -6,7 +6,7 @@ import Topics from 'containers/topics-list'
 import App from 'components/app'
 import UserLogin from 'containers/user'
 import NewOrEditQuestion from 'containers/new-or-edit-question'
-import { TOPICS_PATH, SIGN_IN_PATH } from 'constants'
+import { TOPICS_PATH, SIGN_IN_PATH } from 'core/constants'
 
 export const routes = (
   <Route path='/' component={App}>

@@ -47,7 +47,6 @@ class Topic extends React.Component {
     <div>
       {this.isLoad()}
       <Question {...this.props.question} />
-      <AddComment />
       {this.answersList()}
       <AnswerForm body="" handleSubmit={this.handleSubmitAnswer} />
     </div>

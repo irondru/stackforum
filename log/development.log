@@ -50270,3 +50270,154 @@ Processing by Api::V1::QuestionsController#index as */*
 Completed 200 OK in 62ms (Views: 23.7ms | ActiveRecord: 5.1ms)
 
 
+Started GET "/questions/45" for 127.0.0.1 at 2018-03-12 04:19:47 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"45"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered common/_errors.html.slim (4.6ms)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 45], ["commentable_type", "Question"]]
+  Rendered comments/_comments.html.slim (43.5ms)
+  Rendered common/_vote.html.slim (29.8ms)
+  [1m[36mAttachment Load (0.4ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 45], ["attachmentable_type", "Question"]]
+  Rendered attachments/_attachments.html.slim (62.7ms)
+  [1m[36mAnswer Load (1.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 45]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 9], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (17.7ms)
+  Rendered common/_vote.html.slim (0.5ms)
+  [1m[36mAttachment Load (0.4ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 9], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (19.8ms)
+  [1m[36mComment Load (5.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 10], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (16.4ms)
+  Rendered common/_vote.html.slim (0.5ms)
+  [1m[36mAttachment Load (0.4ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 10], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (7.1ms)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 11], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (5.3ms)
+  Rendered common/_vote.html.slim (0.4ms)
+  [1m[36mAttachment Load (10.8ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 11], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (14.1ms)
+  [1m[36mComment Load (2.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 12], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (4.9ms)
+  Rendered common/_vote.html.slim (0.5ms)
+  [1m[36mAttachment Load (3.7ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 12], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (5.8ms)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 13], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (2.8ms)
+  Rendered common/_vote.html.slim (0.5ms)
+  [1m[36mAttachment Load (5.6ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 13], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (7.8ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 14], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (6.6ms)
+  Rendered common/_vote.html.slim (0.8ms)
+  [1m[36mAttachment Load (0.3ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 14], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (2.7ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 15], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (2.4ms)
+  Rendered common/_vote.html.slim (0.5ms)
+  [1m[36mAttachment Load (0.3ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 15], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (4.3ms)
+  [1m[36mComment Load (4.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 16], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (6.9ms)
+  Rendered common/_vote.html.slim (0.5ms)
+  [1m[36mAttachment Load (0.3ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 16], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (2.4ms)
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 17], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (11.1ms)
+  Rendered common/_vote.html.slim (0.5ms)
+  [1m[36mAttachment Load (0.3ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 17], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (2.0ms)
+  [1m[36mComment Load (1.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 18], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (8.1ms)
+  Rendered common/_vote.html.slim (0.5ms)
+  [1m[36mAttachment Load (0.3ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 18], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (2.2ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 19], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (2.8ms)
+  Rendered common/_vote.html.slim (0.4ms)
+  [1m[36mAttachment Load (0.3ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 19], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (2.5ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 20], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (2.8ms)
+  Rendered common/_vote.html.slim (0.4ms)
+  [1m[36mAttachment Load (0.3ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 20], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (2.0ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 21], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (2.8ms)
+  Rendered common/_vote.html.slim (0.4ms)
+  [1m[36mAttachment Load (0.3ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 21], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (2.8ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 22], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (2.3ms)
+  Rendered common/_vote.html.slim (0.4ms)
+  [1m[36mAttachment Load (0.3ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 22], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (2.5ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 23], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (2.9ms)
+  Rendered common/_vote.html.slim (0.5ms)
+  [1m[36mAttachment Load (0.3ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 23], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (2.4ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 24], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (3.9ms)
+  Rendered common/_vote.html.slim (0.5ms)
+  [1m[36mAttachment Load (0.3ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 24], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (2.3ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 25], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (3.9ms)
+  Rendered common/_vote.html.slim (0.5ms)
+  [1m[36mAttachment Load (0.3ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 25], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (2.3ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 26], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (3.0ms)
+  Rendered common/_vote.html.slim (0.5ms)
+  [1m[36mAttachment Load (0.3ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 26], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (2.4ms)
+  Rendered collection of answers/_answer.html.slim [18 times] (410.6ms)
+  Rendered attachments/_attachment_fields.html.slim (47.5ms)
+  Rendered answers/_form.html.slim (269.7ms)
+  Rendered templates/_answer_comments.html.slim (4.5ms)
+  Rendered templates/_answer_vote.html.slim (4.2ms)
+  Rendered templates/_answer_attachments.html.slim (4.4ms)
+  Rendered templates/_answer.html.slim (21.2ms)
+  Rendered templates/_answer_edit_form.html.slim (5.9ms)
+  Rendered templates/_comment_form.html.slim (6.4ms)
+  Rendered templates/_comment.html.slim (4.5ms)
+  Rendered questions/show.html.slim within layouts/application (1109.2ms)
+Completed 200 OK in 1224ms (Views: 1067.9ms | ActiveRecord: 59.1ms)
+
+
+Started GET "/questions/45" for 127.0.0.1 at 2018-03-12 04:20:26 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"45"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (14.8ms)
+Completed 200 OK in 44ms (Views: 26.9ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/questions/45" for 127.0.0.1 at 2018-03-12 04:21:15 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"45"}
+  [1m[36mQuestion Load (2.8ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered questions/show.html.slim within layouts/application (25.0ms)
+Completed 200 OK in 75ms (Views: 51.8ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/api/v1/questions/45" for 127.0.0.1 at 2018-03-12 04:21:16 +0300
+Processing by Api::V1::QuestionsController#show as */*
+  Parameters: {"id"=>"45", "question"=>{}}
+  [1m[36mQuestion Load (2.1ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mAnswer Load (0.7ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 45]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (40.76ms)
+Completed 200 OK in 321ms (Views: 312.5ms | ActiveRecord: 3.8ms)
+
+
