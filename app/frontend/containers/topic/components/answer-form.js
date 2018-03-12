@@ -1,7 +1,6 @@
 import React from 'react'
 
-export function AnswerForm({ id, body, edit, handleSubmit, handleCancelEdit }) {
-  return (
+export default({ id, body, edit, handleSubmit, handleCancelEdit }) =>
     <div>
       <form onSubmit={(e) => handleSubmit(e, id)}>
         <textarea name="body" />
@@ -10,5 +9,3 @@ export function AnswerForm({ id, body, edit, handleSubmit, handleCancelEdit }) {
       </form>
       {handleCancelEdit ? <button onClick={handleCancelEdit.bind(null, id)}>Cancel</button> : <div/> }
     </div>
-  )
-}

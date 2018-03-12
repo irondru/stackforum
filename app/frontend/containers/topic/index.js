@@ -2,32 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import * as actions from './actions'
 
-import { Answer, AnswerForm, Question } from './components'
+import { AnswerForm, Question, AnswersList } from './components'
 import { parseForm } from 'core'
 
 class Topic extends React.Component {
-
-  handleEditAnswer = id => {
-    this.setState({edit: true})
-    this.props.editAnswer(id)
-  }  
-
-  handleUpadateAnswer = (event, id) => {
-   event.preventDefault()
-   this.props.updateAnswer(parseForm(event.target), id)
-  }
-
-  answersList() {
-    if (this.props.answers)
-      return this.props.answers.map (answer => {
-        if (answer.edit) return <AnswerForm
-          key={answer.id}
-          {...answer}
-          handleSubmit={this.handleUpadateAnswer}
-          handleCancelEdit={this.handleEditAnswer} />
-        else return <Answer key={answer.id} {...answer} handleEditAnswer={this.handleEditAnswer} />
-      });
-  }
 
   componentDidMount = () => this.props.getTopic(this.props.params.id)
 
@@ -39,17 +17,11 @@ class Topic extends React.Component {
     }
   }
 
-  handleSubmitAnswer = event => {
-    event.preventDefault()
-    this.props.createAnswer(parseForm(event.target), this.props.question.id)
-  }
-
   render = () =>
     <div>
       {this.isLoad()}
       <Question {...this.props.question} />
-      {this.answersList()}
-      <AnswerForm key={Math.random()} handleSubmit={this.handleSubmitAnswer} />
+      <AnswersList {...this.props} />
     </div>
 }
 

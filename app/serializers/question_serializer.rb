@@ -2,6 +2,7 @@ class QuestionSerializer < ActiveModel::Serializer
   attributes :question
 
   has_many :answers, each_serialiser: AnswerSerializer
+  has_many :comments
 
   def question
     {
@@ -15,5 +16,5 @@ class QuestionSerializer < ActiveModel::Serializer
   def answers
     object.answers.ordered
   end
-  
+
 end
