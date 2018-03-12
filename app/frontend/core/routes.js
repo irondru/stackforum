@@ -3,7 +3,7 @@ import { Route, IndexRoute } from 'react-router'
 
 import Topic from 'containers/topic'
 import Topics from 'containers/topics-list'
-import App from 'components/app'
+import App from './app'
 import UserLogin from 'containers/user'
 import NewOrEditQuestion from 'containers/new-or-edit-question'
 import { TOPICS_PATH, SIGN_IN_PATH } from 'core/constants'

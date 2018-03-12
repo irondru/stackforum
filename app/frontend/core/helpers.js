@@ -1,4 +1,4 @@
-import apiReducer from './api-reducer'
+import apiReducer from './api/api-reducer'
 
 export function parseForm (target) {
   let formData = {}

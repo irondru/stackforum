@@ -1,4 +1,4 @@
 import { getApiReducer } from 'core'
-import { USER_REQUEST } from 'core/constants'
+import { USER } from 'core/constants'
 
-export default getApiReducer(USER_REQUEST)
+export default getApiReducer(USER)

@@ -1,9 +1,9 @@
-import { SUCCESS, ANSWER_REQUEST, EDIT, ACTIONS, GET_TOPIC,
+import { SUCCESS, ANSWER, EDIT, ACTIONS, GET_TOPIC,
   CREATE, UPDATE, DESTROY } from 'core/constants'
 import { apiReducer } from 'core'
 
 export default (state, action) => {
-  switch (action.type ^ ANSWER_REQUEST + SUCCESS) {
+  switch (action.type ^ ANSWER + SUCCESS) {
     case CREATE:
       return {
         ...state,
@@ -35,6 +35,6 @@ export default (state, action) => {
         }
       }
     default:
-      return apiReducer(state, action, GET_TOPIC + ANSWER_REQUEST)
+      return apiReducer(state, action, GET_TOPIC + ANSWER)
   }
 }

@@ -9,9 +9,9 @@ export {
   ACTIONS,
   GET_TOPIC,
   GET_TOPICS,
-  USER_REQUEST,
-  QUESTION_REQUEST,
-  ANSWER_REQUEST,
+  USER,
+  QUESTION,
+  ANSWER,
   EDIT
 } from './actionTypes'
 export {
