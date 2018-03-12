@@ -1,6 +1,6 @@
 import { SUCCESS, ANSWER_REQUEST, EDIT, ACTIONS, GET_TOPIC,
-  CREATE, UPDATE, DESTROY } from '../constants'
-import apiReducer from './api'
+  CREATE, UPDATE, DESTROY } from 'constants'
+import { apiReducer } from 'core'
 
 export default (state, action) => {
   switch (action.type ^ ANSWER_REQUEST + SUCCESS) {

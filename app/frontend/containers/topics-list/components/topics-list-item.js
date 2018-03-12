@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
-import { TOPICS_PATH } from '../../constants'
+import { TOPICS_PATH } from 'constants'
 
 export default function TopicsListItem ({ id, title }) {
   return (

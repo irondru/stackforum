@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 
-import { SIGN_IN_PATH } from '../constants'
+import { SIGN_IN_PATH } from 'constants'
 
 export default class App extends Component {
   render() {

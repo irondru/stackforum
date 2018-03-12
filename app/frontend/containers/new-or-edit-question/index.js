@@ -2,10 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
 
-import * as actions from '../../actions'
-import { parseForm } from '../../helpers'
-import { TOPICS_PATH, GET_QUESTION } from '../../constants'
-import QuestionForm from './form'
+import * as actions from './actions'
+import { parseForm } from 'core'
+import QuestionForm from './components/form'
 
 class NewOrEditQuestion extends React.Component {
   constructor (props) {

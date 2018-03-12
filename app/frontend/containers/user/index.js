@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { parseForm } from '../../helpers'
+import { parseForm } from 'core'
 
-import * as actions from '../../actions'
-import FormLogin from './formLogin'
+import * as actions from './actions'
+import FormLogin from './components/form-login'
 
 class UserLogin extends React.Component {
   constructor(props) {

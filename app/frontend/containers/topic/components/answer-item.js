@@ -1,6 +1,4 @@
 import React from 'react';
-import Comment from '../../components/comment';
-import AddComment from '../../components/add-comment';
 
 export default class Answer extends React.Component {
   render () {

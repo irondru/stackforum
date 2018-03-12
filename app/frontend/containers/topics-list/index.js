@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import * as actions from '../../actions'
+import * as actions from './actions'
 
-import TopicsListItem from './topicsListItem'
+import TopicsListItem from './components/topics-list-item'
 
 class Topics extends React.Component {
   constructor(props) {

@@ -1,12 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import * as actions from 'actions'
+import * as actions from './actions'
 
-import Answer from './answer'
-import AddComment from '../../components/add-comment'
-import Question from './question'
-import AnswerForm from './answerForm'
-import { parseForm } from 'helpers'
+import Answer from './components/answer-item'
+import Question from './components/question'
+import AnswerForm from './components/answer-form'
+import { parseForm } from 'core'
 
 class Topic extends React.Component {
 
