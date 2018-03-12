@@ -25,10 +25,10 @@ class UserLogin extends React.Component {
     if (this.props.fetching) return (
       <h1>Loading...</h1>
     )
-  if (this.props.data.id) {
+  if (this.props.payload.id) {
     return (
       <div>
-      <h1>{this.props.data.email}</h1>
+      <h1>{this.props.payload.email}</h1>
       <button onClick={this.props.signOut}>pij</button>
       </div>
     )
