@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import { TOPICS_PATH } from 'core/constants'
 
-export default class Question extends React.Component {
+export class Question extends React.Component {
 
   onClick = () => {
     this.props.editQuestion(this.props)

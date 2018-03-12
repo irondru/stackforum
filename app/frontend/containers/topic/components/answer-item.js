@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class Answer extends React.Component {
+export class Answer extends React.Component {
   render () {
     const { id, body, handleEditAnswer } = this.props
     return (

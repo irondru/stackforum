@@ -2,14 +2,15 @@ import React from 'react'
 import { connect } from 'react-redux'
 import * as actions from './actions'
 
-import Answer from './components/answer-item'
-import Question from './components/question'
-import AnswerForm from './components/answer-form'
+import { Answer, AnswerForm, Question } from './components'
 import { parseForm } from 'core'
 
 class Topic extends React.Component {
 
-  handleEditAnswer = id => this.props.editAnswer(id)
+  handleEditAnswer = id => {
+    this.setState({edit: true})
+    this.props.editAnswer(id)
+  }  
 
   handleUpadateAnswer = (event, id) => {
    event.preventDefault()
@@ -48,7 +49,7 @@ class Topic extends React.Component {
       {this.isLoad()}
       <Question {...this.props.question} />
       {this.answersList()}
-      <AnswerForm body="" handleSubmit={this.handleSubmitAnswer} />
+      <AnswerForm key={Math.random()} handleSubmit={this.handleSubmitAnswer} />
     </div>
 }
 
