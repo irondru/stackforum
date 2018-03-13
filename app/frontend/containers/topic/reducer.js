@@ -62,9 +62,7 @@ export default (state, action) => {
           }),
           "Question": () => ({
             question: state.payload.question.comments.map(comment =>
-              comment.id === action.payload.comment.id ? 
-            )
-
+              comment.id === action.payload.comment.id ? action.payload.comment : comment)
           })
         }[action.payload.commentable_type]())
 
