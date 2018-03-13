@@ -15,6 +15,11 @@ export const editAnswer = id => ({
     id
   })
 
+export const editComment = id => ({
+  type: COMMENT + EDIT + SUCCESS,
+  id
+})
+
 export const getTopic = id =>
   createApiActions(API_TOPICS_PATH + id, GET, GET_TOPIC)
 

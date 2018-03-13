@@ -7,7 +7,8 @@ import { parseForm } from 'core'
 
 import { ANSWER } from 'core/constants'
 
-export default ({ editAnswer, createAnswer, updateAnswer, createComment, answers, question }) => {
+export default ({ editAnswer, createAnswer, updateAnswer, createComment,
+  editComment, answers, question }) => {
 
   const handleEditAnswer = id => {
     editAnswer(id)
@@ -49,7 +50,7 @@ export default ({ editAnswer, createAnswer, updateAnswer, createComment, answers
             answer.comments ? answer.comments.map (comment =>
               !!comment.edit ? <CommentForm key={comment.id} {...comment}
                 handleSubmit={handleUpdateComment} handleCancelEdit={handleEditComment} /> :
-                <CommentItem key={comment.id} {...comment} />
+                <CommentItem key={comment.id} {...comment} handleEdit={handleEditComment} />
             ) : null
          }
          <CommentForm key={Math.random()} handleSubmit={handleCreateComment} commentableId={answer.id} />

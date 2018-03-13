@@ -4,7 +4,7 @@ import { apiReducer } from 'core'
 
 export default (state, action) => {
 
-  const putToPayload = (item) => ({
+  const payloadPush = (item) => ({
     ...state,
     fetching: 0,
     payload: {
@@ -15,14 +15,14 @@ export default (state, action) => {
 
   switch (action.type ^ ANSWER + SUCCESS) {
     case CREATE:
-      return putToPayload({ answers: [...state.payload.answers, action.payload] })
+      return payloadPush({ answers: [...state.payload.answers, action.payload] })
     case UPDATE:
-      return putToPayload({
+      return payloadPush({
         answers: state.payload.answers.map(answer =>
         answer.id === action.payload.id ? action.payload : answer)
       })
     case EDIT:
-      return putToPayload({
+      return payloadPush({
         answers: state.payload.answers.map(answer =>
           answer.id === action.id ? { ...answer, edit: !answer.edit }
            : { ...answer, edit: false })
@@ -31,17 +31,25 @@ export default (state, action) => {
 
   switch (action.type ^ COMMENT + SUCCESS) {
     case CREATE:
-      return putToPayload({
-            "Answer": () => ({
-              answers: state.payload.answers.map(answer =>
-                answer.id === action.payload.commentable_id ?
-                { ...answer, comments: [...answer.comments, action.payload.comment] } : answer )
-             }),
-            "Question": () => ({
-              question: state.payload.question.comments =
-                [...state.payload.question.comments, action.payload.comment]
-            })
-          }[action.payload.commentable_type]())
+      return payloadPush({
+        "Answer": () => ({
+          answers: state.payload.answers.map(answer =>
+            answer.id === action.payload.commentable_id ?
+              { ...answer, comments: [...answer.comments, action.payload.comment] } : answer )
+        }),
+        "Question": () => ({
+          question: state.payload.question.comments =
+            [...state.payload.question.comments, action.payload.comment]
+        })
+      }[action.payload.commentable_type]())
+    case EDIT:
+      return payloadPush({
+        answers: state.payload.answers.map(answer => ({
+          ...answer,
+          comments: answer.comments.map(comment =>
+          comment.id === action.id ? {...comment, edit: true } : { ...comment, edit: false })
+        }))
+      })
   }
   return apiReducer(state, action, GET_TOPIC + ANSWER + COMMENT)
 }
