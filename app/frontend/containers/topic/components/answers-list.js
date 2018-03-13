@@ -8,7 +8,7 @@ import { parseForm } from 'core'
 import { ANSWER } from 'core/constants'
 
 export default ({ editAnswer, createAnswer, updateAnswer, createComment,
-  editComment, answers, question }) => {
+  editComment, updateComment, answers, question }) => {
 
   const handleEditAnswer = id => {
     editAnswer(id)
@@ -33,9 +33,9 @@ export default ({ editAnswer, createAnswer, updateAnswer, createComment,
     createComment(parseForm(event.target), ANSWER, commentableId)
   }
 
-  const handleUpdateComment = (event, commentableType, id) => {
+  const handleUpdateComment = (event, commentableId, id) => {
     event.preventDefault()
-    updateComment(commentableType, id)
+    updateComment(parseForm(event.target), id)
   }
 
   return (

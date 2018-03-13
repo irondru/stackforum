@@ -50,6 +50,24 @@ export default (state, action) => {
           comment.id === action.id ? {...comment, edit: true } : { ...comment, edit: false })
         }))
       })
+    case UPDATE:
+      return payloadPush({
+          "Answer": () => ({
+            answers: state.payload.answers.map(answer =>
+              answer.id === action.payload.commentable_id ? {
+                ...answer,
+                comments: answer.comments.map(comment =>
+                  comment.id === action.payload.comment.id ? action.payload.comment : comment)
+              } : answer )
+          }),
+          "Question": () => ({
+            question: state.payload.question.comments.map(comment =>
+              comment.id === action.payload.comment.id ? 
+            )
+
+          })
+        }[action.payload.commentable_type]())
+
   }
   return apiReducer(state, action, GET_TOPIC + ANSWER + COMMENT)
 }

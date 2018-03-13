@@ -1,7 +1,8 @@
 import { createApiActions } from 'core'
 import { GET, PATCH, POST, CREATE, UPDATE, SUCCESS, API_ANSWER_CREATE_PATH,
   ANSWER, QUESTION, COMMENT, API_TOPICS_PATH, API_ANSWERS_PATH, EDIT, GET_TOPIC,
-  API_COMMENTS_CREATE_ANSWER_PATH, ID, API_COMMENTS_CREATE_QUESTION_PATH} from 'core/constants'
+  API_COMMENTS_CREATE_ANSWER_PATH, ID, API_COMMENTS_CREATE_QUESTION_PATH,
+  API_COMMENTS_PATH } from 'core/constants'
 
 export const createAnswer = (answer, questionId) =>
   createApiActions(API_ANSWER_CREATE_PATH.replace('{questionId}', questionId),
@@ -28,3 +29,6 @@ export const createComment = (comment, commentableType, commentableId) =>
       [ANSWER]: () => API_COMMENTS_CREATE_ANSWER_PATH.replace(ID, commentableId),
       [QUESTION]: () => API_COMMENTS_CREATE_QUESTION_PATH.replace(ID, commentableId)
     }[commentableType](), POST, COMMENT + CREATE, { comment })
+
+export const updateComment = (comment, id) =>
+  createApiActions(API_COMMENTS_PATH + id, PATCH, COMMENT + UPDATE, { comment })
