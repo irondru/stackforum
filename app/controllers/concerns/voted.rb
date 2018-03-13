@@ -1,4 +1,4 @@
-module Voted
+module Api::V1::Voted
   extend ActiveSupport::Concern
 
   included do

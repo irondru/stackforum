@@ -38,6 +38,8 @@ const mapDispatchToProps = dispatch => {
     createAnswer: (answer, questionId) => dispatch(actions.createAnswer(answer, questionId)),
     updateAnswer: (answer, id) => dispatch(actions.updateAnswer(answer, id)),
     editAnswer: id => dispatch(actions.editAnswer(id)),
+    createComment: (comment, commentableType, commentableId) =>
+      dispatch(actions.createComment(comment, commentableType, commentableId))
   }
 }
 

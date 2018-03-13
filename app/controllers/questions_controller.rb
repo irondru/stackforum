@@ -3,9 +3,6 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   after_action :stream_question, only: [:create, :destroy]
 
-  include Voted
-  include Commented
-
   respond_to :html
 
   authorize_resource

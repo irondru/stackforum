@@ -1,8 +1,8 @@
 import React from 'react'
 
-export default ({ body, handleSubmit }) =>
+export default ({ body, commentableId, handleSubmit }) =>
   <div>
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={(e) => handleSubmit(e, commentableId)}>
       <input type="text" defaultValue={body} name="body" />
       <input type="submit" />
     </form>

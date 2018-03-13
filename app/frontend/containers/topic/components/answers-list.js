@@ -3,8 +3,11 @@ import AnswerForm from './answer-form'
 import AnswerItem from './answer-item'
 import CommentForm from './comment-form'
 import CommentItem from './comment-item'
+import { parseForm } from 'core'
 
-export default ({ editAnswer, createAnswer, updateAnswer, answers, question }) => {
+import { ANSWER } from 'core/constants'
+
+export default ({ editAnswer, createAnswer, updateAnswer, createComment, answers, question }) => {
 
   const handleEditAnswer = id => {
     editAnswer(id)
@@ -12,7 +15,7 @@ export default ({ editAnswer, createAnswer, updateAnswer, answers, question }) =
 
   const handleSubmitAnswer = event => {
     event.preventDefault()
-    createAnswer(parseForm(event.target), this.props.question.id)
+    createAnswer(parseForm(event.target), question.id)
   }
 
   const handleUpadateAnswer = (event, id) => {
@@ -24,9 +27,9 @@ export default ({ editAnswer, createAnswer, updateAnswer, answers, question }) =
     editComment(id)
   }
 
-  const handleCreateComment = (event, commentableType) => {
+  const handleCreateComment = (event, commentableId) => {
     event.preventDefault()
-    createComment(parseForm(event.target), commentableType)
+    createComment(parseForm(event.target), ANSWER, commentableId)
   }
 
   const handleUpdateComment = (event, commentableType, id) => {
@@ -36,7 +39,7 @@ export default ({ editAnswer, createAnswer, updateAnswer, answers, question }) =
 
   return (
     <div>
-      {answers ? answers.map(answer =>
+      {answers ? answers.map((answer, id) =>
           <div>
           {
             answer.edit ? <AnswerForm key={answer.id}  {...answer}
@@ -44,12 +47,12 @@ export default ({ editAnswer, createAnswer, updateAnswer, answers, question }) =
               <AnswerItem key={answer.id} {...answer} handleEditAnswer={handleEditAnswer} />
           }{
             answer.comments ? answer.comments.map (comment =>
-              comment.edit ? <CommentForm key={comment.id} {...comment}
+              !!comment.edit ? <CommentForm key={comment.id} {...comment}
                 handleSubmit={handleUpdateComment} handleCancelEdit={handleEditComment} /> :
                 <CommentItem key={comment.id} {...comment} />
             ) : null
          }
-         <CommentForm handleSubmit={(event, commentableType = ANSWER) => handleCreateComment(event, commentableType)} />
+         <CommentForm key={Math.random()} handleSubmit={handleCreateComment} commentableId={answer.id} />
          </div>
       ) : null}
       <AnswerForm key={Math.random()} handleSubmit={handleSubmitAnswer} />

@@ -1,5 +1,4 @@
 class Api::V1::AnswersController < Api::V1::ApplicationController
-  include Voted
   include Commented
 
   before_action :authenticate_user!

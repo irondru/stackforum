@@ -8,7 +8,11 @@ module Commented
 
   def new_comment
     @comment = @commentable.comments.new(comment_params)
-    render 'comments/new_comment' if @comment.save
+    if @comment.save
+      render json: { comment: CommentSerializer.new(@comment),
+        commentable_type: @comment.commentable_type,
+        commentable_id: @comment.commentable_id }
+    end
   end
 
   private
