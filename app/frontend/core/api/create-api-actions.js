@@ -1,5 +1,5 @@
 import { PENDING, SUCCESS, ERROR, GET } from 'core/constants'
-import _ from 'underscore';
+import _ from 'underscore'
 import fetch from 'isomorphic-fetch'
 
 const getCSRFToken = () =>

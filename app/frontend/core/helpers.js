@@ -2,7 +2,13 @@ import apiReducer from './api/api-reducer'
 
 export function parseForm (target) {
   let formData = {}
-  Array.from(target).forEach(field => formData[field.name] = field.value)
+  Array.from(target).forEach(field => {
+  if (field.type == 'file') {
+    formData[field.name] = formData[field.name] || []
+    formData[field.name].push({ id: field.id, file: field.value})
+  } else {
+    formData[field.name] = field.value
+  }  })
   return formData
 }
 

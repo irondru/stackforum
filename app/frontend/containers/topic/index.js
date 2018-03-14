@@ -10,9 +10,10 @@ class Topic extends React.Component {
     super(props)
     this.handles = {
      editAnswer: id => props.editAnswer(id),
-     submitAnswer: event => {
+     createAnswer: event => {
        event.preventDefault()
-       props.createAnswer(parseForm(event.target), question.id)
+       console.log(parseForm(event.target))
+       props.createAnswer(parseForm(event.target), this.props.question.id)
      },
      upadateAnswer: (event, id) => {
       event.preventDefault()
