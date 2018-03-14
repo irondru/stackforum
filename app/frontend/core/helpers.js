@@ -9,3 +9,12 @@ export function parseForm (target) {
 export const getApiReducer = actionType =>
   (state, action, _actionType = actionType) =>
     apiReducer(state, action, _actionType)
+
+export const payloadPush = (state, item) => ({
+  ...state,
+  fetching: 0,
+  payload: {
+    ...state.payload,
+    ...item
+  }
+})
