@@ -9,6 +9,7 @@ class QuestionSerializer < ActiveModel::Serializer
       title: object.title,
       body: object.body,
       created_at: object.created_at,
+      score: object.score,
       comments: object.comments.map { |comment| CommentSerializer.new(comment) }
     }
   end

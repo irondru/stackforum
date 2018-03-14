@@ -1,5 +1,5 @@
 class AnswerSerializer < ActiveModel::Serializer
-  attributes :id, :body, :user_id, :created_at, :access, :comments
+  attributes :id, :body, :user_id, :created_at, :score, :access, :comments
 
   #has_many :comments, each_serialiser: CommentSerializer #its not working, wtf?
 

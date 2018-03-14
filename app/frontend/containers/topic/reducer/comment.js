@@ -1,6 +1,6 @@
 
 import { payloadPush } from 'core'
-import { COMMENT, SUCCESS, CREATE, UPDATE, EDIT } from 'core/constants'
+import { COMMENT, SUCCESS, CREATE, UPDATE, EDIT, TYPE_ANSWER, TYPE_QUESTION } from 'core/constants'
 
 export default (state, action) => {
 
@@ -11,14 +11,14 @@ export default (state, action) => {
   switch (action.type ^ COMMENT + SUCCESS) {
     case CREATE:
       return payloadPush(state, {
-        "Answer": () => ({
+        [TYPE_ANSWER]: () => ({
           answers: state.payload.answers.map(answer =>
             answer.id === payload.commentable_id ? {
               ...answer,
               comments: [...answer.comments, action.payload.comment]
             } : answer )
         }),
-        "Question": () => ({
+        [TYPE_QUESTION]: () => ({
           question: {
             ...state.payload.question,
             comments: [...state.payload.question.comments, action.payload.comment]
@@ -38,7 +38,7 @@ export default (state, action) => {
       })
     case UPDATE:
       return payloadPush(state, {
-        "Answer": () => ({
+        [TYPE_ANSWER]: () => ({
           answers: state.payload.answers.map(answer =>
             answer.id === action.payload.commentable_id ? {
               ...answer,
@@ -46,7 +46,7 @@ export default (state, action) => {
                 comment.id === action.payload.comment.id ? action.payload.comment : comment)
             } : answer )
         }),
-        "Question": () => ({
+        [TYPE_QUESTION]: () => ({
           question: {
             ...state.payload.question,
             comments: state.payload.question.comments.map(comment =>

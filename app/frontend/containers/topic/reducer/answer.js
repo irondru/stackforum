@@ -4,7 +4,9 @@ import { ANSWER, SUCCESS, CREATE, UPDATE, EDIT } from 'core/constants'
 export default (state, action) => {
   switch (action.type ^ ANSWER + SUCCESS) {
     case CREATE:
-      return payloadPush(state, { answers: [...state.payload.answers, payload] })
+      return payloadPush(state, {
+        answers: [...state.payload.answers, payload]
+      })
     case UPDATE:
       return payloadPush(state, {
         answers: state.payload.answers.map(answer =>

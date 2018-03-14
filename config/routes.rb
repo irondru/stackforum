@@ -2,8 +2,7 @@ Rails.application.routes.draw do
 
   concern :votable do
     member do
-      get :up_vote
-      get :down_vote
+      post :change_vote
     end
   end
 

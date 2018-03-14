@@ -1,27 +1,37 @@
-module Api::V1::Voted
+module Voted
   extend ActiveSupport::Concern
 
   included do
-    before_action :set_post, only: [:up_vote, :down_vote]
+    before_action :set_post, only: :change_vote
   end
 
-  def up_vote
-    render json: respond(1)
-  end
-
-  def down_vote
-    render json: respond(-1)
+  def change_vote
+    case vote_params[:action]
+    when 'UP_VOTE'
+      render json: responce(1)
+    when 'DOWN_VOTE'
+      render json: responce(-1)
+    end
   end
 
   private
 
-  def respond(change_to)
-    { elem_id: controller_name.singularize + '-vote-' + @post.id.to_s,
-      score: @post.change_vote(current_user, change_to) }
+  def responce(change_to)
+    {
+      vote: {
+        score: @post.change_vote(current_user, change_to),
+        votable_type: @post.class.to_s,
+        votable_id: @post.id
+      }
+    }
   end
 
   def set_post
     @post = controller_name.classify.constantize.find(params[:id])
+  end
+
+  def vote_params
+    params.require(:vote).permit(:action)
   end
 
 end

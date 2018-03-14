@@ -5,6 +5,7 @@ class Api::V1::QuestionsController < Api::V1::ApplicationController
   #after_action :stream_question, only: [:create, :destroy]
 
   include Commented
+  include Voted
 
   authorize_resource
 

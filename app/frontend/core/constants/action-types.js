@@ -1,3 +1,5 @@
+export const UP_VOTE = 'UP_VOTE'
+export const DOWN_VOTE = 'DOWN_VOTE'
 export const PENDING = 0x0001
 export const SUCCESS = 0x0002
 export const ERROR = 0x0004
@@ -12,3 +14,4 @@ export const QUESTION = 0x0200
 export const ANSWER = 0x0400
 export const EDIT = 0x0800
 export const COMMENT = 0x1000
+export const VOTE = 0x2000

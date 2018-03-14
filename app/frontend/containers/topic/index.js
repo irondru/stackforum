@@ -26,6 +26,11 @@ class Topic extends React.Component {
      updateComment: (event, commentableType, commentableId, id) => {
        event.preventDefault()
        props.updateComment(parseForm(event.target), id)
+     },
+     changeVote: (event, votableType, votableId, action) => {
+       event.preventDefault()
+       //console.log(action);
+       props.changeVote(votableType, votableId, action)
      }
    }
   }
@@ -73,7 +78,9 @@ const mapDispatchToProps = dispatch => {
     createComment: (comment, commentableType, commentableId) =>
       dispatch(actions.createComment(comment, commentableType, commentableId)),
     editComment: (id) => dispatch(actions.editComment(id)),
-    updateComment: (comment, id) => dispatch(actions.updateComment(comment, id))
+    updateComment: (comment, id) => dispatch(actions.updateComment(comment, id)),
+    changeVote: (votableType, votableId, action) =>
+      dispatch(actions.changeVote(votableType, votableId, action))
   }
 }
 

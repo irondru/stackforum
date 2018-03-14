@@ -1,3 +1,6 @@
 export { default as Question } from './question'
 export { default as AnswerForm } from './answer-form'
 export { default as AnswerItem } from './answer-item'
+export { default as CommentForm } from './comment-form'
+export { default as CommentItem } from './comment-item'
+export { default as Vote } from './vote' 

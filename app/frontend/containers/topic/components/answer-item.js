@@ -1,9 +1,8 @@
 import React from 'react';
-import CommentItem from './comment-item'
-import CommentForm from './comment-form'
+import { CommentItem, CommentForm, Vote } from '../components'
 import { ANSWER } from 'core/constants'
 
-export default ({ id, body, comments, handles, handleEditAnswer }) => {
+export default ({ id, body, comments, score, handles, handleEditAnswer }) => {
   const commentsList = () =>
     comments ? comments.map (comment =>
       !!comment.edit ? <CommentForm key={comment.id} {...comment} {...{handles}} /> :
@@ -12,6 +11,7 @@ export default ({ id, body, comments, handles, handleEditAnswer }) => {
   return (
   <div>
     <p>{body}</p>
+    <Vote handles={handles} votableType={ANSWER} votableId={id} score={score} />
     <button onClick={handles.editAnswer.bind(null, id)}>Edit</button>
     {commentsList()}
     <CommentForm key={Math.random()} {...{handles}} commentableId={id} commentableType={ANSWER} />

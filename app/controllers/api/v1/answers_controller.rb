@@ -1,5 +1,6 @@
 class Api::V1::AnswersController < Api::V1::ApplicationController
   include Commented
+  include Voted
 
   before_action :authenticate_user!
   before_action :set_answer, except: :create
