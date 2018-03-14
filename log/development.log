@@ -3978,3 +3978,560 @@ Finished "/cable/" [WebSocket] for 127.0.0.1 at 2018-01-01 22:07:30 +0300
 Finished "/cable/" [WebSocket] for 127.0.0.1 at 2018-01-01 22:07:30 +0300
 QuestionChannel stopped streaming from question:Z2lkOi8vc3RhY2tmb3J1bS9RdWVzdGlvbi8x
 QuestionsChannel stopped streaming from questions
+Started GET "/" for 127.0.0.1 at 2018-03-14 22:13:29 +0300
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by QuestionsController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/index.html.slim within layouts/application
+  [1m[36mQuestion Load (1.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1[0m  [["LIMIT", 10]]
+  Rendered collection of questions/_question.html.slim [10 times] (5.1ms)
+  Rendered templates/_question.html.slim (4.0ms)
+  Rendered questions/index.html.slim within layouts/application (312.5ms)
+Started GET "/" for 127.0.0.1 at 2018-03-14 22:13:39 +0300
+Processing by QuestionsController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/index.html.slim within layouts/application
+  [1m[36mQuestion Load (1.1ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1[0m  [["LIMIT", 10]]
+  Rendered collection of questions/_question.html.slim [10 times] (7.9ms)
+  Rendered templates/_question.html.slim (18.4ms)
+  Rendered questions/index.html.slim within layouts/application (36.8ms)
+Completed 500 Internal Server Error in 6598ms (ActiveRecord: 29.4ms)
+
+
+  
+ActionView::Template::Error (can't add a new key into hash during iteration):
+     5:     = action_cable_meta_tag
+     6:     = csrf_meta_tags
+     7:     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+     8:     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+     9:     = Gon::Base.render_data
+    10: 
+    11:   body
+  
+app/views/layouts/application.html.slim:8:in `_app_views_layouts_application_html_slim___3118203696048563927_70073666756940'
+  Rendered common/_flashes.html.slim (4.1ms)
+  Rendered searches/_search.html.slim (22.9ms)
+Completed 200 OK in 17804ms (Views: 17586.4ms | ActiveRecord: 11.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-14 22:15:49 +0300
+  [1m[35m (3.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by QuestionsController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering questions/index.html.slim within layouts/application
+  [1m[36mQuestion Load (1.1ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1[0m  [["LIMIT", 10]]
+  Rendered collection of questions/_question.html.slim [10 times] (8.6ms)
+  Rendered templates/_question.html.slim (5.1ms)
+  Rendered questions/index.html.slim within layouts/application (80.4ms)
+  Rendered common/_flashes.html.slim (3.9ms)
+  Rendered searches/_search.html.slim (5.4ms)
+Completed 200 OK in 2868ms (Views: 2759.2ms | ActiveRecord: 17.3ms)
+
+
+Started GET "/cable" for 127.0.0.1 at 2018-03-14 22:15:53 +0300
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-03-14 22:15:53 +0300
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+QuestionsChannel is transmitting the subscription confirmation
+QuestionsChannel is streaming from questions
+QuestionsChannel#subscribed
+QuestionsChannel stopped streaming from questions
+QuestionsChannel is streaming from questions
+Started GET "/questions_pages/1" for 127.0.0.1 at 2018-03-14 22:15:59 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.6ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 10]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.92ms)
+Completed 200 OK in 109ms (Views: 101.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/questions_pages/2" for 127.0.0.1 at 2018-03-14 22:16:00 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"2"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (5.9ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 20]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.35ms)
+Completed 200 OK in 29ms (Views: 5.7ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/questions_pages/3" for 127.0.0.1 at 2018-03-14 22:16:01 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 30]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.76ms)
+Completed 200 OK in 8ms (Views: 3.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/questions_pages/4" for 127.0.0.1 at 2018-03-14 22:16:02 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.7ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 40]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.47ms)
+Completed 200 OK in 9ms (Views: 3.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:16:02 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.07ms)
+Completed 200 OK in 6ms (Views: 1.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:16:02 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (1.7ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.07ms)
+Completed 200 OK in 24ms (Views: 7.6ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:16:02 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (13.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (1.2ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.08ms)
+Completed 200 OK in 30ms (Views: 8.3ms | ActiveRecord: 14.2ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:16:02 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.9ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.13ms)
+Completed 200 OK in 17ms (Views: 1.6ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:16:02 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.08ms)
+Completed 200 OK in 6ms (Views: 1.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:16:02 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.07ms)
+Completed 200 OK in 7ms (Views: 2.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:16:02 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.12ms)
+Completed 200 OK in 18ms (Views: 5.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:16:02 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.08ms)
+Completed 200 OK in 14ms (Views: 1.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:16:02 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.07ms)
+Completed 200 OK in 9ms (Views: 1.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:16:02 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.09ms)
+Completed 200 OK in 9ms (Views: 1.8ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:16:03 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (15.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (3.3ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.1ms)
+Completed 200 OK in 25ms (Views: 1.5ms | ActiveRecord: 19.1ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:16:03 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.6ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.08ms)
+Completed 200 OK in 13ms (Views: 1.9ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:16:03 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (1.9ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.08ms)
+Completed 200 OK in 10ms (Views: 1.5ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:16:03 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.08ms)
+Completed 200 OK in 8ms (Views: 1.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:16:03 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (3.0ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.08ms)
+Completed 200 OK in 19ms (Views: 4.6ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:16:03 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (8.0ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.09ms)
+Completed 200 OK in 20ms (Views: 5.7ms | ActiveRecord: 9.1ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:16:03 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (5.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.6ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.08ms)
+Completed 200 OK in 14ms (Views: 2.3ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:16:04 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (1.6ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.09ms)
+Completed 200 OK in 19ms (Views: 6.8ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/questions/45" for 127.0.0.1 at 2018-03-14 22:16:09 +0300
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"45"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  Rendering questions/show.html.slim within layouts/application
+  Couldn't find template for digesting: ordereds/ordered
+  Rendered common/_errors.html.slim (4.7ms)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 45], ["commentable_type", "Question"]]
+  Rendered comments/_comments.html.slim (23.5ms)
+  Rendered common/_vote.html.slim (26.4ms)
+  [1m[36mAttachment Load (0.4ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 45], ["attachmentable_type", "Question"]]
+  Rendered attachments/_attachments.html.slim (45.7ms)
+  [1m[36mAnswer Load (2.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 45]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 9], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (26.6ms)
+  Rendered common/_vote.html.slim (0.6ms)
+  [1m[36mAttachment Load (1.6ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 9], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (19.5ms)
+  [1m[36mComment Load (6.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 10], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (18.5ms)
+  Rendered common/_vote.html.slim (0.5ms)
+  [1m[36mAttachment Load (2.9ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 10], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (6.5ms)
+  [1m[36mComment Load (5.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 11], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (15.3ms)
+  Rendered common/_vote.html.slim (0.5ms)
+  [1m[36mAttachment Load (0.5ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 11], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (3.9ms)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 12], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (3.5ms)
+  Rendered common/_vote.html.slim (1.6ms)
+  [1m[36mAttachment Load (2.9ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 12], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (5.8ms)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 13], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (16.7ms)
+  Rendered common/_vote.html.slim (0.5ms)
+  [1m[36mAttachment Load (0.4ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 13], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (3.0ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 14], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (4.3ms)
+  Rendered common/_vote.html.slim (2.1ms)
+  [1m[36mAttachment Load (0.3ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 14], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (3.2ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 15], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (4.5ms)
+  Rendered common/_vote.html.slim (1.5ms)
+  [1m[36mAttachment Load (0.3ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 15], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (2.6ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 16], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (3.5ms)
+  Rendered common/_vote.html.slim (1.2ms)
+  [1m[36mAttachment Load (0.3ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 16], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (2.5ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 17], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (3.7ms)
+  Rendered common/_vote.html.slim (1.1ms)
+  [1m[36mAttachment Load (0.3ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 17], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (2.5ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 18], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (2.8ms)
+  Rendered common/_vote.html.slim (1.6ms)
+  [1m[36mAttachment Load (0.3ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 18], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (2.7ms)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 19], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (3.1ms)
+  Rendered common/_vote.html.slim (0.5ms)
+  [1m[36mAttachment Load (0.3ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 19], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (2.6ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 20], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (3.2ms)
+  Rendered common/_vote.html.slim (0.5ms)
+  [1m[36mAttachment Load (0.3ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 20], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (3.3ms)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 21], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (3.3ms)
+  Rendered common/_vote.html.slim (1.4ms)
+  [1m[36mAttachment Load (0.3ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 21], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (2.7ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 22], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (4.1ms)
+  Rendered common/_vote.html.slim (0.5ms)
+  [1m[36mAttachment Load (0.3ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 22], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (2.7ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 23], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (2.9ms)
+  Rendered common/_vote.html.slim (1.2ms)
+  [1m[36mAttachment Load (0.3ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 23], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (2.6ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 24], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (3.0ms)
+  Rendered common/_vote.html.slim (0.5ms)
+  [1m[36mAttachment Load (0.3ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 24], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (3.5ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 25], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (2.8ms)
+  Rendered common/_vote.html.slim (1.2ms)
+  [1m[36mAttachment Load (0.3ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 25], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (2.7ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 26], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (3.1ms)
+  Rendered common/_vote.html.slim (0.5ms)
+  [1m[36mAttachment Load (0.3ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 26], ["attachmentable_type", "Answer"]]
+  Rendered attachments/_attachments.html.slim (2.6ms)
+  Rendered collection of answers/_answer.html.slim [18 times] (393.7ms)
+  Rendered attachments/_attachment_fields.html.slim (46.2ms)
+  Rendered answers/_form.html.slim (108.5ms)
+  Rendered templates/_answer_comments.html.slim (19.3ms)
+  Rendered templates/_answer_vote.html.slim (21.8ms)
+  Rendered templates/_answer_attachments.html.slim (30.8ms)
+  Rendered templates/_answer.html.slim (131.8ms)
+  Rendered templates/_answer_edit_form.html.slim (10.4ms)
+  Rendered templates/_comment_form.html.slim (5.4ms)
+  Rendered templates/_comment.html.slim (16.7ms)
+  Rendered questions/show.html.slim within layouts/application (961.4ms)
+  Rendered common/_flashes.html.slim (4.2ms)
+  Rendered searches/_search.html.slim (5.0ms)
+Completed 200 OK in 1142ms (Views: 980.1ms | ActiveRecord: 45.3ms)
+
+
+Unsubscribing from channel: {"channel":"QuestionsChannel"}
+QuestionsChannel stopped streaming from questions
+  [1m[36mQuestion Load (0.9ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+QuestionChannel is transmitting the subscription confirmation
+QuestionChannel is streaming from question:Z2lkOi8vc3RhY2tmb3J1bS9RdWVzdGlvbi80NQ
+QuestionChannel#subscribed
+QuestionChannel stopped streaming from question:Z2lkOi8vc3RhY2tmb3J1bS9RdWVzdGlvbi80NQ
+  [1m[36mQuestion Load (1.6ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+QuestionChannel is streaming from question:Z2lkOi8vc3RhY2tmb3J1bS9RdWVzdGlvbi80NQ
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:16:30 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (1.9ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.09ms)
+Completed 200 OK in 15ms (Views: 2.6ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:16:30 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (4.0ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.6ms)
+Completed 200 OK in 35ms (Views: 24.8ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:16:30 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.13ms)
+Completed 200 OK in 16ms (Views: 5.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:16:30 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.14ms)
+Completed 200 OK in 11ms (Views: 3.5ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:16:31 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.07ms)
+Completed 200 OK in 7ms (Views: 1.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:16:31 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.07ms)
+Completed 200 OK in 11ms (Views: 1.4ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:16:31 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.07ms)
+Completed 200 OK in 7ms (Views: 1.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:16:31 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.07ms)
+Completed 200 OK in 6ms (Views: 1.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:16:31 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.07ms)
+Completed 200 OK in 6ms (Views: 1.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:16:31 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (2.4ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.13ms)
+Completed 200 OK in 29ms (Views: 4.4ms | ActiveRecord: 3.9ms)
+
+
+Started POST "/questions/45/answers" for 127.0.0.1 at 2018-03-14 22:19:41 +0300
+Processing by AnswersController#create as JS
+  Parameters: {"utf8"=>"✓", "answer"=>{"body"=>"fghbvbnv ngh", "attachments_attributes"=>{"0"=>{"file"=>#<ActionDispatch::Http::UploadedFile:0x00007f8c2666d9b0 @tempfile=#<Tempfile:/tmp/RackMultipart20180314-28986-t18qxb.pdf>, @original_filename="CV.pdf", @content_type="application/pdf", @headers="Content-Disposition: form-data; name=\"answer[attachments_attributes][0][file]\"; filename=\"CV.pdf\"\r\nContent-Type: application/pdf\r\n">}}}, "commit"=>"Create Answer", "remotipart_submitted"=>"true", "authenticity_token"=>"3oq5PRGf2NstEG67WSKKDPHQWcv11OW8BEnBKMDblBbBhD7DmoOyU2FeBaGP82I9FaQdzquTL8U2shbAc2WO8g==", "X-Requested-With"=>"IFrame", "X-Http-Accept"=>"text/javascript, application/javascript, application/ecmascript, application/x-ecmascript, */*; q=0.01", "question_id"=>"45"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  [1m[35m (1.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (41.3ms)[0m  [1m[32mINSERT INTO "answers" ("question_id", "body", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["question_id", 45], ["body", "fghbvbnv ngh"], ["user_id", 2], ["created_at", "2018-03-14 19:19:41.940306"], ["updated_at", "2018-03-14 19:19:41.940306"]]
+  [1m[35mSQL (11.9ms)[0m  [1m[32mINSERT INTO "attachments" ("file", "attachmentable_type", "attachmentable_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["file", "CV.pdf"], ["attachmentable_type", "Answer"], ["attachmentable_id", 107], ["created_at", "2018-03-14 19:19:41.985077"], ["updated_at", "2018-03-14 19:19:41.985077"]]
+  [1m[35mSQL (19.0ms)[0m  [1m[33mUPDATE "questions" SET "updated_at" = '2018-03-14 19:19:42.007016' WHERE "questions"."id" = $1[0m  [["id", 45]]
+  [1m[35m (12.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering answers/create.js.erb
+  Couldn't find template for digesting: answers/_answer
+  [1m[36mUser Load (5.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 107], ["commentable_type", "Answer"]]
+  Rendered comments/_comments.html.slim (16.4ms)
+  Rendered common/_vote.html.slim (5.8ms)
+  [1m[36mAttachment Load (0.5ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."attachmentable_id" = $1 AND "attachments"."attachmentable_type" = $2[0m  [["attachmentable_id", 107], ["attachmentable_type", "Answer"]]
+  [1m[36mAnswer Load (0.6ms)[0m  [1m[34mSELECT  "answers".* FROM "answers" WHERE "answers"."id" = $1 LIMIT $2[0m  [["id", 107], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered attachments/_attachments.html.slim (46.6ms)
+  Rendered answers/_answer.html.slim (122.2ms) [cache miss]
+  Rendered answers/create.js.erb (125.9ms)
+[ActionCable] Broadcasting to question:Z2lkOi8vc3RhY2tmb3J1bS9RdWVzdGlvbi80NQ: {:action=>:create_answer, :answer=>#<Answer id: 107, question_id: 45, body: "fghbvbnv ngh", user_id: 2, best: false, created_at: "2018-03-14 19:19:41", updated_at: "2018-03-14 19:19:41", score: 0>, :question_user_id=>2, :attachments=>[{:id=>1, :name=>"CV.pdf", :url=>"/uploads/attachment/file/1/CV.pdf"}]}
+Completed 200 OK in 454ms (Views: 140.8ms | ActiveRecord: 94.3ms)
+
+
+QuestionChannel transmitting {"action"=>"create_answer", "answer"=>{"id"=>107, "question_id"=>45, "body"=>"fghbvbnv ngh", "user_id"=>2, "best"=>false, "created_at"=>"2018-03-14T19:19:41.940Z", "updated_at"=>"2018-03-14T19:19:41.940Z", "score"=>0}, "question_user_id"=>2, "attachments"=>[{"id"=>1, "name"=>"CV.pdf", "url"=>"/up... (via streamed from question:Z2lkOi8vc3RhY2tmb3J1bS9RdWVzdGlvbi80NQ)
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:19:46 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.9ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.26ms)
+Completed 200 OK in 8ms (Views: 2.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:19:46 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (8.6ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.08ms)
+Completed 200 OK in 20ms (Views: 2.3ms | ActiveRecord: 9.0ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:19:46 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.9ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.1ms)
+Completed 200 OK in 7ms (Views: 1.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:19:46 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (1.6ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.09ms)
+Completed 200 OK in 11ms (Views: 2.3ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:19:46 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.08ms)
+Completed 200 OK in 13ms (Views: 3.5ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/questions_pages/5" for 127.0.0.1 at 2018-03-14 22:19:46 +0300
+Processing by QuestionsController#index as JSON
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions"."id", "questions"."title" FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 50]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.08ms)
+Completed 200 OK in 11ms (Views: 2.6ms | ActiveRecord: 1.4ms)
+
+
