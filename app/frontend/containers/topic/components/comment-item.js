@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default ({ body, id, handleEdit }) =>
+export default ({ body, id, handles }) =>
   <div>
     <p>{body}</p>
-    <button onClick={handleEdit.bind(null, id)}>Editcomment</button>
+    <button onClick={handles.editComment.bind(null, id)}>Editcomment</button>
   </div>

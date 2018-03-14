@@ -38,8 +38,10 @@ export default (state, action) => {
               { ...answer, comments: [...answer.comments, action.payload.comment] } : answer )
         }),
         "Question": () => ({
-          question: state.payload.question.comments =
-            [...state.payload.question.comments, action.payload.comment]
+          question: {
+            ...state.payload.question,
+            comments: [...state.payload.question.comments, action.payload.comment]
+          }
         })
       }[action.payload.commentable_type]())
     case EDIT:

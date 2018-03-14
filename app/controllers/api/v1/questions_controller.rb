@@ -4,6 +4,8 @@ class Api::V1::QuestionsController < Api::V1::ApplicationController
   before_action :set_question, only: [:show, :update, :destroy]
   #after_action :stream_question, only: [:create, :destroy]
 
+  include Commented
+
   authorize_resource
 
   def index
@@ -28,7 +30,7 @@ class Api::V1::QuestionsController < Api::V1::ApplicationController
       render json: { question: { redirectTo: @question.id } }
     else
       render json: 'validation error', status: 422
-    end    
+    end
   end
 
   def destroy

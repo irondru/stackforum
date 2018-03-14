@@ -1,4 +1,3 @@
-export { Question } from './question'
-export { CommentItem } from './comment-item'
-export { CommentForm } from './comment-form'
-export { default as AnswersList } from './answers-list'
+export { default as Question } from './question'
+export { default as AnswerForm } from './answer-form'
+export { default as AnswerItem } from './answer-item'

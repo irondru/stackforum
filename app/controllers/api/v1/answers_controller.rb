@@ -3,7 +3,7 @@ class Api::V1::AnswersController < Api::V1::ApplicationController
 
   before_action :authenticate_user!
   before_action :set_answer, except: :create
-  after_action :stream_answer, only: [:create, :update, :destroy]
+  #after_action :stream_answer, only: [:create, :update, :destroy]
 
   authorize_resource
 

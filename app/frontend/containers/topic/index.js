@@ -2,12 +2,41 @@ import React from 'react'
 import { connect } from 'react-redux'
 import * as actions from './actions'
 
-import { AnswerForm, Question, AnswersList } from './components'
+import { AnswerForm, Question, AnswerItem } from './components'
 import { parseForm } from 'core'
 
 class Topic extends React.Component {
+  constructor(props) {
+    super(props)
+    this.handles = {
+     editAnswer: id => props.editAnswer(id),
+     submitAnswer: event => {
+       event.preventDefault()
+       props.createAnswer(parseForm(event.target), question.id)
+     },
+     upadateAnswer: (event, id) => {
+      event.preventDefault()
+      props.updateAnswer(parseForm(event.target), id)
+     },
+     editComment: (id) => props.editComment(id),
+     createComment: (event, commentableType, commentableId) => {
+       event.preventDefault()
+       props.createComment(parseForm(event.target), commentableType, commentableId)
+     },
+     updateComment: (event, commentableType, commentableId, id) => {
+       event.preventDefault()
+       props.updateComment(parseForm(event.target), id)
+     }
+   }
+  }
 
   componentDidMount = () => this.props.getTopic(this.props.params.id)
+
+  answersList = () =>
+    this.props.answers ? this.props.answers.map(answer =>
+      answer.edit ? <AnswerForm key={answer.id} {...answer} handles={this.handles}  /> :
+        <AnswerItem key={answer.id} {...answer} handles={this.handles} />
+   ) : null
 
   isLoad() {
     if (this.props.fetching) {
@@ -17,12 +46,15 @@ class Topic extends React.Component {
     }
   }
 
-  render = () =>
+  render = () => {
+    return (
     <div>
       {this.isLoad()}
-      <Question {...this.props.question} />
-      <AnswersList {...this.props} />
-    </div>
+      <Question handles={this.handles} {...this.props.question} />
+      {this.answersList()}
+      <AnswerForm key={Math.random()}  handleSubmit={this.handles.createAnswer} />
+    </div> )
+   }
 }
 
 const mapStateToProps = state => {
