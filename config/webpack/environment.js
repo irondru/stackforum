@@ -1,11 +1,13 @@
 const { environment } = require('@rails/webpacker')
 
 const webpack = require('webpack')
+//const AsyncAwaitPlugin = require('webpack-async-await')
 
 environment.plugins.set('Provide',  new webpack.ProvidePlugin({
         'window.Tether': "tether",
         Popper: ['popper.js', 'default'],
         ActionCable: 'actioncable-modules',
+        AsyncAwaitPlugin: 'webpack-async-await'
     })
 )
 

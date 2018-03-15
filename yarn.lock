@@ -120,6 +120,10 @@ acorn-dynamic-import@^2.0.0:
   dependencies:
     acorn "^4.0.3"
 
+acorn-es7-plugin@>=1.0.17:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/acorn-es7-plugin/-/acorn-es7-plugin-1.1.7.tgz#f2ee1f3228a90eead1245f9ab1922eb2e71d336b"
+
 acorn-jsx@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/acorn-jsx/-/acorn-jsx-3.0.1.tgz#afdf9488fb1ecefc8348f6fb22f464e32a58b36b"
@@ -6183,6 +6187,12 @@ wbuf@^1.1.0, wbuf@^1.7.2:
   resolved "https://registry.yarnpkg.com/wbuf/-/wbuf-1.7.2.tgz#d697b99f1f59512df2751be42769c1580b5801fe"
   dependencies:
     minimalistic-assert "^1.0.0"
+
+webpack-async-await@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/webpack-async-await/-/webpack-async-await-1.1.0.tgz#e19c7ddea30a912732cf52963f53b688834d98da"
+  dependencies:
+    acorn-es7-plugin ">=1.0.17"
 
 webpack-dev-middleware@^1.11.0:
   version "1.12.2"

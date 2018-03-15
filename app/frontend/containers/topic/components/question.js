@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import { TOPICS_PATH, QUESTION } from 'core/constants'
 import { CommentItem, CommentForm, Vote }  from '../components'
+import Upload from './upload-test'
 
 export default ({ title, body, id, score, comments, handles}) => {
   const commentsList = () =>
@@ -12,6 +13,7 @@ export default ({ title, body, id, score, comments, handles}) => {
 
   return (
       <div>
+        <Upload />
         <h3>{title}</h3>
         <Vote handles={handles} votableType={QUESTION} votableId={id} score={score} />
         <p>{body}</p>

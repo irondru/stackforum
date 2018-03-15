@@ -27,6 +27,7 @@ export default (api_path, method, actionType, body = {}) => dispatch => {
     ...options,
     body: JSON.stringify(body)
   }
+  console.log('adas');
   fetch(api_path, options)
     .then(response => checkResponse(response)
       .then(payload => dispatch({

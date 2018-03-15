@@ -1,3 +1,4 @@
+"use strict";
 import apiReducer from './api/api-reducer'
 
 export function parseForm (target) {
@@ -5,7 +6,13 @@ export function parseForm (target) {
   Array.from(target).forEach(field => {
   if (field.type == 'file') {
     formData[field.name] = formData[field.name] || []
-    formData[field.name].push({ id: field.id, file: field.value})
+    let reader = new FileReader()
+    reader.readAsDataURL(field.files[0])
+    reader.onloadend = () =>
+      formData[field.name].push({
+        id: field.id,
+        file: reader.result
+      })
   } else {
     formData[field.name] = field.value
   }  })
