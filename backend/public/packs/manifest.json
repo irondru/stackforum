@@ -1,0 +1,4 @@
+{
+  "app.js": "/packs/server-bundle.js",
+  "app.js.map": "/packs/server-bundle.js.map"
+}

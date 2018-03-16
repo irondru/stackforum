@@ -1,0 +1,9 @@
+I"¹(function() {
+  $(function() {
+    return $('a.vote-link').on('ajax:success', function(e, data, status, xhr) {
+      return alert(xhr.responseJSON.score);
+    });
+  });
+
+}).call(this);
+:ET
