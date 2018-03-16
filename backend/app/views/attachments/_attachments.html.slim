@@ -1,6 +1,0 @@
-ul
-  - owner.attachments.each do |a|
-    li id="attach-#{a.id}"
-      = link_to a.file.filename, a.file.url
-      = link_to 'delete', attachment_destroy_path(a),
-              method: :delete, remote: true if a.attachmentable.user == current_user

@@ -1,6 +1,0 @@
-div#attachments
-  p Attachments:
-  p
-    = form.fields_for :attachments, owner.attachments.build do |a|
-      = a.label :file
-      = a.file_field :file, class: :on_attachment

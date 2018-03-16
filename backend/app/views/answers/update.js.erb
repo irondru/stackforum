@@ -1,5 +1,0 @@
-<% if @answer.errors.present? %>
-  $('#answer_body').before('<%= j render 'common/errors', res: @answer %>');
-<% else %>
-  del_excess_forms();
-<% end %>

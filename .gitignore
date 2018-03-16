@@ -16,6 +16,7 @@
 
 /node_modules
 /frontend/node_modules
+/backend/log
 /public/packs
 
 /db/sphinx

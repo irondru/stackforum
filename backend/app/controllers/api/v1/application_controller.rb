@@ -1,4 +1,5 @@
 class Api::V1::ApplicationController < ActionController::Base
+  layout false
 
   serialization_scope :current_ability
   before_action :set_headers

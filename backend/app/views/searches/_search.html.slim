@@ -1,9 +1,0 @@
-#search
-  = check_box_tag :search_question, 1, false, class: 'search-checkbox'
-  = check_box_tag :search_answer, 2, false, class: 'search-checkbox'
-  = check_box_tag :search_comment, 4, false, class: 'search-checkbox'
-  = check_box_tag :search_user, 8, false, class: 'search-user'
-  = form_tag search_path, method: :get, onsubmit: 'set_query_param()'
-    = text_field_tag :query
-    = hidden_field_tag :query_params
-    = submit_tag 'Find'
