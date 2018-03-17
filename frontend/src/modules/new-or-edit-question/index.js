@@ -20,6 +20,7 @@ class NewOrEditQuestion extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    //console.log(parseForm(event.target))
     this.props.newOrUpdateQuestion(parseForm(event.target), this.props.params.id);
   }
 

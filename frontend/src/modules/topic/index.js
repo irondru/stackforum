@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import * as actions from './actions'
 
 import { AnswerForm, Question, AnswerItem } from './components'
-import { parseForm } from 'core'
+import { parseForm, parseForm_ } from 'core'
 
 class Topic extends React.Component {
   constructor(props) {
@@ -12,8 +12,9 @@ class Topic extends React.Component {
      editAnswer: id => props.editAnswer(id),
      createAnswer: event => {
        event.preventDefault()
-       console.log(parseForm(event.target))
-       props.createAnswer(parseForm(event.target), this.props.question.id)
+       let f = parseForm_(event.target)
+       console.log(f)
+       //props.createAnswer(f, this.props.question.id)
      },
      upadateAnswer: (event, id) => {
       event.preventDefault()

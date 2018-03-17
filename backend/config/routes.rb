@@ -53,7 +53,7 @@ Rails.application.routes.draw do
     'Access-Control-Allow-Origin' => 'http://localhost:3000',
     'Access-Control-Expose-Headers' => '',
     'Access-Control-Max-Age' => '1728000',
-    'Content-Type' => 'text/plain',
+    'Content-Type' => 'application/json',
     'Access-Control-Allow-Headers' => 'Content-Type, Accept',
   }, ["CORS Preflight"]] }, :via => [:options]
 

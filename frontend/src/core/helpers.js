@@ -3,19 +3,27 @@ import apiReducer from './api/api-reducer'
 export function parseForm (target) {
   let formData = {}
   Array.from(target).forEach(field => {
+    formData[field.name] = field.value
+  })
+  return formData
+}
+
+export function parseForm_ (target) {
+  let result = {}
+  Array.from(target).forEach(field => {
   if (field.type == 'file') {
-    formData[field.name] = formData[field.name] || []
+    result[field.name] = result[field.name] || []
     let reader = new FileReader()
     reader.readAsDataURL(field.files[0])
-    reader.onloadend = () =>
-      formData[field.name].push({
-        id: field.id,
-        file: reader.result
-      })
+    let fmData = new FormData()
+    fmData.append('filetyu', field.files[0])
+    
+    console.log(fmData);
+      result[field.name].push(fmData)
   } else {
-    formData[field.name] = field.value
+    result[field.name] = field.value
   }  })
-  return formData
+  return result
 }
 
 export const getApiReducer = actionType =>

@@ -17,3 +17,646 @@ Processing by Api::V1::QuestionsController#index as JSON
 Completed 200 OK in 65ms (Views: 0.3ms | ActiveRecord: 8.5ms)
 
 
+Started OPTIONS "/api/v1/questions/" for ::1 at 2018-03-17 01:57:21 +0300
+Started GET "/api/v1/questions/" for ::1 at 2018-03-17 01:57:22 +0300
+Processing by Api::V1::QuestionsController#index as JSON
+  Parameters: {"question"=>{}}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (1.6ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1[0m  [["LIMIT", 10]]
+Completed 200 OK in 221ms (Views: 20.2ms | ActiveRecord: 15.2ms)
+
+
+Started GET "/api/v1/questions/" for ::1 at 2018-03-17 02:01:57 +0300
+Processing by Api::V1::QuestionsController#index as JSON
+  Parameters: {"question"=>{}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.6ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1[0m  [["LIMIT", 10]]
+Completed 200 OK in 20ms (Views: 0.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/questions/" for ::1 at 2018-03-17 02:02:28 +0300
+Processing by Api::V1::QuestionsController#index as JSON
+  Parameters: {"question"=>{}}
+  [1m[36mUser Load (8.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (9.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1[0m  [["LIMIT", 10]]
+Completed 200 OK in 66ms (Views: 0.4ms | ActiveRecord: 18.0ms)
+
+
+Started OPTIONS "/api/v1/questions/45" for ::1 at 2018-03-17 02:02:29 +0300
+Started GET "/api/v1/questions/45" for ::1 at 2018-03-17 02:02:29 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"45", "question"=>{}}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (6.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 45], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (1.6ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 45]]
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 9], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 10], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 11], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 12], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 13], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 14], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 15], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 16], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 17], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 18], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 19], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 20], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 21], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 22], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 23], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 24], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 25], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 26], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 107], ["commentable_type", "Answer"]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (305.96ms)
+Completed 200 OK in 419ms (Views: 373.6ms | ActiveRecord: 21.9ms)
+
+
+Started GET "/api/v1/questions/" for ::1 at 2018-03-17 02:02:32 +0300
+Processing by Api::V1::QuestionsController#index as JSON
+  Parameters: {"question"=>{}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.6ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1[0m  [["LIMIT", 10]]
+Completed 200 OK in 16ms (Views: 0.4ms | ActiveRecord: 1.2ms)
+
+
+Started OPTIONS "/api/v1/questions/44" for ::1 at 2018-03-17 02:02:33 +0300
+Started GET "/api/v1/questions/44" for ::1 at 2018-03-17 02:02:33 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"44", "question"=>{}}
+  [1m[36mQuestion Load (0.9ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (1.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 44], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (0.6ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 44]]
+[active_model_serializers]   [1m[36mComment Load (6.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 68], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 69], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 70], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 71], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 72], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 73], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 74], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 75], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 76], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 77], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 78], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 79], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 108], ["commentable_type", "Answer"]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (91.27ms)
+Completed 200 OK in 101ms (Views: 75.2ms | ActiveRecord: 19.4ms)
+
+
+Started GET "/api/v1/questions/" for ::1 at 2018-03-17 02:02:35 +0300
+Processing by Api::V1::QuestionsController#index as JSON
+  Parameters: {"question"=>{}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (1.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1[0m  [["LIMIT", 10]]
+Completed 200 OK in 30ms (Views: 4.9ms | ActiveRecord: 2.0ms)
+
+
+Started OPTIONS "/api/v1/questions/undefined" for ::1 at 2018-03-17 02:02:41 +0300
+Started POST "/api/v1/questions/undefined" for ::1 at 2018-03-17 02:02:41 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/questions/undefined"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started OPTIONS "/api/v1/questions/" for ::1 at 2018-03-17 02:12:12 +0300
+Started GET "/api/v1/questions/" for ::1 at 2018-03-17 02:12:12 +0300
+Processing by Api::V1::QuestionsController#index as JSON
+  Parameters: {"question"=>{}}
+  [1m[36mUser Load (17.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (4.9ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1[0m  [["LIMIT", 10]]
+Completed 200 OK in 82ms (Views: 0.4ms | ActiveRecord: 22.0ms)
+
+
+Started OPTIONS "/api/v1/questions/43" for ::1 at 2018-03-17 02:12:16 +0300
+Started GET "/api/v1/questions/43" for ::1 at 2018-03-17 02:12:16 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"43", "question"=>{}}
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 43], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (1.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 43]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (11.33ms)
+Completed 200 OK in 36ms (Views: 20.0ms | ActiveRecord: 5.3ms)
+
+
+Started OPTIONS "/api/v1/questions/43/change_vote" for ::1 at 2018-03-17 02:12:21 +0300
+Started POST "/api/v1/questions/43/change_vote" for ::1 at 2018-03-17 02:12:21 +0300
+Processing by Api::V1::QuestionsController#change_vote as JSON
+  Parameters: {"vote"=>{"action"=>"DOWN_VOTE"}, "id"=>"43", "question"=>{}}
+  [1m[36mQuestion Load (2.7ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mVote Load (54.6ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."votable_id" = $1 AND "votes"."votable_type" = $2 AND "votes"."user_id" = 2 ORDER BY "votes"."id" ASC LIMIT $3[0m  [["votable_id", 43], ["votable_type", "Question"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[35mSQL (190.6ms)[0m  [1m[33mUPDATE "votes" SET "changed_to" = $1 WHERE "votes"."id" = $2[0m  [["changed_to", -1], ["id", 16]]
+  [1m[35m (26.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (10.5ms)[0m  [1m[33mUPDATE "questions" SET "score" = $1, "updated_at" = $2 WHERE "questions"."id" = $3[0m  [["score", -1], ["updated_at", "2018-03-16 23:12:22.326728"], ["id", 43]]
+  [1m[35m (10.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 590ms (Views: 0.4ms | ActiveRecord: 302.2ms)
+
+
+Started GET "/api/v1/questions/43" for ::1 at 2018-03-17 02:12:54 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"43", "question"=>{}}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 43], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (0.5ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 43]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (4.46ms)
+Completed 200 OK in 12ms (Views: 4.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/v1/questions/43" for ::1 at 2018-03-17 02:13:07 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"43", "question"=>{}}
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 43], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (1.0ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 43]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (14.45ms)
+Completed 200 OK in 26ms (Views: 13.9ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/api/v1/questions/43" for ::1 at 2018-03-17 02:13:12 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"43", "question"=>{}}
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 43], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (0.5ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 43]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (4.83ms)
+Completed 200 OK in 11ms (Views: 4.6ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/api/v1/questions/43" for ::1 at 2018-03-17 02:14:31 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"43", "question"=>{}}
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[36mUser Load (3.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (1.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 43], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (5.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 43]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (40.42ms)
+Completed 200 OK in 65ms (Views: 35.6ms | ActiveRecord: 10.8ms)
+
+
+Started PATCH "/api/v1/questions/43" for ::1 at 2018-03-17 02:14:35 +0300
+Processing by Api::V1::QuestionsController#update as JSON
+  Parameters: {"question"=>{"title"=>"test", "body"=>"tets675", "submit"=>""}, "id"=>"43"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (1.1ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+Unpermitted parameter: :submit
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "questions" SET "body" = $1, "updated_at" = $2 WHERE "questions"."id" = $3[0m  [["body", "tets675"], ["updated_at", "2018-03-16 23:14:35.830323"], ["id", 43]]
+  [1m[35m (33.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 177ms (Views: 0.4ms | ActiveRecord: 36.0ms)
+
+
+Started GET "/api/v1/questions/43" for ::1 at 2018-03-17 02:14:35 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"43", "question"=>{}}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (2.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 43], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (3.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 43]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (11.24ms)
+Completed 200 OK in 28ms (Views: 10.3ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/api/v1/questions/43" for ::1 at 2018-03-17 02:14:39 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"43", "question"=>{}}
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (4.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 43], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (2.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 43]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (16.91ms)
+Completed 200 OK in 91ms (Views: 72.8ms | ActiveRecord: 7.9ms)
+
+
+Started GET "/api/v1/questions/43" for ::1 at 2018-03-17 02:14:39 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"43", "question"=>{}}
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[36mUser Load (5.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (3.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 43], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (1.0ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 43]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (9.71ms)
+Completed 200 OK in 44ms (Views: 21.4ms | ActiveRecord: 10.6ms)
+
+
+Started GET "/api/v1/questions/43" for ::1 at 2018-03-17 02:14:39 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"43", "question"=>{}}
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 43], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (1.0ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 43]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (26.71ms)
+Completed 200 OK in 45ms (Views: 37.1ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/api/v1/questions/43" for ::1 at 2018-03-17 02:14:42 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"43", "question"=>{}}
+  [1m[36mQuestion Load (2.7ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (4.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 43], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (24.7ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 43]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (38.01ms)
+Completed 200 OK in 52ms (Views: 11.5ms | ActiveRecord: 34.1ms)
+
+
+Started GET "/api/v1/questions/43" for ::1 at 2018-03-17 02:15:06 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"43", "question"=>{}}
+  [1m[36mQuestion Load (0.7ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (24.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 43], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (3.0ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 43]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (77.05ms)
+Completed 200 OK in 98ms (Views: 59.8ms | ActiveRecord: 29.2ms)
+
+
+Started GET "/api/v1/questions/" for ::1 at 2018-03-17 02:15:09 +0300
+Processing by Api::V1::QuestionsController#index as JSON
+  Parameters: {"question"=>{}}
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (3.8ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1[0m  [["LIMIT", 10]]
+Completed 200 OK in 59ms (Views: 10.9ms | ActiveRecord: 6.3ms)
+
+
+Started POST "/api/v1/questions/" for ::1 at 2018-03-17 02:15:17 +0300
+Processing by Api::V1::QuestionsController#create as JSON
+  Parameters: {"question"=>{"title"=>"testsdf", "body"=>"ssdffes", "submit"=>""}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Unpermitted parameter: :submit
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (112.6ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "testsdf"], ["body", "ssdffes"], ["user_id", 2], ["created_at", "2018-03-16 23:15:17.664398"], ["updated_at", "2018-03-16 23:15:17.664398"]]
+  [1m[35m (10.7ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 148ms (Views: 0.4ms | ActiveRecord: 125.6ms)
+
+
+Started OPTIONS "/api/v1/questions/46" for ::1 at 2018-03-17 02:15:17 +0300
+Started GET "/api/v1/questions/46" for ::1 at 2018-03-17 02:15:17 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"46", "question"=>{}}
+  [1m[36mQuestion Load (0.8ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 46], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (3.6ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 46]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (15.93ms)
+Completed 200 OK in 36ms (Views: 13.8ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/api/v1/questions/46" for ::1 at 2018-03-17 02:16:19 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"46", "question"=>{}}
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (32.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 46], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (3.7ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 46]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (77.02ms)
+Completed 200 OK in 105ms (Views: 47.2ms | ActiveRecord: 39.9ms)
+
+
+Started OPTIONS "/api/v1/questions/" for ::1 at 2018-03-17 02:23:33 +0300
+Started POST "/api/v1/questions/" for ::1 at 2018-03-17 02:23:34 +0300
+Processing by Api::V1::QuestionsController#create as JSON
+  Parameters: {"question"=>{"title"=>"dfgfgdf", "body"=>"dfgdfgdgd", "submit"=>""}}
+  [1m[36mUser Load (4.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Unpermitted parameter: :submit
+  [1m[35m (3.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "dfgfgdf"], ["body", "dfgdfgdgd"], ["user_id", 2], ["created_at", "2018-03-16 23:23:34.060918"], ["updated_at", "2018-03-16 23:23:34.060918"]]
+  [1m[35m (27.7ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 79ms (Views: 0.3ms | ActiveRecord: 36.3ms)
+
+
+Started OPTIONS "/api/v1/questions/47" for ::1 at 2018-03-17 02:23:34 +0300
+Started GET "/api/v1/questions/47" for ::1 at 2018-03-17 02:23:34 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"47", "question"=>{}}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 47], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 47], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (0.6ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 47]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (18.97ms)
+Completed 200 OK in 25ms (Views: 18.9ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/v1/questions/47" for ::1 at 2018-03-17 02:26:52 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"47", "question"=>{}}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 47], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 47], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (0.6ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 47]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (63.75ms)
+Completed 200 OK in 354ms (Views: 150.4ms | ActiveRecord: 35.3ms)
+
+
+Started OPTIONS "/api/v1/questions/" for ::1 at 2018-03-17 02:27:01 +0300
+Started GET "/api/v1/questions/" for ::1 at 2018-03-17 02:27:01 +0300
+Processing by Api::V1::QuestionsController#index as JSON
+  Parameters: {"question"=>{}}
+  [1m[36mUser Load (18.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.6ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" ORDER BY "questions"."created_at" DESC LIMIT $1[0m  [["LIMIT", 10]]
+Completed 200 OK in 167ms (Views: 45.3ms | ActiveRecord: 18.5ms)
+
+
+Started GET "/api/v1/questions/47" for ::1 at 2018-03-17 02:29:08 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"47", "question"=>{}}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 47], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 47], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (0.5ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 47]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (22.69ms)
+Completed 200 OK in 33ms (Views: 23.2ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/v1/questions/47" for ::1 at 2018-03-17 02:29:17 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"47", "question"=>{}}
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 47], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (25.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 47], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (27.0ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 47]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (100.69ms)
+Completed 200 OK in 160ms (Views: 94.2ms | ActiveRecord: 53.7ms)
+
+
+Started GET "/api/v1/questions/47" for ::1 at 2018-03-17 02:30:33 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"47", "question"=>{}}
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 47], ["LIMIT", 1]]
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (7.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 47], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (5.6ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 47]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (43.12ms)
+Completed 200 OK in 90ms (Views: 32.2ms | ActiveRecord: 15.0ms)
+
+
+Started GET "/api/v1/questions/47" for ::1 at 2018-03-17 02:31:55 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"47", "question"=>{}}
+  [1m[36mQuestion Load (3.5ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 47], ["LIMIT", 1]]
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (7.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 47], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (1.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 47]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (38.36ms)
+Completed 200 OK in 62ms (Views: 33.5ms | ActiveRecord: 15.1ms)
+
+
+Started GET "/api/v1/questions/47" for ::1 at 2018-03-17 02:32:35 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"47", "question"=>{}}
+  [1m[36mQuestion Load (0.9ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 47], ["LIMIT", 1]]
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 47], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (0.5ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 47]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (6.4ms)
+Completed 200 OK in 21ms (Views: 6.3ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/api/v1/questions/47" for ::1 at 2018-03-17 02:33:15 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"47", "question"=>{}}
+  [1m[36mQuestion Load (1.9ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 47], ["LIMIT", 1]]
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (8.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 47], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (5.7ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 47]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (34.68ms)
+Completed 200 OK in 55ms (Views: 28.0ms | ActiveRecord: 18.3ms)
+
+
+Started OPTIONS "/api/v1/questions/47" for ::1 at 2018-03-17 02:44:30 +0300
+Started GET "/api/v1/questions/47" for ::1 at 2018-03-17 02:44:30 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"47", "question"=>{}}
+  [1m[36mQuestion Load (0.6ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 47], ["LIMIT", 1]]
+  [1m[36mUser Load (34.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (2.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 47], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (7.0ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 47]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (23.38ms)
+Completed 200 OK in 73ms (Views: 15.3ms | ActiveRecord: 44.3ms)
+
+
+Started GET "/api/v1/questions/47" for ::1 at 2018-03-17 02:44:57 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"47", "question"=>{}}
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 47], ["LIMIT", 1]]
+  [1m[36mUser Load (11.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (4.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 47], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (1.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 47]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (21.73ms)
+Completed 200 OK in 43ms (Views: 16.8ms | ActiveRecord: 17.5ms)
+
+
+Started OPTIONS "/api/v1/questions/46" for ::1 at 2018-03-17 02:45:40 +0300
+Started GET "/api/v1/questions/46" for ::1 at 2018-03-17 02:45:40 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"46", "question"=>{}}
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 46], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (1.5ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 46]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (10.46ms)
+Completed 200 OK in 20ms (Views: 9.6ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/api/v1/questions/47" for ::1 at 2018-03-17 02:45:41 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"47", "question"=>{}}
+  [1m[36mQuestion Load (1.9ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 47], ["LIMIT", 1]]
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (23.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 47], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (12.5ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 47]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (46.6ms)
+Completed 200 OK in 62ms (Views: 13.1ms | ActiveRecord: 41.3ms)
+
+
+Started GET "/api/v1/questions/47" for ::1 at 2018-03-17 02:45:44 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"47", "question"=>{}}
+  [1m[36mQuestion Load (2.6ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 47], ["LIMIT", 1]]
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (3.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 47], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (1.7ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 47]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (38.63ms)
+Completed 200 OK in 63ms (Views: 43.3ms | ActiveRecord: 11.0ms)
+
+
+Started GET "/api/v1/questions/47" for ::1 at 2018-03-17 02:46:36 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"47", "question"=>{}}
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 47], ["LIMIT", 1]]
+  [1m[36mUser Load (4.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 47], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (0.8ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 47]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (11.69ms)
+Completed 200 OK in 23ms (Views: 11.6ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/api/v1/questions/47" for ::1 at 2018-03-17 02:48:16 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"47", "question"=>{}}
+  [1m[36mQuestion Load (1.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 47], ["LIMIT", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 47], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (0.5ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 47]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (7.53ms)
+Completed 200 OK in 27ms (Views: 7.8ms | ActiveRecord: 2.9ms)
+
+
+Started OPTIONS "/api/v1/questions/47/answers" for ::1 at 2018-03-17 02:48:25 +0300
+Started POST "/api/v1/questions/47/answers" for ::1 at 2018-03-17 02:48:25 +0300
+Processing by Api::V1::AnswersController#create as JSON
+  Parameters: {"answer"=>{"body"=>"414", "Create"=>"", "attachments"=>[]}, "question_id"=>"47"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Unpermitted parameter: :Create
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 47], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (33.4ms)[0m  [1m[32mINSERT INTO "answers" ("question_id", "body", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["question_id", 47], ["body", "414"], ["user_id", 2], ["created_at", "2018-03-16 23:48:25.635770"], ["updated_at", "2018-03-16 23:48:25.635770"]]
+  [1m[35mSQL (0.8ms)[0m  [1m[33mUPDATE "questions" SET "updated_at" = '2018-03-16 23:48:25.671079' WHERE "questions"."id" = $1[0m  [["id", 47]]
+  [1m[35m (14.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 180ms (Views: 0.5ms | ActiveRecord: 53.6ms)
+
+
+Started POST "/api/v1/questions/47/answers" for ::1 at 2018-03-17 02:51:12 +0300
+Processing by Api::V1::AnswersController#create as JSON
+  Parameters: {"answer"=>{"body"=>"asdas", "Create"=>"", "attachments"=>[]}, "question_id"=>"47"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Unpermitted parameter: :Create
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 47], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "answers" ("question_id", "body", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["question_id", 47], ["body", "asdas"], ["user_id", 2], ["created_at", "2018-03-16 23:51:12.426907"], ["updated_at", "2018-03-16 23:51:12.426907"]]
+  [1m[35mSQL (0.9ms)[0m  [1m[33mUPDATE "questions" SET "updated_at" = '2018-03-16 23:51:12.432137' WHERE "questions"."id" = $1[0m  [["id", 47]]
+  [1m[35m (14.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 42ms (Views: 0.3ms | ActiveRecord: 19.4ms)
+
+
+Started OPTIONS "/api/v1/questions/47" for ::1 at 2018-03-17 03:09:58 +0300
+Started GET "/api/v1/questions/47" for ::1 at 2018-03-17 03:09:58 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"47", "question"=>{}}
+  [1m[36mQuestion Load (51.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 47], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 47], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (47.6ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 47]]
+[active_model_serializers]   [1m[36mComment Load (15.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 118], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 119], ["commentable_type", "Answer"]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (609.5ms)
+Completed 200 OK in 908ms (Views: 546.2ms | ActiveRecord: 116.4ms)
+
+
+Started GET "/api/v1/questions/47" for ::1 at 2018-03-17 03:11:15 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"47", "question"=>{}}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 47], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 47], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (0.6ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 47]]
+[active_model_serializers]   [1m[36mComment Load (8.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 118], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 119], ["commentable_type", "Answer"]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (68.68ms)
+Completed 200 OK in 80ms (Views: 62.4ms | ActiveRecord: 11.6ms)
+
+
+Started OPTIONS "/api/v1/questions/47/answers" for ::1 at 2018-03-17 03:11:25 +0300
+Started POST "/api/v1/questions/47/answers" for ::1 at 2018-03-17 03:11:25 +0300
+Processing by Api::V1::AnswersController#create as JSON
+  Parameters: {"answer"=>{"body"=>"14", "Create"=>"", "attachments"=>[{}]}, "question_id"=>"47"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Unpermitted parameter: :Create
+  [1m[36mQuestion Load (2.5ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 47], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 3.3ms)
+
+
+  
+ActiveRecord::AssociationTypeMismatch (Attachment(#69964044543900) expected, got {} which is an instance of ActiveSupport::HashWithIndifferentAccess(#47137958662440)):
+  
+app/controllers/api/v1/answers_controller.rb:12:in `create'
+Started GET "/api/v1/questions/47" for ::1 at 2018-03-17 03:12:14 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"47", "question"=>{}}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 47], ["LIMIT", 1]]
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 47], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (0.5ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 47]]
+[active_model_serializers]   [1m[36mComment Load (3.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 118], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 119], ["commentable_type", "Answer"]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (20.84ms)
+Completed 200 OK in 40ms (Views: 19.4ms | ActiveRecord: 7.1ms)
+
+
+Started GET "/api/v1/questions/47" for ::1 at 2018-03-17 03:15:10 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"47", "question"=>{}}
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 47], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 47], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (0.6ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 47]]
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 118], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 119], ["commentable_type", "Answer"]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (9.8ms)
+Completed 200 OK in 16ms (Views: 9.0ms | ActiveRecord: 3.1ms)
+
+
+Started OPTIONS "/api/v1/questions/47" for ::1 at 2018-03-17 03:22:03 +0300
+Started GET "/api/v1/questions/47" for ::1 at 2018-03-17 03:22:03 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"47", "question"=>{}}
+  [1m[36mQuestion Load (4.0ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 47], ["LIMIT", 1]]
+  [1m[36mUser Load (6.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (29.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 47], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (26.5ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 47]]
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 118], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (5.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 119], ["commentable_type", "Answer"]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (97.67ms)
+Completed 200 OK in 136ms (Views: 36.6ms | ActiveRecord: 72.3ms)
+
+
+Started GET "/api/v1/questions/47" for ::1 at 2018-03-17 03:22:25 +0300
+Processing by Api::V1::QuestionsController#show as JSON
+  Parameters: {"id"=>"47", "question"=>{}}
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 47], ["LIMIT", 1]]
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (2.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 47], ["commentable_type", "Question"]]
+[active_model_serializers]   [1m[36mAnswer Load (1.9ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1 ORDER BY best desc, created_at[0m  [["question_id", 47]]
+[active_model_serializers]   [1m[36mComment Load (4.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 118], ["commentable_type", "Answer"]]
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 119], ["commentable_type", "Answer"]]
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (44.85ms)
+Completed 200 OK in 73ms (Views: 40.2ms | ActiveRecord: 10.3ms)
+
+
