@@ -5,8 +5,8 @@ export default({ id, body, edit, handleSubmit, handleCancelEdit }) =>
       <form onSubmit={(e) => handleSubmit(e, id)}>
         <textarea name="body" />
         <br/>
-        <input type="submit" name="Create" />
-        <input type="file" name="attachments" id="0" />
+        <input type="submit" name="submit" />
+        <input type="file" name="attachments_attributes" id="0" />
       </form>
       {handleCancelEdit ? <button onClick={handleCancelEdit.bind(null, id)}>Cancel</button> : <div/> }
     </div>

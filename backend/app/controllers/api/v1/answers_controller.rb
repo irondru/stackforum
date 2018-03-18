@@ -48,7 +48,7 @@ class Api::V1::AnswersController < Api::V1::ApplicationController
   end
 
   def answer_params
-    params.require(:answer).permit(:body, attachments: [:id, :file])
+    params.require(:answer).permit(:body, attachments_attributes: [:file])
         .merge(user: current_user)
   end
 

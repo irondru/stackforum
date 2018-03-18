@@ -1,10 +1,10 @@
 import { SUCCESS, VOTE, TYPE_QUESTION, TYPE_ANSWER } from 'core/constants'
-import { payloadPush } from 'core'
+import { pushInPayload } from 'core'
 
 export default (state, action) => {
   switch (action.type ^ VOTE) {
     case SUCCESS:
-      return payloadPush(state, {
+      return pushInPayload(state, {
         [TYPE_ANSWER]: () => ({
           answers: state.payload.answers.map(answer =>
           answer.id === action.payload.vote.votable_id ? {

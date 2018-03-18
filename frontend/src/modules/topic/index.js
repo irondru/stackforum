@@ -12,9 +12,8 @@ class Topic extends React.Component {
      editAnswer: id => props.editAnswer(id),
      createAnswer: event => {
        event.preventDefault()
-       let f = parseForm_(event.target)
-       console.log(f)
-       //props.createAnswer(f, this.props.question.id)
+       parseForm_(event.target)
+       .then(res => props.createAnswer(res, this.props.question.id))
      },
      upadateAnswer: (event, id) => {
       event.preventDefault()

@@ -4,6 +4,6 @@ export { routes } from './routes'
 export {
   parseForm,
   getApiReducer,
-  payloadPush,
+  pushInPayload,
   parseForm_
 } from './helpers'

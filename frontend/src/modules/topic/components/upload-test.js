@@ -16,12 +16,13 @@ class Upload extends React.Component {
 
    reader.onloadend = function() {
      //that.setState({ url: reader.result, file: file });
-     that.props.sendfile('filename:tesdf.zip;'+reader.result)
+     that.props.sendfile(reader.result)
      console.log('filename:tesdf.zip;'+reader.result);
    }
 
    if (file) {
     reader.readAsDataURL(file);
+    console.log('11111111');
    } else {
     this.setState({ url: "", file: null });
    }
@@ -34,7 +35,7 @@ class Upload extends React.Component {
 }
 
 const filesend = (file) =>
-createApiActions('/api/v1/questions/41/answers', 'POST', 0x4000, { answer:{
+createApiActions('http://localhost:4200/api/v1/questions/41/answers', 'POST', 0x4000, { answer:{
   body:'blasdadsfd',
   attachments_attributes: [{file: file}]
 }})

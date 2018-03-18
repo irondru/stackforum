@@ -1,5 +1,5 @@
 
-import { payloadPush } from 'core'
+import { pushInPayload } from 'core'
 import { COMMENT, SUCCESS, CREATE, UPDATE, EDIT, TYPE_ANSWER, TYPE_QUESTION } from 'core/constants'
 
 export default (state, action) => {
@@ -10,7 +10,7 @@ export default (state, action) => {
 
   switch (action.type ^ COMMENT + SUCCESS) {
     case CREATE:
-      return payloadPush(state, {
+      return pushInPayload(state, {
         [TYPE_ANSWER]: () => ({
           answers: state.payload.answers.map(answer =>
             answer.id === action.payload.commentable_id ? {
@@ -26,7 +26,7 @@ export default (state, action) => {
         })
       }[action.payload.commentable_type]())
     case EDIT:
-      return payloadPush(state, {
+      return pushInPayload(state, {
         answers: state.payload.answers.map(answer => ({
           ...answer,
           comments: setEditComment(answer.comments)
@@ -37,7 +37,7 @@ export default (state, action) => {
         }
       })
     case UPDATE:
-      return payloadPush(state, {
+      return pushInPayload(state, {
         [TYPE_ANSWER]: () => ({
           answers: state.payload.answers.map(answer =>
             answer.id === action.payload.commentable_id ? {
