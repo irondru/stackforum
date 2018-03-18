@@ -1,13 +1,5 @@
 import apiReducer from './api/api-reducer'
 
-export function parseForm (target) {
-  let formData = {}
-  Array.from(target).forEach(field => {
-    formData[field.name] = field.value
-  })
-  return formData
-}
-
 export function parseForm__ (target) {
   let result = new FormData()
   Array.from(target).forEach(field => {

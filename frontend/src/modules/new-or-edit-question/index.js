@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
 
 import * as actions from './actions'
-import { parseForm } from 'core'
+import { formToJSON } from 'core'
 import QuestionForm from './components/form'
 import { TOPICS_PATH } from 'core/constants'
 
@@ -19,9 +19,9 @@ class NewOrEditQuestion extends React.Component {
   }
 
   handleSubmit = event => {
-    event.preventDefault();
-    //console.log(parseForm(event.target))
-    this.props.newOrUpdateQuestion(parseForm(event.target), this.props.params.id);
+    event.preventDefault()
+    formToJSON(event.target)
+    .then(jform => this.props.newOrUpdateQuestion(jform, this.props.params.id))
   }
 
   render = () => {

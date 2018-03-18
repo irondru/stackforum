@@ -1,25 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { parseForm } from 'core'
+import { formToJSON } from 'core'
 
 import * as actions from './actions'
 import FormLogin from './components/form-login'
 
 class UserLogin extends React.Component {
-  constructor(props) {
-    super(props)
-  }
 
   onSubmit = event => {
-    event.preventDefault();
-    this.props.signIn(parseForm(event.target));
+    event.preventDefault()
+    formToJSON(event.target)
+    .then(jform => this.props.signIn(jform))
   }
 
   componentDidMount = () => this.props.getProfile()
-
-  click () {
-    alert('lol')
-  }
 
   render() {
     if (this.props.fetching) return (
@@ -40,11 +34,9 @@ class UserLogin extends React.Component {
 }
 }
 
-const mapStateToProps = state => {
-  return {
+const mapStateToProps = state => ({
     ...state.user
-  }
-}
+})
 
 
 const mapDispatchToProps = dispatch => {

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import * as actions from './actions'
 
 import { AnswerForm, Question, AnswerItem } from './components'
-import { parseForm, parseForm_ } from 'core'
+import { formToJSON } from 'core'
 
 class Topic extends React.Component {
   constructor(props) {
@@ -12,25 +12,27 @@ class Topic extends React.Component {
      editAnswer: id => props.editAnswer(id),
      createAnswer: event => {
        event.preventDefault()
-       parseForm_(event.target)
+       formToJSON(event.target)
        .then(res => props.createAnswer(res, this.props.question.id))
      },
      upadateAnswer: (event, id) => {
       event.preventDefault()
-      props.updateAnswer(parseForm(event.target), id)
+      formToJSON(event.target)
+      .then(jform => props.updateAnswer(jform, id))
      },
      editComment: (id) => props.editComment(id),
      createComment: (event, commentableType, commentableId) => {
        event.preventDefault()
-       props.createComment(parseForm(event.target), commentableType, commentableId)
+       formToJSON(event.target)
+       .then(jform => props.createComment(jform, commentableType, commentableId))
      },
      updateComment: (event, commentableType, commentableId, id) => {
        event.preventDefault()
-       props.updateComment(parseForm(event.target), id)
+       formToJSON(event.target)
+       .then(jform => props.updateComment(jform, id))
      },
      changeVote: (event, votableType, votableId, action) => {
        event.preventDefault()
-       //console.log(action);
        props.changeVote(votableType, votableId, action)
      }
    }
