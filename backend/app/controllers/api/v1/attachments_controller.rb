@@ -1,4 +1,4 @@
-class AttachmentsController < ApplicationController
+class Api::V1::AttachmentsController < ApplicationController
   before_action :authenticate_user!
 
   authorize_resource

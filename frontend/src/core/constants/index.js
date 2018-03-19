@@ -39,5 +39,6 @@ export {
 } from './api-pathes'
 export {
   TYPE_QUESTION,
-  TYPE_ANSWER
+  TYPE_ANSWER,
+  MAX_ATTACHMENTS
 } from './types'

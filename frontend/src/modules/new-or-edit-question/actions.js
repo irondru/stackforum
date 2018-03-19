@@ -6,5 +6,5 @@ export const initialEditQuestion = id =>
 
 export const newOrUpdateQuestion = (question, id) => {
   id = id || ''
-  return createApiActions(API_TOPICS_PATH + id, id == '' ? POST : PATCH , QUESTION, { question })
+  return createApiActions(API_TOPICS_PATH + id, id === '' ? POST : PATCH , QUESTION, { question })
 }

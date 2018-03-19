@@ -5,9 +5,6 @@ import * as actions from './actions'
 import TopicsListItem from './components/topics-list-item'
 
 class Topics extends React.Component {
-  constructor(props) {
-    super(props)
-  }
 
   topicsList = () => {
     if (this.props.topics)

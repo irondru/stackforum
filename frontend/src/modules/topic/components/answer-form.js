@@ -1,4 +1,5 @@
 import React from 'react'
+import { Attachments } from 'core/components'
 
 export default({ id, body, edit, handleSubmit, handleCancelEdit }) =>
     <div>
@@ -6,7 +7,7 @@ export default({ id, body, edit, handleSubmit, handleCancelEdit }) =>
         <textarea name="body" />
         <br/>
         <input type="submit" name="submit" />
-        <input type="file" name="attachments_attributes" id="0" />
+        <Attachments />
       </form>
       {handleCancelEdit ? <button onClick={handleCancelEdit.bind(null, id)}>Cancel</button> : <div/> }
     </div>

@@ -1,28 +1,17 @@
 import apiReducer from './api/api-reducer'
 
-export function parseForm__ (target) {
-  let result = new FormData()
-  Array.from(target).forEach(field => {
-  if (field.type == 'file') {
-    result.append([field.name], field.files[0])
-  } else {
-    result.append(result[field.name], field.value)
-  }  })
-  return result
-}
-
 export const formToJSON = (target) => new Promise((resolve, reject) => {
   var result = {}
   var pending = 0
   Array.from(target).forEach(field => {
-    if (field.value == '') return
-    if (field.type == 'file') {
-      result[field.name] = result[field.name] || []
+    if (field.value === '') return
+    if (field.type === 'file') {
       let reader = new FileReader()
-      reader.readAsDataURL(field.files[0])
       ++pending
+      reader.readAsDataURL(field.files[0])
       reader.onload = () => {
-        result[field.name].push({ file: reader.result })
+        result[field.name] = result[field.name] || []
+        result[field.name].push({id: pending - 1, file: reader.result })
         --pending
         if (!pending) resolve(result)
       }

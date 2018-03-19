@@ -54,5 +54,6 @@ export default (state, action) => {
           }
         })
       }[action.payload.commentable_type]())
+    default:   
   }
 }

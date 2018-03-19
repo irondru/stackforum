@@ -18,5 +18,6 @@ export default (state, action) => {
           answer.id === action.id ? { ...answer, edit: !answer.edit }
          : { ...answer, edit: false })
       })
+    default:
   }
 }

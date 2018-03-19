@@ -20,5 +20,6 @@ export default (state, action) => {
           }
         })
       }[action.payload.vote.votable_type]())
+    default:  
   }
 }

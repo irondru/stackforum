@@ -19,6 +19,8 @@
 /backend/log
 /public/packs
 
+/backend/public/uploads
+
 /db/sphinx
 
 /public/uploads
