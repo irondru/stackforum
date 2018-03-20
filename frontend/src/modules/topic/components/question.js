@@ -1,23 +1,35 @@
 import React from 'react'
 import { Link } from 'react-router'
-import { TOPICS_PATH, QUESTION } from 'core/constants'
+import PropTypes from 'prop-types'
+
+import { TOPICS_PATH, QUESTION, USER_CAN_CREATE_COMMENT } from 'core/constants'
 import { CommentItem, CommentForm, Vote }  from '../components'
 
-export default ({ title, body, id, score, comments, handles}) => {
+const QuestionItem = ({ title, body, id, score, comments, access }, context) => {
+  
   const commentsList = () =>
     comments ? comments.map(comment =>
-      comment.edit ? <CommentForm key={comment.id} {...comment} {...{handles}} />
-      : <CommentItem key={comment.id} {...comment} {...{handles} } />
+      comment.edit ? <CommentForm key={comment.id} {...comment} />
+        : <CommentItem key={comment.id} {...comment} />
     ) : null
 
   return (
-      <div>
-        <h3>{title}</h3>
-        <Vote handles={handles} votableType={QUESTION} votableId={id} score={score} />
-        <p>{body}</p>
-        {commentsList()}
-        <Link to={TOPICS_PATH + id + '/edit'}>Edit</Link>
-        <CommentForm {...{handles}} commentableType={QUESTION} commentableId={id} />
-      </div>
-    )
-  }
+    <div>
+      <h3>{title}</h3>
+      <Vote votableType={QUESTION} votableId={id} score={score} />
+      <p>{body}</p>
+      {commentsList()}
+      { access ? <Link to={TOPICS_PATH + id + '/edit'}>Edit</Link> : null }
+      {
+        context.user.abilities & USER_CAN_CREATE_COMMENT ?
+        <CommentForm commentableType={QUESTION} commentableId={id} /> : null
+      }
+    </div>
+  )
+}
+
+QuestionItem.contextTypes = {
+  user: PropTypes.object.isRequired
+}
+
+export default QuestionItem

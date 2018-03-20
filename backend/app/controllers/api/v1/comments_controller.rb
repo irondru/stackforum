@@ -9,11 +9,11 @@ class Api::V1::CommentsController < ApplicationController
 
   def update
     if @comment.update(comment_params)
-      render json: Oj.dump({
+      render json: {
         comment: CommentSerializer.new(@comment),
         commentable_type: @comment.commentable_type,
         commentable_id: @comment.commentable_id
-      })
+      }
     end
   end
 

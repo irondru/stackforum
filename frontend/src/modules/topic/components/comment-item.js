@@ -1,7 +1,14 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-export default ({ body, id, handles }) =>
+const CommentItem = ({ body, id }, context) =>
   <div>
     <p>bidy: {body} id: {id}</p>
-    <button onClick={handles.editComment.bind(null, id)}>Editcomment</button>
+    <button onClick={context.handles.editComment.bind(null, id)}>Editcomment</button>
   </div>
+
+CommentItem.contextTypes = {
+  handles: PropTypes.object.isRequired
+}
+
+export default CommentItem

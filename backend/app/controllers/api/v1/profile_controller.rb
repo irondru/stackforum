@@ -3,7 +3,7 @@ class Api::V1::ProfileController < Api::V1::ApplicationController
 
   def show
     if current_user
-      render json: Oj.dump(current_user, serializer: UserSerializer)
+      render json: current_user, serializer: UserSerializer
     else
       render json: {}
     end

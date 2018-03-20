@@ -11,13 +11,13 @@ class Api::V1::AnswersController < Api::V1::ApplicationController
   def create
     @answer = Answer.new(answer_params.merge(question: set_question))
     if @answer.save
-      render json: Oj.dump(@answer, serializer: AnswerSerializer)
+      render json: @answer, serializer: AnswerSerializer
     end
   end
 
   def update
     if @answer.update(answer_params)
-      render json: Oj.dump(@answer, serializer: AnswerSerializer)
+      render json: @answer, serializer: AnswerSerializer
     end
   end
 

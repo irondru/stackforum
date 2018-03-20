@@ -5,46 +5,16 @@ import * as actions from './actions'
 
 import { AnswerForm, Question, AnswerItem } from './components'
 import { formToJSON } from 'core'
+import { USER_CAN_CREATE_ANSWER } from 'core/constants'
 
 class Topic extends React.Component {
-  constructor(props) {
-    super(props)
-    this.handles = {
-     editAnswer: id => props.editAnswer(id),
-     createAnswer: event => {
-       event.preventDefault()
-       formToJSON(event.target)
-       .then(res => props.createAnswer(res, this.props.question.id))
-     },
-     upadateAnswer: (event, id) => {
-      event.preventDefault()
-      formToJSON(event.target)
-      .then(jform => props.updateAnswer(jform, id))
-     },
-     editComment: (id) => props.editComment(id),
-     createComment: (event, commentableType, commentableId) => {
-       event.preventDefault()
-       formToJSON(event.target)
-       .then(jform => props.createComment(jform, commentableType, commentableId))
-     },
-     updateComment: (event, commentableType, commentableId, id) => {
-       event.preventDefault()
-       formToJSON(event.target)
-       .then(jform => props.updateComment(jform, id))
-     },
-     changeVote: (event, votableType, votableId, action) => {
-       event.preventDefault()
-       props.changeVote(votableType, votableId, action)
-     }
-   }
-  }
 
   componentDidMount = () => this.props.getTopic(this.props.params.id)
 
   answersList = () =>
     this.props.answers ? this.props.answers.map(answer =>
-      answer.edit ? <AnswerForm key={answer.id} {...answer} handles={this.handles}  /> :
-        <AnswerItem key={answer.id} {...answer} handles={this.handles} />
+      answer.edit ? <AnswerForm key={answer.id} {...answer} /> :
+        <AnswerItem key={answer.id} {...answer} />
    ) : null
 
   isLoad() {
@@ -60,18 +30,45 @@ class Topic extends React.Component {
     <div>
       {this.isLoad()}
       <h2>{this.context.user.email}</h2>
-      <Question handles={this.handles} {...this.props.question} />
+      <Question {...this.props.question} />
       {this.answersList()}
-      <AnswerForm key={Math.random()}  handleSubmit={this.handles.createAnswer} />
+      {
+        this.context.user.abilities & USER_CAN_CREATE_ANSWER ?
+          <AnswerForm key={Math.random()} /> : null
+      }
     </div> )
    }
-}
 
-const mapStateToProps = state => {
-  return {
-    ...state.topic.payload,
-    fetching: state.topic.fetching
-  }
+   getChildContext = () => ({
+     handles: {
+       editAnswer: id => this.props.editAnswer(id),
+       createAnswer: event => {
+         event.preventDefault()
+         formToJSON(event.target)
+          .then(res => this.props.createAnswer(res, this.props.question.id))
+       },
+       upadateAnswer: (event, id) => {
+         event.preventDefault()
+         formToJSON(event.target)
+         .then(jform => this.props.updateAnswer(jform, id))
+       },
+       editComment: (id) => this.props.editComment(id),
+       createComment: (event, commentableType, commentableId) => {
+         event.preventDefault()
+         formToJSON(event.target)
+          .then(jform => this.props.createComment(jform, commentableType, commentableId))
+       },
+       updateComment: (event, id) => {
+         event.preventDefault()
+         formToJSON(event.target)
+          .then(jform => this.props.updateComment(jform, id))
+       },
+       changeVote: (event, votableType, votableId, action) => {
+         event.preventDefault()
+         this.props.changeVote(votableType, votableId, action)
+       }
+     }
+   })
 }
 
 const mapDispatchToProps = dispatch => {
@@ -89,8 +86,19 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    ...state.topic.payload,
+    fetching: state.topic.fetching
+  }
+}
+
 Topic.contextTypes = {
   user: PropTypes.object.isRequired
+}
+
+Topic.childContextTypes = {
+  handles: PropTypes.object
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Topic);

@@ -10,9 +10,14 @@ class QuestionSerializer < ActiveModel::Serializer
       body: object.body,
       created_at: object.created_at,
       score: object.score,
+      access: access,
       comments: object.comments.map { |comment| CommentSerializer.new(comment) },
       attachments: object.attachments.map { |attachment| AttachmentSerializer.new(attachment)}
     }
+  end
+
+  def access
+    scope.can?(:access, object)
   end
 
   def answers
