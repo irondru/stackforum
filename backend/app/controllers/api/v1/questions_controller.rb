@@ -64,7 +64,7 @@ class Api::V1::QuestionsController < Api::V1::ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:title, :body, attachments_attributes: [:id, :file])
+    params.require(:question).permit(:title, :body, attachments_attributes: [:file])
   end
 
 end

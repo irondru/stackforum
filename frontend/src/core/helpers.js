@@ -11,7 +11,7 @@ export const formToJSON = (target) => new Promise((resolve, reject) => {
       reader.readAsDataURL(field.files[0])
       reader.onload = () => {
         result[field.name] = result[field.name] || []
-        result[field.name].push({id: pending - 1, file: reader.result })
+        result[field.name].push({ file: reader.result })
         --pending
         if (!pending) resolve(result)
       }
