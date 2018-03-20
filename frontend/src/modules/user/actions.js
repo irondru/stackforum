@@ -8,5 +8,5 @@ export const signIn = user =>
 export const signOut = () =>
   createApiActions(API_SIGN_OUT_PATH, DELETE, USER)
 
-export const getProfile = () =>
+export const getUser = () =>
   createApiActions(API_PROFILE_PATH, GET, USER)

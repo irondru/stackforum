@@ -13,7 +13,7 @@ class UserLogin extends React.Component {
     .then(jform => this.props.signIn(jform))
   }
 
-  componentDidMount = () => this.props.getProfile()
+  componentDidMount = () => this.props.getUser()
 
   render() {
     if (this.props.fetching) return (
@@ -43,7 +43,7 @@ const mapDispatchToProps = dispatch => {
   return {
     signIn: (loginData) => { dispatch(actions.signIn(loginData)) },
     signOut: () => { dispatch(actions.signOut()) },
-    getProfile: () => { dispatch(actions.getProfile()) }
+    getUser: () => { dispatch(actions.getUser()) }
   }
 }
 

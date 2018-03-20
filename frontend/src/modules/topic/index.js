@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import * as actions from './actions'
 
 import { AnswerForm, Question, AnswerItem } from './components'
@@ -58,6 +59,7 @@ class Topic extends React.Component {
     return (
     <div>
       {this.isLoad()}
+      <h2>{this.context.user.email}</h2>
       <Question handles={this.handles} {...this.props.question} />
       {this.answersList()}
       <AnswerForm key={Math.random()}  handleSubmit={this.handles.createAnswer} />
@@ -85,6 +87,10 @@ const mapDispatchToProps = dispatch => {
     changeVote: (votableType, votableId, action) =>
       dispatch(actions.changeVote(votableType, votableId, action))
   }
+}
+
+Topic.contextTypes = {
+  user: PropTypes.object.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Topic);
