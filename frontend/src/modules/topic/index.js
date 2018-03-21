@@ -47,12 +47,13 @@ class Topic extends React.Component {
          formToJSON(event.target)
           .then(res => this.props.createAnswer(res, this.props.question.id))
        },
-       upadateAnswer: (event, id) => {
+       updateAnswer: (event, id) => {
          event.preventDefault()
          formToJSON(event.target)
          .then(jform => this.props.updateAnswer(jform, id))
        },
-       editComment: (id) => this.props.editComment(id),
+       deleteAnswer: id => this.props.deleteAnswer(id),
+       editComment: id => this.props.editComment(id),
        createComment: (event, commentableType, commentableId) => {
          event.preventDefault()
          formToJSON(event.target)
@@ -63,6 +64,7 @@ class Topic extends React.Component {
          formToJSON(event.target)
           .then(jform => this.props.updateComment(jform, id))
        },
+       deleteComment: id => this.props.deleteComment(id),
        changeVote: (event, votableType, votableId, action) => {
          event.preventDefault()
          this.props.changeVote(votableType, votableId, action)
@@ -77,10 +79,12 @@ const mapDispatchToProps = dispatch => {
     createAnswer: (answer, questionId) => dispatch(actions.createAnswer(answer, questionId)),
     updateAnswer: (answer, id) => dispatch(actions.updateAnswer(answer, id)),
     editAnswer: id => dispatch(actions.editAnswer(id)),
+    deleteAnswer: id => dispatch(actions.deleteAnswer(id)),
     createComment: (comment, commentableType, commentableId) =>
       dispatch(actions.createComment(comment, commentableType, commentableId)),
     editComment: (id) => dispatch(actions.editComment(id)),
     updateComment: (comment, id) => dispatch(actions.updateComment(comment, id)),
+    deleteComment: id => dispatch(actions.deleteComment(id)),
     changeVote: (votableType, votableId, action) =>
       dispatch(actions.changeVote(votableType, votableId, action))
   }

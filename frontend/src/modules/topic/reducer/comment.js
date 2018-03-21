@@ -1,12 +1,12 @@
 
 import { pushInPayload } from 'core'
-import { COMMENT, SUCCESS, CREATE, UPDATE, EDIT, TYPE_ANSWER, TYPE_QUESTION } from 'core/constants'
+import { COMMENT, SUCCESS, CREATE, DESTROY, UPDATE, EDIT, TYPE_ANSWER, TYPE_QUESTION } from 'core/constants'
 
 export default (state, action) => {
 
   const setEditComment = comments =>
     comments.map(comment =>
-      comment.id === action.id ? {...comment, edit: true} : { ...comment, edit: false })
+      comment.id === action.id ? {...comment, edit: !comment.edit} : { ...comment, edit: false })
 
   switch (action.type ^ COMMENT + SUCCESS) {
     case CREATE:
@@ -54,6 +54,18 @@ export default (state, action) => {
           }
         })
       }[action.payload.commentable_type]())
-    default:   
+    case DESTROY:
+      return pushInPayload(state, {
+        [TYPE_ANSWER]: () => ({
+          answers: state.payload.answers.map(answer =>
+            answer.id === action.payload.commentable_id ? {
+              ...answer,
+              comments: answer.comments.filter(comment =>
+                comment.id !== action.payload.comment.id
+              )
+            } : answer)
+        })
+      }[action.payload.commentable_type]())
+    default:
   }
 }

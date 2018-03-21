@@ -7,13 +7,13 @@ const AnswerForm = ({ id, body, edit }, context) => {
   return (
     <div>
       <form
-      onSubmit={(e) => edit ? updateAnswer(e, id) : createAnswer(e)}>
-        <textarea name="body" />
+        onSubmit={(e) => edit ? updateAnswer(e, id) : createAnswer(e)}>
+        <textarea name="body" defaultValue={body} />
         <br/>
         <input type="submit" name="submit" />
         <Attachments />
       </form>
-      {edit ? <button onClick={editAnswer.bind(null, id)}>Cancel</button> : null }
+      { edit ? <button onClick={editAnswer.bind(null, id)}>Cancel</button> : null }
     </div>
   )
 }

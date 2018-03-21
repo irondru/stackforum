@@ -45,4 +45,4 @@ export {
   USER_CAN_CREATE_ANSWER,
   USER_CAN_CREATE_COMMENT,
   USER_CAN_VOTE
-} from './types'
+} from './common'

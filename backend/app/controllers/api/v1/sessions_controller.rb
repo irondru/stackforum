@@ -1,13 +1,12 @@
 class Api::V1::SessionsController < Devise::SessionsController
-  # after_action :set_csrf_headers, only: [:create, :destroy]
 
-  before_action :set_headers
+  include CorsHeaders
+  include AbilityScope
 
-  serialization_scope :current_ability
+  layout false
 
-  def current_ability
-    @current_ability ||= Ability.new(current_user)
-  end
+  protect_from_forgery
+  skip_before_action :verify_authenticity_token
 
   def create
       self.resource = warden.authenticate(auth_options)
@@ -24,15 +23,4 @@ class Api::V1::SessionsController < Devise::SessionsController
     render json: {msg: "Вы успешно вышли"}
   end
 
-  protected
-
-  def set_headers
-    response.headers["Access-Control-Allow-Credentials"] = 'true'
-    response.headers['Access-Control-Allow-Origin'] = 'http://localhost:3000'
-    response.headers['Access-Control-Allow-Methods'] = 'GET, PATCH, PUT, DELETE, POST, OPTIONS'
-  end
-
-  def set_csrf_headers
-    cookies['CSRF-Token'] = form_authenticity_token if protect_against_forgery?
-  end
 end

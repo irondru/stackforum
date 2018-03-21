@@ -23,7 +23,9 @@ class Api::V1::AnswersController < Api::V1::ApplicationController
 
   def destroy
     @answer_id = @answer.id
-    @answer.destroy
+    if @answer.destroy
+      render json: { answer: { id: @answer_id } }
+    end  
   end
 
   def best
