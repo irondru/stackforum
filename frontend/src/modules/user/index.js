@@ -1,45 +1,60 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { formToJSON } from 'core'
+import { modal } from 'react-redux-modal'
 
 import * as actions from './actions'
-import SignIn from './components/sign-in'
-import SignUp from './components/sign-up'
+import { Auth } from './components'
 
-class UserLogin extends React.Component {
-
-  handleSignIn = event => {
-    event.preventDefault()
-    formToJSON(event.target)
-    .then(jform => this.props.signIn(jform))
+class UserAuth extends React.Component {
+  constructor(props) {
+    super(props)
+    this.handles = {
+      signIn: event => {
+        event.preventDefault()
+        formToJSON(event.target)
+        .then(jform => this.props.signIn(jform))
+      },
+      signUp: event => {
+        event.preventDefault()
+        formToJSON(event.target)
+        .then(jform => this.props.signUp(jform))
+      }
+    }
   }
 
-  handleSignUp = event => {
-    event.preventDefault()
-    formToJSON(event.target)
-      .then(jform => this.props.signUp(jform))
+  auth = () =>
+    modal.add(Auth, {
+      title: 'This is my modal',
+      size: 'medium',
+      handles: this.handles,
+      closeOnOutsideClick: false,
+      hideTitleBar: false,
+      hideCloseButton: false,
+    })
+
+  componentWillReceiveProps = (newProps) => {
+    if (newProps.signedIn) modal.clear()
   }
 
-  componentDidMount = () => this.props.getUser()
-
-  render() {
-  if (this.props.payload.id) {
+  render = () => {
+    const { signedIn, signOut } = this.props
     return (
       <div>
-      <h1>{this.props.payload.email}</h1>
-      <button onClick={this.props.signOut}>pij</button>
+        {
+          signedIn ? <div className="btn" onClick={signOut}>Sign out</div>
+          : <div className="btn" onClick={this.auth}>Sign in</div>
+        }
       </div>
     )
-  } else {
-    return (
-    <SignUp handleSubmit={this.handleSignUp} />
-  )
   }
-}
+
 }
 
+
 const mapStateToProps = state => ({
-    ...state.user
+    ...state.user,
+    signedIn: !!state.user.payload.id
 })
 
 
@@ -52,4 +67,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserLogin);
+export default connect(mapStateToProps, mapDispatchToProps)(UserAuth);

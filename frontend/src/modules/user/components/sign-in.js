@@ -1,13 +1,11 @@
 import React from 'react'
 
-export default class FormLogin extends React.Component {
-  render = () =>
+export default ({ handleSubmit }) =>
   <div>
     <br/>
-    <form onSubmit={this.props.onSubmit}>
+    <form onSubmit={handleSubmit}>
       <input type="text" name="email" />
       <input type="password" name="password" />
       <input type="submit" name="submit" />
     </form>
   </div>
-}

@@ -1,9 +1,10 @@
-import React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-import { Router, browserHistory } from 'react-router';
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { Router, browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
-import { routes } from 'core';
+import { routes } from 'core'
+import ReduxModal from 'react-redux-modal'
 
 import configureStore from 'core/store'
 
@@ -14,8 +15,11 @@ const history = syncHistoryWithStore(browserHistory, store)
 document.addEventListener('DOMContentLoaded', () =>
   render(
     <Provider store={store}>
-      <Router history={history} routes={routes} />
+      <div>
+        <Router history={history} routes={routes} />
+        <ReduxModal />
+      </div>
     </Provider>,
     document.querySelector('#root')
   )
-) 
+)
