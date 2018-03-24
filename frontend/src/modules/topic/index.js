@@ -34,7 +34,7 @@ class Topic extends React.Component {
       {this.answersList()}
       {
         this.context.user.abilities & USER_CAN_CREATE_ANSWER ?
-          <AnswerForm key={Math.random()} /> : null
+          <AnswerForm key={Date.now()} /> : null
       }
     </div> )
    }

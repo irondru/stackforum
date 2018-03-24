@@ -1,0 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  border-bottom: 2px solid gray;
+  min-height: 100px;
+}

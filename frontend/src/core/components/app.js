@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { SIGN_IN_PATH, USER_CAN_CREATE_QUESTION } from 'core/constants'
 import { getUser } from 'modules/user/actions'
+import Header from './header'
+import './app.css'
 
 class App extends Component {
 
@@ -15,18 +15,11 @@ class App extends Component {
   componentDidMount = () =>
     this.props.getUser()
 
-  render() {
-    return (
-      <div>
-        <Link to={SIGN_IN_PATH}>Sign in</Link>
-        {
-          this.props.user.abilities & USER_CAN_CREATE_QUESTION ?
-            <Link to="/question/new">New Question</Link> : null
-        }
-        {this.props.children}
-      </div>
-    );
-  }
+  render = () =>
+    <div>
+      <Header />
+      {this.props.children}
+    </div>
 
 }
 

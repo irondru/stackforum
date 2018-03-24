@@ -9,22 +9,27 @@ export default class Attachments extends React.Component {
     this.oldvalues = {}
   }
 
-  newItem = id =>
-    <div key={id}>
-      <input type='file' name='attachments_attributes'
-        onFocus={e => this.handleFocus(e, id)}
-        onChange={e => this.handleAddItem(id)}
-      />
-      <a href='null' onClick={e => this.handleDeleteItem(e, id)}>del</a>
-    </div>
+  newItem = id => ({
+    id,
+    body: (
+      <div key={id}>
+        <input type='file' name='attachments_attributes'
+          onFocus={e => this.handleFocus(e, id)}
+          onChange={e => this.handleAddItem(e, id)}
+        />
+        <button onClick={e => this.handleDeleteItem(e, id)}>del</button>
+      </div>
+    )
+  })
 
   handleFocus = (event, id) =>
     this.oldvalues[id] = event.target.value
 
-  handleAddItem = (id) => {
+  handleAddItem = (event, id) => {
+    if (event.target.value === '') this.handleDeleteItem(event, id)
     if (this.state.items.length < MAX_ATTACHMENTS && this.oldvalues[id] === '')
     this.setState({
-      items: [...this.state.items, this.newItem(Math.random())]
+      items: [...this.state.items, this.newItem(Date.now())]
     })
   }
 
@@ -32,16 +37,14 @@ export default class Attachments extends React.Component {
     event.preventDefault()
     if (this.oldvalues[id] === undefined) return
     if (this.state.items.length === 1) {
-      this.setState({ items: [this.item(Math.random())] })
+      this.setState({ items: [this.newItem(Date.now())] })
       return
     }
-    let arr = this.state.items
-    arr.splice(id, 1)
-    this.setState({ items: arr })
+    this.setState({ items: this.state.items.filter(item => item.id !== id) })
   }
 
   render = () =>
   <div>
-    { this.state.items }
-  </div>  
+    { this.state.items.map(item => item.body) }
+  </div>
 }

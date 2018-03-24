@@ -1,4 +1,4 @@
 import { getApiReducer } from 'core'
-import { QUESTION } from 'core/constants'
+import { QUESTIONS } from 'core/constants'
 
-export default getApiReducer(QUESTION)
+export default getApiReducer(QUESTIONS)

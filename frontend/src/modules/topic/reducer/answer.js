@@ -1,8 +1,8 @@
 import { pushInPayload } from 'core'
-import { ANSWER, SUCCESS, CREATE, UPDATE, EDIT, DESTROY } from 'core/constants'
+import { ANSWERS, SUCCESS, CREATE, UPDATE, EDIT, DESTROY } from 'core/constants'
 
 export default (state, action) => {
-  switch (action.type ^ ANSWER + SUCCESS) {
+  switch (action.type ^ ANSWERS + SUCCESS) {
     case CREATE:
       return pushInPayload(state, {
         answers: [...state.payload.answers, action.payload]

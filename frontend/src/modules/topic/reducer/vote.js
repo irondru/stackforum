@@ -1,8 +1,8 @@
-import { SUCCESS, VOTE, TYPE_QUESTION, TYPE_ANSWER } from 'core/constants'
+import { SUCCESS, VOTES, TYPE_QUESTION, TYPE_ANSWER } from 'core/constants'
 import { pushInPayload } from 'core'
 
 export default (state, action) => {
-  switch (action.type ^ VOTE) {
+  switch (action.type ^ VOTES) {
     case SUCCESS:
       return pushInPayload(state, {
         [TYPE_ANSWER]: () => ({
@@ -20,6 +20,6 @@ export default (state, action) => {
           }
         })
       }[action.payload.vote.votable_type]())
-    default:  
+    default:
   }
 }

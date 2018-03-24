@@ -15,19 +15,21 @@ class NewOrEditQuestion extends React.Component {
 
   componentDidMount() {
     const { id } = this.props.params
-    if (id) this.props.initialEditQuestion(id)
+    if (id && (!this.props.title && !this.props.body)) //при редактировании если наш store пуст, тащим с бэка
+      this.props.initialEditQuestion(id)
   }
 
   handleSubmit = event => {
     event.preventDefault()
     formToJSON(event.target)
-    .then(jform => this.props.newOrUpdateQuestion(jform, this.props.params.id))
+     .then(jform => this.props.newOrUpdateQuestion(jform, this.props.params.id))
   }
 
   render = () => {
-    const { title, body, fetching, params: { id } } = this.props
+    const { id } = this.props.params
+    const { title, body, fetching } = id ? this.props : ''
     if (id && fetching) return <h1>Loading...</h1>
-    return <QuestionForm title={title} body={body} handleSubmit={this.handleSubmit} edit={!!id} />
+    return <QuestionForm key={Date.now()} title={title} body={body} handleSubmit={this.handleSubmit} edit={!!id} />
   }
 
 }
