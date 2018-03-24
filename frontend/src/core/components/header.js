@@ -6,10 +6,16 @@ import { SIGN_IN_PATH, USER_CAN_CREATE_QUESTION } from 'core/constants'
 
 const Header = (props, context) =>
 <div className='header'>
-  <Link to={SIGN_IN_PATH}>Sign in</Link>
+  <div id='reg-auth'>
+    <Link to={SIGN_IN_PATH}>
+      <div className='btn'>Sign in</div>
+    </Link>
+  </div>
   {
     context.user.abilities & USER_CAN_CREATE_QUESTION ?
-      <Link to="/question/new">New Question</Link> : null
+      <Link to="/question/new">
+        <div>New Question</div>
+      </Link> : null
   }
 </div>
 

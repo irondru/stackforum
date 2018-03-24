@@ -11,12 +11,6 @@ Rails.application.routes.draw do
     resources :comments, only: [:update, :destroy]
   end
 
-  resources :questions, concerns: [:votable, :commentable], shallow: true do
-    resources :answers, concerns: [:votable, :commentable], only: [:create, :update, :destroy] do
-      get :best, on: :member
-    end
-  end
-
   namespace :api do
     namespace :v1 do
 

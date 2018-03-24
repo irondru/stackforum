@@ -3,22 +3,26 @@ import { connect } from 'react-redux'
 import { formToJSON } from 'core'
 
 import * as actions from './actions'
-import FormLogin from './components/form-login'
+import SignIn from './components/sign-in'
+import SignUp from './components/sign-up'
 
 class UserLogin extends React.Component {
 
-  onSubmit = event => {
+  handleSignIn = event => {
     event.preventDefault()
     formToJSON(event.target)
     .then(jform => this.props.signIn(jform))
   }
 
+  handleSignUp = event => {
+    event.preventDefault()
+    formToJSON(event.target)
+      .then(jform => this.props.signUp(jform))
+  }
+
   componentDidMount = () => this.props.getUser()
 
   render() {
-    if (this.props.fetching) return (
-      <h1>Loading...</h1>
-    )
   if (this.props.payload.id) {
     return (
       <div>
@@ -28,7 +32,7 @@ class UserLogin extends React.Component {
     )
   } else {
     return (
-    <FormLogin onSubmit={this.onSubmit} />
+    <SignUp handleSubmit={this.handleSignUp} />
   )
   }
 }
@@ -41,9 +45,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    signIn: (loginData) => { dispatch(actions.signIn(loginData)) },
-    signOut: () => { dispatch(actions.signOut()) },
-    getUser: () => { dispatch(actions.getUser()) }
+    signIn: user => dispatch(actions.signIn(user)),
+    signUp: user => dispatch(actions.signUp(user)),
+    signOut: () => dispatch(actions.signOut()),
+    getUser: () => dispatch(actions.getUser())
   }
 }
 

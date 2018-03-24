@@ -1,9 +1,9 @@
 class Api::V1::RegistrationsController < Devise::RegistrationsController
 
-  skip_before_action :authenticate_user!
+  include CorsHeaders
+  include AbilityScope
 
   def create
-    if verify_captcha(params[:user][:recaptcha])
       build_resource(sign_up_params)
       resource.save
 
@@ -15,16 +15,12 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
       else
         sign_up(resource_name, resource)
 
-        render json: {
-          msg: "Вы успешно зарегистрировались!",
-          current_user: current_user.as_json
-        }
+        render json: current_user
       end
-    else
-      render json: {msg: "Проверка каптчи не пройдена"}, status: 422
-    end
   end
+
   private
+
     def sign_up_params
       params.require(:user).permit(:email, :name, :password, :password_confirmation)
     end
