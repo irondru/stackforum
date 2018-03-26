@@ -7,23 +7,24 @@ import * as actions from './actions'
 import { Auth } from './components'
 
 class UserAuth extends React.Component {
+
   constructor(props) {
     super(props)
     this.handles = {
       signIn: event => {
         event.preventDefault()
         formToJSON(event.target)
-        .then(jform => this.props.signIn(jform))
+          .then(jform => this.props.signIn(jform))
       },
       signUp: event => {
         event.preventDefault()
         formToJSON(event.target)
-        .then(jform => this.props.signUp(jform))
+          .then(jform => this.props.signUp(jform))
       }
     }
   }
 
-  auth = () =>
+  authModal = () =>
     modal.add(Auth, {
       title: 'This is my modal',
       size: 'medium',
@@ -43,7 +44,7 @@ class UserAuth extends React.Component {
       <div>
         {
           signedIn ? <div className="btn" onClick={signOut}>Sign out</div>
-          : <div className="btn" onClick={this.auth}>Sign in</div>
+          : <div className="btn" onClick={this.authModal}>Sign in</div>
         }
       </div>
     )

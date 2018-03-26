@@ -11,7 +11,7 @@ const Header = (props, context) =>
   {
     context.user.abilities & USER_CAN_CREATE_QUESTION ?
       <Link to="/question/new">
-        <div>New Question</div>
+        <div className="btn">New Question</div>
       </Link> : null
   }
 </div>

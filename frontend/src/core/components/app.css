@@ -31,13 +31,19 @@ hr {
   padding: 0;
 }
 
+#main-page {
+  padding: 0 5%;
+}
+
 .header {
+  position: fixed;
+  top: 0;
   float: left;
   background-color: #343434;
   width: 99%;
   padding: 0.5%;
   border-bottom: 4px solid #59595A;
-  
+
 }
 
 #reg-auth {

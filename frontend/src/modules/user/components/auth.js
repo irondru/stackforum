@@ -3,6 +3,7 @@ import React from 'react'
 import { SignInForm, SignUpForm } from '../components'
 
 export default class Auth extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {

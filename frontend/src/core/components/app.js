@@ -18,7 +18,9 @@ class App extends Component {
   render = () =>
     <div>
       <Header />
-      {this.props.children}
+      <div id="main-page">
+        {this.props.children}
+      </div>
     </div>
 
 }

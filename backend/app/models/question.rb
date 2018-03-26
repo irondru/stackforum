@@ -11,10 +11,9 @@ class Question < ApplicationRecord
   validates :title, presence: true, length: { in: 3..80 }
   validates :body, presence: true, length: { in: 3..1000 }
 
-  PAGE_SIZE = 10
+  PAGE_SIZE = 50
 
-  scope :last_part, -> { order(created_at: :desc).limit(PAGE_SIZE) }
-  scope :previews, ->(page) { select(:id, :title).order(created_at: :desc)
+  scope :previews, ->(page) { order(created_at: :desc)
                                   .offset(page.to_i * PAGE_SIZE).limit(PAGE_SIZE) }
 
 end
