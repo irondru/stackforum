@@ -16,6 +16,7 @@ class Api::V1::QuestionsController < Api::V1::ApplicationController
 
   def show
     render json: @question
+    @question.views_up
   end
 
   def create

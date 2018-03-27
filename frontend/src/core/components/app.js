@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import { getUser } from 'modules/user/actions'
 import Header from './header'
-import './app.css'
+import './style.css'
 
 class App extends Component {
 
@@ -16,12 +16,12 @@ class App extends Component {
     this.props.getUser()
 
   render = () =>
-    <div>
-      <Header />
-      <div id="main-page">
-        {this.props.children}
-      </div>
+  <div id="container">
+    <Header />
+    <div id="content">
+      {this.props.children}
     </div>
+  </div>
 
 }
 

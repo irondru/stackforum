@@ -43,8 +43,8 @@ class UserAuth extends React.Component {
     return (
       <div>
         {
-          signedIn ? <div className="btn" onClick={signOut}>Sign out</div>
-          : <div className="btn" onClick={this.authModal}>Sign in</div>
+          signedIn ? <div className="header-btn" onClick={signOut}>Sign out</div>
+          : <div className="header-btn" onClick={this.authModal}>Sign in</div>
         }
       </div>
     )

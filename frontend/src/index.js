@@ -11,15 +11,12 @@ import configureStore from 'core/store'
 const store = configureStore()
 const history = syncHistoryWithStore(browserHistory, store)
 
-
-document.addEventListener('DOMContentLoaded', () =>
-  render(
+render(
     <Provider store={store}>
-      <div>
+      <div id="provider">
         <Router history={history} routes={routes} />
         <ReduxModal />
       </div>
     </Provider>,
     document.querySelector('#root')
-  )
 )

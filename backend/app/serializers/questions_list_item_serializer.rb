@@ -1,5 +1,5 @@
 class QuestionsListItemSerializer < ActiveModel::Serializer
-  attributes :id, :title, :answers_count, :preview
+  attributes :id, :title, :answers_count, :preview, :score, :views
 
   def answers_count
     object.answers.count

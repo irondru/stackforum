@@ -5,6 +5,8 @@ class Question < ApplicationRecord
   include Commentable
   include Meaninglessable
 
+  #attr_accessor :views
+
   has_many :answers, dependent: :destroy
   belongs_to :user
 
@@ -15,5 +17,10 @@ class Question < ApplicationRecord
 
   scope :previews, ->(page) { order(created_at: :desc)
                                   .offset(page.to_i * PAGE_SIZE).limit(PAGE_SIZE) }
+
+  def views_up
+    self.views += 1
+    self.save
+  end
 
 end

@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import * as actions from './actions'
 
+import './style.css'
+
 import TopicsListItem from './components/topics-list-item'
 
 class Topics extends React.Component {
@@ -16,7 +18,7 @@ class Topics extends React.Component {
   componentDidMount = () => this.props.getTopics()
 
   render = () =>
-    <div>
+    <div id="topic">
       {this.topicsList()}
     </div>
 }
