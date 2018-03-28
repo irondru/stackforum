@@ -6,6 +6,7 @@ import * as actions from './actions'
 import { AnswerForm, Question, AnswerItem } from './components'
 import { formToJSON } from 'core'
 import { USER_CAN_CREATE_ANSWER } from 'core/constants'
+import './style.css'
 
 class Topic extends React.Component {
 
@@ -17,26 +18,17 @@ class Topic extends React.Component {
         <AnswerItem key={answer.id} {...answer} />
    ) : null
 
-  isLoad() {
-    if (this.props.fetching) {
-      return (<h1>'loading'</h1>)
-    } else {
-      return (<h1>'complete'</h1>)
-    }
-  }
-
   render = () => {
     return (
-    <div>
-      {this.isLoad()}
-      <h2>{this.context.user.email}</h2>
+    <div className="topic-layout">
       <Question {...this.props.question} />
       {this.answersList()}
       {
         this.context.user.abilities & USER_CAN_CREATE_ANSWER ?
           <AnswerForm key={Date.now()} /> : null
       }
-    </div> )
+    </div>
+  )
    }
 
    getChildContext = () => ({

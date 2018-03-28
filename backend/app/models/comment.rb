@@ -5,6 +5,6 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :commentable, polymorphic: true, touch: true
 
-  validates :body, presence: true, length: { in: 3..80 }
+  validates :body, presence: true, length: { in: 3..300 }
 
 end

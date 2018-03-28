@@ -15,15 +15,23 @@ const QuestionItem = ({ title, body, id, score, comments, access }, context) => 
 
   return (
     <div>
-      <h3>{title}</h3>
-      <Vote votableType={QUESTIONS} votableId={id} score={score} />
-      <p>{body}</p>
-      {commentsList()}
-      { access ? <Link to={TOPICS_PATH + id + '/edit'}>Edit</Link> : null }
-      {
-        context.user.abilities & USER_CAN_CREATE_COMMENT ?
-        <CommentForm commentableType={QUESTIONS} commentableId={id} /> : null
-      }
+      <h1>{title}</h1>
+      <div className="post-layout">
+        <div className="post-layout-left">
+          <Vote votableType={QUESTIONS} votableId={id} score={score} />
+        </div>
+        <div className="post-layout-right">
+          <div className="post-text">
+            <p>{body}</p>
+          </div>
+          {commentsList()}
+          {
+             context.user.abilities & USER_CAN_CREATE_COMMENT ?
+             <CommentForm commentableType={QUESTIONS} commentableId={id} /> : null
+          }
+          { access ? <Link to={TOPICS_PATH + id + '/edit'}>Edit</Link> : null }
+        </div>
+      </div>
     </div>
   )
 }

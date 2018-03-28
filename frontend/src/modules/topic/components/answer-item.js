@@ -14,17 +14,23 @@ const AnswerItem = ({ id, body, comments, score, access }, context) => {
   const { editAnswer, deleteAnswer } = context.handles
 
   return (
-  <div>
-    <p>{body}</p>
-    <Vote votableType={ANSWERS} votableId={id} score={score} />
-    <button onClick={editAnswer.bind(null, id)}>Edit</button>
-    { commentsList() }
-    {
-      context.user.abilities & USER_CAN_CREATE_COMMENT ?
-      <CommentForm key={Math.random()} commentableId={id} commentableType={ANSWERS} /> : null
-    }
-    { access ? <button onClick={deleteAnswer.bind(null, id)}>Delete</button> : null }
-  </div>
+    <div className="post-layout">
+      <div className="post-layout-left">
+        <Vote votableType={ANSWERS} votableId={id} score={score} />
+      </div>
+      <div className="post-layout-right">
+        <div className="post-text">
+          <p>{body}</p>
+        </div>
+        { commentsList() }
+        {
+          context.user.abilities & USER_CAN_CREATE_COMMENT ?
+          <CommentForm key={Math.random()} commentableId={id} commentableType={ANSWERS} /> : null
+        }
+        <button onClick={editAnswer.bind(null, id)}>Edit</button>
+        { access ? <button onClick={deleteAnswer.bind(null, id)}>Delete</button> : null }
+     </div>
+   </div>
  )
 }
 
