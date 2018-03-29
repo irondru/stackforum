@@ -37,15 +37,3 @@
   font-size: 0.75em;
   color: #b2b4b3;
 }
-
-a {
-  color: #FA713E;
-  text-decoration: none;
-  transition: all.6s ease;
-}
-
-a:hover {
-  color: #C34F25;
-  text-decoration: none;
-  transition: all.6s ease;
-}

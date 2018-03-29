@@ -3,7 +3,8 @@ import { Link } from 'react-router'
 import PropTypes from 'prop-types'
 
 import { TOPICS_PATH, QUESTIONS, USER_CAN_CREATE_COMMENT } from 'core/constants'
-import { CommentItem, CommentForm, Vote }  from '../components'
+import { CommentItem, CommentForm, Vote }  from '../../components'
+import './style.css'
 
 const QuestionItem = ({ title, body, id, score, comments, access }, context) => {
 
@@ -29,7 +30,16 @@ const QuestionItem = ({ title, body, id, score, comments, access }, context) => 
              context.user.abilities & USER_CAN_CREATE_COMMENT ?
              <CommentForm commentableType={QUESTIONS} commentableId={id} /> : null
           }
-          { access ? <Link to={TOPICS_PATH + id + '/edit'}>Edit</Link> : null }
+          {
+            access ?
+            <div className="flex-right" >
+              <Link to={TOPICS_PATH + id + '/edit'}>
+                  <i className="material-icons">mode_edit</i>
+              </Link>
+              <i className="material-icons">delete</i>
+            </div>
+            : null
+          }
         </div>
       </div>
     </div>

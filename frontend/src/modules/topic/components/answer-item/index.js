@@ -1,5 +1,5 @@
 import React from 'react';
-import { CommentItem, CommentForm, Vote } from '../components'
+import { CommentItem, CommentForm, Vote } from '../../components'
 import { ANSWERS, USER_CAN_CREATE_COMMENT } from 'core/constants'
 import PropTypes from 'prop-types'
 

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import { getUser } from 'modules/user/actions'
-import Header from './header'
+import { Header } from 'core/components'
 import './style.css'
 
 class App extends Component {

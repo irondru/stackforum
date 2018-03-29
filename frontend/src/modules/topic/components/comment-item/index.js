@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import './style.css'
 
 const CommentItem = ({ body, id }, context) => {
   const { editComment, deleteComment } = context.handles
   return (
-    <div className="comment-layout">
+    <div className="comment-item">
       <p>{body}</p>
       <div className="comment-icons">
         <i className="material-icons" onClick={editComment.bind(null, id)}>mode_edit</i>

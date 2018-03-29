@@ -4,6 +4,7 @@ import { Link } from 'react-router'
 
 import { USER_CAN_CREATE_QUESTION } from 'core/constants'
 import User from 'modules/user'
+import './style.css'
 
 const Header = (props, context) =>
 <div id="header">
