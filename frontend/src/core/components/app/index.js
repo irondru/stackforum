@@ -19,10 +19,9 @@ class App extends Component {
   <div id="container">
     <Header />
     <div id="content">
-      {this.props.children}
+      { React.cloneElement(this.props.children, { key: Math.random() } ) }
     </div>
   </div>
-
 }
 
 App.childContextTypes = {

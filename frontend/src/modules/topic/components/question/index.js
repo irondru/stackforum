@@ -36,7 +36,7 @@ const QuestionItem = ({ title, body, id, score, comments, access }, context) => 
               <Link to={TOPICS_PATH + id + '/edit'}>
                   <i className="material-icons">mode_edit</i>
               </Link>
-              <i className="material-icons">delete</i>
+              <i onClick={context.handles.deleteTopic.bind(null, id)} className="material-icons">delete</i>
             </div>
             : null
           }
@@ -47,7 +47,8 @@ const QuestionItem = ({ title, body, id, score, comments, access }, context) => 
 }
 
 QuestionItem.contextTypes = {
-  user: PropTypes.object.isRequired
+  user: PropTypes.object.isRequired,
+  handles: PropTypes.object.isRequired
 }
 
 export default QuestionItem

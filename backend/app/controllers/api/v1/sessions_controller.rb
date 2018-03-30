@@ -20,7 +20,7 @@ class Api::V1::SessionsController < Devise::SessionsController
 
   def destroy
     Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
-    render json: {msg: "Вы успешно вышли"}
+    render json: {}
   end
 
 end

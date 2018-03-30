@@ -19,7 +19,10 @@ export default class AdvTexarea extends React.Component {
         ref={this.divInit}
         onKeyDown={this.handleCopy}
         className="adv-text-area"
-        style={{backgroundColor: 'white'}}
+        style={{
+          backgroundColor: 'white',
+          minHeight: this.props.minHeight
+        }}
       />
       <textarea ref="hiddenText" name="body" style={{display: 'none'}} />
     </div>

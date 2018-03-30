@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { UP_VOTE, DOWN_VOTE, USER_CAN_VOTE } from 'core/constants'
 import './style.css'
 
-const Vote = ({ votableType, votableId, score }, context) => {
-  const { changeVote } = context.handles
-  const votable = context.user.abilities & USER_CAN_VOTE
+const Vote = ({ votableType, votableId, score }, { user, handles }) => {
+  const { changeVote } = handles
+  const votable = user.abilities & USER_CAN_VOTE
   return (
     <div className="votes">
       <i className={votable ? "material-icons" : "hidden"} onClick={(e) => changeVote(e, votableType, votableId, UP_VOTE)}>

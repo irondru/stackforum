@@ -28,6 +28,9 @@ export const editComment = id => ({
 export const getTopic = id =>
   createApiActions(API_TOPICS_PATH + id, GET, QUESTIONS + SHOW)
 
+export const deleteTopic = id =>
+  createApiActions(API_TOPICS_PATH + id, DELETE, QUESTIONS + DESTROY)  
+
 export const createComment = (comment, commentableType, commentableId) =>
   createApiActions({
       [ANSWERS]: () => API_COMMENTS_CREATE_ANSWER_PATH.replace(ID, commentableId),

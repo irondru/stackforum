@@ -37,7 +37,7 @@ class Api::V1::QuestionsController < Api::V1::ApplicationController
   end
 
   def destroy
-    respond_with @question.destroy
+    render json: { deleted: true } if @question.destroy
   end
 
   private

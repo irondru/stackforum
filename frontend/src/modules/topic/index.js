@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import { browserHistory } from 'react-router'
 import * as actions from './actions'
 
 import { AnswerForm, Question, AnswerItem } from './components'
@@ -11,6 +12,10 @@ import './style.css'
 class Topic extends React.Component {
 
   componentDidMount = () => this.props.getTopic(this.props.params.id)
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.deleted) browserHistory.push('/')
+  }
 
   answersList = () =>
     this.props.answers ? this.props.answers.map(answer =>
@@ -44,6 +49,7 @@ class Topic extends React.Component {
          formToJSON(event.target)
          .then(jform => this.props.updateAnswer(jform, id))
        },
+       deleteTopic: id => this.props.deleteTopic(id),
        deleteAnswer: id => this.props.deleteAnswer(id),
        editComment: id => this.props.editComment(id),
        createComment: (event, commentableType, commentableId) => {
@@ -71,6 +77,7 @@ const mapDispatchToProps = dispatch => {
     createAnswer: (answer, questionId) => dispatch(actions.createAnswer(answer, questionId)),
     updateAnswer: (answer, id) => dispatch(actions.updateAnswer(answer, id)),
     editAnswer: id => dispatch(actions.editAnswer(id)),
+    deleteTopic: id => dispatch(actions.deleteTopic(id)),
     deleteAnswer: id => dispatch(actions.deleteAnswer(id)),
     createComment: (comment, commentableType, commentableId) =>
       dispatch(actions.createComment(comment, commentableType, commentableId)),

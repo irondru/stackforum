@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { AdvTexarea } from 'core/components'
+import { AdvTextarea } from 'core/components'
 import './style.css'
 
 class CommentForm extends React.Component {
@@ -29,12 +29,12 @@ class CommentForm extends React.Component {
             <div className="comment-form-layout">
               <div className="comment-form-header">
                 <span>New comment</span>
-                <i onClick={this.formVisible} className="material-icons">close</i>
+                <i onClick={this.formVisible} className="material-icons">cancel</i>
               </div>
               <form
                 onSubmit={(e) => edit ? updateComment(e, id)
                   : createComment(e, commentableType, commentableId, id)}>
-                <AdvTexarea body={body} />
+                <AdvTextarea body={body} />
                 <input className="btn" type="submit" />
               </form>
             </div>

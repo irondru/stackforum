@@ -27,8 +27,14 @@ const AnswerItem = ({ id, body, comments, score, access }, context) => {
           context.user.abilities & USER_CAN_CREATE_COMMENT ?
           <CommentForm key={Math.random()} commentableId={id} commentableType={ANSWERS} /> : null
         }
-        <button onClick={editAnswer.bind(null, id)}>Edit</button>
-        { access ? <button onClick={deleteAnswer.bind(null, id)}>Delete</button> : null }
+        {
+          access ?
+            <div className="flex-right">
+              <i className="material-icons" onClick={editAnswer.bind(null, id)}>mode_edit</i>
+              <i className="material-icons" onClick={deleteAnswer.bind(null, id)}>delete</i>
+            </div>
+            : null
+        }
      </div>
    </div>
  )

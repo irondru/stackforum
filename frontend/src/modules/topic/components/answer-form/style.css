@@ -1,0 +1,26 @@
+
+.answer-form-layout {
+  border: 1px solid #cccccc;
+  margin: 2rem 0;
+}
+
+.answer-form-layout>form {
+  padding: 10px;
+}
+
+.answer-form-layout>form>input {
+  margin-bottom: 10px;
+}
+
+.answer-form-header {
+  background-color: #0f3277;
+  padding: 0.3rem;
+  color: #dddddd;
+  position: relative;
+}
+
+.answer-form-header>i {
+  position: absolute;
+  right: 1%;
+  top: 6%;
+}

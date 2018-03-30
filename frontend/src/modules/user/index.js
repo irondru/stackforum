@@ -5,6 +5,7 @@ import { modal } from 'react-redux-modal'
 
 import * as actions from './actions'
 import { Auth } from './components'
+import SignOut from './components/sign-out'
 
 class UserAuth extends React.Component {
 
@@ -20,6 +21,10 @@ class UserAuth extends React.Component {
         event.preventDefault()
         formToJSON(event.target)
           .then(jform => this.props.signUp(jform))
+      },
+      signOut: event => {
+        event.preventDefault()
+        this.props.signOut()
       }
     }
   }
@@ -34,6 +39,16 @@ class UserAuth extends React.Component {
       hideCloseButton: false,
     })
 
+  signOutModal = () =>
+    modal.add(SignOut, {
+      title: 'This is my modal',
+      size: 'medium',
+      handles: this.handles,
+      closeOnOutsideClick: false,
+      hideTitleBar: false,
+      hideCloseButton: false,
+   })
+
   componentWillReceiveProps = (newProps) => {
     if (newProps.signedIn) modal.clear()
   }
@@ -43,7 +58,7 @@ class UserAuth extends React.Component {
     return (
       <div>
         {
-          signedIn ? <div className="header-btn" onClick={signOut}>Sign out</div>
+          signedIn ? <div className="header-btn" onClick={this.signOutModal}>Sign out</div>
           : <div className="header-btn" onClick={this.authModal}>Sign in</div>
         }
       </div>
