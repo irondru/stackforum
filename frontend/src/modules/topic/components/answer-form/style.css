@@ -1,26 +1,17 @@
-
-.answer-form-layout {
-  border: 1px solid #cccccc;
-  margin: 2rem 0;
+.post-layout-right>form {
+  margin-top: 1rem;
 }
 
-.answer-form-layout>form {
-  padding: 10px;
+.post-layout-right>form>div>div>input {
+  margin-bottom: 1rem;
 }
 
-.answer-form-layout>form>input {
-  margin-bottom: 10px;
-}
-
-.answer-form-header {
-  background-color: #0f3277;
-  padding: 0.3rem;
-  color: #dddddd;
+.answer-form {
   position: relative;
 }
 
-.answer-form-header>i {
+.answer-form>span>i {
   position: absolute;
   right: 1%;
-  top: 6%;
+  top: 25%;
 }

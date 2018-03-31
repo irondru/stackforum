@@ -1,6 +1,6 @@
 class UserSerializer < ActiveModel::Serializer
   attributes :id, :email, :reg_date, :name, :abilities, :avatar_large,
-    :answers_count, :questions_count
+    :avatar_thumb, :answers_count, :questions_count
 
   def avatar_thumb
     object.avatar.image.thumb.url
