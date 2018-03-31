@@ -6,12 +6,7 @@
   margin-bottom: 0.7rem;
 }
 
-.comment-icons {
-  display: flex;
-  justify-content: flex-end;
-  color: #5b5b5b;
-}
-
 .comment-icons>i {
-  font-size: 1.1em;
+  font-size: 0.8em;
+  color: #cccccc;
 }

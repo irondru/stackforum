@@ -1,7 +1,19 @@
 class CommentSerializer < ActiveModel::Serializer
-  attributes :id, :body, :user_id, :access
-end
+  attributes :id, :body, :user_id, :access, :author, :posted_at
 
-def access
-  scope.can?(:access, object)
+  def author
+    {
+      id: object.user.id,
+      name: object.user.name
+    }
+  end
+
+  def posted_at
+    object.created_at.strftime("%d.%m.%y %M:%H:%S")
+  end
+
+  def access
+    scope.can?(:access, object)
+  end
+
 end

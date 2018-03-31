@@ -14,40 +14,38 @@ const QuestionItem = ({ title, body, id, score, posted_at, comments, access, aut
         : <CommentItem key={comment.id} {...comment} />
     ) : null
 
-   return author ?
-    <div>
-      <h1>{title}</h1>
-      <div className="post-layout">
-        <div className="post-layout-left">
-          <img alt="avatar" className="post-avatar" src={BACKEND_PATH + author.avatar} />
-          <Vote votableType={QUESTIONS} votableId={id} score={score} />
-        </div>
-        <div className="post-layout-right">
-          <div className="post-layout-right-header">
-            <b>{author.name}</b> {posted_at}
-          </div>
-          <div className="post-text">
-            <p>{body}</p>
-          </div>
-          {commentsList()}
-          {
-             context.user.abilities & USER_CAN_CREATE_COMMENT ?
-             <CommentForm commentableType={QUESTIONS} commentableId={id} /> : null
-          }
-          {
-            access ?
-            <div className="flex-right" >
-              <Link to={TOPICS_PATH + id + '/edit'}>
-                  <i className="material-icons">mode_edit</i>
-              </Link>
-              <i onClick={context.handles.deleteTopic.bind(null, id)} className="material-icons">delete</i>
-            </div>
-            : null
-          }
-        </div>
-      </div>
-    </div>
-   : <div />
+   return <div>
+     <h1>{title}</h1>
+     <div className="post-layout">
+       <div className="post-layout-left">
+         <img alt="avatar" className="post-avatar" src={BACKEND_PATH + author.avatar} />
+         <Vote votableType={QUESTIONS} votableId={id} score={score} />
+       </div>
+       <div className="post-layout-right">
+         <div className="post-layout-right-header">
+           <b>{author.name}</b> {posted_at}
+         </div>
+         <div className="post-text">
+           <p>{body}</p>
+         </div>
+         {commentsList()}
+         {
+            context.user.abilities & USER_CAN_CREATE_COMMENT ?
+            <CommentForm commentableType={QUESTIONS} commentableId={id} /> : null
+         }
+         {
+           access ?
+           <div className="flex-right" >
+             <Link to={TOPICS_PATH + id + '/edit'}>
+                 <i className="material-icons">mode_edit</i>
+             </Link>
+             <i onClick={context.handles.deleteTopic.bind(null, id)} className="material-icons">delete</i>
+           </div>
+           : null
+         }
+       </div>
+     </div>
+   </div>
 }
 
 QuestionItem.contextTypes = {

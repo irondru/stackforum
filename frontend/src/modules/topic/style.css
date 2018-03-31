@@ -7,6 +7,7 @@
 
 .post-layout {
   display: flex;
+  margin-bottom: 1.5rem;
 }
 
 .post-layout-left {
@@ -38,7 +39,7 @@
 }
 
 .post-layout-right-header {
-  padding: 0.7rem;
+  padding: 0.9rem;
   background-color: #f6f8fa;
   margin: 0 -1rem;
   border-bottom: 1px solid #d1d5da;

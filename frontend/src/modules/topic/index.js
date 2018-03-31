@@ -23,8 +23,10 @@ class Topic extends React.Component {
         <AnswerItem key={answer.id} {...answer} />
    ) : null
 
-  render = () => {
-    return (
+  render = () =>
+    this.props.fetching ?
+    <h1>Loading</h1>
+    :
     <div className="topic-layout">
       <Question {...this.props.question} />
       {this.answersList()}
@@ -33,8 +35,6 @@ class Topic extends React.Component {
           <AnswerForm key={Date.now()} /> : null
       }
     </div>
-  )
-   }
 
    getChildContext = () => ({
      handles: {

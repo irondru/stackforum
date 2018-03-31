@@ -1,9 +1,9 @@
 import React from 'react';
 import { CommentItem, CommentForm, Vote } from '../../components'
-import { ANSWERS, USER_CAN_CREATE_COMMENT } from 'core/constants'
+import { ANSWERS, USER_CAN_CREATE_COMMENT, BACKEND_PATH } from 'core/constants'
 import PropTypes from 'prop-types'
 
-const AnswerItem = ({ id, body, comments, score, access }, context) => {
+const AnswerItem = ({ id, body, comments, score, access, author, posted_at }, context) => {
 
   const commentsList = () =>
     comments ? comments.map (comment =>
@@ -13,31 +13,33 @@ const AnswerItem = ({ id, body, comments, score, access }, context) => {
 
   const { editAnswer, deleteAnswer } = context.handles
 
-  return (
-    <div className="post-layout">
-      <div className="post-layout-left">
-        <Vote votableType={ANSWERS} votableId={id} score={score} />
+  return <div className="post-layout">
+    <div className="post-layout-left">
+      <img alt="avatar" className="post-avatar" src={BACKEND_PATH + author.avatar} />
+      <Vote votableType={ANSWERS} votableId={id} score={score} />
+    </div>
+    <div className="post-layout-right">
+      <div className="post-layout-right-header">
+        <b>{author.name}</b> {posted_at}
       </div>
-      <div className="post-layout-right">
-        <div className="post-text">
-          <p>{body}</p>
-        </div>
-        { commentsList() }
-        {
-          context.user.abilities & USER_CAN_CREATE_COMMENT ?
-          <CommentForm key={Math.random()} commentableId={id} commentableType={ANSWERS} /> : null
-        }
-        {
-          access ?
-            <div className="flex-right">
-              <i className="material-icons" onClick={editAnswer.bind(null, id)}>mode_edit</i>
-              <i className="material-icons" onClick={deleteAnswer.bind(null, id)}>delete</i>
-            </div>
-            : null
-        }
-     </div>
-   </div>
- )
+      <div className="post-text">
+        <p>{body}</p>
+      </div>
+      { commentsList() }
+      {
+        context.user.abilities & USER_CAN_CREATE_COMMENT ?
+        <CommentForm key={Math.random()} commentableId={id} commentableType={ANSWERS} /> : null
+      }
+      {
+        access ?
+          <div className="flex-right">
+            <i className="material-icons" onClick={editAnswer.bind(null, id)}>mode_edit</i>
+            <i className="material-icons" onClick={deleteAnswer.bind(null, id)}>delete</i>
+          </div>
+        : null
+      }
+    </div>
+  </div>
 }
 
 AnswerItem.contextTypes = {
