@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :authorizations
   has_one :avatar
 
+  validates :name, uniqueness: true
+
   def self.find_for_oauth(auth)
     authorization = Authorization.where(provider: auth.provider, uid: auth.uid.to_s).first
     return authorization.user if authorization

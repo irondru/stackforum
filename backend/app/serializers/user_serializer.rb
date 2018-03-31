@@ -1,5 +1,26 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :email, :abilities
+  attributes :id, :email, :reg_date, :name, :abilities, :avatar_large,
+    :answers_count, :questions_count
+
+  def avatar_thumb
+    object.avatar.image.thumb.url
+  end
+
+  def reg_date
+    object.created_at.strftime("%d.%m.%y")
+  end
+
+  def avatar_large
+    object.avatar.image.large.url
+  end
+
+  def answers_count
+    object.answers.count
+  end
+
+  def questions_count
+    object.questions.count
+  end
 
   def abilities
     result = scope.can?(:create, Question) ? 1 : 0

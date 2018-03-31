@@ -23,6 +23,7 @@ export {
 } from './routes'
 export {
   GET, POST, PATCH, DELETE, ID,
+  BACKEND_PATH,
   API_TOPICS_PATH,
   API_SIGN_IN_PATH,
   API_SIGN_UP_PATH,

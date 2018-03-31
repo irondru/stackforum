@@ -13,6 +13,12 @@ body {
   background-color: #fbfbfb;
 }
 
+input[type="file" i] {
+    align-items: baseline;
+    color: inherit;
+    text-align: start;
+}
+
 #container {
   display: flex;
   flex-direction: column;

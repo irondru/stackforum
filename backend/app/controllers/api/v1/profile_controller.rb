@@ -10,6 +10,7 @@ class Api::V1::ProfileController < Api::V1::ApplicationController
   end
 
   def avatar_uploader
+    Avatar.remove_old(current_user.id)
     @avatar = Avatar.new(avatar_params)
     @avatar.save
   end

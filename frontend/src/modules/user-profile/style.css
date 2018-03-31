@@ -1,0 +1,28 @@
+
+#profile-layout {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #cccccc;
+}
+
+#profile-header {
+  background-color: #0f3277;
+  color: #dddddd;
+  padding: 0.5rem;
+}
+
+#avatar-box {
+  display: inline-block;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+}
+
+#profile-content {
+  padding: 1rem;
+}
+
+#more-info {
+  margin-top: 1rem;
+}
