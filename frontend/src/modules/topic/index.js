@@ -5,6 +5,7 @@ import { browserHistory } from 'react-router'
 import * as actions from './actions'
 
 import { AnswerForm, Question, AnswerItem } from './components'
+import { Spinner } from 'core/components'
 import { formToJSON } from 'core'
 import { USER_CAN_CREATE_ANSWER } from 'core/constants'
 import './style.css'
@@ -23,18 +24,20 @@ class Topic extends React.Component {
         <AnswerItem key={answer.id} {...answer} />
    ) : null
 
-  render = () =>
-    this.props.fetching ?
-    <h1>Loading</h1>
+  render = () => {
+    const { fetching, question } = this.props
+    const { abilities } = this.context.user
+    return fetching ? <Spinner />
     :
     <div className="topic-layout">
-      <Question {...this.props.question} />
+      <Question {...question} />
       {this.answersList()}
       {
-        this.context.user.abilities & USER_CAN_CREATE_ANSWER ?
-          <AnswerForm key={Date.now()} /> : null
+        abilities & USER_CAN_CREATE_ANSWER ? <AnswerForm key={Date.now()} />
+        : null
       }
     </div>
+  }  
 
    getChildContext = () => ({
      handles: {

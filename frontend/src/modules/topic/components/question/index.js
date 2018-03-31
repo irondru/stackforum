@@ -14,7 +14,7 @@ const QuestionItem = ({ title, body, id, score, posted_at, comments, access, aut
         : <CommentItem key={comment.id} {...comment} />
     ) : null
 
-   return <div>
+   return body ? <div>
      <h1>{title}</h1>
      <div className="post-layout">
        <div className="post-layout-left">
@@ -28,7 +28,7 @@ const QuestionItem = ({ title, body, id, score, posted_at, comments, access, aut
          <div className="post-text">
            <p>{body}</p>
          </div>
-         {commentsList()}
+         { commentsList() }
          {
             context.user.abilities & USER_CAN_CREATE_COMMENT ?
             <CommentForm commentableType={QUESTIONS} commentableId={id} /> : null
@@ -46,6 +46,7 @@ const QuestionItem = ({ title, body, id, score, posted_at, comments, access, aut
        </div>
      </div>
    </div>
+   : <div />
 }
 
 QuestionItem.contextTypes = {
