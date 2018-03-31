@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { getUser } from 'modules/user/actions'
+import { getUser } from '../user-common/actions'
 import { Header } from 'core/components'
 import './style.css'
 

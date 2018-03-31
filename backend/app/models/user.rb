@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :answers
   has_many :votes
   has_many :authorizations
+  has_one :avatar
 
   def self.find_for_oauth(auth)
     authorization = Authorization.where(provider: auth.provider, uid: auth.uid.to_s).first

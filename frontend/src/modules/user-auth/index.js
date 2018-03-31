@@ -4,8 +4,7 @@ import { formToJSON } from 'core'
 import { modal } from 'react-redux-modal'
 
 import * as actions from './actions'
-import { Auth } from './components'
-import SignOut from './components/sign-out'
+import { ModalSignOut, ModalAuth } from './components'
 
 class UserAuth extends React.Component {
 
@@ -30,8 +29,8 @@ class UserAuth extends React.Component {
   }
 
   authModal = () =>
-    modal.add(Auth, {
-      title: 'This is my modal',
+    modal.add(ModalAuth, {
+      title: 'Войти',
       size: 'medium',
       handles: this.handles,
       closeOnOutsideClick: false,
@@ -40,8 +39,8 @@ class UserAuth extends React.Component {
     })
 
   signOutModal = () =>
-    modal.add(SignOut, {
-      title: 'This is my modal',
+    modal.add(ModalSignOut, {
+      title: 'Выйти',
       size: 'medium',
       handles: this.handles,
       closeOnOutsideClick: false,
@@ -49,16 +48,15 @@ class UserAuth extends React.Component {
       hideCloseButton: false,
    })
 
-  componentWillReceiveProps = (newProps) => {
-    if (newProps.signedIn) modal.clear()
+  componentWillReceiveProps = () => {
+     modal.clear()
   }
 
   render = () => {
-    const { signedIn, signOut } = this.props
     return (
       <div>
         {
-          signedIn ? <div className="header-btn" onClick={this.signOutModal}>Sign out</div>
+          this.props.signedIn ? <div className="header-btn" onClick={this.signOutModal}>Sign out</div>
           : <div className="header-btn" onClick={this.authModal}>Sign in</div>
         }
       </div>
@@ -67,20 +65,14 @@ class UserAuth extends React.Component {
 
 }
 
-
 const mapStateToProps = state => ({
-    ...state.user,
     signedIn: !!state.user.payload.id
 })
 
-
-const mapDispatchToProps = dispatch => {
-  return {
+const mapDispatchToProps = dispatch => ({
     signIn: user => dispatch(actions.signIn(user)),
     signUp: user => dispatch(actions.signUp(user)),
     signOut: () => dispatch(actions.signOut()),
-    getUser: () => dispatch(actions.getUser())
-  }
-}
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserAuth);

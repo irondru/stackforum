@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     namespace :v1 do
 
       get 'profile', to: 'profile#show'
+      post 'avatar_upload', to: 'profile#avatar_uploader'
 
       resources :questions, concerns: [:votable, :commentable], except: [:new, :edit], shallow: true do
         resources :answers, concerns: [:votable, :commentable], only: [:create, :update, :destroy] do

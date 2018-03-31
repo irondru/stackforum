@@ -4,7 +4,7 @@ import {reducer as modalReducer} from 'react-redux-modal'
 
 import topic from 'modules/topic/reducer'
 import question from 'modules/new-or-edit-question/reducer'
-import user from 'modules/user/reducer'
+import user from 'core/components/user-common/reducer'
 import topics from 'modules/topics-list/reducer'
 
 export default combineReducers({

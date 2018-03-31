@@ -9,6 +9,7 @@ class Api::V1::AnswersController < Api::V1::ApplicationController
   authorize_resource
 
   def create
+    puts answer_params
     @answer = Answer.new(answer_params.merge(question: set_question))
     if @answer.save
       render json: @answer, serializer: AnswerSerializer
@@ -25,7 +26,7 @@ class Api::V1::AnswersController < Api::V1::ApplicationController
     @answer_id = @answer.id
     if @answer.destroy
       render json: { answer: { id: @answer_id } }
-    end  
+    end
   end
 
   def best

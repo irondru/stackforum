@@ -9,4 +9,18 @@ class Api::V1::ProfileController < Api::V1::ApplicationController
     end
   end
 
+  def avatar_uploader
+    @avatar = Avatar.new(avatar_params)
+    @avatar.save
+  end
+
+  private
+
+  def avatar_params
+    {
+      image: params[:avatar][:image].first[:file], #ахтунг код дабы не плодить похожие методы на фронте
+      user_id: current_user.id
+    }
+  end
+
 end

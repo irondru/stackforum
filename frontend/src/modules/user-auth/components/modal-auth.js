@@ -2,7 +2,7 @@ import React from 'react'
 
 import { SignInForm, SignUpForm } from '../components'
 
-export default class Auth extends React.Component {
+export default class ModalAuth extends React.Component {
 
   constructor(props) {
     super(props);

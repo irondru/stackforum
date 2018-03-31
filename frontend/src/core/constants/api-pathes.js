@@ -16,3 +16,4 @@ export const API_COMMENTS_CREATE_QUESTION_PATH = API_TOPICS_PATH + ID +'/new_com
 export const API_COMMENTS_PATH                 = ROOT + 'comments/'
 export const API_QUESTION_VOTE_CHANGE_PATH     = API_TOPICS_PATH + ID + '/change_vote'
 export const API_ANSWER_VOTE_CHANGE_PATH       = API_ANSWERS_PATH + ID + '/change_vote'
+export const API_AVATAR_UPLOAD_PATH            = ROOT + 'avatar_upload'
