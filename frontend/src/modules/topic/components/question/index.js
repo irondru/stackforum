@@ -2,11 +2,11 @@ import React from 'react'
 import { Link } from 'react-router'
 import PropTypes from 'prop-types'
 
-import { TOPICS_PATH, QUESTIONS, USER_CAN_CREATE_COMMENT } from 'core/constants'
+import { TOPICS_PATH, QUESTIONS, USER_CAN_CREATE_COMMENT, BACKEND_PATH } from 'core/constants'
 import { CommentItem, CommentForm, Vote }  from '../../components'
 import './style.css'
 
-const QuestionItem = ({ title, body, id, score, comments, access }, context) => {
+const QuestionItem = ({ title, body, id, score, posted_at, comments, access, author }, context) => {
 
   const commentsList = () =>
     comments ? comments.map(comment =>
@@ -14,14 +14,18 @@ const QuestionItem = ({ title, body, id, score, comments, access }, context) => 
         : <CommentItem key={comment.id} {...comment} />
     ) : null
 
-  return (
+   return author ?
     <div>
       <h1>{title}</h1>
       <div className="post-layout">
         <div className="post-layout-left">
+          <img alt="avatar" className="post-avatar" src={BACKEND_PATH + author.avatar} />
           <Vote votableType={QUESTIONS} votableId={id} score={score} />
         </div>
         <div className="post-layout-right">
+          <div className="post-layout-right-header">
+            <b>{author.name}</b> {posted_at}
+          </div>
           <div className="post-text">
             <p>{body}</p>
           </div>
@@ -43,7 +47,7 @@ const QuestionItem = ({ title, body, id, score, comments, access }, context) => 
         </div>
       </div>
     </div>
-  )
+   : <div />
 }
 
 QuestionItem.contextTypes = {

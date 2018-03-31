@@ -17,3 +17,7 @@
 .hidden {
   display: none;
 }
+
+.disabled, .disabled:hover {
+  color: #d1d1d1;
+}

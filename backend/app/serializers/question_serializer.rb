@@ -11,8 +11,14 @@ class QuestionSerializer < ActiveModel::Serializer
       created_at: object.created_at,
       score: object.score,
       access: access,
+      posted_at: object.created_at.strftime("%d.%m.%y %M:%H:%S"),
       comments: object.comments.map { |comment| CommentSerializer.new(comment) },
-      attachments: object.attachments.map { |attachment| AttachmentSerializer.new(attachment)}
+      attachments: object.attachments.map { |attachment| AttachmentSerializer.new(attachment)},
+      author: {
+        id: object.user.id,
+        name: object.user.name,
+        avatar: object.user.avatar.image.thumb.url
+      }
     }
   end
 

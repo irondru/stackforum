@@ -5,14 +5,16 @@ import './style.css'
 
 const Vote = ({ votableType, votableId, score }, { user, handles }) => {
   const { changeVote } = handles
-  const votable = user.abilities & USER_CAN_VOTE
+  const enable = user.abilities & USER_CAN_VOTE
   return (
     <div className="votes">
-      <i className={votable ? "material-icons" : "hidden"} onClick={(e) => changeVote(e, votableType, votableId, UP_VOTE)}>
+      <i disabled="true" className={`material-icons ${enable ? '' : 'disabled'}`}
+        onClick={enable ? (e) => changeVote(e, votableType, votableId, UP_VOTE) : null}>
         keyboard_arrow_up
       </i>
       <div className="score">{score}</div>
-      <i className={votable ? "material-icons" : "hidden"} onClick={(e) => changeVote(e, votableType, votableId, DOWN_VOTE)}>
+      <i className={`material-icons ${enable ? '' : 'disabled'}`}
+        onClick={enable ? (e) => changeVote(e, votableType, votableId, DOWN_VOTE) : null}>
         keyboard_arrow_down
       </i>
     </div>
