@@ -10,21 +10,24 @@ export default class AdvTexarea extends React.Component {
   }
 
   handleCopy = event =>
-    this.refs.hiddenText.value += String.fromCharCode(event.which)
+    this.refs.hiddenText.value = event.target.innerHTML
+      .replace(/<div>/g, '\n')
+      .replace(/(<([^>]+)>)/ig,'')
+      .replace(/&nbsp;|\u202F|\u00A0/g, ' ')
 
   render = () =>
     <div>
+      <textarea ref="hiddenText" name={this.props.name || 'body'} style={{display: 'none'}} />
       <div
         contentEditable="true"
         ref={this.divInit}
-        onKeyPress={this.handleCopy}
+        onBlur={this.handleCopy}
         className="adv-text-area"
         style={{
           backgroundColor: 'white',
           minHeight: this.props.minHeight
         }}
       />
-      <textarea ref="hiddenText" name={this.props.name || 'body'} style={{display: 'none'}} />
     </div>
 
 }

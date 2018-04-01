@@ -6,6 +6,7 @@ import * as actions from './actions'
 import { formToJSON } from 'core'
 import QuestionForm from './components/form'
 import { TOPICS_PATH } from 'core/constants'
+import { Spinner } from 'core/components'
 
 class NewOrEditQuestion extends React.Component {
 
@@ -28,8 +29,8 @@ class NewOrEditQuestion extends React.Component {
   render = () => {
     const { id } = this.props.params
     const { title, body, fetching } = id ? this.props : ''
-    if (id && fetching) return <h1>Loading...</h1>
-    return <QuestionForm key={Date.now()} title={title} body={body} handleSubmit={this.handleSubmit} edit={!!id} />
+    return id && fetching ? <Spinner />
+     : <QuestionForm key={Date.now()} title={title} body={body} handleSubmit={this.handleSubmit} edit={!!id} />
   }
 
 }

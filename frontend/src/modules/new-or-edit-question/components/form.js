@@ -16,10 +16,10 @@ const QuestionForm = ({ title, body, handleSubmit }, context ) =>
       </div>
       <form onSubmit={handleSubmit}>
         <p>Заголовок</p>
-        <AdvTextarea name="title" />
+        <AdvTextarea body={title} name="title" />
         <br/>
         <p>Содержание</p>
-        <AdvTextarea minHeight="10rem" />
+        <AdvTextarea body={body} minHeight="10rem" />
         <Attachments />
         <input className="btn" type="submit" name="submit" />
       </form>
