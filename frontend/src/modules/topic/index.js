@@ -33,7 +33,8 @@ class Topic extends React.Component {
       <Question {...question} />
       {this.answersList()}
       {
-        abilities & USER_CAN_CREATE_ANSWER ? <AnswerForm key={Date.now()} />
+        abilities & USER_CAN_CREATE_ANSWER && !this.props.anyEdit ?
+          <AnswerForm key={Date.now()} />
         : null
       }
     </div>

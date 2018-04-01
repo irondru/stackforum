@@ -6,6 +6,7 @@
 .comment-form-layout {
   border: 1px solid #cccccc;
   margin-bottom: 2rem;
+  border-radius: 5px;
 }
 
 .comment-form-layout>form {
@@ -17,9 +18,9 @@
 }
 
 .comment-form-header {
-  background-color: #0f3277;
+  background-color: #f6f8fa;
   padding: 0.3rem;
-  color: #dddddd;
+  border-bottom: 1px solid #cccccc;
   position: relative;
 }
 

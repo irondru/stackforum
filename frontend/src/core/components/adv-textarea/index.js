@@ -10,14 +10,14 @@ export default class AdvTexarea extends React.Component {
   }
 
   handleCopy = event =>
-    this.refs.hiddenText.value = event.target.innerHTML
+    this.refs.hiddenText.value += String.fromCharCode(event.which)
 
   render = () =>
     <div>
       <div
         contentEditable="true"
         ref={this.divInit}
-        onKeyDown={this.handleCopy}
+        onKeyPress={this.handleCopy}
         className="adv-text-area"
         style={{
           backgroundColor: 'white',

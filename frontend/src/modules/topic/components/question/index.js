@@ -23,25 +23,25 @@ const QuestionItem = ({ title, body, id, score, posted_at, comments, access, aut
        </div>
        <div className="post-layout-right">
          <div className="post-layout-right-header">
-           <b>{author.name}</b> {posted_at}
+           <span><b>{author.name}</b> {posted_at}</span>
+           {
+             access ?
+             <div className="flex-right">
+               <Link to={TOPICS_PATH + id + '/edit'}>
+                   <i className="material-icons">mode_edit</i>
+               </Link>
+               <i onClick={context.handles.deleteTopic.bind(null, id)} className="material-icons">delete</i>
+             </div>
+             : null
+           }
          </div>
          <div className="post-text">
-           <p>{body}</p>
+           <pre>{body}</pre>
          </div>
          { commentsList() }
          {
             context.user.abilities & USER_CAN_CREATE_COMMENT ?
-            <CommentForm commentableType={QUESTIONS} commentableId={id} /> : null
-         }
-         {
-           access ?
-           <div className="flex-right" >
-             <Link to={TOPICS_PATH + id + '/edit'}>
-                 <i className="material-icons">mode_edit</i>
-             </Link>
-             <i onClick={context.handles.deleteTopic.bind(null, id)} className="material-icons">delete</i>
-           </div>
-           : null
+            <CommentForm key={Math.random()} commentableType={QUESTIONS} commentableId={id} /> : null
          }
        </div>
      </div>

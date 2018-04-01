@@ -16,11 +16,11 @@ const AnswerForm = ({ id, body, edit }, context) => {
           <div className="post-layout-right-header answer-form">
             {
               edit ?
-              <span>
-                <b>Редактирование</b>
-                <i className="material-icons" onClick={editAnswer.bind(null, id)}>cancel</i>
-              </span>
-              : <b>Ваш ответ</b>
+                <span>
+                  <b>Редактирование</b>
+                  <i className="material-icons flex-right" onClick={editAnswer.bind(null, id)}>cancel</i>
+                </span>
+                : <b>Ваш ответ</b>
             }
           </div>
           <form

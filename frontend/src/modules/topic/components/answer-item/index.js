@@ -24,28 +24,28 @@ const AnswerItem = ({ id, body, comments, score, access, author,
         itsMyTopic ?
           <i className={`material-icons ${best ? 'best-answer' : null}`}
             onClick={bestAnswer.bind(null, id)}>done</i>
-        : null
+        : best ? <i className="material-icons best-answer">done</i> : null
       }
     </div>
     <div className="post-layout-right">
       <div className="post-layout-right-header">
-        <b>{author.name}</b> {posted_at}
+        <span><b>{author.name}</b> {posted_at}</span>
+        {
+          access ?
+            <div className="flex-right">
+              <i className="material-icons" onClick={editAnswer.bind(null, id)}>mode_edit</i>
+              <i className="material-icons" onClick={deleteAnswer.bind(null, id)}>delete</i>
+            </div>
+          : null
+        }
       </div>
       <div className="post-text">
-        <p>{body}</p>
+        <pre>{body}</pre>
       </div>
       { commentsList() }
       {
         context.user.abilities & USER_CAN_CREATE_COMMENT ?
         <CommentForm key={Math.random()} commentableId={id} commentableType={ANSWERS} /> : null
-      }
-      {
-        access ?
-          <div className="flex-right">
-            <i className="material-icons" onClick={editAnswer.bind(null, id)}>mode_edit</i>
-            <i className="material-icons" onClick={deleteAnswer.bind(null, id)}>delete</i>
-          </div>
-        : null
       }
     </div>
   </div>

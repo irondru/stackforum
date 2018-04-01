@@ -9,11 +9,11 @@ module Commented
   def new_comment
     @comment = @commentable.comments.new(comment_params)
     if @comment.save
-      render json: Oj.dump({
-        comment: CommentSerializer.new(@comment),
+      render json: {
+        comment: CommentSerializer.new(@comment, {scope: current_ability} ),
         commentable_type: @comment.commentable_type,
         commentable_id: @comment.commentable_id
-      })
+      }
     end
   end
 

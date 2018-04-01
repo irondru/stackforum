@@ -3,8 +3,6 @@ class AnswerSerializer < ActiveModel::Serializer
 
   #has_many :comments, each_serialiser: CommentSerializer #its not working, wtf?
 
-  #delegate :current_user, to: :scope
-
   def access
     scope.can?(:access, object)
   end
@@ -22,7 +20,7 @@ class AnswerSerializer < ActiveModel::Serializer
   end
 
   def comments
-    object.comments.map { |comment| CommentSerializer.new(comment, {scope: current_ability}) }
+    object.comments.ordered.map { |comment| CommentSerializer.new(comment, {scope: current_ability}) }
   end
 
   def attachments

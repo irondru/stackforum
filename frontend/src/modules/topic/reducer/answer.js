@@ -16,7 +16,8 @@ export default (state, action) => {
       return pushInPayload(state, {
         answers: state.payload.answers.map(answer =>
           answer.id === action.id ? { ...answer, edit: !answer.edit }
-         : { ...answer, edit: false })
+         : { ...answer, edit: false }),
+        anyEdit: !state.payload.anyEdit 
       })
     case DESTROY:
       return pushInPayload(state, {
