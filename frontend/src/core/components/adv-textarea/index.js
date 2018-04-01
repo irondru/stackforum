@@ -24,7 +24,7 @@ export default class AdvTexarea extends React.Component {
           minHeight: this.props.minHeight
         }}
       />
-      <textarea ref="hiddenText" name="body" style={{display: 'none'}} />
+      <textarea ref="hiddenText" name={this.props.name || 'body'} style={{display: 'none'}} />
     </div>
 
 }

@@ -46,6 +46,14 @@
   border-bottom: 1px solid #d1d5da;
 }
 
+.post-layout-right>form>div>div>input, .post-layout-right>form>input  {
+  margin-top: 1rem;
+}
+
+.post-layout-right>form {
+  margin-top: 1rem;
+}
+
 .flex-right, .flex-right>i, .flex-right>a>i {
   font-size: 1em;
 }

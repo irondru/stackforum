@@ -1,15 +1,33 @@
 import React from 'react'
-import { Attachments } from 'core/components'
+import { Attachments, AdvTextarea } from 'core/components'
+import PropTypes from 'prop-types'
 
-export default function QuestionForm({ title, body, handleSubmit }) {
-  return (
-      <div>
-        <form onSubmit={handleSubmit}>
-          <input type="text" name="title" defaultValue={title}/>
-          <textarea name="body" defaultValue={body} />
-          <Attachments />
-          <input type="submit" name="submit" />
-        </form>
+import { BACKEND_PATH } from 'core/constants'
+import './style.css'
+
+const QuestionForm = ({ title, body, handleSubmit }, context ) =>
+  <div className="post-layout new-question-container">
+    <div className="post-layout-left">
+      <img alt="avatar" className="post-avatar" src={BACKEND_PATH + context.user.avatar_thumb} />
+    </div>
+    <div className="post-layout-right">
+      <div className="post-layout-right-header">
+        <h4>Новый вопрос</h4>
       </div>
-    )
+      <form onSubmit={handleSubmit}>
+        <p>Заголовок</p>
+        <AdvTextarea name="title" />
+        <br/>
+        <p>Содержание</p>
+        <AdvTextarea minHeight="10rem" />
+        <Attachments />
+        <input className="btn" type="submit" name="submit" />
+      </form>
+    </div>
+  </div>
+
+QuestionForm.contextTypes = {
+  user: PropTypes.object.isRequired
 }
+
+export default QuestionForm

@@ -1,6 +1,8 @@
 import React from 'react'
 import { MAX_ATTACHMENTS } from 'core/constants'
 
+import './style.css'
+
 export default class Attachments extends React.Component {
 
   constructor(props) {
@@ -12,12 +14,12 @@ export default class Attachments extends React.Component {
   newItem = id => ({
     id,
     body: (
-      <div key={id}>
+      <div className="attachment-item" key={id}>
         <input type='file' name='attachments_attributes'
           onFocus={e => this.handleFocus(e, id)}
           onChange={e => this.handleAddItem(e, id)}
         />
-        <button onClick={e => this.handleDeleteItem(e, id)}>del</button>
+        <i className="material-icons" onClick={e => this.handleDeleteItem(e, id)}>delete</i>
       </div>
     )
   })
