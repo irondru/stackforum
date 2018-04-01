@@ -1,5 +1,5 @@
 import { pushInPayload } from 'core'
-import { ANSWERS, SUCCESS, CREATE, UPDATE, EDIT, DESTROY } from 'core/constants'
+import { ANSWERS, SUCCESS, CREATE, UPDATE, EDIT, DESTROY, BEST } from 'core/constants'
 
 export default (state, action) => {
   switch (action.type ^ ANSWERS + SUCCESS) {
@@ -19,11 +19,20 @@ export default (state, action) => {
          : { ...answer, edit: false })
       })
     case DESTROY:
-       return pushInPayload(state, {
+      return pushInPayload(state, {
          answers: state.payload.answers.filter(answer =>
            answer.id !== action.payload.answer.id
          )
        })
+    case BEST:
+      return pushInPayload(state, {
+        answers: [
+          ...state.payload.answers.filter(answer =>
+            answer.id === action.payload.answer.id ),
+          ...state.payload.answers.filter(answer =>
+             answer.id !== action.payload.answer.id)
+        ]
+      })
     default:
   }
 }

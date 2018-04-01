@@ -3,7 +3,7 @@ class UserSerializer < ActiveModel::Serializer
     :avatar_thumb, :answers_count, :questions_count
 
   def avatar_thumb
-    object.avatar.image.thumb.url
+    object.avatar.image.thumb.url if object.avatar.present?
   end
 
   def reg_date
@@ -11,7 +11,7 @@ class UserSerializer < ActiveModel::Serializer
   end
 
   def avatar_large
-    object.avatar.image.large.url
+    object.avatar.image.large.url if object.avatar.present?
   end
 
   def answers_count

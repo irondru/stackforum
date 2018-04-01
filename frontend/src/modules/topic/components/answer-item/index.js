@@ -3,7 +3,10 @@ import { CommentItem, CommentForm, Vote } from '../../components'
 import { ANSWERS, USER_CAN_CREATE_COMMENT, BACKEND_PATH } from 'core/constants'
 import PropTypes from 'prop-types'
 
-const AnswerItem = ({ id, body, comments, score, access, author, posted_at }, context) => {
+import './style.css'
+
+const AnswerItem = ({ id, body, comments, score, access, author,
+  posted_at, itsMyTopic, best }, context) => {
 
   const commentsList = () =>
     comments ? comments.map (comment =>
@@ -11,12 +14,18 @@ const AnswerItem = ({ id, body, comments, score, access, author, posted_at }, co
         <CommentItem key={comment.id} {...comment} />
     ) : null
 
-  const { editAnswer, deleteAnswer } = context.handles
+  const { editAnswer, deleteAnswer, bestAnswer } = context.handles
 
   return <div className="post-layout">
     <div className="post-layout-left">
       <img alt="avatar" className="post-avatar" src={BACKEND_PATH + author.avatar} />
       <Vote votableType={ANSWERS} votableId={id} score={score} />
+      {
+        itsMyTopic ?
+          <i className={`material-icons ${best ? 'best-answer' : null}`}
+            onClick={bestAnswer.bind(null, id)}>done</i>
+        : null
+      }
     </div>
     <div className="post-layout-right">
       <div className="post-layout-right-header">

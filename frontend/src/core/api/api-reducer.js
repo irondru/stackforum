@@ -1,7 +1,7 @@
-import { PENDING, SUCCESS, ERROR, REQUEST_STATUSES } from 'core/constants'
+import { PENDING, SUCCESS, ERROR, REQUEST_STATUSES, INIT } from 'core/constants'
 
 const initialState = {
-  fetching: 1,
+  fetching: INIT,
   payload: {},
   errors: null
 }
@@ -11,7 +11,7 @@ export default (state = initialState, { type, payload, errors } = {}, actionType
     ...state,
     ...{
       [PENDING]: () => ({
-        fetching: actionType
+        fetching: type ^ PENDING
       }),
       [SUCCESS]: () => ({
         fetching: 0,

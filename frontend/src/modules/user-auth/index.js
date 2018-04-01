@@ -41,7 +41,7 @@ class UserAuth extends React.Component {
   signOutModal = () =>
     modal.add(ModalSignOut, {
       title: 'Выйти',
-      size: 'medium',
+      size: 'small',
       handles: this.handles,
       closeOnOutsideClick: false,
       hideTitleBar: false,

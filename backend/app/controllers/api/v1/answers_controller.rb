@@ -30,8 +30,10 @@ class Api::V1::AnswersController < Api::V1::ApplicationController
   end
 
   def best
-    @answer.set_best if @answer.question.user == current_user
-    respond_with(@answer)
+    if @answer.question.user == current_user
+      @answer.set_best
+      render json: { answer: { id: @answer.id } }
+    end  
   end
 
   private

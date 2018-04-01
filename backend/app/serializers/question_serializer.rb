@@ -11,7 +11,7 @@ class QuestionSerializer < ActiveModel::Serializer
       created_at: object.created_at,
       score: object.score,
       access: access,
-      posted_at: object.created_at.strftime("%d.%m.%y %M:%H:%S"),
+      posted_at: object.created_at.strftime("%d.%m.%y %H:%M:%S"),
       comments: object.comments.map {
         |comment| CommentSerializer.new(comment, {scope: current_ability})
       },

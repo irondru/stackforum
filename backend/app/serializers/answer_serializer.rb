@@ -1,7 +1,9 @@
 class AnswerSerializer < ActiveModel::Serializer
-  attributes :id, :body, :posted_at, :author, :score, :access, :comments, :attachments
+  attributes :id, :body, :posted_at, :author, :score, :access, :comments, :attachments, :best
 
   #has_many :comments, each_serialiser: CommentSerializer #its not working, wtf?
+
+  #delegate :current_user, to: :scope
 
   def access
     scope.can?(:access, object)
@@ -16,7 +18,7 @@ class AnswerSerializer < ActiveModel::Serializer
   end
 
   def posted_at
-    object.created_at.strftime("%d.%m.%y %M:%H:%S")
+    object.created_at.strftime("%d.%m.%y %H:%M:%S")
   end
 
   def comments

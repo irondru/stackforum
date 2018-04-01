@@ -7,7 +7,7 @@ import * as actions from './actions'
 import { AnswerForm, Question, AnswerItem } from './components'
 import { Spinner } from 'core/components'
 import { formToJSON } from 'core'
-import { USER_CAN_CREATE_ANSWER } from 'core/constants'
+import { USER_CAN_CREATE_ANSWER, QUESTIONS, SHOW, INIT } from 'core/constants'
 import './style.css'
 
 class Topic extends React.Component {
@@ -21,13 +21,13 @@ class Topic extends React.Component {
   answersList = () =>
     this.props.answers ? this.props.answers.map(answer =>
       answer.edit ? <AnswerForm key={answer.id} {...answer} /> :
-        <AnswerItem key={answer.id} {...answer} />
+        <AnswerItem key={answer.id} {...answer} itsMyTopic={this.props.question.access} />
    ) : null
 
   render = () => {
     const { fetching, question } = this.props
     const { abilities } = this.context.user
-    return fetching ? <Spinner />
+    return fetching === QUESTIONS + SHOW || fetching === INIT ? <Spinner />
     :
     <div className="topic-layout">
       <Question {...question} />
@@ -37,7 +37,7 @@ class Topic extends React.Component {
         : null
       }
     </div>
-  }  
+  }
 
    getChildContext = () => ({
      handles: {
@@ -52,6 +52,7 @@ class Topic extends React.Component {
          formToJSON(event.target)
          .then(jform => this.props.updateAnswer(jform, id))
        },
+       bestAnswer: id =>this.props.bestAnswer(id),
        deleteTopic: id => this.props.deleteTopic(id),
        deleteAnswer: id => this.props.deleteAnswer(id),
        editComment: id => this.props.editComment(id),
@@ -80,6 +81,7 @@ const mapDispatchToProps = dispatch => {
     createAnswer: (answer, questionId) => dispatch(actions.createAnswer(answer, questionId)),
     updateAnswer: (answer, id) => dispatch(actions.updateAnswer(answer, id)),
     editAnswer: id => dispatch(actions.editAnswer(id)),
+    bestAnswer: id => dispatch(actions.bestAnswer(id)),
     deleteTopic: id => dispatch(actions.deleteTopic(id)),
     deleteAnswer: id => dispatch(actions.deleteAnswer(id)),
     createComment: (comment, commentableType, commentableId) =>

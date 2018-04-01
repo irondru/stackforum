@@ -1,6 +1,8 @@
 import React from 'react'
 import './style.css'
 
+//http://epic-spinners.epicmax.co/#/
+
 export default () =>
   <div className="spinner-container">
     <div className="atom-spinner">

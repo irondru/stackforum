@@ -19,11 +19,11 @@ Rails.application.routes.draw do
 
       resources :questions, concerns: [:votable, :commentable], except: [:new, :edit], shallow: true do
         resources :answers, concerns: [:votable, :commentable], only: [:create, :update, :destroy] do
-          get :best, on: :member
+          post :best, on: :member
         end
       end
 
-      devise_for :users, singular: :user, controllers: {
+      devise_for :users, singular: :user, controllers: { #singular: :user - починка current_user под нэймспейсом
         sessions: 'api/v1/sessions',
         registrations: 'api/v1/registrations'
       }
@@ -32,13 +32,7 @@ Rails.application.routes.draw do
 
   resource :search, only: :show
 
-  get '/questions_pages/:page', to: 'questions#index'
-
-  get '/user', to: 'questions#index'
-
   delete '/attach/:id', to: 'attachments#destroy', as: 'attachment_destroy'
-
-  root 'questions#index'
 
   mount ActionCable.server => '/cable'
 
