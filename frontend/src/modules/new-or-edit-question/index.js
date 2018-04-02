@@ -5,13 +5,13 @@ import { browserHistory } from 'react-router'
 import * as actions from './actions'
 import { formToJSON } from 'core'
 import QuestionForm from './components/form'
-import { TOPICS_PATH } from 'core/constants'
+import { TOPICS_ROOT } from 'core/constants'
 import { Spinner } from 'core/components'
 
 class NewOrEditQuestion extends React.Component {
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.redirectTo) browserHistory.push(TOPICS_PATH + nextProps.redirectTo)
+    if (nextProps.redirectTo) browserHistory.push(TOPICS_ROOT + nextProps.redirectTo)
   }
 
   componentDidMount() {

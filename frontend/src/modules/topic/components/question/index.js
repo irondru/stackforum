@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import PropTypes from 'prop-types'
 
-import { TOPICS_PATH, QUESTIONS, USER_CAN_CREATE_COMMENT, BACKEND_PATH } from 'core/constants'
+import { QUESTION_EDIT, QUESTIONS, USER_CAN_CREATE_COMMENT, BACKEND_PATH } from 'core/constants'
 import { CommentItem, CommentForm, Vote }  from '../../components'
 import './style.css'
 
@@ -15,7 +15,7 @@ const QuestionItem = ({ title, body, id, score, posted_at, comments, access, aut
     ) : null
 
    return body ? <div>
-     <h1>{title}</h1>
+     <h1 id="question-title">{title}</h1>
      <div className="post-layout">
        <div className="post-layout-left">
          <img alt="avatar" className="post-avatar" src={BACKEND_PATH + author.avatar} />
@@ -27,7 +27,7 @@ const QuestionItem = ({ title, body, id, score, posted_at, comments, access, aut
            {
              access ?
              <div className="flex-right">
-               <Link to={TOPICS_PATH + id + '/edit'}>
+               <Link to={QUESTION_EDIT.replace(':id', id)}>
                    <i className="material-icons">mode_edit</i>
                </Link>
                <i onClick={context.handles.deleteTopic.bind(null, id)} className="material-icons">delete</i>

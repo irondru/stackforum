@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Old+Standard+TT|Roboto+Condensed|Roboto+Slab');
+@import url('https://fonts.googleapis.com/css?family=Old+Standard+TT|Roboto+Condensed|Suez+One|Roboto+Slab');
 * {
   margin: 0;
   padding: 0;
@@ -26,9 +26,12 @@ input[type="file" i] {
 
 #header {
   flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: #343434;
   border-bottom: 4px solid #59595A;
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Suez One', sans-serif;
 }
 
 #content {

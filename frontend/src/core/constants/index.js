@@ -20,8 +20,11 @@ export {
   BEST
 } from './action-types'
 export {
-  TOPICS_PATH,
-  SIGN_IN_PATH
+  TOPICS_ROOT,
+  QUESTION_NEW,
+  QUESTION_EDIT,
+  TOPIC_SHOW,
+  USER_PROFILE
 } from './routes'
 export {
   GET, POST, PATCH, DELETE, ID,

@@ -1,4 +1,4 @@
-h1 {
+h1#question-title {
   margin: 1.3rem 0;
   border-bottom: 1px solid #cccccc;
   color: #365f91;

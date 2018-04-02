@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
-import { TOPICS_PATH } from 'core/constants'
+import { TOPICS_ROOT } from 'core/constants'
 
 export default function TopicsListItem ({ id, title, answers_count,
   preview, score, views }) {
@@ -19,7 +19,7 @@ export default function TopicsListItem ({ id, title, answers_count,
           <div className="micro-text" >views</div>
         </div>
         <div className="lnk">
-          <Link to={TOPICS_PATH + id}>{title}</Link>
+          <Link to={TOPICS_ROOT + id}>{title}</Link>
           <div className="queston-preview">{preview}</div>
         </div>
       </div>
