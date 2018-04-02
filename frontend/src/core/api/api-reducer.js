@@ -1,7 +1,7 @@
 import { PENDING, SUCCESS, ERROR, REQUEST_STATUSES, INIT } from 'core/constants'
 
 const initialState = {
-  fetching: INIT,
+  fetching: 0,
   payload: {},
   errors: null
 }

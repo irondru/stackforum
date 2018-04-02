@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router'
 
-import { USER_CAN_CREATE_QUESTION, QUESTION_NEW, USER_PROFILE, BACKEND_PATH } from 'core/constants'
+import { USER_PROFILE, BACKEND_PATH } from 'core/constants'
 import UserAuth from 'modules/user-auth'
 import './style.css'
 
@@ -20,13 +20,6 @@ const Header = (props, context) => {
         user.id ?
           <Link to={USER_PROFILE}>
             <img alt="avatar" height="42" src={BACKEND_PATH + user.avatar_thumb} />
-          </Link>
-        : null
-      }
-      {
-        user.abilities & USER_CAN_CREATE_QUESTION ?
-          <Link to={QUESTION_NEW}>
-            <div className="header-btn">New Question</div>
           </Link>
         : null
       }

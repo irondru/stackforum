@@ -14,6 +14,10 @@ const QuestionItem = ({ title, body, id, score, posted_at, comments, access, aut
         : <CommentItem key={comment.id} {...comment} />
     ) : null
 
+    const postText = target => {   //наебуем реакт с <br>
+      if (target && body) target.innerHTML = body
+    }
+
    return body ? <div>
      <h1 id="question-title">{title}</h1>
      <div className="post-layout">
@@ -35,9 +39,7 @@ const QuestionItem = ({ title, body, id, score, posted_at, comments, access, aut
              : null
            }
          </div>
-         <div className="post-text">
-           <pre>{body}</pre>
-         </div>
+         <div ref={postText} className="post-text" />
          { commentsList() }
          {
             context.user.abilities & USER_CAN_CREATE_COMMENT ?

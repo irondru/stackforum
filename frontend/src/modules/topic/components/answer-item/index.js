@@ -16,6 +16,10 @@ const AnswerItem = ({ id, body, comments, score, access, author,
 
   const { editAnswer, deleteAnswer, bestAnswer } = context.handles
 
+  const postText = target => {   //наебуем реакт с <br>
+    if (target && body) target.innerHTML = body
+  }
+
   return <div className="post-layout">
     <div className="post-layout-left">
       <img alt="avatar" className="post-avatar" src={BACKEND_PATH + author.avatar} />
@@ -39,9 +43,7 @@ const AnswerItem = ({ id, body, comments, score, access, author,
           : null
         }
       </div>
-      <div className="post-text">
-        <pre>{body}</pre>
-      </div>
+      <div ref={postText} className="post-text" />
       { commentsList() }
       {
         context.user.abilities & USER_CAN_CREATE_COMMENT ?

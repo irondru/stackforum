@@ -11,9 +11,9 @@ export default class AdvTexarea extends React.Component {
 
   handleCopy = event =>
     this.refs.hiddenText.value = event.target.innerHTML
-      .replace(/<div>/g, '\n')
-      .replace(/(<([^>]+)>)/ig, '')
-      .replace(/&nbsp;|\u202F|\u00A0/g, ' ')
+      .replace(/((?!<div>)(<([^>]+)>))/ig, '') //выпиливаем все теги кроме <div>
+      .replace(/<div>/g, '<br>')
+
 
   render = () =>
     <div>

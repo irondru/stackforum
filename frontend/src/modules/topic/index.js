@@ -12,7 +12,9 @@ import './style.css'
 
 class Topic extends React.Component {
 
-  componentDidMount = () => this.props.getTopic(this.props.params.id)
+  componentDidMount = () => {
+    if (!this.props.fetching) this.props.getTopic(this.props.params.id)
+  }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.deleted) browserHistory.push('/')

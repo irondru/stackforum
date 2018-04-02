@@ -5,6 +5,13 @@
   font-size: 1.2em;
 }
 
+#topics-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #e2e2e2;
+  padding: 15px 0;
+}
+
 .topics-list-item {
   display: flex;
   padding: 15px 0;
