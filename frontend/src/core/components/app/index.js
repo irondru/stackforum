@@ -8,20 +8,21 @@ import './style.css'
 
 class App extends Component {
 
-  getChildContext = () => ({
-    user: this.props.user
-  })
-
   componentDidMount = () =>
     this.props.getUser()
 
   render = () =>
-  <div id="container">
-    <Header />
-    <div id="content">
-      { React.cloneElement(this.props.children, { key: Math.random() } ) }
+    <div id="container">
+      <Header />
+      <div id="content">
+        { /* при изменении контекста надо пинать деток */ }
+        { React.cloneElement(this.props.children, { key: Math.random() } ) }
+      </div>
     </div>
-  </div>
+
+  getChildContext = () => ({
+    user: this.props.user
+  })  
 }
 
 App.childContextTypes = {

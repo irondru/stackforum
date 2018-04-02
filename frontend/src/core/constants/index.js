@@ -1,5 +1,4 @@
 export {
-  INIT,
   PENDING,
   SUCCESS,
   ERROR,

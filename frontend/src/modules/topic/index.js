@@ -7,13 +7,14 @@ import * as actions from './actions'
 import { AnswerForm, Question, AnswerItem } from './components'
 import { Spinner } from 'core/components'
 import { formToJSON } from 'core'
-import { USER_CAN_CREATE_ANSWER, QUESTIONS, SHOW, INIT } from 'core/constants'
+import { USER_CAN_CREATE_ANSWER, QUESTIONS, SHOW } from 'core/constants'
 import './style.css'
 
 class Topic extends React.Component {
 
   componentDidMount = () => {
-    if (!this.props.fetching) this.props.getTopic(this.props.params.id)
+    const { fetching, answers, getTopic, params: {id} } = this.props
+    if (!fetching && !answers) getTopic(id) //что бы не дергало 2 раза подряд и при логине/разлогине
   }
 
   componentWillReceiveProps(nextProps) {
@@ -29,13 +30,13 @@ class Topic extends React.Component {
   render = () => {
     const { fetching, question } = this.props
     const { abilities } = this.context.user
-    return fetching === QUESTIONS + SHOW || fetching === INIT ? <Spinner />
+    return fetching === QUESTIONS + SHOW ? <Spinner />
     :
     <div className="topic-layout">
       <Question {...question} />
       {this.answersList()}
       {
-        abilities & USER_CAN_CREATE_ANSWER && !this.props.anyEdit ?
+        abilities & USER_CAN_CREATE_ANSWER && !this.props.anyEdit ? //если редактируется ответ - скрываем
           <AnswerForm key={Date.now()} />
         : null
       }

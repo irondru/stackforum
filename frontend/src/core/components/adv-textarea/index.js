@@ -4,7 +4,7 @@ import './style.css'
 
 export default class AdvTexarea extends React.Component {
 
-  divInit = target => {
+  handleInit = target => {
     const { body } = this.props
     if (target && body) target.innerHTML = body
   }
@@ -15,12 +15,12 @@ export default class AdvTexarea extends React.Component {
       .replace(/<div>/g, '<br>')
 
 
-  render = () =>
+  render = () => 
     <div>
       <textarea ref="hiddenText" name={this.props.name || 'body'} style={{display: 'none'}} />
       <div
         contentEditable="true"
-        ref={this.divInit}
+        ref={this.handleInit}
         onBlur={this.handleCopy}
         className="adv-text-area"
         style={{

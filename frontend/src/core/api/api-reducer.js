@@ -1,4 +1,4 @@
-import { PENDING, SUCCESS, ERROR, REQUEST_STATUSES, INIT } from 'core/constants'
+import { PENDING, SUCCESS, ERROR, REQUEST_STATUSES } from 'core/constants'
 
 const initialState = {
   fetching: 0,

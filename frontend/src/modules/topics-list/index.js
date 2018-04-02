@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 import './style.css'
 import TopicsListItem from './components/topics-list-item'
 import { Spinner } from 'core/components'
-import { QUESTION_NEW, USER_CAN_CREATE_QUESTION, INIT } from 'core/constants'
+import { QUESTION_NEW, USER_CAN_CREATE_QUESTION } from 'core/constants'
 
 class Topics extends React.Component {
 
@@ -18,7 +18,8 @@ class Topics extends React.Component {
     : null
 
   componentDidMount = () => {
-    if (!this.props.fetching) this.props.getTopics()
+    const { fetching, topics, getTopics } = this.props
+    if (!fetching && !topics) getTopics() //что бы не дергало 2 раза подряд и при логине/разлогине
   }
 
   render = () => {
