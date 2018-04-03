@@ -1,0 +1,11 @@
+.adv-text-area {
+  border: 1px solid #e2e2e2;
+  border-radius: 5px;
+  padding: 10px;
+  min-height: 1rem;
+  max-height: none;
+  max-width: 100%;
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}

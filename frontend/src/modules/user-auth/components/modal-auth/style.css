@@ -1,0 +1,19 @@
+#auth-layout {
+  display: flex;
+  flex-direction: column;
+  border: 1px double #ccc;
+}
+
+#auth-header {
+  display: flex;
+}
+
+#auth-header>div {
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+}
+
+.active {
+  background-color: green;
+}

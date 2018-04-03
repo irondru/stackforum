@@ -1,7 +1,0 @@
-div#attachments
-  p Attachments:
-  p
-    = form.fields_for :attachments, owner.attachments.build do |a|
-      = a.label :file
-      = a.file_field :file, onfocus: 'this.oldvalue = this.value;',
-              onchange: 'add_attachment(this);this.oldvalue = this.value;'

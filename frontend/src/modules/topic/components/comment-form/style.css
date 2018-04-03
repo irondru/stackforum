@@ -1,0 +1,31 @@
+.add-comment {
+  margin-top: 2rem;
+  display: inline-block;
+}
+
+.comment-form-layout {
+  border: 1px solid #cccccc;
+  margin-bottom: 2rem;
+  border-radius: 5px;
+}
+
+.comment-form-layout>form {
+  padding: 10px;
+}
+
+.comment-form-layout>form>input {
+  margin-top: 10px;
+}
+
+.comment-form-header {
+  background-color: #f6f8fa;
+  padding: 0.3rem;
+  border-bottom: 1px solid #cccccc;
+  position: relative;
+}
+
+.comment-form-header>i {
+  position: absolute;
+  right: 1%;
+  top: 6%;
+}
