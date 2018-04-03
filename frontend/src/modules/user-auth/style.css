@@ -1,0 +1,13 @@
+.auth-form {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form>input {
+  margin-bottom: 1rem;
+}
+
+.auth-form>input:last-child {
+  margin-bottom: 0;
+}

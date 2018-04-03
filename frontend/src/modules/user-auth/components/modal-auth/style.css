@@ -1,27 +1,7 @@
-#auth-layout {
-  display: flex;
-  flex-direction: column;
-  border: 1px double #ccc;
-}
-
-#auth-header {
-  display: flex;
-}
-
-#auth-header>div {
-  padding: 1rem;
-  border-bottom: 1px solid #ccc;
-  width: 100%;
-}
-
-.active {
-  background-color: green;
-}
-
 section {
   display: none;
   padding: 20px 0 0;
-  border-top: 1px solid #ddd;
+  border: 1px solid #ddd;
 }
 
 input {
@@ -38,28 +18,6 @@ label {
   border: 1px solid transparent;
 }
 
-label:before {
-  font-family: fontawesome;
-  font-weight: normal;
-  margin-right: 10px;
-}
-
-label[for*='1']:before {
-  content: '\f1cb';
-}
-
-label[for*='2']:before {
-  content: '\f17d';
-}
-
-label[for*='3']:before {
-  content: '\f16b';
-}
-
-label[for*='4']:before {
-  content: '\f1a9';
-}
-
 label:hover {
   color: #888;
   cursor: pointer;
@@ -72,9 +30,7 @@ input:checked + label {
   border-bottom: 1px solid #fff;
 }
 
-#tab1:checked ~ #content1,
-#tab2:checked ~ #content2,
-#tab3:checked ~ #content3,
-#tab4:checked ~ #content4 {
+#SIGN_IN_TAB:checked ~ #sign-in-content,
+#SIGN_UP_TAB:checked ~ #sign-up-content {
   display: block;
 }

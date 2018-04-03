@@ -12,7 +12,7 @@ const Header = (props, context) => {
     <Link to="/">
       <div id="main-logo">
         <div className="logo-img" />
-        <h1 id="header-title">FullStack</h1>
+        <h1 id="header-title">fullStack =></h1>
       </div>
     </Link>
     <div id="header-buttons">
