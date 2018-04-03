@@ -26,11 +26,18 @@ export default class ModalAuth extends React.Component {
 
   render = () =>
     <div id="auth-layout">
-      <div id="auth-header">
-        <div ref="signIn" className="active" onClick={this.showSignIn}>Sign In</div>
-        <div ref="signUp" onClick={this.showSignUp}>Sign Up</div>
-      </div>
-      {this.state.activeTab}
+    <input id="tab1" type="radio" name="tabs" checked>
+    <label for="tab1">Codepen</label>
+    <input id="tab2" type="radio" name="tabs">
+    <label for="tab2">Dribbble</label>
+
+    <section id="content1">
+      <SignInForm />
+    </section>
+
+  <section id="content2">
+    <SignUpForm />
+  </section>
     </div>
 
 }
