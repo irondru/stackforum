@@ -1,19 +1,36 @@
-#auth-layout {
-  display: flex;
-  flex-direction: column;
-  border: 1px double #ccc;
+section {
+  display: none;
+  padding: 20px 0 0;
+  border: 1px solid #ddd;
 }
 
-#auth-header {
-  display: flex;
+input {
+  display: none;
 }
 
-#auth-header>div {
-  padding: 1rem;
-  border-bottom: 1px solid #ccc;
-  width: 100%;
+label {
+  display: inline-block;
+  margin: 0 0 -1px;
+  padding: 15px 25px;
+  font-weight: 600;
+  text-align: center;
+  color: #bbb;
+  border: 1px solid transparent;
 }
 
-.active {
-  background-color: green;
+label:hover {
+  color: #888;
+  cursor: pointer;
+}
+
+input:checked + label {
+  color: #555;
+  border: 1px solid #ddd;
+  border-top: 2px solid orange;
+  border-bottom: 1px solid #fff;
+}
+
+#SIGN_IN_TAB:checked ~ #sign-in-content,
+#SIGN_UP_TAB:checked ~ #sign-up-content {
+  display: block;
 }

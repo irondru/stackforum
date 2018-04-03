@@ -5,6 +5,7 @@ import { modal } from 'react-redux-modal'
 
 import * as actions from './actions'
 import { ModalSignOut, ModalAuth } from './components'
+import './style.css'
 
 class UserAuth extends React.Component {
 
@@ -30,7 +31,7 @@ class UserAuth extends React.Component {
 
   authModal = () =>
     modal.add(ModalAuth, {
-      title: 'Войти',
+      title: 'Аутентификация',
       size: 'small',
       handles: this.handles,
       closeOnOutsideClick: false,

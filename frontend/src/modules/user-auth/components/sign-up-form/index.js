@@ -1,13 +1,12 @@
 import React from 'react'
 
 export default ({ handleSubmit }) =>
-  <div>
-    <br/>
-    <form onSubmit={handleSubmit}>
-      <input type="text" name="email" />
-      <input type="text" name="name" />
-      <input type="password" name="password" />
-      <input type="password" name="password_confirmation" />
-      <input type="submit" name="submit" />
+  <section id="sign-up-content">
+    <form className="auth-form" onSubmit={handleSubmit}>
+      <input type="text" placeholder="e-mail" name="email" />
+      <input type="text" placeholder="Никнейм"name="name" />
+      <input type="password" placeholder="Пароль" name="password" />
+      <input type="password" placeholder="Повторите пароль" name="password_confirmation" />
+      <input className="btn" type="submit" name="submit" value="Зарегестрироваться" />
     </form>
-  </div>
+  </section>

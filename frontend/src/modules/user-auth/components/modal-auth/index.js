@@ -3,34 +3,34 @@ import React from 'react'
 import { SignInForm, SignUpForm } from '../../components'
 import './style.css'
 
+const SIGN_IN_TAB = 'SIGN_IN_TAB'
+const SIGN_UP_TAB = 'SIGN_UP_TAB'
+
 export default class ModalAuth extends React.Component {
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      activeTab: <SignInForm handleSubmit={this.props.handles.signIn} />
+      selected: SIGN_IN_TAB
     }
   }
 
-  showSignIn = event => {
-    event.target.className = 'active'
-    this.refs.signUp.className = ''
-    this.setState({ activeTab: <SignInForm handleSubmit={this.props.handles.signIn} /> })
+  handleSelect = event => {
+    this.setState({
+      selected: event.target.id
+    })
   }
 
-  showSignUp = (event) => {
-    event.target.className = 'active'
-    this.refs.signIn.className = ''
-    this.setState({ activeTab: <SignUpForm handleSubmit={this.props.handles.signUp} /> })
-  }
-
-  render = () =>
-    <div id="auth-layout">
-      <div id="auth-header">
-        <div ref="signIn" className="active" onClick={this.showSignIn}>Sign In</div>
-        <div ref="signUp" onClick={this.showSignUp}>Sign Up</div>
-      </div>
-      {this.state.activeTab}
+  render = () => {
+  const { signIn, signUp } = this.props.handles
+  return <div>
+      <input id={SIGN_IN_TAB} type="radio" onChange={this.handleSelect} checked={this.state.selected === SIGN_IN_TAB} />
+      <label htmlFor={SIGN_IN_TAB}>Вход</label>
+      <input id={SIGN_UP_TAB} type="radio" onChange={this.handleSelect} checked={this.state.selected === SIGN_UP_TAB} />
+      <label htmlFor={SIGN_UP_TAB}>Регистрация</label>
+      <SignInForm handleSubmit={signIn} />
+      <SignUpForm handleSubmit={signUp} />
     </div>
+  }
 
 }
