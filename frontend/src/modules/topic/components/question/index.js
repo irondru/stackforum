@@ -3,10 +3,11 @@ import { Link } from 'react-router'
 import PropTypes from 'prop-types'
 
 import { QUESTION_EDIT, QUESTIONS, USER_CAN_CREATE_COMMENT, BACKEND_PATH } from 'core/constants'
-import { CommentItem, CommentForm, Vote }  from '../../components'
+import { CommentItem, CommentForm, Vote, Attachments }  from '../../components'
 import './style.css'
 
-const QuestionItem = ({ title, body, id, score, posted_at, comments, access, author }, context) => {
+const QuestionItem = ({ title, body, id, score, posted_at,
+  comments, attachments, access, author }, context) => {
 
   const commentsList = () =>
     comments ? comments.map(comment =>
@@ -45,6 +46,7 @@ const QuestionItem = ({ title, body, id, score, posted_at, comments, access, aut
             context.user.abilities & USER_CAN_CREATE_COMMENT ?
             <CommentForm key={Math.random()} commentableType={QUESTIONS} commentableId={id} /> : null
          }
+         <Attachments attachments={attachments} />    
        </div>
      </div>
    </div>

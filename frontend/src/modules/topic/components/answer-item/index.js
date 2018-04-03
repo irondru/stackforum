@@ -1,12 +1,12 @@
 import React from 'react';
-import { CommentItem, CommentForm, Vote } from '../../components'
+import { CommentItem, CommentForm, Vote, Attachments } from '../../components'
 import { ANSWERS, USER_CAN_CREATE_COMMENT, BACKEND_PATH } from 'core/constants'
 import PropTypes from 'prop-types'
 
 import './style.css'
 
 const AnswerItem = ({ id, body, comments, score, access, author,
-  posted_at, itsMyTopic, best }, context) => {
+  posted_at, itsMyTopic, best, attachments }, context) => {
 
   const commentsList = () =>
     comments ? comments.map (comment =>
@@ -49,6 +49,7 @@ const AnswerItem = ({ id, body, comments, score, access, author,
         context.user.abilities & USER_CAN_CREATE_COMMENT ?
         <CommentForm key={Math.random()} commentableId={id} commentableType={ANSWERS} /> : null
       }
+      <Attachments attachments={attachments} />
     </div>
   </div>
 }

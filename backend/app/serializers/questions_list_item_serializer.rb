@@ -6,7 +6,7 @@ class QuestionsListItemSerializer < ActiveModel::Serializer
   end
 
   def preview
-    object.body.truncate(50, separator: ' ')
+    object.body.truncate(220, separator: ' ')
   end
 
 end

@@ -62,12 +62,6 @@ p {
   clear: both;
 }
 
-pre {
-  clear: both;
-  color: inherit;
-  font-size: 1.15em;
-}
-
 .headr-btn:hover {
   cursor: pointer;
   border-bottom: 2px solid rgba(217, 91, 72, 1);
@@ -79,7 +73,7 @@ pre {
   margin-top: 9px;
 }
 
-.btn {
+.btn_off {
   color: white;
   margin-right: 2rem;
   border-radius: 5px;

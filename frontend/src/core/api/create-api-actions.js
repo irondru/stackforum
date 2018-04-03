@@ -9,7 +9,9 @@ export default (api_path, method, actionType, body = {}) => dispatch => {
   const checkResponse = response =>
     new Promise((resolve, reject) => {
       if (response.ok) response.json().then(json => resolve(json))
-        else response.json().then(json => reject(json))
+      else if (response.status === 401 || response.status === 422)
+        response.json().then(json => reject(json))
+      else reject({ msg: 'Что то пошло не так...'})  
     })
 
   let options = {

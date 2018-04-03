@@ -31,7 +31,7 @@ class UserAuth extends React.Component {
   authModal = () =>
     modal.add(ModalAuth, {
       title: 'Войти',
-      size: 'medium',
+      size: 'small',
       handles: this.handles,
       closeOnOutsideClick: false,
       hideTitleBar: false,

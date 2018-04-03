@@ -1,8 +1,0 @@
-<table>
-  <tr>
-    <td><b>{author.name}</b> {posted_at}</td>
-  </tr>
-  <tr>
-    <td><p>{body}</p></td>
-  </tr>
-</table>

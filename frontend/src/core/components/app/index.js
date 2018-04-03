@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import { getUser } from '../user-common/actions'
 import { Header } from 'core/components'
 import './style.css'
+import './react-redux-modal.css'
 
 class App extends Component {
 
@@ -22,7 +23,7 @@ class App extends Component {
 
   getChildContext = () => ({
     user: this.props.user
-  })  
+  })
 }
 
 App.childContextTypes = {
