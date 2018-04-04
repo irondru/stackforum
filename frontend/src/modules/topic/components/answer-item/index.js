@@ -5,16 +5,14 @@ import PropTypes from 'prop-types'
 
 import './style.css'
 
-const AnswerItem = ({ id, body, comments, score, access, author,
-  posted_at, itsMyTopic, best, attachments }, context) => {
+const AnswerItem = ({ id, body, comments, score, access, author, posted_at, itsMyTopic, best, attachments },
+  { user, handles: { editAnswer, deleteAnswer, bestAnswer } }) => {
 
   const commentsList = () =>
     comments ? comments.map (comment =>
       !!comment.edit ? <CommentForm key={comment.id} {...comment} /> :
         <CommentItem key={comment.id} {...comment} />
     ) : null
-
-  const { editAnswer, deleteAnswer, bestAnswer } = context.handles
 
   const postText = target => {   //наебуем реакт с <br>
     if (target && body) target.innerHTML = body
@@ -46,12 +44,25 @@ const AnswerItem = ({ id, body, comments, score, access, author,
       <div ref={postText} className="post-text" />
       { commentsList() }
       {
-        context.user.abilities & USER_CAN_CREATE_COMMENT ?
+        user.abilities & USER_CAN_CREATE_COMMENT ?
         <CommentForm key={Math.random()} commentableId={id} commentableType={ANSWERS} /> : null
       }
       <Attachments attachments={attachments} />
     </div>
   </div>
+}
+
+AnswerItem.propTypes = {
+  id: PropTypes.number.isRequired,
+  body: PropTypes.string.isRequired,
+  score: PropTypes.number.isRequired,
+  access: PropTypes.bool.isRequired,
+  author: PropTypes.object.isRequired,
+  posted_at: PropTypes.string.isRequired,
+  itsMyTopic: PropTypes.bool,
+  best: PropTypes.bool,
+  attachments: PropTypes.array,
+  comments: PropTypes.array
 }
 
 AnswerItem.contextTypes = {

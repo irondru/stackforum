@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import ReactDOM from 'react-dom'
 
 import './style.css'
 
@@ -26,22 +27,26 @@ const modalStyle = {
 
 class Modal extends React.Component {
 
-  render = () => {
-    if(!this.props.show) return null
+  componentDidUpdate = () =>
+    ReactDOM.render(
+      this.props.show ?
+        <div style={backdropStyle}>
+          <div style={modalStyle}>
+            <i className="material-icons button-close" onClick={this.props.onClose}>cancel</i>
+            {this.props.children}
+          </div>
+        </div>
+      : <span />,
+      document.querySelector('#modal')
+    )
 
-    return <div style={backdropStyle}>
-      <div style={modalStyle}>
-        <i className="material-icons button-close" onClick={this.props.onClose}>cancel</i>
-        {this.props.children}
-      </div>
-    </div>
-  }
+  render = () => <span />
 }
 
 Modal.propTypes = {
   onClose: PropTypes.func.isRequired,
   show: PropTypes.bool,
   children: PropTypes.node
-};
+}
 
 export default Modal

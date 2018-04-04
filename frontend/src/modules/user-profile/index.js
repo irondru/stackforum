@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { formToJSON } from 'core'
 import * as actions from './actions'
 import { BACKEND_PATH } from 'core/constants'
+import PropTypes from 'prop-types'
+
 import './style.css'
 
 class UserProfile extends React.Component {
@@ -36,6 +38,14 @@ class UserProfile extends React.Component {
       </div>
     )
   }
+}
+
+UserProfile.propTypes = {
+  avatar_large: PropTypes.string,
+  reg_date: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  answers_count: PropTypes.number,
+  questions_count: PropTypes.number
 }
 
 const mapStateToProps = state => ({

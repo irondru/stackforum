@@ -19,6 +19,12 @@ const Vote = ({ votableType, votableId, score }, { user, handles }) => {
   </div>
 }
 
+Vote.propTypes = {
+  votableType: PropTypes.number.isRequired,
+  votableId: PropTypes.number.isRequired,
+  score: PropTypes.number.isRequired
+}
+
 Vote.contextTypes = {
   handles: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired

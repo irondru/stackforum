@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { formToJSON } from 'core'
-import ReactDOM from 'react-dom'
+
 
 import * as actions from './actions'
 import { Auth } from './components'
@@ -42,18 +42,17 @@ class UserAuth extends React.Component {
     if (this.state.isOpenModal) this.toggleModal()
   }
 
-  render = () =>
-    this.props.signedIn ?
-      <div className="header-btn" onClick={this.handles.signOut}>Sign out</div>
-    : <div className="header-btn" onClick={this.toggleModal}>Sign in</div>
-
-  componentDidUpdate = () =>
-    ReactDOM.render(
+  render = () => 
+    <div>
       <Modal show={this.state.isOpenModal} onClose={this.toggleModal}>
         <Auth handles={this.handles} />
-      </Modal>,
-      document.querySelector('#modal')
-    )
+      </Modal>
+      {
+        this.props.signedIn ?
+          <div className="header-btn" onClick={this.handles.signOut}>Sign out</div>
+        : <div className="header-btn" onClick={this.toggleModal}>Sign in</div>
+      }
+   </div>
 
 }
 

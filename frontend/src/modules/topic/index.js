@@ -13,8 +13,8 @@ import './style.css'
 class Topic extends React.Component {
 
   componentDidMount = () => {
-    const { fetching, answers, getTopic, params: {id} } = this.props
-    if (!fetching && !answers) getTopic(id) //что бы не дергало 2 раза подряд и при логине/разлогине
+    const { fetching, getTopic, params: {id} } = this.props
+    if (!fetching) getTopic(id) //что бы не дергало 2 раза подряд
   }
 
   componentWillReceiveProps(nextProps) {
@@ -30,7 +30,7 @@ class Topic extends React.Component {
   render = () => {
     const { fetching, question } = this.props
     const { abilities } = this.context.user
-    return fetching === QUESTIONS + SHOW ? <Spinner />
+    return fetching === QUESTIONS + SHOW || !question ? <Spinner />
     :
     <div className="topic-layout">
       <Question {...question} />

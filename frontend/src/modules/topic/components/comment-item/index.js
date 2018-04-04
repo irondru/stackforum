@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router'
 import './style.css'
 
-const CommentItem = ({ body, id, access, author, posted_at }, context) => {
-  const { editComment, deleteComment } = context.handles
-  return <div className="comment-item">
+const CommentItem = ({ body, id, access, author, posted_at },
+  { handles: { editComment, deleteComment } }) =>
+  <div className="comment-item">
     <p>
       {body}
       &nbsp; – <Link to="">{author.name}</Link>
@@ -21,6 +21,13 @@ const CommentItem = ({ body, id, access, author, posted_at }, context) => {
       }
     </p>
   </div>
+
+CommentItem.propTypes = {
+  body: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  access: PropTypes.bool.isRequired,
+  author: PropTypes.object.isRequired,
+  posted_at: PropTypes.string.isRequired
 }
 
 CommentItem.contextTypes = {

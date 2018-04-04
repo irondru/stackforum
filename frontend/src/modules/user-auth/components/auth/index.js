@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import { SignInForm, SignUpForm } from '../../components'
 import './style.css'
@@ -6,7 +7,7 @@ import './style.css'
 const SIGN_IN_TAB = 'SIGN_IN_TAB'
 const SIGN_UP_TAB = 'SIGN_UP_TAB'
 
-export default class ModalAuth extends React.Component {
+class Auth extends React.Component {
 
   constructor(props) {
     super(props)
@@ -34,3 +35,9 @@ export default class ModalAuth extends React.Component {
   }
 
 }
+
+Auth.propTypes = {
+  handles: PropTypes.object.isRequired
+}
+
+export default Auth

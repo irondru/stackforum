@@ -46,6 +46,14 @@ class CommentForm extends React.Component {
   }
 }
 
+CommentForm.propTypes = {
+  body: PropTypes.string,
+  id: PropTypes.number,
+  commentableId: PropTypes.number,
+  commentableType: PropTypes.number.isRequired,
+  edit: PropTypes.bool
+}
+
 CommentForm.contextTypes = {
   handles: PropTypes.object.isRequired
 }

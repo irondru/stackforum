@@ -4,7 +4,7 @@ section {
   border: 1px solid #ddd;
 }
 
-input {
+input[type = "radio"] {
   display: none;
 }
 

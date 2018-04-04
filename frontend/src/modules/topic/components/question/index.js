@@ -6,8 +6,8 @@ import { QUESTION_EDIT, QUESTIONS, USER_CAN_CREATE_COMMENT, BACKEND_PATH } from 
 import { CommentItem, CommentForm, Vote, Attachments }  from '../../components'
 import './style.css'
 
-const QuestionItem = ({ title, body, id, score, posted_at,
-  comments, attachments, access, author }, context) => {
+const QuestionItem = ({ title, body, id, score, posted_at, comments, attachments, access, author },
+  { user, handles: { deleteTopic } }) => {
 
   const commentsList = () =>
     comments ? comments.map(comment =>
@@ -35,7 +35,7 @@ const QuestionItem = ({ title, body, id, score, posted_at,
                <Link to={QUESTION_EDIT.replace(':id', id)}>
                    <i className="material-icons">mode_edit</i>
                </Link>
-               <i onClick={context.handles.deleteTopic.bind(null, id)} className="material-icons">delete</i>
+               <i onClick={deleteTopic.bind(null, id)} className="material-icons">delete</i>
              </div>
              : null
            }
@@ -43,14 +43,26 @@ const QuestionItem = ({ title, body, id, score, posted_at,
          <div ref={postText} className="post-text" />
          { commentsList() }
          {
-            context.user.abilities & USER_CAN_CREATE_COMMENT ?
+            user.abilities & USER_CAN_CREATE_COMMENT ?
             <CommentForm key={Math.random()} commentableType={QUESTIONS} commentableId={id} /> : null
          }
-         <Attachments attachments={attachments} />    
+         <Attachments attachments={attachments} />
        </div>
      </div>
    </div>
    : <div />
+}
+
+QuestionItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  score: PropTypes.number.isRequired,
+  posted_at: PropTypes.string.isRequired,
+  comments: PropTypes.array,
+  attachments: PropTypes.array,
+  access: PropTypes.bool.isRequired,
+  author: PropTypes.object.isRequired
 }
 
 QuestionItem.contextTypes = {

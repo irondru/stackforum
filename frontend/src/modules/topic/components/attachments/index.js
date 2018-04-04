@@ -1,11 +1,11 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import { BACKEND_PATH } from 'core/constants'
 
-export default ({ attachments }) =>
+const Attachments = ({ attachments }) =>
   attachments.length ?
     <div>
-      <br/>
       <p>Прикрепленные файлы</p>
       {
         attachments.map(attachment =>
@@ -14,3 +14,9 @@ export default ({ attachments }) =>
       }
     </div>
   : <span />
+
+Attachments.propTypes = {
+  attachments: PropTypes.array
+}
+
+export default Attachments

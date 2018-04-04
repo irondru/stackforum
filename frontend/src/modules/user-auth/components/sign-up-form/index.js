@@ -1,6 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-export default ({ handleSubmit }) =>
+const SignUpForm = ({ handleSubmit }) =>
   <section id="sign-up-content">
     <form className="auth-form" onSubmit={handleSubmit}>
       <input type="text" placeholder="e-mail" name="email" />
@@ -10,3 +11,9 @@ export default ({ handleSubmit }) =>
       <input className="btn" type="submit" name="submit" value="Зарегестрироваться" />
     </form>
   </section>
+
+SignUpForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired
+}
+
+export default SignUpForm
