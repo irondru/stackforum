@@ -44,6 +44,7 @@ class Topic extends React.Component {
   }
 
    getChildContext = () => ({
+     fetching: this.props.fetching,
      handles: {
        editAnswer: id => this.props.editAnswer(id),
        createAnswer: event => {
@@ -105,12 +106,18 @@ const mapStateToProps = state => {
   }
 }
 
+Topic.propTypes = {
+  question: PropTypes.object,
+  answers: PropTypes.array
+}
+
 Topic.contextTypes = {
   user: PropTypes.object.isRequired
 }
 
 Topic.childContextTypes = {
-  handles: PropTypes.object
+  handles: PropTypes.object,
+  fetching: PropTypes.number
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Topic);

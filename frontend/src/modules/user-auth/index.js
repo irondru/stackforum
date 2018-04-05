@@ -38,14 +38,21 @@ class UserAuth extends React.Component {
       isOpenModal: !this.state.isOpenModal
     })
 
-  componentWillReceiveProps = () => {
+  componentWillReceiveProps = nextProps => {
+    //console.log(this.props.errors);
+    //if (this.state.isOpenModal && !nextProps.errors) this.toggleModal()
     if (this.state.isOpenModal) this.toggleModal()
   }
 
-  render = () => 
+  render = () =>
     <div>
       <Modal show={this.state.isOpenModal} onClose={this.toggleModal}>
         <Auth handles={this.handles} />
+        {
+          this.props.errors ?
+          <p>{this.props.errors.msg}</p>
+          : null
+        }
       </Modal>
       {
         this.props.signedIn ?
@@ -57,7 +64,8 @@ class UserAuth extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    signedIn: !!state.user.payload.id
+    signedIn: !!state.user.payload.id,
+    errors: state.user.errors
 })
 
 const mapDispatchToProps = dispatch => ({

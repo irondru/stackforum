@@ -1,7 +1,7 @@
 class Search < ApplicationRecord
 
   def self.result(query, params)
-    ThinkingSphinx.search(ThinkingSphinx::Query.escape(query), classes: get_models(params))
+    ThinkingSphinx.search(ThinkingSphinx::Query.escape(query), classes: MODELS)
   end
 
   private

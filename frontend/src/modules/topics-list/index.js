@@ -52,6 +52,10 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
+Topics.propTypes = {
+  topics: PropTypes.array
+}
+
 Topics.contextTypes = {
   user: PropTypes.object.isRequired
 }

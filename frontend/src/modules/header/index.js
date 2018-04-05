@@ -4,6 +4,7 @@ import { Link } from 'react-router'
 
 import { USER_PROFILE, BACKEND_PATH } from 'core/constants'
 import UserAuth from 'modules/user-auth'
+import Find from '../find'
 import './style.css'
 
 const Header = (props, context) => {
@@ -12,10 +13,11 @@ const Header = (props, context) => {
     <Link to="/">
       <div id="main-logo">
         <div className="logo-img" />
-        <h1 id="header-title">fullStack =></h1>
+        <h1 id="header-title">fullStack</h1>
       </div>
     </Link>
     <div id="header-buttons">
+      <Find />
       {
         user.id ?
           <Link to={USER_PROFILE}>

@@ -1,14 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { AdvTextarea } from 'core/components'
+import { AdvTextarea, SpinButton } from 'core/components'
+import { COMMENTS, CREATE, UPDATE } from 'core/constants'
 import './style.css'
 
 class CommentForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      visible: props.edit,
+      visible: props.edit
     }
   }
 
@@ -22,10 +23,11 @@ class CommentForm extends React.Component {
   render = () => {
     const { body, id, commentableId, commentableType, edit } = this.props
     const { updateComment, createComment } = this.context.handles
+    const fetching = (this.context.fetching ^ COMMENTS) & CREATE + UPDATE
     return (
       <div>
         {
-          this.state.visible ?
+          this.state.visible || fetching ?
             <div className="comment-form-layout">
               <div className="comment-form-header">
                 <span>New comment</span>
@@ -35,7 +37,9 @@ class CommentForm extends React.Component {
                 onSubmit={(e) => edit ? updateComment(e, id)
                   : createComment(e, commentableType, commentableId, id)}>
                 <AdvTextarea body={body} />
-                <input className="btn" type="submit" />
+                <SpinButton spin={fetching} className="btn">
+                  { edit ? 'Изменить' : 'Отправить' }
+                </SpinButton>
               </form>
             </div>
           :
@@ -50,12 +54,13 @@ CommentForm.propTypes = {
   body: PropTypes.string,
   id: PropTypes.number,
   commentableId: PropTypes.number,
-  commentableType: PropTypes.number.isRequired,
+  commentableType: PropTypes.number,
   edit: PropTypes.bool
 }
 
 CommentForm.contextTypes = {
-  handles: PropTypes.object.isRequired
+  handles: PropTypes.object.isRequired,
+  fetching: PropTypes.number.isRequired
 }
 
 export default CommentForm

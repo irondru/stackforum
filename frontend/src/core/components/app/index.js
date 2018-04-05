@@ -3,9 +3,8 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import { getUser } from '../user-common/actions'
-import { Header } from 'core/components'
+import Header from 'modules/header'
 import './style.css'
-import './react-redux-modal.css'
 
 class App extends Component {
 

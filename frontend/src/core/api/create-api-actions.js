@@ -11,7 +11,7 @@ export default (api_path, method, actionType, body = {}) => dispatch => {
       if (response.ok) response.json().then(json => resolve(json))
       else if (response.status === 401 || response.status === 422)
         response.json().then(json => reject(json))
-      else reject({ msg: 'Что то пошло не так...'})  
+      else reject({ msg: 'Что то пошло не так...'})
     })
 
   let options = {
@@ -35,7 +35,6 @@ export default (api_path, method, actionType, body = {}) => dispatch => {
       }))
     )
     .catch(errors => {
-      console.log(errors)
       dispatch({
       type: actionType + ERROR,
       errors

@@ -1,10 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 import { formToJSON } from 'core'
 import * as actions from './actions'
 import { BACKEND_PATH } from 'core/constants'
-import PropTypes from 'prop-types'
+import { Spinner } from 'core/components'
 
 import './style.css'
 
@@ -18,9 +19,9 @@ class UserProfile extends React.Component {
 
   render = () =>  {
     const {
-      avatar_large, reg_date, name, answers_count, questions_count
+      fetching, avatar_large, reg_date, name, answers_count, questions_count
     } = this.props
-    return (
+    return fetching ? <Spinner /> :
       <div id="profile-layout">
         <div id="profile-header"><h2>{name}</h2></div>
         <div id="profile-content">
@@ -36,20 +37,20 @@ class UserProfile extends React.Component {
           </div>
         </div>
       </div>
-    )
   }
 }
 
 UserProfile.propTypes = {
   avatar_large: PropTypes.string,
-  reg_date: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
+  reg_date: PropTypes.string,
+  name: PropTypes.string,
   answers_count: PropTypes.number,
   questions_count: PropTypes.number
 }
 
 const mapStateToProps = state => ({
-  ...state.user.payload
+  ...state.user.payload,
+  fetching: state.user.fetching
 })
 
 const mapDispatchToProps = dispatch => ({
