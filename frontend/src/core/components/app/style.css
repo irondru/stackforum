@@ -4,7 +4,7 @@
   padding: 0;
 }
 
-html, body, #container, #root, #provider {
+html, body, #container, #root {
   height: 100%;
 }
 

@@ -43,68 +43,55 @@ class Topic extends React.Component {
     </div>
   }
 
-   getChildContext = () => ({
-     fetching: this.props.fetching,
-     handles: {
-       editAnswer: id => this.props.editAnswer(id),
-       createAnswer: event => {
-         event.preventDefault()
-         formToJSON(event.target)
-          .then(res => this.props.createAnswer(res, this.props.question.id))
-       },
-       updateAnswer: (event, id) => {
-         event.preventDefault()
-         formToJSON(event.target)
-         .then(jform => this.props.updateAnswer(jform, id))
-       },
-       bestAnswer: id =>this.props.bestAnswer(id),
-       deleteTopic: id => this.props.deleteTopic(id),
-       deleteAnswer: id => this.props.deleteAnswer(id),
-       editComment: id => this.props.editComment(id),
-       createComment: (event, commentableType, commentableId) => {
-         event.preventDefault()
-         formToJSON(event.target)
-          .then(jform => this.props.createComment(jform, commentableType, commentableId))
-       },
-       updateComment: (event, id) => {
-         event.preventDefault()
-         formToJSON(event.target)
-          .then(jform => this.props.updateComment(jform, id))
-       },
-       deleteComment: id => this.props.deleteComment(id),
-       changeVote: (event, votableType, votableId, action) => {
-         event.preventDefault()
-         this.props.changeVote(votableType, votableId, action)
-       }
-     }
-   })
+  getChildContext = () => ({
+    fetching: this.props.fetching,
+    handles: {
+      ...this.props.handles,
+      createAnswer: event => this.props.createAnswer(event, this.props.question.id)
+    }
+  })
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getTopic: id => dispatch(actions.getTopic(id)),
-    createAnswer: (answer, questionId) => dispatch(actions.createAnswer(answer, questionId)),
-    updateAnswer: (answer, id) => dispatch(actions.updateAnswer(answer, id)),
+const mapDispatchToProps = dispatch => ({
+  getTopic: id => dispatch(actions.getTopic(id)),
+  createAnswer: (event, question_id) => {
+    event.preventDefault()
+    formToJSON(event.target)
+      .then(res => dispatch(actions.createAnswer(res, question_id)))
+    },
+  handles: {
     editAnswer: id => dispatch(actions.editAnswer(id)),
+    updateAnswer: (event, id) => {
+      event.preventDefault()
+      formToJSON(event.target)
+      .then(jform => dispatch(actions.updateAnswer(jform, id)))
+    },
     bestAnswer: id => dispatch(actions.bestAnswer(id)),
     deleteTopic: id => dispatch(actions.deleteTopic(id)),
     deleteAnswer: id => dispatch(actions.deleteAnswer(id)),
-    createComment: (comment, commentableType, commentableId) =>
-      dispatch(actions.createComment(comment, commentableType, commentableId)),
-    editComment: (id) => dispatch(actions.editComment(id)),
-    updateComment: (comment, id) => dispatch(actions.updateComment(comment, id)),
+    editComment: id => dispatch(actions.editComment(id)),
+    createComment: (event, commentableType, commentableId) => {
+      event.preventDefault()
+      formToJSON(event.target)
+       .then(jform => dispatch(actions.createComment(jform, commentableType, commentableId)))
+    },
+    updateComment: (event, id) => {
+      event.preventDefault()
+      formToJSON(event.target)
+       .then(jform => dispatch(actions.updateComment(jform, id)))
+    },
     deleteComment: id => dispatch(actions.deleteComment(id)),
-    changeVote: (votableType, votableId, action) =>
+    changeVote: (event, votableType, votableId, action) => {
+      event.preventDefault()
       dispatch(actions.changeVote(votableType, votableId, action))
+    }
   }
-}
+})
 
-const mapStateToProps = state => {
-  return {
+const mapStateToProps = state => ({
     ...state.topic.payload,
     fetching: state.topic.fetching
-  }
-}
+})
 
 Topic.propTypes = {
   question: PropTypes.object,

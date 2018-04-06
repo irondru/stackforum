@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 
 import { USER_PROFILE, BACKEND_PATH } from 'core/constants'
 import UserAuth from 'modules/user-auth'
-import Find from '../find'
+import Search from '../search'
 import './style.css'
 
 const Header = (props, context) => {
@@ -17,7 +17,7 @@ const Header = (props, context) => {
       </div>
     </Link>
     <div id="header-buttons">
-      <Find />
+      <Search />
       {
         user.id ?
           <Link to={USER_PROFILE}>

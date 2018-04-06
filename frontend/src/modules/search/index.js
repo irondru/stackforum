@@ -6,6 +6,10 @@ class Search extends React.Component {
 
   }
 
+  componentDidMount = () => {
+     if (this.props.location) console.log(this.props.location.search);
+   }
+
   render = () =>
     <form onSubmit={this.handleSubmit}>
       <input type="text" name="body" />

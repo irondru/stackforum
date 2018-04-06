@@ -3,6 +3,7 @@ import { Route, IndexRoute } from 'react-router'
 
 import Topic from 'modules/topic'
 import Topics from 'modules/topics-list'
+import Search from 'modules/search'
 import { App } from './components'
 import NewOrEditQuestion from 'modules/new-or-edit-question'
 import UserProfile from 'modules/user-profile'
@@ -15,5 +16,6 @@ export const routes = (
     <Route path={QUESTION_NEW} component={NewOrEditQuestion} />
     <Route path={QUESTION_EDIT} component={NewOrEditQuestion} />
     <Route path={USER_PROFILE} component={UserProfile} />
+    <Route path="/search" component={Search} />
   </Route>
 )
