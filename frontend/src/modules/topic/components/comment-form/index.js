@@ -23,7 +23,7 @@ class CommentForm extends React.Component {
   render = () => {
     const { body, id, commentableId, commentableType, edit } = this.props
     const { updateComment, createComment } = this.context.handles
-    const fetching = (this.context.fetching ^ COMMENTS) & CREATE + UPDATE
+    const fetching = (this.context.fetching ^ CREATE + UPDATE) & COMMENTS //*как обычный || только короче*/
     return (
       <div>
         {

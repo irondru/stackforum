@@ -25,7 +25,7 @@ const AnswerForm = ({ id, body, edit },
       <form onSubmit={(e) => edit ? updateAnswer(e, id) : createAnswer(e)}>
         <AdvTextarea body={body} minHeight="5rem" />
         <Attachments />
-        <SpinButton spin={ (fetching ^ ANSWERS) & CREATE + UPDATE } className="btn">
+        <SpinButton spin={ (fetching ^ CREATE + UPDATE) & ANSWERS } className="btn"> {/*как обычный || только короче*/}
           { edit ? 'Изменить' : 'Отправить' }
         </SpinButton>
       </form>

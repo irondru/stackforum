@@ -1,5 +1,7 @@
 class Answer < ApplicationRecord
 
+  after_save ThinkingSphinx::RealTime.callback_for(:answer)
+
   include Votable
   include Attachable
   include Commentable
