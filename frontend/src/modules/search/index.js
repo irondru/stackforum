@@ -1,6 +1,6 @@
 import React from 'react'
 
-class Find extends React.Component {
+class Search extends React.Component {
 
   handleSubmit = event => {
 
@@ -13,4 +13,4 @@ class Find extends React.Component {
     </form>
 }
 
-export default Find
+export default Search
