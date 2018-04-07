@@ -22,13 +22,11 @@ class Topics extends React.Component {
     )
     : null
 
-  handleScroll = (event) => {
+  handleScroll = event => {
     const { scrollTop, offsetHeight, scrollHeight} = event.srcElement
     const { fetching, getTopics } = this.props
-    if (scrollTop + offsetHeight >= scrollHeight - 256 && !fetching ) {
-      this.page += 1
-      getTopics(this.page)
-    }
+    if (scrollTop + offsetHeight >= scrollHeight - 256 && !fetching) 
+      getTopics(this.page += 1)
   }
 
   componentDidMount = () => {

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get 'profile', to: 'profile#show'
-      get 'questions/:page', to: 'questions#index'
+      get 'questions/pages/:page', to: 'questions#index'
       post 'avatar_upload', to: 'profile#avatar_uploader'
       delete '/attach/:id', to: 'attachments#destroy', as: 'attachment_destroy'
       resource :search, only: :show
