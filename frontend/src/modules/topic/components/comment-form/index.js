@@ -23,7 +23,7 @@ class CommentForm extends React.Component {
   render = () => {
     const { body, id, commentableId, commentableType, edit } = this.props
     const { updateComment, createComment } = this.context.handles
-    const fetching = (this.context.fetching ^ CREATE + UPDATE) & COMMENTS //*как обычный || только короче*/
+    const fetching = (this.props.fetching ^ CREATE + UPDATE) & COMMENTS //*как обычный || только короче*/
     return (
       <div>
         {
@@ -33,8 +33,7 @@ class CommentForm extends React.Component {
                 <span>New comment</span>
                 <i onClick={this.formVisible} className="material-icons">cancel</i>
               </div>
-              <form
-                onSubmit={(e) => edit ? updateComment(e, id)
+              <form onSubmit={(e) => edit ? updateComment(e, id)
                   : createComment(e, commentableType, commentableId, id)}>
                 <AdvTextarea body={body} />
                 <SpinButton spin={fetching} className="btn">
