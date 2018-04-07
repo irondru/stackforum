@@ -2,6 +2,7 @@ import React from 'react'
 import { browserHistory } from 'react-router'
 
 import { SEARCH } from 'core/constants'
+import './style.css'
 
 class SearchBar extends React.Component {
 
@@ -10,9 +11,9 @@ class SearchBar extends React.Component {
   }
 
   render = () =>
-    <div>
+    <div id="search-box">
       <input ref="query" type="text" />
-      <button onClick={this.handleSearch}>Find</button>
+      <i className="material-icons search-icon" onClick={this.handleSearch}>search</i>
     </div>
 }
 

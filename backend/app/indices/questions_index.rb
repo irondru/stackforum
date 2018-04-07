@@ -4,6 +4,9 @@ ThinkingSphinx::Index.define :question, with: :real_time do
   indexes body
   indexes user.name, as: :author
 
+  #set_property enable_star: 1
+  #set_property min_prefix_len: 2 
+
   # attributes
   has created_at, type: :timestamp
   has updated_at, type: :timestamp

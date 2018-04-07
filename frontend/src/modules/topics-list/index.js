@@ -19,10 +19,9 @@ class Topics extends React.Component {
 
   componentDidMount = () => {
     const { location: { pathname, search }, fetching, topics, getTopics, searchTopics } = this.props
-    console.log(pathname);
+    this.title = pathname === SEARCH ? "Результаты поиска" : "Текущие вопросы"
     if (pathname === SEARCH && !fetching) searchTopics(search)
-    else
-    if (!fetching && !topics) getTopics() //что бы не дергало 2 раза подряд и при логине/разлогине
+    else if (!fetching) getTopics() //if (!fetching && !topics) //что бы не дергало 2 раза подряд и при логине/разлогине
   }
 
   render = () => {
@@ -30,7 +29,7 @@ class Topics extends React.Component {
     return fetching ? <Spinner /> :
     <div id="topic">
       <div id="topics-header">
-        <h4>Текущие вопросы</h4>
+        <h4>{this.title}</h4>
         {
           this.context.user.abilities & USER_CAN_CREATE_QUESTION ?
             <Link to={QUESTION_NEW}>

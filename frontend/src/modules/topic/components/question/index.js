@@ -54,15 +54,15 @@ const commentsList = () =>
 }
 
 QuestionItem.propTypes = {
-  title: PropTypes.string.isRequired,
-  body: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
-  score: PropTypes.number.isRequired,
-  posted_at: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  body: PropTypes.string,
+  id: PropTypes.number,
+  score: PropTypes.number,
+  posted_at: PropTypes.string,
   comments: PropTypes.array,
   attachments: PropTypes.array,
-  access: PropTypes.bool.isRequired,
-  author: PropTypes.object.isRequired
+  access: PropTypes.bool,
+  author: PropTypes.object
 }
 
 QuestionItem.contextTypes = {
