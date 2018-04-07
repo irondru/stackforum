@@ -16,7 +16,8 @@ export {
   VOTES,
   UP_VOTE,
   DOWN_VOTE,
-  BEST
+  BEST,
+  PAGE
 } from './action-types'
 export {
   TOPICS_ROOT,

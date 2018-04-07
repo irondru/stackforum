@@ -16,3 +16,4 @@ export const EDIT               = 0x0800
 export const COMMENTS           = 0x1000
 export const VOTES              = 0x2000
 export const BEST               = 0x4000
+export const PAGE               = 0x8000
