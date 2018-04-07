@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 
 import { USER_PROFILE, BACKEND_PATH } from 'core/constants'
 import UserAuth from 'modules/user-auth'
-import SearchBar from '../search-bar'
+import { SearchBar } from './components'
 import './style.css'
 
 const Header = (props, context) => {

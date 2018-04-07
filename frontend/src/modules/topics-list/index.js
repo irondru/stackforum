@@ -18,7 +18,7 @@ class Topics extends React.Component {
     : null
 
   componentDidMount = () => {
-    const { location: { pathname, search }, fetching, topics, getTopics, searchTopics } = this.props
+    const { location: { pathname, search }, fetching, getTopics, searchTopics } = this.props
     this.title = pathname === SEARCH ? "Результаты поиска" : "Текущие вопросы"
     if (pathname === SEARCH && !fetching) searchTopics(search)
     else if (!fetching) getTopics() //if (!fetching && !topics) //что бы не дергало 2 раза подряд и при логине/разлогине

@@ -3,6 +3,7 @@ import { Link } from 'react-router'
 import PropTypes from 'prop-types'
 
 import { TOPICS_ROOT } from 'core/constants'
+import './style.css'
 
 const TopicsListItem = ({ id, title, answers_count, preview, score, views }) =>
   <div className="topics-list-item">
