@@ -1,6 +1,7 @@
 class Search < ApplicationRecord
 
   def self.result(query)
+
     get_parrent = ->(item) do
       case item.class.to_s  #case uses ===  :(
       when 'Question'
@@ -17,7 +18,8 @@ class Search < ApplicationRecord
       end
     end
 
-    ThinkingSphinx.search(ThinkingSphinx::Query.escape(query), classes: MODELS).map(&get_parrent)
+    ThinkingSphinx.search(ThinkingSphinx::Query.escape(query), classes: MODELS).map(&get_parrent).uniq
+    
   end
 
   private

@@ -1,8 +1,9 @@
-ThinkingSphinx::Index.define :comment, with: :active_record do
+ThinkingSphinx::Index.define :comment, with: :real_time do
   # fields
   indexes body
-  indexes user.email, as: :author, sortable: true
+  indexes user.name, as: :author, sortable: true
 
   #attributes
-  has created_at, updated_at
+  has created_at, type: :timestamp
+  has updated_at, type: :timestamp
 end

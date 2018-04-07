@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 import './style.css'
 import TopicsListItem from './components/topics-list-item'
 import { Spinner } from 'core/components'
-import { QUESTION_NEW, USER_CAN_CREATE_QUESTION } from 'core/constants'
+import { QUESTION_NEW, USER_CAN_CREATE_QUESTION, SEARCH } from 'core/constants'
 
 class Topics extends React.Component {
 
@@ -18,7 +18,10 @@ class Topics extends React.Component {
     : null
 
   componentDidMount = () => {
-    const { fetching, topics, getTopics } = this.props
+    const { location: { pathname, search }, fetching, topics, getTopics, searchTopics } = this.props
+    console.log(pathname);
+    if (pathname === SEARCH && !fetching) searchTopics(search)
+    else
     if (!fetching && !topics) getTopics() //что бы не дергало 2 раза подряд и при логине/разлогине
   }
 
@@ -46,11 +49,10 @@ const mapStateToProps = state => ({
   fetching: state.topics.fetching
 })
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getTopics: () => { dispatch(actions.getTopics()) }
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  getTopics: () => dispatch(actions.getTopics()),
+  searchTopics: query => dispatch(actions.searchTopics(query))
+})
 
 Topics.propTypes = {
   topics: PropTypes.array

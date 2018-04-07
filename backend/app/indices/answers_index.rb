@@ -3,11 +3,8 @@ ThinkingSphinx::Index.define :answer, with: :real_time do
   indexes body
   indexes user.name, as: :author, sortable: true
 
-  set_property :enable_star => 1
-  set_property :min_prefix_len => 2
-
   #attributes
+  has created_at, type: :timestamp
+  has updated_at, type: :timestamp
 
-
-  scope { Answer.includes(:user) }
 end

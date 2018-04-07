@@ -27,7 +27,7 @@ class CommentForm extends React.Component {
     return (
       <div>
         {
-          this.state.visible || fetching ?
+          this.state.visible ?
             <div className="comment-form-layout">
               <div className="comment-form-header">
                 <span>New comment</span>
