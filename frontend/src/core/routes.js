@@ -6,7 +6,7 @@ import Topics from 'modules/topics-list'
 import { App } from './components'
 import NewOrEditQuestion from 'modules/new-or-edit-question'
 import UserProfile from 'modules/user-profile'
-import { TOPIC_SHOW, QUESTION_NEW, QUESTION_EDIT, USER_PROFILE } from './constants'
+import { TOPIC_SHOW, QUESTION_NEW, QUESTION_EDIT, USER_PROFILE, SEARCH } from './constants'
 
 export const routes = (
   <Route path='/' component={App}>
@@ -15,5 +15,6 @@ export const routes = (
     <Route path={QUESTION_NEW} component={NewOrEditQuestion} />
     <Route path={QUESTION_EDIT} component={NewOrEditQuestion} />
     <Route path={USER_PROFILE} component={UserProfile} />
+    <Route path={SEARCH} component={Topics} />
   </Route>
 )

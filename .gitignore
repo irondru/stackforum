@@ -13,6 +13,8 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+backend/log/*.log
+backend/tmp
 
 /node_modules
 /frontend/node_modules
@@ -22,8 +24,10 @@
 /backend/public/uploads
 
 /db/sphinx
+backend/db/sphinx
 
 /public/uploads
+backend/public/uploads
 
 .idea
 /.idea

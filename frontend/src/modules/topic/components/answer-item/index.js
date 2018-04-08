@@ -1,20 +1,20 @@
 import React from 'react';
 import { CommentItem, CommentForm, Vote, Attachments } from '../../components'
 import { ANSWERS, USER_CAN_CREATE_COMMENT, BACKEND_PATH } from 'core/constants'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
+import * as actions from '../../actions'
 import './style.css'
 
-const AnswerItem = ({ id, body, comments, score, access, author,
-  posted_at, itsMyTopic, best, attachments }, context) => {
+const AnswerItem = ({ id, body, comments, score, access, author, posted_at, itsMyTopic, best, attachments,
+  user, editAnswer, deleteAnswer, bestAnswer }) => {
 
   const commentsList = () =>
     comments ? comments.map (comment =>
       !!comment.edit ? <CommentForm key={comment.id} {...comment} /> :
         <CommentItem key={comment.id} {...comment} />
     ) : null
-
-  const { editAnswer, deleteAnswer, bestAnswer } = context.handles
 
   const postText = target => {   //наебуем реакт с <br>
     if (target && body) target.innerHTML = body
@@ -46,17 +46,35 @@ const AnswerItem = ({ id, body, comments, score, access, author,
       <div ref={postText} className="post-text" />
       { commentsList() }
       {
-        context.user.abilities & USER_CAN_CREATE_COMMENT ?
-        <CommentForm key={Math.random()} commentableId={id} commentableType={ANSWERS} /> : null
+        user.abilities & USER_CAN_CREATE_COMMENT ?
+        <CommentForm commentableId={id} commentableType={ANSWERS} /> : null
       }
       <Attachments attachments={attachments} />
     </div>
   </div>
 }
 
-AnswerItem.contextTypes = {
-  handles: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired
+AnswerItem.propTypes = {
+  id: PropTypes.number.isRequired,
+  body: PropTypes.string.isRequired,
+  score: PropTypes.number.isRequired,
+  access: PropTypes.bool.isRequired,
+  author: PropTypes.object.isRequired,
+  posted_at: PropTypes.string.isRequired,
+  itsMyTopic: PropTypes.bool,
+  best: PropTypes.bool,
+  attachments: PropTypes.array,
+  comments: PropTypes.array
 }
 
-export default AnswerItem
+const mapStateToProps = state => ({
+  user: state.user.payload
+})
+
+const mapDispatchToProps = dispatch => ({
+  editAnswer: id => dispatch(actions.editAnswer(id)),
+  bestAnswer: id => dispatch(actions.bestAnswer(id)),
+  deleteAnswer: id => dispatch(actions.deleteAnswer(id))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(AnswerItem)

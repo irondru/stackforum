@@ -8,6 +8,8 @@ class Answer < ApplicationRecord
   belongs_to :question, touch: true
   belongs_to :user
 
+  after_save ThinkingSphinx::RealTime.callback_for(:answer)
+
   validates :body, presence: true, length: { in: 3..1000 }
 
   scope :ordered, -> { order('best desc, created_at') }

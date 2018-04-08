@@ -1,16 +1,20 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { formToJSON } from 'core'
-import { modal } from 'react-redux-modal'
+
 
 import * as actions from './actions'
-import { ModalSignOut, ModalAuth } from './components'
+import { Auth } from './components'
+import { Modal } from 'core/components'
 import './style.css'
 
 class UserAuth extends React.Component {
 
   constructor(props) {
     super(props)
+    this.state = {
+      isOpenModal: false
+    }
     this.handles = {
       signIn: event => {
         event.preventDefault()
@@ -29,51 +33,47 @@ class UserAuth extends React.Component {
     }
   }
 
-  authModal = () =>
-    modal.add(ModalAuth, {
-      title: 'Аутентификация',
-      size: 'small',
-      handles: this.handles,
-      closeOnOutsideClick: false,
-      hideTitleBar: false,
-      hideCloseButton: false,
+  componentDidMount = () =>
+      this.props.getUser()
+
+  componentWillReceiveProps = nextProps => {
+    if (this.state.isOpenModal) this.toggleModal()
+  }
+
+  toggleModal = () =>
+    this.setState({
+      isOpenModal: !this.state.isOpenModal
     })
 
-  signOutModal = () =>
-    modal.add(ModalSignOut, {
-      title: 'Выйти',
-      size: 'small',
-      handles: this.handles,
-      closeOnOutsideClick: false,
-      hideTitleBar: false,
-      hideCloseButton: false,
-   })
-
-  componentWillReceiveProps = () => {
-     modal.clear()
-  }
-
-  render = () => {
-    return (
-      <div>
+  render = () =>
+    <div>
+      <Modal show={this.state.isOpenModal} onClose={this.toggleModal}>
+        <Auth handles={this.handles} />
         {
-          this.props.signedIn ? <div className="header-btn" onClick={this.signOutModal}>Sign out</div>
-          : <div className="header-btn" onClick={this.authModal}>Sign in</div>
+          this.props.errors ?
+          <p>{this.props.errors.msg}</p>
+          : null
         }
-      </div>
-    )
-  }
+      </Modal>
+      {
+        this.props.signedIn ?
+          <div className="header-btn" onClick={this.handles.signOut}>Sign out</div>
+        : <div className="header-btn" onClick={this.toggleModal}>Sign in</div>
+      }
+   </div>
 
 }
 
 const mapStateToProps = state => ({
-    signedIn: !!state.user.payload.id
+    signedIn: !!state.user.payload.id,
+    errors: state.user.errors
 })
 
 const mapDispatchToProps = dispatch => ({
     signIn: user => dispatch(actions.signIn(user)),
     signUp: user => dispatch(actions.signUp(user)),
     signOut: () => dispatch(actions.signOut()),
+    getUser: () => dispatch(actions.getUser())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserAuth);

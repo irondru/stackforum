@@ -11,7 +11,7 @@ class Api::V1::QuestionsController < Api::V1::ApplicationController
   authorize_resource
 
   def index
-    render json: Question.previews(0), serializer: TopicSerializer
+    render json: Question.pages(params[:page] || 0), serializer: TopicSerializer
   end
 
   def show

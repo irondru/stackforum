@@ -1,0 +1,32 @@
+.topics-list-item {
+  display: flex;
+  padding: 15px 0;
+  width: 100%;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.counter-box {
+  display: flex;
+  flex-direction: column;
+  /*border: 1px solid #5ae953;*/
+  width: 4rem;
+  height: 3.5rem;
+  justify-content: center;
+  align-items: center;
+  margin-right: 0.2rem;
+  color: #5b5b5b;
+}
+
+.micro-text {
+  font-size: 0.55em;
+}
+
+.lnk {
+  margin-left: 15px;
+  width: 100%;
+}
+
+.queston-preview {
+  font-size: 0.75em;
+  color: #b2b4b3;
+}

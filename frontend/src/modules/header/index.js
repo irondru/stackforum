@@ -1,21 +1,22 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Link } from 'react-router'
+import { connect } from 'react-redux'
 
 import { USER_PROFILE, BACKEND_PATH } from 'core/constants'
 import UserAuth from 'modules/user-auth'
+import { SearchBar } from './components'
 import './style.css'
 
-const Header = (props, context) => {
-  const { user } = context
+const Header = ({ user }) => {
   return <div id="header">
     <Link to="/">
       <div id="main-logo">
         <div className="logo-img" />
-        <h1 id="header-title">fullStack =></h1>
+        <h1 id="header-title">fullStack</h1>
       </div>
     </Link>
     <div id="header-buttons">
+      <SearchBar />
       {
         user.id ?
           <Link to={USER_PROFILE}>
@@ -28,8 +29,8 @@ const Header = (props, context) => {
   </div>
 }
 
-Header.contextTypes = {
-  user: PropTypes.object.isRequired
-}
+const mapStateToProps = state => ({
+  user: state.user.payload
+})
 
-export default Header
+export default connect(mapStateToProps)(Header)

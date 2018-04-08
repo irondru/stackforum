@@ -10,7 +10,7 @@ class Api::V1::CommentsController < Api::V1::ApplicationController
   def update
     if @comment.update(comment_params)
       render json: {
-        comment: CommentSerializer.new(@comment),
+        comment: CommentSerializer.new(@comment, {scope: current_ability}),
         commentable_type: @comment.commentable_type,
         commentable_id: @comment.commentable_id
       }

@@ -14,6 +14,8 @@ module Commented
         commentable_type: @comment.commentable_type,
         commentable_id: @comment.commentable_id
       }
+    else
+      render json: { comment: @comment.errors.messages }, status: 422  
     end
   end
 

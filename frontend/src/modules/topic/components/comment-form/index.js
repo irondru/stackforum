@@ -1,7 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
-import { AdvTextarea } from 'core/components'
+import * as actions from '../../actions'
+import { formToJSON } from 'core'
+import { AdvTextarea, SpinButton } from 'core/components'
+import { COMMENTS, CREATE, UPDATE } from 'core/constants'
 import './style.css'
 
 class CommentForm extends React.Component {
@@ -10,6 +14,16 @@ class CommentForm extends React.Component {
     this.state = {
       visible: props.edit,
     }
+    this.baseState = this.state
+  }
+
+  componentWillReceiveProps(nextProps) {
+    let fetching = nextProps.fetching ^ COMMENTS
+    fetching = fetching === CREATE || fetching === UPDATE
+    const errors = nextProps.errors
+    //this.setState ({ fetching })
+    //if (!fetching && errors) this.setState({ errors })
+    if (!fetching && !errors) this.setState(this.baseState)
   }
 
   formVisible = () => {
@@ -20,8 +34,7 @@ class CommentForm extends React.Component {
   }
 
   render = () => {
-    const { body, id, commentableId, commentableType, edit } = this.props
-    const { updateComment, createComment } = this.context.handles
+    const { body, id, fetching, errors, updateComment, createComment, commentableId, commentableType, edit } = this.props
     return (
       <div>
         {
@@ -31,12 +44,14 @@ class CommentForm extends React.Component {
                 <span>New comment</span>
                 <i onClick={this.formVisible} className="material-icons">cancel</i>
               </div>
-              <form
-                onSubmit={(e) => edit ? updateComment(e, id)
+              <form onSubmit={(e) => edit ? updateComment(e, id)
                   : createComment(e, commentableType, commentableId, id)}>
                 <AdvTextarea body={body} />
-                <input className="btn" type="submit" />
+                <SpinButton spin={fetching} className="btn">
+                  { edit ? 'Изменить' : 'Отправить' }
+                </SpinButton>
               </form>
+              { errors ? <p>{errors.body}</p> : null }
             </div>
           :
           <div className="add-comment pointer" onClick={this.formVisible}>Add Comment</div>
@@ -46,8 +61,30 @@ class CommentForm extends React.Component {
   }
 }
 
-CommentForm.contextTypes = {
-  handles: PropTypes.object.isRequired
+CommentForm.propTypes = {
+  body: PropTypes.string,
+  id: PropTypes.number,
+  commentableId: PropTypes.number,
+  commentableType: PropTypes.number,
+  edit: PropTypes.bool
 }
 
-export default CommentForm
+const mapStateToProps = state => ({
+  fetching: state.topic.fetching,
+  errors: state.topic.errors.comment
+})
+
+const mapDispatchToProps = dispatch => ({
+  createComment: (event, commentableType, commentableId) => {
+    event.preventDefault()
+    formToJSON(event.target)
+      .then(jform => dispatch(actions.createComment(jform, commentableType, commentableId)))
+  },
+  updateComment: (event, id) => {
+    event.preventDefault()
+    formToJSON(event.target)
+     .then(jform => dispatch(actions.updateComment(jform, id)))
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CommentForm)

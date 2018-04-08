@@ -14,8 +14,7 @@ export default class AdvTexarea extends React.Component {
       .replace(/((?!<div>)(<([^>]+)>))/ig, '') //выпиливаем все теги кроме <div>
       .replace(/<div>/g, '<br>')
 
-
-  render = () => 
+  render = () =>
     <div>
       <textarea ref="hiddenText" name={this.props.name || 'body'} style={{display: 'none'}} />
       <div
