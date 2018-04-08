@@ -33,16 +33,17 @@ class UserAuth extends React.Component {
     }
   }
 
+  componentDidMount = () =>
+      this.props.getUser()
+
+  componentWillReceiveProps = nextProps => {
+    if (this.state.isOpenModal) this.toggleModal()
+  }
+
   toggleModal = () =>
     this.setState({
       isOpenModal: !this.state.isOpenModal
     })
-
-  componentWillReceiveProps = nextProps => {
-    //console.log(this.props.errors);
-    //if (this.state.isOpenModal && !nextProps.errors) this.toggleModal()
-    if (this.state.isOpenModal) this.toggleModal()
-  }
 
   render = () =>
     <div>
@@ -72,6 +73,7 @@ const mapDispatchToProps = dispatch => ({
     signIn: user => dispatch(actions.signIn(user)),
     signUp: user => dispatch(actions.signUp(user)),
     signOut: () => dispatch(actions.signOut()),
+    getUser: () => dispatch(actions.getUser())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserAuth);

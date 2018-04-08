@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
+import * as actions from '../../actions'
 import { QUESTION_EDIT, QUESTIONS, USER_CAN_CREATE_COMMENT, BACKEND_PATH } from 'core/constants'
 import { CommentItem, CommentForm, Vote, Attachments }  from '../../components'
 import './style.css'
 
-const QuestionItem = ({ title, body, id, score, posted_at, comments, attachments, access, author },
-  { user, handles: { deleteTopic } }) => {
+const QuestionItem = ({ title, body, id, score, posted_at, comments, attachments, access, author, user, deleteTopic }) => {
 
 const commentsList = () =>
   comments ? comments.map(comment =>
@@ -44,7 +45,7 @@ const commentsList = () =>
        { commentsList() }
        {
           user.abilities & USER_CAN_CREATE_COMMENT ?
-          <CommentForm key={Math.random()} commentableType={QUESTIONS} commentableId={id} /> : null
+          <CommentForm commentableType={QUESTIONS} commentableId={id} /> : null
        }
        <Attachments attachments={attachments} />
      </div>
@@ -65,9 +66,12 @@ QuestionItem.propTypes = {
   author: PropTypes.object
 }
 
-QuestionItem.contextTypes = {
-  user: PropTypes.object.isRequired,
-  handles: PropTypes.object.isRequired
-}
+const mapStateToProps = state => ({
+  user: state.user.payload
+})
 
-export default QuestionItem
+const mapDispatchToProps = dispatch => ({
+  deleteTopic: id => dispatch(actions.deleteTopic(id))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuestionItem)

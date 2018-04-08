@@ -1,6 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
+import * as actions from '../../actions'
+import { formToJSON } from 'core'
 import { AdvTextarea, SpinButton } from 'core/components'
 import { COMMENTS, CREATE, UPDATE } from 'core/constants'
 import './style.css'
@@ -9,8 +12,18 @@ class CommentForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      visible: props.edit
+      visible: props.edit,
     }
+    this.baseState = this.state
+  }
+
+  componentWillReceiveProps(nextProps) {
+    let fetching = nextProps.fetching ^ COMMENTS
+    fetching = fetching === CREATE || fetching === UPDATE
+    const errors = nextProps.errors
+    //this.setState ({ fetching })
+    //if (!fetching && errors) this.setState({ errors })
+    if (!fetching && !errors) this.setState(this.baseState)
   }
 
   formVisible = () => {
@@ -21,9 +34,7 @@ class CommentForm extends React.Component {
   }
 
   render = () => {
-    const { body, id, commentableId, commentableType, edit } = this.props
-    const { updateComment, createComment } = this.context.handles
-    const fetching = (this.props.fetching ^ CREATE + UPDATE) & COMMENTS //*как обычный || только короче*/
+    const { body, id, fetching, errors, updateComment, createComment, commentableId, commentableType, edit } = this.props
     return (
       <div>
         {
@@ -40,6 +51,7 @@ class CommentForm extends React.Component {
                   { edit ? 'Изменить' : 'Отправить' }
                 </SpinButton>
               </form>
+              { errors ? <p>{errors.body}</p> : null }
             </div>
           :
           <div className="add-comment pointer" onClick={this.formVisible}>Add Comment</div>
@@ -57,9 +69,22 @@ CommentForm.propTypes = {
   edit: PropTypes.bool
 }
 
-CommentForm.contextTypes = {
-  handles: PropTypes.object.isRequired,
-  fetching: PropTypes.number.isRequired
-}
+const mapStateToProps = state => ({
+  fetching: state.topic.fetching,
+  errors: state.topic.errors.comment
+})
 
-export default CommentForm
+const mapDispatchToProps = dispatch => ({
+  createComment: (event, commentableType, commentableId) => {
+    event.preventDefault()
+    formToJSON(event.target)
+      .then(jform => dispatch(actions.createComment(jform, commentableType, commentableId)))
+  },
+  updateComment: (event, id) => {
+    event.preventDefault()
+    formToJSON(event.target)
+     .then(jform => dispatch(actions.updateComment(jform, id)))
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CommentForm)

@@ -1,10 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+
+import * as actions from '../../actions'
 import { UP_VOTE, DOWN_VOTE, USER_CAN_VOTE } from 'core/constants'
 import './style.css'
 
-const Vote = ({ votableType, votableId, score }, { user, handles }) => {
-  const { changeVote } = handles
+const Vote = ({ votableType, votableId, score, user, changeVote }) => {
   const enable = user.abilities & USER_CAN_VOTE
   return <div className="votes">
     <i disabled="true" className={`material-icons ${enable ? '' : 'disabled'}`}
@@ -25,9 +27,15 @@ Vote.propTypes = {
   score: PropTypes.number.isRequired
 }
 
-Vote.contextTypes = {
-  handles: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired
-}
+const mapStateToProps = state => ({
+  user: state.user.payload
+})
 
-export default Vote
+const mapDispatchToProps = dispatch => ({
+  changeVote: (event, votableType, votableId, action) => {
+    event.preventDefault()
+    dispatch(actions.changeVote(votableType, votableId, action))
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Vote)

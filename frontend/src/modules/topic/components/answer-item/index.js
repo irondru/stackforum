@@ -1,12 +1,14 @@
 import React from 'react';
 import { CommentItem, CommentForm, Vote, Attachments } from '../../components'
 import { ANSWERS, USER_CAN_CREATE_COMMENT, BACKEND_PATH } from 'core/constants'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
+import * as actions from '../../actions'
 import './style.css'
 
-const AnswerItem = ({ id, body, comments, score, access, author, posted_at, itsMyTopic, best, attachments },
-  { user, handles: { editAnswer, deleteAnswer, bestAnswer } }) => {
+const AnswerItem = ({ id, body, comments, score, access, author, posted_at, itsMyTopic, best, attachments,
+  user, editAnswer, deleteAnswer, bestAnswer }) => {
 
   const commentsList = () =>
     comments ? comments.map (comment =>
@@ -45,7 +47,7 @@ const AnswerItem = ({ id, body, comments, score, access, author, posted_at, itsM
       { commentsList() }
       {
         user.abilities & USER_CAN_CREATE_COMMENT ?
-        <CommentForm key={Math.random()} commentableId={id} commentableType={ANSWERS} /> : null
+        <CommentForm commentableId={id} commentableType={ANSWERS} /> : null
       }
       <Attachments attachments={attachments} />
     </div>
@@ -65,9 +67,14 @@ AnswerItem.propTypes = {
   comments: PropTypes.array
 }
 
-AnswerItem.contextTypes = {
-  handles: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired
-}
+const mapStateToProps = state => ({
+  user: state.user.payload
+})
 
-export default AnswerItem
+const mapDispatchToProps = dispatch => ({
+  editAnswer: id => dispatch(actions.editAnswer(id)),
+  bestAnswer: id => dispatch(actions.bestAnswer(id)),
+  deleteAnswer: id => dispatch(actions.deleteAnswer(id))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(AnswerItem)

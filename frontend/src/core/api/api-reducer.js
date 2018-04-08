@@ -3,7 +3,7 @@ import { PENDING, SUCCESS, ERROR, REQUEST_STATUSES } from 'core/constants'
 const initialState = {
   fetching: 0,
   payload: {},
-  errors: null
+  errors: {}
 }
 
 export default (state = initialState, { type, payload, errors } = {}, actionType) =>
@@ -11,6 +11,7 @@ export default (state = initialState, { type, payload, errors } = {}, actionType
     ...state,
     ...{
       [PENDING]: () => ({
+        errors: {},
         fetching: type ^ PENDING
       }),
       [SUCCESS]: () => ({

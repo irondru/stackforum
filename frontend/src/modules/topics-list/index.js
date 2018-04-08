@@ -25,7 +25,7 @@ class Topics extends React.Component {
   handleScroll = event => {
     const { scrollTop, offsetHeight, scrollHeight} = event.srcElement
     const { fetching, getTopics } = this.props
-    if (scrollTop + offsetHeight >= scrollHeight - 256 && !fetching) 
+    if (scrollTop + offsetHeight >= scrollHeight - 256 && !fetching)
       getTopics(this.page += 1)
   }
 
@@ -41,13 +41,13 @@ class Topics extends React.Component {
     document.querySelector('#content').removeEventListener('scroll', this.handleScroll)
 
   render = () => {
-    const { fetching, topics } = this.props
+    const { fetching, topics, user } = this.props
     return fetching === QUESTIONS + INDEX ? <Spinner /> :
     <div id="topic">
       <div id="topics-header">
         <h4>{this.title}</h4>
         {
-          this.context.user.abilities & USER_CAN_CREATE_QUESTION ?
+          user.abilities & USER_CAN_CREATE_QUESTION ?
             <Link to={QUESTION_NEW}>
               <div className="btn">New Question</div>
             </Link>
@@ -61,7 +61,8 @@ class Topics extends React.Component {
 
 const mapStateToProps = state => ({
   topics: state.topics.payload.topics,
-  fetching: state.topics.fetching
+  fetching: state.topics.fetching,
+  user: state.user.payload
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -71,10 +72,6 @@ const mapDispatchToProps = dispatch => ({
 
 Topics.propTypes = {
   topics: PropTypes.array
-}
-
-Topics.contextTypes = {
-  user: PropTypes.object.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Topics);

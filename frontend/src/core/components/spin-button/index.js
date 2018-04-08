@@ -11,7 +11,10 @@ const SpinButton = ({ spin = 0, children, className }) =>
   </button>
 
 SpinButton.propTypes = {
-  spin: PropTypes.number,
+  spin: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.number
+  ]),
   className: PropTypes.string,
   children: PropTypes.node
 }

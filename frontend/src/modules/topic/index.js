@@ -6,7 +6,6 @@ import * as actions from './actions'
 
 import { AnswerForm, Question, AnswerItem } from './components'
 import { Spinner } from 'core/components'
-import { formToJSON } from 'core'
 import { USER_CAN_CREATE_ANSWER, QUESTIONS, SHOW } from 'core/constants'
 import './style.css'
 
@@ -28,8 +27,7 @@ class Topic extends React.Component {
    ) : null
 
   render = () => {
-    const { fetching, question } = this.props
-    const { abilities } = this.context.user
+    const { fetching, question, user: { abilities } } = this.props
     return fetching === QUESTIONS + SHOW || !question ? <Spinner />
     :
     <div className="topic-layout">
@@ -37,74 +35,28 @@ class Topic extends React.Component {
       {this.answersList()}
       {
         abilities & USER_CAN_CREATE_ANSWER && !this.props.anyEdit ? //если редактируется ответ - скрываем
-          <AnswerForm key={Date.now()} />
+          <AnswerForm question_id={question.id} />
         : null
       }
     </div>
   }
 
-  getChildContext = () => ({
-    fetching: this.props.fetching,
-    handles: {
-      ...this.props.handles,
-      createAnswer: event => this.props.createAnswer(event, this.props.question.id)
-    }
-  })
 }
 
 const mapDispatchToProps = dispatch => ({
-  getTopic: id => dispatch(actions.getTopic(id)),
-  createAnswer: (event, question_id) => {
-    event.preventDefault()
-    formToJSON(event.target)
-      .then(res => dispatch(actions.createAnswer(res, question_id)))
-    },
-  handles: {
-    editAnswer: id => dispatch(actions.editAnswer(id)),
-    updateAnswer: (event, id) => {
-      event.preventDefault()
-      formToJSON(event.target)
-      .then(jform => dispatch(actions.updateAnswer(jform, id)))
-    },
-    bestAnswer: id => dispatch(actions.bestAnswer(id)),
-    deleteTopic: id => dispatch(actions.deleteTopic(id)),
-    deleteAnswer: id => dispatch(actions.deleteAnswer(id)),
-    editComment: id => dispatch(actions.editComment(id)),
-    createComment: (event, commentableType, commentableId) => {
-      event.preventDefault()
-      formToJSON(event.target)
-       .then(jform => dispatch(actions.createComment(jform, commentableType, commentableId)))
-    },
-    updateComment: (event, id) => {
-      event.preventDefault()
-      formToJSON(event.target)
-       .then(jform => dispatch(actions.updateComment(jform, id)))
-    },
-    deleteComment: id => dispatch(actions.deleteComment(id)),
-    changeVote: (event, votableType, votableId, action) => {
-      event.preventDefault()
-      dispatch(actions.changeVote(votableType, votableId, action))
-    }
-  }
+  getTopic: id => dispatch(actions.getTopic(id))
 })
 
 const mapStateToProps = state => ({
     ...state.topic.payload,
-    fetching: state.topic.fetching
+    fetching: state.topic.fetching,
+    errors: state.topic.errors,
+    user: state.user.payload
 })
 
 Topic.propTypes = {
   question: PropTypes.object,
   answers: PropTypes.array
-}
-
-Topic.contextTypes = {
-  user: PropTypes.object.isRequired
-}
-
-Topic.childContextTypes = {
-  handles: PropTypes.object,
-  fetching: PropTypes.number
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Topic);
