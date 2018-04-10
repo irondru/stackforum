@@ -1,5 +1,7 @@
-export const BACKEND_PATH                      = 'http://localhost:4200'
-const API_ROOT                                 = BACKEND_PATH + '/api/v1/'
+export const BACK_ROOT                = 'http://localhost:4200'
+export const API_ROOT                 = BACK_ROOT + '/api/v1'
+export const USER_PROFILE             = '/profile'
+
 export const GET                               = 'GET'
 export const POST                              = 'POST'
 export const PATCH                             = 'PATCH'
@@ -11,7 +13,7 @@ export const API_ANSWER_CREATE_PATH            = API_TOPICS_PATH + '{questionId}
 export const API_SIGN_IN_PATH                  = API_ROOT + 'users/sign_in'
 export const API_SIGN_UP_PATH                  = API_ROOT + 'users'
 export const API_SIGN_OUT_PATH                 = API_ROOT + 'users/sign_out'
-export const API_PROFILE_PATH                  = API_ROOT + 'profile'
+export const API_PROFILE_PATH                  = API_ROOT + '/profile'
 export const API_ANSWERS_PATH                  = API_ROOT + 'answers/'
 export const API_BEST                          = '/best'
 export const API_COMMENTS_CREATE_ANSWER_PATH   = API_ANSWERS_PATH + ID + '/new_comment'

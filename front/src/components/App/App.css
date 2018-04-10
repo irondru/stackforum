@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css?family=Old+Standard+TT|Roboto+Condensed|Suez+One|Roboto+Slab');
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #container, #root {
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+  background-color: #fbfbfb;
+}
+
+input[type="file" i] {
+    align-items: baseline;
+    color: inherit;
+    text-align: start;
+}
+
+a {
+  color: #FA713E;
+  text-decoration: none;
+  transition: all.6s ease;
+  cursor: pointer;
+}
+
+a:hover {
+  color: #C34F25;
+  text-decoration: underline;
+  transition: all.6s ease;
+}
+
+.material-icons:hover {
+  color: red;
+  transition: all.6s ease;
+}
+
+.material-icons, .pointer {
+  cursor: pointer;
+  color: #486DAA;
+  transition: all.6s ease;
+}
+
+input[type="text"], input[type="password"] {
+  display: inline-block;
+  box-sizing: content-box;
+  padding: 10px 20px;
+  border: 1px solid #b7b7b7;
+  border-radius: 5px;
+  font: normal 16px/normal Tahoma, Geneva, sans-serif;
+  color: rgba(0,142,198,1);
+  text-overflow: clip;
+  background: rgba(252,252,252,1);
+  box-shadow: 2px 2px 2px 0 rgba(109,158,235,0.7) ;
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.66) ;
+  transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.btn {
+	box-shadow: inset 0px 39px 0px -24px #e67a73;
+	background-color: #e4685d;
+	border-radius: 5px;
+	border: 1px solid #ffffff;
+	display: inline-block;
+	cursor: pointer;
+  font-family: 'Roboto Slab', serif;
+  font-size: 0.85em;
+  font-weight: bold;
+	color: #fff;
+	padding: 0.5rem 1rem;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #b23e35;
+  position: relative;
+}
+.btn:hover {
+	background-color: #eb675e;
+}
+.btn:active {
+	position: relative;
+	top: 1px;
+}

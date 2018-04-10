@@ -1,4 +1,4 @@
-import apiReducer from './api/api-reducer'
+import apiReducer from '../feedBack/reducer'
 
 export const formToJSON = (target) => new Promise((resolve, reject) => {
   var result = {}

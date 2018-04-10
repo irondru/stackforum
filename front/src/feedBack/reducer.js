@@ -6,8 +6,9 @@ const initialState = {
   errors: {}
 }
 
-export default (state = initialState, { type, payload, errors } = {}, actionType) =>
-  type === actionType ? {
+export default (state = initialState, { type, payload, errors } = {}, actionType) => {
+  console.log(/@@\w+/.exec(type)[0]);
+  return /@@\w+/.exec(type)[0] === actionType ? {
     ...state,
     ...{
       [PENDING]: () => ({
@@ -22,6 +23,7 @@ export default (state = initialState, { type, payload, errors } = {}, actionType
         fetching: 0,
         errors
       })
-    }[type.match(/\[\w+\]/)]()
+    }[/\/\w+/.exec(type)[0]]()
   }
   : state
+}

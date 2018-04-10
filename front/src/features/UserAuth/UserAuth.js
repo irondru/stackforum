@@ -1,11 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { formToJSON } from 'core'
+import { formToJSON } from '../helpers'
 
 
 import * as actions from './actions'
 import { Auth } from './components'
-import { Modal } from 'core/components'
+import Modal from '../../components/Modal'
 import './style.css'
 
 class UserAuth extends React.Component {
