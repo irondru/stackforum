@@ -1,4 +1,4 @@
-import { getApiReducer } from '../helpers'
+import feedback from 'feedback'
 import { USER } from './actionTypes'
 
-export default getApiReducer(USER)
+export default feedback.reducer.mountDefaultReducer(USER)

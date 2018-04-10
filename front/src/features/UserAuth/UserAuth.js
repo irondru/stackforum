@@ -1,12 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { formToJSON } from '../helpers'
+import { bindActionCreators } from 'redux'
 
 
 import * as actions from './actions'
 import { Auth } from './components'
 import Modal from '../../components/Modal'
-import './style.css'
+import './UserAuth.css'
 
 class UserAuth extends React.Component {
 
@@ -65,15 +66,18 @@ class UserAuth extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    signedIn: !!state.user.payload.id,
-    errors: state.user.errors
+  signedIn: !!state.user.payload.id,
+  errors: state.user.errors
 })
 
-const mapDispatchToProps = dispatch => ({
-    signIn: user => dispatch(actions.signIn(user)),
-    signUp: user => dispatch(actions.signUp(user)),
-    signOut: () => dispatch(actions.signOut()),
-    getUser: () => dispatch(actions.getUser())
-})
+const mapDispatchToProps = dispatch => bindActionCreators ({
+  signIn: user => actions.signIn(user),
+  signUp: user => actions.signUp(user),
+  signOut: () => actions.signOut(),
+  getUser: () => actions.getUser()
+}, dispatch)
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserAuth);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UserAuth);

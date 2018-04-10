@@ -1,4 +1,4 @@
-import apiReducer from '../feedBack/reducer'
+import apiReducer from 'feedback/reducer'
 
 export const formToJSON = (target) => new Promise((resolve, reject) => {
   var result = {}
@@ -20,10 +20,6 @@ export const formToJSON = (target) => new Promise((resolve, reject) => {
   })
   if (!pending) resolve(result)
 })
-
-export const getApiReducer = actionType =>
-  (state, action, _actionType = actionType) =>
-    apiReducer(state, action, _actionType)
 
 export const pushInPayload = (state, item) => ({
   ...state,
