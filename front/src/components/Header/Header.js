@@ -4,8 +4,7 @@ import { connect } from 'react-redux'
 
 import { SearchBar } from './components'
 import * as constants from 'const'
-import UserAuth from 'features/UserAuth'
-import './Header.css'
+import User from 'features/User'
 
 const Header = ({ user }) =>
   <div id="header">
@@ -19,12 +18,12 @@ const Header = ({ user }) =>
       <SearchBar />
       {
         user.id ?
-          <Link to={constants.USER_PROFILE}>
+          <Link to={User.links.PROFILE}>
             <img alt="avatar" height="42" src={process.env.REACT_APP_BACK_ROOT + user.avatar_thumb} />
           </Link>
         : null
       }
-      <UserAuth />
+      <User.containers.Auth />
     </div>
   </div>
 

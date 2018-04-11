@@ -1,15 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { formToJSON } from '../helpers'
+import { formToJSON } from 'features/helpers'
 import { bindActionCreators } from 'redux'
 
 
-import * as actions from './actions'
-import { Auth } from './components'
-import Modal from '../../components/Modal'
-import './UserAuth.css'
+import * as actions from '../../actions'
+import { AuthMainLayout } from '../../components'
+import Modal from 'components/Modal'
 
-class UserAuth extends React.Component {
+class Auth extends React.Component {
 
   constructor(props) {
     super(props)
@@ -49,7 +48,7 @@ class UserAuth extends React.Component {
   render = () =>
     <div>
       <Modal show={this.state.isOpenModal} onClose={this.toggleModal}>
-        <Auth handles={this.handles} />
+        <AuthMainLayout handles={this.handles} />
         {
           this.props.errors ?
           <p>{this.props.errors.msg}</p>
@@ -71,13 +70,13 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators ({
-  signIn: user => actions.signIn(user),
-  signUp: user => actions.signUp(user),
-  signOut: () => actions.signOut(),
-  getUser: () => actions.getUser()
+  signIn: user => actions.auth.signIn(user),
+  signUp: user => actions.auth.signUp(user),
+  signOut: () => actions.auth.signOut(),
+  getUser: () => actions.auth.getUser()
 }, dispatch)
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(UserAuth);
+)(Auth);

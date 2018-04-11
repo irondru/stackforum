@@ -1,4 +1,4 @@
-import * as types from './actionTypes'
+import { PENDING, SUCCESS, FAILURE } from './actionStatuses'
 
 const initialState = {
   fetching: '',
@@ -6,26 +6,28 @@ const initialState = {
   errors: {}
 }
 
-const defaultReducer = (state = initialState, { type, payload, errors } = {}, actionType) => {
-  return /@@\w+/.exec(type)[0] === actionType ? {
+const action = type => /@@\w+/.exec(type)[0]
+const status = type => /\/\w+/.exec(type)[0]
+
+const defaultReducer = (state = initialState, { type, payload, errors } = {}, actionType) =>
+  action(type) === actionType ? {
     ...state,
     ...{
-      [types.PENDING]: () => ({
+      [PENDING]: () => ({
         errors: {},
-        fetching: type
+        fetching: action(type)
       }),
-      [types.SUCCESS]: () => ({
-        fetching: 0,
+      [SUCCESS]: () => ({
+        fetching: '',
         payload
       }),
-      [types.FAILURE]: () => ({
-        fetching: 0,
+      [FAILURE]: () => ({
+        fetching: '',
         errors
       })
-    }[/\/\w+/.exec(type)[0]]()
+    }[status(type)]()
   }
   : state
-}
 
 export const mountDefaultReducer = actionType =>
   (state, action, _actionType = actionType) =>

@@ -1,7 +1,6 @@
 import MainLayout from './components/MainLayout'
-import Test from './components/Test'
-import Home from './components/home'
-import About from './components/About'
+import Test from 'components/Test'
+import User from 'features/User'
 
 const routes = [
   {
@@ -9,17 +8,11 @@ const routes = [
     // exact: true,
     component: MainLayout,
     routes: [
+      ...User.routes,
       {
-        path: '/test',
+        path: '/',
+        exact: true,
         component: Test
-      },
-      {
-        path: '/about',
-        component: About
-      },
-      {
-        path: '/contacts',
-        component: Home
       }
     ]
   }

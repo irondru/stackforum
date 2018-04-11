@@ -1,4 +1,4 @@
-import { PENDING, SUCCESS, FAILURE } from './actionTypes'
+import { PENDING, SUCCESS, FAILURE } from './actionStatuses'
 import fetch from 'isomorphic-fetch'
 
 export default (api_path, method, actionType, body = {}) => dispatch => {

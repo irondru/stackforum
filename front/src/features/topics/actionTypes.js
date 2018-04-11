@@ -1,4 +1,5 @@
-// LIST
-export const TOPICS_FETCH_LIST = 'topics/FETCH_LIST'
-export const TOPICS_FETCH_LIST_SUCCESS = 'topics/FETCH_LIST_SUCCESS'
-export const TOPICS_FETCH_LIST_FAILURE = 'topics/FETCH_LIST_FAILURE'
+export const QUESTIONS_INDEX     = '@@QUESTIONS_INDEX'
+export const QUESTIONS_NEW       = '@@QUESTIONS_NEW'
+export const QUESTIONS_SEARCH    = '@@QUESTIONS_SEARCH'
+export const QUESTIONS_UPDATE    = '@@QUESTIONS_UPDATE'
+export const QUESTIONS_PAGE      = '@@QUESTIONS_PAGE'

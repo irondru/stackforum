@@ -1,2 +1,4 @@
 import MainLayout from './MainLayout'
-export default MainLayout  
+import './MainLayout.css'
+
+export default MainLayout

@@ -1,15 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import { bindActionCreators } from 'redux'
 
-import { formToJSON } from 'core'
-import * as actions from './actions'
-import { BACKEND_PATH } from 'core/constants'
-import { Spinner } from 'core/components'
+import { formToJSON } from 'features/helpers'
+import * as actions from '../../actions'
+import Spinner from 'components/Spinner'
 
-import './style.css'
-
-class UserProfile extends React.Component {
+class Profile extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault()
@@ -25,7 +23,7 @@ class UserProfile extends React.Component {
       <div id="profile-layout">
         <div id="profile-header"><h2>{name}</h2></div>
         <div id="profile-content">
-          <img alt="Avatar" id="avatar-box" src={BACKEND_PATH + avatar_large} />
+          <img alt="Avatar" id="avatar-box" src={process.env.REACT_APP_BACK_ROOT + avatar_large} />
           <form onSubmit={this.handleSubmit}>
             <input type="file" name="image" /><br/><br/>
             <input className="btn" type="submit" value="Сохранить" />
@@ -40,7 +38,7 @@ class UserProfile extends React.Component {
   }
 }
 
-UserProfile.propTypes = {
+Profile.propTypes = {
   avatar_large: PropTypes.string,
   reg_date: PropTypes.string,
   name: PropTypes.string,
@@ -53,8 +51,8 @@ const mapStateToProps = state => ({
   fetching: state.user.fetching
 })
 
-const mapDispatchToProps = dispatch => ({
-  avatarUpload: avatar => dispatch(actions.avatarUpload(avatar))
-})
+const mapDispatchToProps = dispatch => bindActionCreators ({
+  avatarUpload: avatar => actions.profile.avatarUpload(avatar)
+}, dispatch)
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserProfile)
+export default connect(mapStateToProps, mapDispatchToProps)(Profile)

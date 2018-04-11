@@ -7,7 +7,6 @@ import { ConnectedRouter } from 'react-router-redux'
 import { renderRoutes } from 'react-router-config' //рисцет роутинги
 
 import routes from 'routes'
-import './App.css'
 
 const App = () =>
   <Provider store={store}>

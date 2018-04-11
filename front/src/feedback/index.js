@@ -1,5 +1,5 @@
 import actions from './actions'
-import * as types from './actionTypes'
+import * as statuses from './actionStatuses'
 import * as reducer from './reducer'
 
-export default { actions, types, reducer }
+export default { actions, statuses, reducer }

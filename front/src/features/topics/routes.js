@@ -1,18 +1,13 @@
 // @flow
-import containers from './containers'
+import { Topics } from './containers'
+
+export const QUESTIONS           = '/questions/'
+export const QUESTIONS_SEARCH    = '/search'
 
 const routes = [
   {
-    path: '/topics/new',
-    component: containers.SupplementNew
-  },
-  {
-    path: '/topics/:id',
-    component: containers.SupplementDetails
-  },
-  {
-    path: '/topics',
-    component: containers.SupplementList
+    path: QUESTIONS_SEARCH,
+    component: Topics
   }
 ]
 

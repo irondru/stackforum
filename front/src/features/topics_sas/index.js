@@ -2,7 +2,8 @@ import * as actions from './actions'
 import * as types from './actionTypes'
 import * as components from './components'
 import * as containers from './containers'
-import routes, * as links from './routes'
+import * as models from './models'
+import routes from './routes'
 import reducer from './reducer'
 
 export default {
@@ -10,7 +11,7 @@ export default {
   types,
   components,
   containers,
+  models,
   routes,
-  links,
   reducer
 }
