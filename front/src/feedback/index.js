@@ -1,5 +1,5 @@
 import actions from './actions'
 import * as statuses from './actionStatuses'
-import * as reducer from './reducer'
+import reducer, { mountDefaultReducer } from './reducer'
 
-export default { actions, statuses, reducer }
+export default { actions, mountDefaultReducer, statuses, reducer }

@@ -1,13 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import * as actions from './actions'
+import * as actions from '../../actions'
 import PropTypes from 'prop-types'
-import { bindActionCreators } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
 import ListItem from '../../components/ListItem'
 import { Spinner } from 'components'
-import feedback from 'feedback'
 import { QUESTIONS_SEARCH } from '../../routes'
 import { USER_CAN_CREATE_QUESTION } from 'const'
 import * as types from '../../actionTypes'
@@ -21,7 +20,7 @@ class Topics extends React.Component {
 
   topicsList = topics =>
     topics ? topics.map(
-      topic => <TopicsListItem key={topic.id} {...topic} />
+      topic => <ListItem key={topic.id} {...topic} />
     )
     : null
 
@@ -45,13 +44,13 @@ class Topics extends React.Component {
 
   render = () => {
     const { fetching, topics, user } = this.props
-    return fetching === types.QUESTIONS_INDEX + feedback.types.PENDING ? <Spinner /> :
+    return fetching === types.QUESTIONS_INDEX ? <Spinner /> :
     <div id="topic">
       <div id="topics-header">
         <h4>{this.title}</h4>
         {
           user.abilities & USER_CAN_CREATE_QUESTION ?
-            <Link to={QUESTION_NEW}>
+            <Link to='QUESTION_NEW'>
               <div className="btn">New Question</div>
             </Link>
           : null
@@ -68,10 +67,10 @@ const mapStateToProps = state => ({
   user: state.user.payload
 })
 
-const mapDispatchToProps = dispatch => ({
-  getTopics: (page) => dispatch(actions.getTopics(page)),
-  searchTopics: query => dispatch(actions.searchTopics(query))
-})
+const mapDispatchToProps = dispatch => bindActionCreators({
+  getTopics: (page) => actions.topics.getTopics(page),
+  //SsearchTopics: query => actions.searchTopics(query)
+}, dispatch)
 
 Topics.propTypes = {
   topics: PropTypes.array

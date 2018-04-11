@@ -1,5 +1,5 @@
 import React from 'react'
-import { MAX_ATTACHMENTS } from 'core/constants'
+import { MAX_ATTACHMENTS } from 'const'
 
 import './style.css'
 
