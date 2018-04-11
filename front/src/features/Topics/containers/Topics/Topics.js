@@ -7,8 +7,8 @@ import { bindActionCreators } from 'redux'
 
 import ListItem from '../../components/ListItem'
 import { Spinner } from 'components'
-import { QUESTIONS_SEARCH } from '../../routes'
-import { USER_CAN_CREATE_QUESTION } from 'const'
+import { QUESTIONS_SEARCH, QUESTION_NEW } from '../../routes'
+import { abilities } from 'features/User'
 import * as types from '../../actionTypes'
 
 class Topics extends React.Component {
@@ -49,8 +49,8 @@ class Topics extends React.Component {
       <div id="topics-header">
         <h4>{this.title}</h4>
         {
-          user.abilities & USER_CAN_CREATE_QUESTION ?
-            <Link to='QUESTION_NEW'>
+          user.abilities & abilities.CAN_CREATE_QUESTION ?
+            <Link to={QUESTION_NEW}>
               <div className="btn">New Question</div>
             </Link>
           : null
@@ -68,8 +68,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  getTopics: (page) => actions.topics.getTopics(page),
-  //SsearchTopics: query => actions.searchTopics(query)
+  getTopics: page => actions.topics.getTopics(page),
+  searchTopics: query => actions.topics.searchTopics(query)
 }, dispatch)
 
 Topics.propTypes = {

@@ -1,7 +1,7 @@
 import { PENDING, SUCCESS, FAILURE } from './actionStatuses'
 
 const initialState = {
-  fetching: '',
+  fetching: null,
   payload: {},
   errors: {}
 }
@@ -18,11 +18,11 @@ const defaultReducer = (state = initialState, { type, payload, errors } = {}, ac
         fetching: action(type)
       }),
       [SUCCESS]: () => ({
-        fetching: '',
+        fetching: null,
         payload
       }),
       [FAILURE]: () => ({
-        fetching: '',
+        fetching: null,
         errors
       })
     }[status(type)]()

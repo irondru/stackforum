@@ -1,7 +1,8 @@
 import React from 'react'
-import { MAX_ATTACHMENTS } from 'const'
 
 import './style.css'
+
+const MAX_ATTACHMENTS = 3
 
 export default class Attachments extends React.Component {
 

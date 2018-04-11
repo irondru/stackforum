@@ -1,7 +1,6 @@
-import feedback from 'feedback'
+import feedback, { methods } from 'feedback'
 import * as apiConst from '../apiConst'
 import * as types from '../actionTypes'
-import * as methods from 'const/methods'
 
 export const signIn = user =>
   feedback.actions(apiConst.SIGN_IN, methods.POST, types.USER, { user })

@@ -1,9 +1,9 @@
-import feedback from 'feedback'
+import feedback, { statuses } from 'feedback'
 import * as types from './actionTypes'
 import { pushInPayload } from 'features/helpers'
 
 export default (state, action) =>
-  action.type === types.QUESTIONS_PAGES + feedback.statuses.SUCCESS ?
+  action.type === types.QUESTIONS_PAGES + statuses.SUCCESS ?
     pushInPayload(state, {
       topics: [
         ...state.payload.topics,

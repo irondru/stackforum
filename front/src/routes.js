@@ -1,5 +1,4 @@
 import MainLayout from './components/MainLayout'
-import Test from 'components/Test'
 import User from 'features/User'
 import Topics from 'features/Topics'
 
@@ -10,6 +9,7 @@ const routes = [
     component: MainLayout,
     routes: [
       ...User.routes,
+      ...Topics.routes,
       {
         path: '/',
         exact: true,

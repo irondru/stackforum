@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { SearchBar } from './components'
-import * as constants from 'const'
 import User from 'features/User'
 
 const Header = ({ user }) =>

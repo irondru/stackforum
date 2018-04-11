@@ -1,3 +1,4 @@
 import Topics from './Topics'
+import TopicsNew from './TopicsNew'
 
-export { Topics }
+export { Topics, TopicsNew }

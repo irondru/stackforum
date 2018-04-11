@@ -1,8 +1,6 @@
 import React from 'react'
 import { push } from 'react-router-redux'
 
-import './style.css'
-
 class SearchBar extends React.Component {
 
   handleSearch = () => {
