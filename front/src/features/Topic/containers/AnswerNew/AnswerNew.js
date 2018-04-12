@@ -25,8 +25,8 @@ const AnswerNew = ({ id, body, edit, question_id, user, fetching, editAnswer, cr
         }
       </div>
       <form onSubmit={(e) => edit ? updateAnswer(e, id) : createAnswer(e, question_id)}>
-        <AdvTextarea body={body} minHeight="5rem" />
-        <Attachments />
+        <Textarea body={body} minHeight="5rem" />
+        <AttachmentsNew />
         <SpinButton spin={ fetching === types.ANSWERS_CREATE || types.ANSWERS_UPDATE } className="btn">
           { edit ? 'Изменить' : 'Отправить' }
         </SpinButton>
@@ -49,14 +49,14 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   editAnswer: id => actions.answers.editAnswer(id),
-  createAnswer: (event, question_id) => {
-    event.preventDefault()
-    formToJSON(event.target).then(res => dispatch(actions.createAnswer(res, question_id)))
-  },
-  updateAnswer: (event, id) => {
-    event.preventDefault()
-    formToJSON(event.target).then(jform => dispatch(actions.updateAnswer(jform, id)))
-  }
+  //createAnswer: (event, question_id) => {
+  //  event.preventDefault()
+  //  formToJSON(event.target).then(res => dispatch(actions.createAnswer(res, question_id)))
+  //},
+  //updateAnswer: (event, id) => {
+  //  event.preventDefault()
+  //  formToJSON(event.target).then(jform => dispatch(actions.updateAnswer(jform, id)))
+//  }
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(AnswerNew)

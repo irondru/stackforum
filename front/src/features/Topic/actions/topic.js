@@ -13,5 +13,5 @@ export const deleteTopic = id =>
   feedback.actions(
     apiConst.TOPICS + id,
     methods.DELETE,
-    QUESTIONS_DESTROY
+    types.QUESTIONS_DESTROY
   )

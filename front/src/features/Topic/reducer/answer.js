@@ -1,39 +1,41 @@
-import { pushInPayload } from 'core'
-import { ANSWERS, SUCCESS, CREATE, UPDATE, EDIT, DESTROY, BEST } from 'core/constants'
+import { pushInPayload } from 'features/helpers'
+import { getStatus, getAction, statuses } from 'feedback'
+import * as types from '../actionTypes'
 
 export default (state, action) => {
-  switch (action.type ^ ANSWERS + SUCCESS) {
-    case CREATE:
-      return pushInPayload(state, {
-        answers: [...state.payload.answers, action.payload]
-      })
-    case UPDATE:
-      return pushInPayload(state, {
-        answers: state.payload.answers.map(answer =>
-        answer.id === action.payload.id ? action.payload : answer)
-      })
-    case EDIT:
-      return pushInPayload(state, {
-        answers: state.payload.answers.map(answer =>
-          answer.id === action.id ? { ...answer, edit: !answer.edit }
-         : { ...answer, edit: false }),
-        anyEdit: !state.payload.anyEdit 
-      })
-    case DESTROY:
-      return pushInPayload(state, {
-         answers: state.payload.answers.filter(answer =>
-           answer.id !== action.payload.answer.id
-         )
-       })
-    case BEST:
-      return pushInPayload(state, {
-        answers: [
-          ...state.payload.answers.filter(answer =>
-            answer.id === action.payload.answer.id ),
-          ...state.payload.answers.filter(answer =>
-             answer.id !== action.payload.answer.id)
-        ]
-      })
-    default:
-  }
+  if (getStatus(action.type) === statuses.SUCCESS)
+    switch (getAction(action.type)) {
+      case types.ANSWERS_CREATE:
+        return pushInPayload(state, {
+          answers: [...state.payload.answers, action.payload]
+        })
+      case types.ANSWERS_UPDATE:
+        return pushInPayload(state, {
+          answers: state.payload.answers.map(answer =>
+          answer.id === action.payload.id ? action.payload : answer)
+        })
+      case types.ANSWERS_EDIT:
+        return pushInPayload(state, {
+          answers: state.payload.answers.map(answer =>
+            answer.id === action.id ? { ...answer, edit: !answer.edit }
+           : { ...answer, edit: false }),
+          anyEdit: !state.payload.anyEdit
+        })
+      case types.ANSWERS_DESTROY:
+        return pushInPayload(state, {
+           answers: state.payload.answers.filter(answer =>
+             answer.id !== action.payload.answer.id
+           )
+         })
+      case types.ANSWERS_BEST:
+        return pushInPayload(state, {
+          answers: [
+            ...state.payload.answers.filter(answer =>
+              answer.id === action.payload.answer.id ),
+            ...state.payload.answers.filter(answer =>
+               answer.id !== action.payload.answer.id)
+          ]
+        })
+      default:
+    }
 }

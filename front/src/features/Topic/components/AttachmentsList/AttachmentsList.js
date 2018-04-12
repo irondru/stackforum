@@ -1,15 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { BACKEND_PATH } from 'core/constants'
-
 const AttachmentsList = ({ attachments }) =>
   attachments.length ?
     <div>
       <p>Прикрепленные файлы</p>
       {
         attachments.map(attachment =>
-          <a key={attachment.id} href={BACKEND_PATH + attachment.url}>{attachment.name} </a>
+          <a key={attachment.id} href={process.env.REACT_APP_BACK_ROOT + attachment.url}>{attachment.name} </a>
         )
       }
     </div>

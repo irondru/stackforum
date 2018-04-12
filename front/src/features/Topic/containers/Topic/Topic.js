@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { browserHistory } from 'react-router'
+import { push } from 'react-router-redux'
 import * as actions from '../../actions'
 import { bindActionCreators } from 'redux'
 
@@ -18,7 +18,7 @@ class Topic extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.deleted) browserHistory.push('/')
+    if (nextProps.deleted) push('/')
   }
 
   answersList = () =>

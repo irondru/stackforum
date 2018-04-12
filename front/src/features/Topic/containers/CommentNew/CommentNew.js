@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import * as actions from '../../actions'
-import { formToJSON } from 'components'
+import { formToJSON } from 'features/helpers'
 import { Textarea, SpinButton } from 'components'
 
 class CommentForm extends React.Component {
@@ -45,7 +45,7 @@ class CommentForm extends React.Component {
               </div>
               <form onSubmit={(e) => edit ? updateComment(e, id)
                   : createComment(e, commentableType, commentableId, id)}>
-                <AdvTextarea body={body} />
+                <Textarea body={body} />
                 <SpinButton spin={fetching} className="btn">
                   { edit ? 'Изменить' : 'Отправить' }
                 </SpinButton>
@@ -77,12 +77,12 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   createComment: (event, commentableType, commentableId) => {
     event.preventDefault()
     formToJSON(event.target)
-      .then(jform => dispatch(actions.createComment(jform, commentableType, commentableId)))
+      .then(jform => actions.comments.createComment(jform, commentableType, commentableId))
   },
   updateComment: (event, id) => {
     event.preventDefault()
     formToJSON(event.target)
-     .then(jform => dispatch(actions.updateComment(jform, id)))
+     .then(jform => actions.comments.updateComment(jform, id))
   }
 }, dispatch)
 

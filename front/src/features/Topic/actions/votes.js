@@ -5,8 +5,8 @@ import * as types from '../actionTypes'
 export const changeVote = (votableType, votableId, action) =>
   feedback.actions(
     {
-      ['answer']: () => API_ANSWER_VOTE_CHANGE_PATH.replace(ID, votableId),
-      ['question']: () => API_QUESTION_VOTE_CHANGE_PATH.replace(ID, votableId)
+      ['answer']: () => apiConst.COMMENTS_CREATE_FOR_ANSWER.replace('{id}', votableId),
+      ['question']: () => apiConst.COMMENTS_CREATE_FOR_QUESTION.replace('{id}', votableId)
     }[votableType](),
     methods.POST,
     types.VOTES,

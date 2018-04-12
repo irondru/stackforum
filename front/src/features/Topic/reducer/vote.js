@@ -1,25 +1,26 @@
-import { SUCCESS, VOTES, TYPE_QUESTION, TYPE_ANSWER } from 'core/constants'
-import { pushInPayload } from 'core'
+import { pushInPayload } from 'features/helpers'
+import { status, action, statuses } from 'feedback'
+import * as types from '../actionTypes'
+
+const TYPE_ANSWER = 'Answer'
+const TYPE_QUESTION = 'Question'
 
 export default (state, action) => {
-  switch (action.type ^ VOTES) {
-    case SUCCESS:
-      return pushInPayload(state, {
-        [TYPE_ANSWER]: () => ({
-          answers: state.payload.answers.map(answer =>
-          answer.id === action.payload.vote.votable_id ? {
-            ...answer,
-            score: action.payload.vote.score
-          }
-          : answer )
-        }),
-        [TYPE_QUESTION]: () => ({
-          question: {
-            ...state.payload.question,
-            score: action.payload.vote.score
-          }
-        })
-      }[action.payload.vote.votable_type]())
-    default:
-  }
+  if (action.type === types.VOTES + statuses.SUCCESS)
+    return pushInPayload(state, {
+      [TYPE_ANSWER]: () => ({
+        answers: state.payload.answers.map(answer =>
+        answer.id === action.payload.vote.votable_id ? {
+          ...answer,
+          score: action.payload.vote.score
+        }
+        : answer )
+      }),
+      [TYPE_QUESTION]: () => ({
+        question: {
+          ...state.payload.question,
+          score: action.payload.vote.score
+        }
+      })
+    }[action.payload.vote.votable_type]())
 }

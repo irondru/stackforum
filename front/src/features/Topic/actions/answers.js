@@ -32,6 +32,6 @@ export const deleteAnswer = id =>
   )
 
 export const editAnswer = id => ({
-    type: ANSWERS + EDIT + SUCCESS,
+    type: types.ANSWERS_EDIT + feedback.statuses.SUCCESS,
     id
   })

@@ -10,17 +10,25 @@ export const getTopics = (page = 0) =>
   )
 
 export const searchTopics = query =>
-  feedback.actions(apiConst.TOPICS_SEARCH + query, methods.GET, types.QUESTIONS_INDEX)
+  feedback.actions(
+    apiConst.TOPICS_SEARCH + query,
+    methods.GET,
+    types.QUESTIONS_INDEX
+  )
 
 export const initialEditQuestion = id =>
-  feedback.actions(apiConst.TOPICS + id, methods.GET, '@@QUESTION_SHOW')
+  feedback.actions(
+    apiConst.TOPICS + id,
+    methods.GET,
+    '@@QUESTION_SHOW'
+  )
 
 export const newOrUpdateQuestion = (question, id) => {
   id = id || ''
   return feedback.actions(
     apiConst.TOPICS + id,
     id === '' ? methods.POST : methods.PATCH ,
-    '@@QUESTION_NEW', 
+    '@@QUESTION_NEW',
     { question }
   )
 }

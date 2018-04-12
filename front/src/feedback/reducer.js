@@ -6,16 +6,16 @@ const initialState = {
   errors: {}
 }
 
-const action = type => /@@\w+/.exec(type)[0]
-const status = type => /\/\w+/.exec(type)[0]
+export const getAction = type => /@@\w+/.exec(type)[0]
+export const getStatus = type => /\/\w+/.exec(type)[0]
 
-const defaultReducer = (state = initialState, { type, payload, errors } = {}, actionType) =>
-  action(type) === actionType ? {
+const defaultReducer = (state = initialState, { type, payload, errors } = {}, actionTypes = []) =>
+   actionTypes.includes(getAction(type)) ? {
     ...state,
     ...{
       [PENDING]: () => ({
         errors: {},
-        fetching: action(type)
+        fetching: getAction(type)
       }),
       [SUCCESS]: () => ({
         fetching: null,
@@ -25,7 +25,7 @@ const defaultReducer = (state = initialState, { type, payload, errors } = {}, ac
         fetching: null,
         errors
       })
-    }[status(type)]()
+    }[getStatus(type)]()
   }
   : state
 

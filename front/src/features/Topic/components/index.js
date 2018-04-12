@@ -1,1 +1,1 @@
-export { default as AttachmentsList } from 'AttachmentsList'
+export { default as AttachmentsList } from './AttachmentsList'

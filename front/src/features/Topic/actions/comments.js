@@ -5,8 +5,8 @@ import * as types from '../actionTypes'
 export const createComment = (comment, commentableType, commentableId) =>
   feedback.actions(
     {
-      ['answer']: () => apiConst.COMMENTS_CREATE_FOR_ANSWER.replace(ID, commentableId),
-      ['question']: () => apiConst.COMMENTS_CREATE_FOR_QUESTION.replace(ID, commentableId)
+      ['answer']: () => apiConst.COMMENTS_CREATE_FOR_ANSWER.replace('{id}', commentableId),
+      ['question']: () => apiConst.COMMENTS_CREATE_FOR_QUESTION.replace('{id}', commentableId)
     }[commentableType](),
     methods.POST,
     types.COMMENTS_CREATE,

@@ -46,9 +46,9 @@ const commentsList = () =>
        { commentsList() }
        {
           user.abilities & abilities.CAN_CREATE_COMMENT ?
-          <CommentForm commentableType={'question'} commentableId={id} /> : null
+          <CommentNew commentableType={'question'} commentableId={id} /> : null
        }
-       <Attachments attachments={attachments} />
+       <AttachmentsList attachments={attachments} />
      </div>
     </div>
   </div>
