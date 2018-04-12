@@ -6,7 +6,7 @@ import { push } from 'react-router-redux'
 import * as actions from '../../actions'
 import { QUESTIONS } from '../../routes'
 import { formToJSON } from 'features/helpers'
-import { Spinner, Textarea, Attachments } from 'components'
+import { Spinner, Textarea, AttachmentsNew } from 'components'
 
 class NewOrEditQuestion extends React.Component {
 
@@ -45,7 +45,7 @@ class NewOrEditQuestion extends React.Component {
           <br/>
           <p>Содержание</p>
           <Textarea body={body} minHeight="10rem" />
-          <Attachments />
+          <AttachmentsNew />
           <input className="btn" type="submit" name="submit" />
         </form>
       </div>

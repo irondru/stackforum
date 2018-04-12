@@ -7,11 +7,6 @@ import { QUESTIONS, SHOW, ANSWERS, COMMENTS, VOTES } from 'core/constants'
 
 
 export default (state, action) => {
-  switch (action.type) {
-    case types.
-
-  }
-}
   answerReducer(state, action) ||
   commentReducer(state, action) ||
   voteReducer(state, action) ||
