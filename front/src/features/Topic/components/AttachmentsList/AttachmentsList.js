@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { BACKEND_PATH } from 'core/constants'
 
-const Attachments = ({ attachments }) =>
+const AttachmentsList = ({ attachments }) =>
   attachments.length ?
     <div>
       <p>Прикрепленные файлы</p>
@@ -15,8 +15,8 @@ const Attachments = ({ attachments }) =>
     </div>
   : <span />
 
-Attachments.propTypes = {
+AttachmentsList.propTypes = {
   attachments: PropTypes.array
 }
 
-export default Attachments
+export default AttachmentsList

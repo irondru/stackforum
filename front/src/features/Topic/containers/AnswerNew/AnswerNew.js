@@ -1,19 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
-import { BACKEND_PATH, ANSWERS, CREATE, UPDATE } from 'core/constants'
-import { AdvTextarea, Attachments, SpinButton } from 'core/components'
-import { formToJSON } from 'core'
+import { Textarea, AttachmentsNew, SpinButton } from 'components'
+import { formToJSON } from 'features/helpers'
 import * as actions from '../../actions'
+import * as types from '../../actionTypes'
 
-import './style.css'
-
-const AnswerForm = ({ id, body, edit, question_id, user, fetching, editAnswer, createAnswer, updateAnswer }) => {
-  //const {  } = this.props
-  return <div className="post-layout">
+const AnswerNew = ({ id, body, edit, question_id, user, fetching, editAnswer, createAnswer, updateAnswer }) =>
+  <div className="post-layout">
     <div className="post-layout-left">
-      <img alt="avatar" className="post-avatar" src={BACKEND_PATH + user.avatar_thumb} />
+      <img alt="avatar" className="post-avatar" src={process.env.REACT_APP_BACK_ROOT + user.avatar_thumb} />
     </div>
     <div className="post-layout-right">
       <div className="post-layout-right-header answer-form">
@@ -29,15 +27,14 @@ const AnswerForm = ({ id, body, edit, question_id, user, fetching, editAnswer, c
       <form onSubmit={(e) => edit ? updateAnswer(e, id) : createAnswer(e, question_id)}>
         <AdvTextarea body={body} minHeight="5rem" />
         <Attachments />
-        <SpinButton spin={ (fetching ^ CREATE + UPDATE) & ANSWERS } className="btn">
+        <SpinButton spin={ fetching === types.ANSWERS_CREATE || types.ANSWERS_UPDATE } className="btn">
           { edit ? 'Изменить' : 'Отправить' }
         </SpinButton>
       </form>
     </div>
   </div>
-}
 
-AnswerForm.PropTypes = {
+AnswerNew.PropTypes = {
   id: PropTypes.number,
   body: PropTypes.string,
   edit: PropTypes.bool,
@@ -50,8 +47,8 @@ const mapStateToProps = state => ({
   errors: state.topic.errors,
 })
 
-const mapDispatchToProps = dispatch => ({
-  editAnswer: id => dispatch(actions.editAnswer(id)),
+const mapDispatchToProps = dispatch => bindActionCreators({
+  editAnswer: id => actions.answers.editAnswer(id),
   createAnswer: (event, question_id) => {
     event.preventDefault()
     formToJSON(event.target).then(res => dispatch(actions.createAnswer(res, question_id)))
@@ -60,6 +57,6 @@ const mapDispatchToProps = dispatch => ({
     event.preventDefault()
     formToJSON(event.target).then(jform => dispatch(actions.updateAnswer(jform, id)))
   }
-})
+}, dispatch)
 
-export default connect(mapStateToProps, mapDispatchToProps)(AnswerForm)
+export default connect(mapStateToProps, mapDispatchToProps)(AnswerNew)

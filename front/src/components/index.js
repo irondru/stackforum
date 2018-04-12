@@ -1,4 +1,4 @@
-export { default as Attachments} from './Attachments'
+export { default as AttachmentsNew} from './AttachmentsNew'
 export { default as Textarea } from './Textarea'
 export { default as Spinner } from './Spinner'
 export { default as Modal } from './Modal'

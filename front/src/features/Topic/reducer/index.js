@@ -1,11 +1,18 @@
 import answerReducer from './answer'
 import commentReducer from './comment'
 import voteReducer from './vote'
-import { apiReducer } from 'core'
+import feedback from 'feedback'
+import * as types from '../actionTypes'
 import { QUESTIONS, SHOW, ANSWERS, COMMENTS, VOTES } from 'core/constants'
 
-export default (state, action) =>
+
+export default (state, action) => {
+  switch (action.type) {
+    case types.
+
+  }
+}
   answerReducer(state, action) ||
   commentReducer(state, action) ||
   voteReducer(state, action) ||
-  apiReducer(state, action, QUESTIONS + SHOW + ANSWERS + COMMENTS + VOTES)
+  feedback.reducer(state, action, QUESTIONS + SHOW + ANSWERS + COMMENTS + VOTES)

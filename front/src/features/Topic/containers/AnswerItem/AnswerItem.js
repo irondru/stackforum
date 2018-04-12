@@ -1,11 +1,12 @@
-import React from 'react';
-import { CommentItem, CommentForm, Vote, Attachments } from '../../components'
-import { ANSWERS, USER_CAN_CREATE_COMMENT, BACKEND_PATH } from 'core/constants'
+import React from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import PropTypes from 'prop-types'
 
+import { CommentItem, CommentNew, Vote } from '../../containers'
+import { AttachmentsList } from '../../components'
+import { abilities } from 'features/User'
 import * as actions from '../../actions'
-import './style.css'
 
 const AnswerItem = ({ id, body, comments, score, access, author, posted_at, itsMyTopic, best, attachments,
   user, editAnswer, deleteAnswer, bestAnswer }) => {
@@ -22,8 +23,8 @@ const AnswerItem = ({ id, body, comments, score, access, author, posted_at, itsM
 
   return <div className="post-layout">
     <div className="post-layout-left">
-      <img alt="avatar" className="post-avatar" src={BACKEND_PATH + author.avatar} />
-      <Vote votableType={ANSWERS} votableId={id} score={score} />
+      <img alt="avatar" className="post-avatar" src={process.env.REACT_APP_BACK_ROOT + author.avatar} />
+      <Vote votableType={'answer'} votableId={id} score={score} />
       {
         itsMyTopic ?
           <i className={`material-icons ${best ? 'best-answer' : null}`}
@@ -46,10 +47,10 @@ const AnswerItem = ({ id, body, comments, score, access, author, posted_at, itsM
       <div ref={postText} className="post-text" />
       { commentsList() }
       {
-        user.abilities & USER_CAN_CREATE_COMMENT ?
-        <CommentForm commentableId={id} commentableType={ANSWERS} /> : null
+        user.abilities & abilities.CAN_CREATE_COMMENT ?
+        <CommentNew commentableId={id} commentableType={'answer'} /> : null
       }
-      <Attachments attachments={attachments} />
+      <AttachmentsList attachments={attachments} />
     </div>
   </div>
 }
@@ -71,10 +72,10 @@ const mapStateToProps = state => ({
   user: state.user.payload
 })
 
-const mapDispatchToProps = dispatch => ({
-  editAnswer: id => dispatch(actions.editAnswer(id)),
-  bestAnswer: id => dispatch(actions.bestAnswer(id)),
-  deleteAnswer: id => dispatch(actions.deleteAnswer(id))
-})
+const mapDispatchToProps = dispatch => bindActionCreators({
+  editAnswer: id => actions.answers.editAnswer(id),
+  bestAnswer: id => actions.answers.bestAnswer(id),
+  deleteAnswer: id => actions.answers.deleteAnswer(id)
+}, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(AnswerItem)

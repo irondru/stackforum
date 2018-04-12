@@ -1,10 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import * as actions from '../../actions'
-import './style.css'
 
 const CommentItem = ({ body, id, access, author, posted_at, editComment, deleteComment }) =>
   <div className="comment-item">
@@ -32,10 +31,10 @@ CommentItem.propTypes = {
   posted_at: PropTypes.string.isRequired
 }
 
-const mapDispatchToProps = dispatch => ({
-  editComment: id => dispatch(actions.editComment(id)),
-  deleteComment: id => dispatch(actions.deleteComment(id))
-})
+const mapDispatchToProps = dispatch => bindActionCreators({
+  editComment: id => actions.comments.editComment(id),
+  deleteComment: id => actions.comments.deleteComment(id)
+}, dispatch)
 
 
 export default connect(null, mapDispatchToProps)(CommentItem)

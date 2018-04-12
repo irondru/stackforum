@@ -1,18 +1,19 @@
 import React from 'react'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
 import * as actions from '../../actions'
-import { QUESTION_EDIT, QUESTIONS, USER_CAN_CREATE_COMMENT, BACKEND_PATH } from 'core/constants'
-import { CommentItem, CommentForm, Vote, Attachments }  from '../../components'
-import './style.css'
+import { CommentItem, CommentNew, Vote }  from '../../containers'
+import { AttachmentsList } from '../../components'
+import { abilities } from 'features/User'
 
 const QuestionItem = ({ title, body, id, score, posted_at, comments, attachments, access, author, user, deleteTopic }) => {
 
 const commentsList = () =>
   comments ? comments.map(comment =>
-    comment.edit ? <CommentForm key={comment.id} {...comment} />
+    comment.edit ? <CommentNew key={comment.id} {...comment} />
       : <CommentItem key={comment.id} {...comment} />
   ) : null
 
@@ -24,8 +25,8 @@ const commentsList = () =>
     <h1 id="question-title">{title}</h1>
     <div className="post-layout">
      <div className="post-layout-left">
-       <img alt="avatar" className="post-avatar" src={BACKEND_PATH + author.avatar} />
-       <Vote votableType={QUESTIONS} votableId={id} score={score} />
+       <img alt="avatar" className="post-avatar" src={process.env.REACT_APP_BACK_ROOT + author.avatar} />
+       <Vote votableType={'question'} votableId={id} score={score} />
      </div>
      <div className="post-layout-right">
        <div className="post-layout-right-header">
@@ -33,7 +34,7 @@ const commentsList = () =>
          {
            access ?
            <div className="flex-right">
-             <Link to={QUESTION_EDIT.replace(':id', id)}>
+             <Link to={'QUESTION_EDIT'.replace(':id', id)}>
                  <i className="material-icons">mode_edit</i>
              </Link>
              <i onClick={deleteTopic.bind(null, id)} className="material-icons">delete</i>
@@ -44,8 +45,8 @@ const commentsList = () =>
        <div ref={postText} className="post-text" />
        { commentsList() }
        {
-          user.abilities & USER_CAN_CREATE_COMMENT ?
-          <CommentForm commentableType={QUESTIONS} commentableId={id} /> : null
+          user.abilities & abilities.CAN_CREATE_COMMENT ?
+          <CommentForm commentableType={'question'} commentableId={id} /> : null
        }
        <Attachments attachments={attachments} />
      </div>
@@ -70,8 +71,8 @@ const mapStateToProps = state => ({
   user: state.user.payload
 })
 
-const mapDispatchToProps = dispatch => ({
-  deleteTopic: id => dispatch(actions.deleteTopic(id))
-})
+const mapDispatchToProps = dispatch => bindActionCreators({
+  deleteTopic: id => actions.topic.deleteTopic(id)
+}, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuestionItem)

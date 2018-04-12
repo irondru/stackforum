@@ -1,12 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
 import * as actions from '../../actions'
-import { formToJSON } from 'core'
-import { AdvTextarea, SpinButton } from 'core/components'
-import { COMMENTS, CREATE, UPDATE } from 'core/constants'
-import './style.css'
+import { formToJSON } from 'components'
+import { Textarea, SpinButton } from 'components'
 
 class CommentForm extends React.Component {
   constructor(props) {
@@ -17,17 +16,17 @@ class CommentForm extends React.Component {
     this.baseState = this.state
   }
 
-  componentWillReceiveProps(nextProps) {
-    let fetching = nextProps.fetching ^ COMMENTS
-    fetching = fetching === CREATE || fetching === UPDATE
-    const errors = nextProps.errors
-    //this.setState ({ fetching })
+  //componentWillReceiveProps(nextProps) {
+  //  let fetching = nextProps.fetching ^ COMMENTS
+  //  fetching = fetching === CREATE || fetching === UPDATE
+  //  const errors = nextProps.errors
+  //  //this.setState ({ fetching })
     //if (!fetching && errors) this.setState({ errors })
-    if (!fetching && !errors) this.setState(this.baseState)
-  }
+  //  if (!fetching && !errors) this.setState(this.baseState)
+  //}
 
   formVisible = () => {
-    if (this.state.visible) this.context.handles.editComment(this.props.id)
+    if (this.state.visible) this.props.editComment(this.props.id)
     this.setState({
       visible: !this.state.visible
     })
@@ -74,7 +73,7 @@ const mapStateToProps = state => ({
   errors: state.topic.errors.comment
 })
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = dispatch => bindActionCreators({
   createComment: (event, commentableType, commentableId) => {
     event.preventDefault()
     formToJSON(event.target)
@@ -85,6 +84,6 @@ const mapDispatchToProps = dispatch => ({
     formToJSON(event.target)
      .then(jform => dispatch(actions.updateComment(jform, id)))
   }
-})
+}, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentForm)

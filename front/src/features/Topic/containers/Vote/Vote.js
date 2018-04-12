@@ -3,11 +3,13 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import * as actions from '../../actions'
-import { UP_VOTE, DOWN_VOTE, USER_CAN_VOTE } from 'core/constants'
-import './style.css'
+import { abilities } from 'features/User'
+
+const UP_VOTE   = 'UP_VOTE'
+const DOWN_VOTE = 'DOWN_VOTE'
 
 const Vote = ({ votableType, votableId, score, user, changeVote }) => {
-  const enable = user.abilities & USER_CAN_VOTE
+  const enable = user.abilities & abilities.CAN_VOTE
   return <div className="votes">
     <i disabled="true" className={`material-icons ${enable ? '' : 'disabled'}`}
       onClick={enable ? (e) => changeVote(e, votableType, votableId, UP_VOTE) : null}>
@@ -31,10 +33,10 @@ const mapStateToProps = state => ({
   user: state.user.payload
 })
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = dispatch => bindActionCreators({
   changeVote: (event, votableType, votableId, action) => {
     event.preventDefault()
-    dispatch(actions.changeVote(votableType, votableId, action))
+    actions.votes.changeVote(votableType, votableId, action)
   }
 })
 
