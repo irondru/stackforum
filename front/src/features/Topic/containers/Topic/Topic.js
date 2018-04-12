@@ -13,7 +13,8 @@ import * as types from '../../actionTypes'
 class Topic extends React.Component {
 
   componentDidMount = () => {
-    const { fetching, getTopic, params: {id} } = this.props
+    console.log(this.props);
+    const { fetching, getTopic, match: { params: {id} } } = this.props
     if (!fetching) getTopic(id) //что бы не дергало 2 раза подряд
   }
 

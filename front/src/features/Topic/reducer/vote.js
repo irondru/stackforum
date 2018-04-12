@@ -1,5 +1,5 @@
 import { pushInPayload } from 'features/helpers'
-import { status, action, statuses } from 'feedback'
+import { statuses } from 'feedback'
 import * as types from '../actionTypes'
 
 const TYPE_ANSWER = 'Answer'
