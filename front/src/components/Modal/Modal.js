@@ -2,8 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
 
-import './style.css'
-
 //инлайн стили чтобы перекрыть стили body
 const backdropStyle = {
   position: 'fixed',

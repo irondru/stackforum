@@ -27,14 +27,14 @@ const AnswerNew = ({ id, body, edit, question_id, user, fetching, editAnswer, cr
       <form onSubmit={(e) => edit ? updateAnswer(e, id) : createAnswer(e, question_id)}>
         <Textarea body={body} minHeight="5rem" />
         <AttachmentsNew />
-        <SpinButton spin={ fetching === types.ANSWERS_CREATE || types.ANSWERS_UPDATE } className="btn">
+        <SpinButton spin={ fetching === (types.ANSWERS_CREATE || types.ANSWERS_UPDATE) } className="btn">
           { edit ? 'Изменить' : 'Отправить' }
         </SpinButton>
       </form>
     </div>
   </div>
 
-AnswerNew.PropTypes = {
+AnswerNew.propTypes = {
   id: PropTypes.number,
   body: PropTypes.string,
   edit: PropTypes.bool,

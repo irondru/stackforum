@@ -25,7 +25,7 @@ const Vote = ({ votableType, votableId, score, user, changeVote }) => {
 }
 
 Vote.propTypes = {
-  votableType: PropTypes.number.isRequired,
+  votableType: PropTypes.string.isRequired,
   votableId: PropTypes.number.isRequired,
   score: PropTypes.number.isRequired
 }

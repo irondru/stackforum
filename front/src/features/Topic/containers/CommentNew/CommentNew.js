@@ -64,7 +64,7 @@ CommentForm.propTypes = {
   body: PropTypes.string,
   id: PropTypes.number,
   commentableId: PropTypes.number,
-  commentableType: PropTypes.number,
+  commentableType: PropTypes.string,
   edit: PropTypes.bool
 }
 
