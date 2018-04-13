@@ -1,25 +1,22 @@
-import feedback, { methods } from 'feedback'
+import feedback from 'feedback'
 import * as apiConst from '../apiConst'
 import * as types from '../actionTypes'
 
 export const getTopics = (page = 0) =>
-  feedback.actions(
+  feedback.get(
     page ? apiConst.TOPICS_PAGES + page : apiConst.TOPICS,
-    methods.GET,
     page ? types.QUESTIONS_PAGES : types.QUESTIONS_INDEX
   )
 
 export const searchTopics = query =>
-  feedback.actions(
+  feedback.get(
     apiConst.TOPICS_SEARCH + query,
-    methods.GET,
     types.QUESTIONS_INDEX
   )
 
 export const initialEditQuestion = id =>
-  feedback.actions(
+  feedback.get(
     apiConst.TOPICS + id,
-    methods.GET,
     '@@QUESTION_SHOW'
   )
 
@@ -27,7 +24,7 @@ export const newOrUpdateQuestion = (question, id) => {
   id = id || ''
   return feedback.actions(
     apiConst.TOPICS + id,
-    id === '' ? methods.POST : methods.PATCH ,
+    id === '' ? 'POST' : 'PATCH',
     '@@QUESTION_NEW',
     { question }
   )

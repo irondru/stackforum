@@ -1,33 +1,29 @@
-import feedback, { methods } from 'feedback'
+import feedback from 'feedback'
 import * as apiConst from '../apiConst'
 import * as types from '../actionTypes'
 
 export const signIn = user =>
-  feedback.actions(
+  feedback.post(
     apiConst.SIGN_IN,
-    methods.POST,
     types.USER,
     { user }
   )
 
 export const signUp = user =>
-  feedback.actions(
+  feedback.post(
     apiConst.SIGN_UP,
-    methods.POST,
     types.USER,
     { user }
   )
 
 export const signOut = () =>
-  feedback.actions(
+  feedback.destroy(
     apiConst.SIGN_OUT,
-    methods.DELETE,
     types.USER
   )
 
 export const getUser = () =>
-  feedback.actions(
+  feedback.get(
     apiConst.PROFILE,
-    methods.GET,
     types.USER
   )

@@ -1,7 +1,8 @@
 import { PENDING, SUCCESS, FAILURE } from './actionStatuses'
 import fetch from 'isomorphic-fetch'
 
-export default (api_path, method, actionType, body = {}) => dispatch => {
+export const actions = (api_path, method, actionType, body = {}) => dispatch => {
+
   dispatch({
     type: actionType + PENDING
   })
@@ -23,10 +24,12 @@ export default (api_path, method, actionType, body = {}) => dispatch => {
         'Content-Type': 'application/json'
       }
   }
+
   if (method !== 'GET') options = {
     ...options,
     body: JSON.stringify(body)
   }
+
   fetch(api_path, options)
     .then(response => checkResponse(response)
       .then(payload => dispatch({
@@ -40,4 +43,10 @@ export default (api_path, method, actionType, body = {}) => dispatch => {
       errors
     })
   })
+  
 }
+
+export const get = (api_path, actionType) => actions(api_path, 'GET', actionType)
+export const post = (api_path, actionType, body) => actions(api_path, 'POST', actionType, body)
+export const patch = (api_path, actionType, body) => actions(api_path, 'PATCH', actionType, body)
+export const destroy = (api_path, actionType) => actions(api_path, 'DELETE', actionType)

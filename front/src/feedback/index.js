@@ -1,20 +1,17 @@
-import actions from './actions'
+import * as actions from './actions'
 import * as statuses from './actionStatuses'
-import * as methods from './methods'
 import reducer, { mountDefaultReducer, getStatus, getAction } from './reducer'
 
 export {
-  methods,
   statuses,
   getStatus,
   getAction
 }
 
 export default {
-  actions,
+  ...actions,
   getStatus,
   getAction,
-  methods,
   mountDefaultReducer,
   statuses,
   reducer
