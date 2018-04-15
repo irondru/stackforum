@@ -23,8 +23,8 @@ export const initialEditQuestion = id =>
 export const newOrUpdateQuestion = (question, id) => {
   id = id || ''
   return feedback.actions(
-    apiConst.TOPICS + id,
     id === '' ? 'POST' : 'PATCH',
+    apiConst.TOPICS + id,
     '@@QUESTION_NEW',
     { question }
   )

@@ -1,7 +1,7 @@
 import { PENDING, SUCCESS, FAILURE } from './actionStatuses'
 import fetch from 'isomorphic-fetch'
 
-export const actions = (api_path, method, actionType, body = {}) => dispatch => {
+export const actions = (method, api_path, actionType, body = {}) => dispatch => {
 
   dispatch({
     type: actionType + PENDING
@@ -43,10 +43,10 @@ export const actions = (api_path, method, actionType, body = {}) => dispatch => 
       errors
     })
   })
-  
+
 }
 
-export const get = (api_path, actionType) => actions(api_path, 'GET', actionType)
-export const post = (api_path, actionType, body) => actions(api_path, 'POST', actionType, body)
-export const patch = (api_path, actionType, body) => actions(api_path, 'PATCH', actionType, body)
-export const destroy = (api_path, actionType) => actions(api_path, 'DELETE', actionType)
+export const get = (api_path, actionType) => actions('GET', api_path, actionType)
+export const post = (api_path, actionType, body) => actions('POST', api_path, actionType, body)
+export const patch = (api_path, actionType, body) => actions('PATCH', api_path, actionType, body)
+export const destroy = (api_path, actionType) => actions('DELETE', api_path, actionType)
