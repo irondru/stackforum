@@ -8,14 +8,14 @@ export default class AdvTexarea extends React.Component {
   }
 
   handleCopy = event =>
-    this.refs.hiddenText.value = event.target.innerHTML
-      .replace(/((?!<div>)(<([^>]+)>))/ig, '') //выпиливаем все теги кроме <div>
-      .replace(/<div>/g, '<br>')
+    this.props.onSave(this.props.propName || 'body',
+      event.target.innerHTML
+        .replace(/((?!<div>)(<([^>]+)>))/ig, '') //выпиливаем все теги кроме <div>
+        .replace(/<div>/g, '<br>')
+    )
 
   render = () =>
-    <div>
-      <textarea ref="hiddenText" name={this.props.name || 'body'} style={{display: 'none'}} />
-      <div
+    <div
         contentEditable="true"
         ref={this.handleInit}
         onBlur={this.handleCopy}
@@ -24,7 +24,6 @@ export default class AdvTexarea extends React.Component {
           backgroundColor: 'white',
           minHeight: this.props.minHeight
         }}
-      />
-    </div>
+    />
 
 }

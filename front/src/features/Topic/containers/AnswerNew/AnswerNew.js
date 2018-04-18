@@ -8,7 +8,12 @@ import { formToJSON } from 'features/helpers'
 import * as actions from '../../actions'
 import * as types from '../../actionTypes'
 
-const AnswerNew = ({ id, body, edit, question_id, user, fetching, editAnswer, createAnswer, updateAnswer }) =>
+const AnswerNew = ({ id, body, edit, question_id, user, fetching, editAnswer, createAnswer, updateAnswer }) => {
+  const _onSave = (propName, value) => {
+    console.log(propName)
+    console.log(value)
+  }
+  return (
   <div className="post-layout">
     <div className="post-layout-left">
       <img alt="avatar" className="post-avatar" src={process.env.REACT_APP_BACK_ROOT + user.avatar_thumb} />
@@ -25,7 +30,7 @@ const AnswerNew = ({ id, body, edit, question_id, user, fetching, editAnswer, cr
         }
       </div>
       <form onSubmit={(e) => edit ? updateAnswer(e, id) : createAnswer(e, question_id)}>
-        <Textarea body={body} minHeight="5rem" />
+        <Textarea body={body} onSave={_onSave} minHeight="5rem" />
         <AttachmentsNew />
         <SpinButton spin={ fetching === (types.ANSWERS_CREATE || types.ANSWERS_UPDATE) } className="btn">
           { edit ? 'Изменить' : 'Отправить' }
@@ -33,6 +38,8 @@ const AnswerNew = ({ id, body, edit, question_id, user, fetching, editAnswer, cr
       </form>
     </div>
   </div>
+  )
+}
 
 AnswerNew.propTypes = {
   id: PropTypes.number,
