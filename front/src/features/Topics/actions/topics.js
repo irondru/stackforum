@@ -20,12 +20,12 @@ export const initialEditQuestion = id =>
     '@@QUESTION_SHOW'
   )
 
-export const newOrUpdateQuestion = (question, id) => {
-  id = id || ''
+export const newOrUpdateQuestion = question => {
+  question.id = question.id || ''
   return feedback.actions(
-    id === '' ? 'POST' : 'PATCH',
-    apiConst.TOPICS + id,
-    '@@QUESTION_NEW',
+    question.id === '' ? 'POST' : 'PATCH',
+    apiConst.TOPICS + question.id,
+    types.QUESTIONS_NEW,
     { question }
   )
 }

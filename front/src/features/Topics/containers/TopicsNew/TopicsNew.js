@@ -1,34 +1,51 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { push } from 'react-router-redux'
 
 import * as actions from '../../actions'
 import { QUESTIONS } from '../../routes'
-import { formToJSON } from 'features/helpers'
-import { Spinner, Textarea, AttachmentsNew } from 'components'
+import { Spinner, Textarea, AttachmentsNew, SpinButton } from 'components'
+import { createQuestionItem } from '../../models'
+import * as types from '../../actionTypes'
 
 class NewOrEditQuestion extends React.Component {
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.redirectTo) push(QUESTIONS + nextProps.redirectTo)
+  constructor(props) {
+    super(props)
+    this.state = {
+      question: createQuestionItem()
+    }
+  }
+
+  componentWillReceiveProps = (nextProps) => {
+    if (nextProps.redirectTo) nextProps.history.push(QUESTIONS + nextProps.redirectTo)
   }
 
   componentDidMount() {
-    const { id } = this.props.params
+    const { id } = this.props.match.params
     if (id && (!this.props.title && !this.props.body)) //при редактировании если наш store пуст, тащим с бэка
       this.props.initialEditQuestion(id)
   }
 
-  handleSubmit = event => {
-    event.preventDefault()
-    formToJSON(event.target)
-     .then(jform => this.props.newOrUpdateQuestion(jform, this.props.params.id))
+  handleChange = (propName, value) =>
+    this.setState(prev => ({
+      ...prev,
+      question: {
+        ...prev.question,
+        [propName]: value
+      }
+    }))
+
+
+  handleSubmit = () => {
+    const { newOrUpdateQuestion } = this.props
+    const { question } = this.state
+    newOrUpdateQuestion(question)
   }
 
   render = () => {
-    const { id } = this.props.params
-    const { title, body, fetching, user } = id ? this.props : ''
+    const { id } = this.props.match.params
+    const { title, body, fetching, user } = this.props
     return id && fetching ? <Spinner />
     :
     <div className="post-layout new-question-container">
@@ -39,15 +56,28 @@ class NewOrEditQuestion extends React.Component {
         <div className="post-layout-right-header">
           <h4>Новый вопрос</h4>
         </div>
-        <form onSubmit={this.handleSubmit}>
+        <div className="question-form">
           <p>Заголовок</p>
-          <Textarea body={title} name="title" />
-          <br/>
+          <Textarea
+            onChange={this.handleChange}
+            body={title}
+            propName="title"
+          />
           <p>Содержание</p>
-          <Textarea body={body} minHeight="10rem" />
+          <Textarea
+            onChange={this.handleChange}
+            body={body}
+            minHeight="10rem"
+          />
           <AttachmentsNew />
-          <input className="btn" type="submit" name="submit" />
-        </form>
+          <SpinButton
+            className="btn"
+            spin={fetching === types.QUESTIONS_NEW}
+            onClick={this.handleSubmit}
+          >
+            Отправить
+          </SpinButton>
+        </div>
       </div>
     </div>
   }
@@ -55,14 +85,14 @@ class NewOrEditQuestion extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  ...state.question.payload.question,
-  fetching: state.question.fetching,
+  ...state.topics.payload.question,
+  fetching: state.topics.fetching,
   user: state.user.payload
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators ({
   initialEditQuestion: id => actions.topics.initialEditQuestion(id),
-  newOrUpdateQuestion: (question, id) => actions.topics.newOrUpdateQuestion(question, id)
+  newOrUpdateQuestion: question => actions.topics.newOrUpdateQuestion(question)
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewOrEditQuestion)

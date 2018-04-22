@@ -10,4 +10,11 @@ export default (state, action) =>
         ...action.payload.topics
       ]
     })
-  : feedback.reducer(state, action, types.QUESTIONS_INDEX)
+  : feedback.reducer(
+    state,
+    action,
+    [
+      types.QUESTIONS_INDEX,
+      types.QUESTIONS_NEW
+    ]
+  )
