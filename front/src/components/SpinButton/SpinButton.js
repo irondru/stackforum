@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 //https://stephanwagner.me/only-css-loading-spinner
 
-const SpinButton = ({ spin = 0, children, className }) =>
-  <button className={`btn ${ spin ? 'spinner' : '' }`}>
+const SpinButton = ({ spin = 0, children, className, onClick }) =>
+  <button className={ className + (spin ? ' spinner' : '') } onClick={onClick}>
     {children}
   </button>
 

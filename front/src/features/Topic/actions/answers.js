@@ -2,16 +2,16 @@ import feedback from 'feedback'
 import * as apiConst from '../apiConst'
 import * as types from '../actionTypes'
 
-export const createAnswer = (answer, questionId) =>
+export const createAnswer = answer =>
   feedback.post(
-    apiConst.ANSWER_CREATE.replace('{id}', questionId),
+    apiConst.ANSWER_CREATE.replace('{id}', answer.question_id),
     types.ANSWERS_CREATE,
     { answer }
   )
 
-export const updateAnswer = (answer, id) =>
+export const updateAnswer = answer =>
   feedback.patch(
-    apiConst.ANSWERS + id,
+    apiConst.ANSWERS + answer.id,
     types.ANSWERS_UPDATE,
     { answer }
   )

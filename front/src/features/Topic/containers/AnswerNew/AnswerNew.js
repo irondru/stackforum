@@ -4,41 +4,80 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import { Textarea, AttachmentsNew, SpinButton } from 'components'
-import { formToJSON } from 'features/helpers'
 import * as actions from '../../actions'
 import * as types from '../../actionTypes'
+import { createAnswerItem } from '../../models'
 
-const AnswerNew = ({ id, body, edit, question_id, user, fetching, editAnswer, createAnswer, updateAnswer }) => {
-  const _onSave = (propName, value) => {
-    console.log(propName)
-    console.log(value)
+class AnswerNew extends React.Component {
+
+  constructor(props) {
+    super(props)
+    const { model } = this.props
+    this.state = {
+      answer: createAnswerItem(model)
+    }
+    this.initState = this.state
   }
-  return (
-  <div className="post-layout">
-    <div className="post-layout-left">
-      <img alt="avatar" className="post-avatar" src={process.env.REACT_APP_BACK_ROOT + user.avatar_thumb} />
-    </div>
-    <div className="post-layout-right">
-      <div className="post-layout-right-header answer-form">
-        {
-          edit ?
-            <span>
-              <b>Редактирование</b>
-              <i className="material-icons flex-right" onClick={editAnswer.bind(null, id)}>cancel</i>
-            </span>
-            : <b>Ваш ответ</b>
-        }
+
+  componentWillReceiveProps(nextProps) {
+    let fetching = nextProps.fetching === (types.ANSWERS_CREATE || types.ANSWERS_UPDATE)
+    if (!fetching && !nextProps.errors) this.setState(this.initState)
+  }
+
+  handleChange = (propName, value) =>
+    this.setState(prev => ({
+      ...prev,
+      answer: {
+        ...prev.answer,
+        [propName]: value
+      }
+    }))
+
+  handleSubmit = () => {
+    const { createAnswer, updateAnswer, edit } = this.props
+    const { answer } = this.state
+    edit ? updateAnswer(answer) : createAnswer(answer)
+  }
+
+  render = () => {
+    const { user, fetching, editAnswer, edit, createAnswer, updateAnswer } = this.props
+    const { id, body } = this.state.answer
+    return (
+      <div className="post-layout">
+        <div className="post-layout-left">
+          <img alt="avatar" className="post-avatar" src={process.env.REACT_APP_BACK_ROOT + user.avatar_thumb} />
+        </div>
+        <div className="post-layout-right">
+          <div className="post-layout-right-header answer-form">
+            {
+              edit ?
+                <span>
+                  <b>Редактирование</b>
+                  <i className="material-icons flex-right" onClick={editAnswer.bind(null, id)}>cancel</i>
+                </span>
+                : <b>Ваш ответ</b>
+            }
+          </div>
+          <div className="answer-form">
+            <Textarea
+              key={Math.random()}
+              body={body}
+              onSave={this.handleChange}
+              minHeight="5rem"
+            />
+            <AttachmentsNew />
+            <SpinButton
+              spin={ fetching === (types.ANSWERS_CREATE || types.ANSWERS_UPDATE) }
+              className="btn"
+              onClick={this.handleSubmit}
+            >
+            { edit ? 'Изменить' : 'Отправить' }
+            </SpinButton>
+          </div>
+        </div>
       </div>
-      <form onSubmit={(e) => edit ? updateAnswer(e, id) : createAnswer(e, question_id)}>
-        <Textarea body={body} onSave={_onSave} minHeight="5rem" />
-        <AttachmentsNew />
-        <SpinButton spin={ fetching === (types.ANSWERS_CREATE || types.ANSWERS_UPDATE) } className="btn">
-          { edit ? 'Изменить' : 'Отправить' }
-        </SpinButton>
-      </form>
-    </div>
-  </div>
-  )
+    )
+  }
 }
 
 AnswerNew.propTypes = {
@@ -51,19 +90,13 @@ AnswerNew.propTypes = {
 const mapStateToProps = state => ({
   user: state.user.payload,
   fetching: state.topic.fetching,
-  errors: state.topic.errors,
+  errors: state.topic.errors.answer
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   editAnswer: id => actions.answers.editAnswer(id),
-  //createAnswer: (event, question_id) => {
-  //  event.preventDefault()
-  //  formToJSON(event.target).then(res => dispatch(actions.createAnswer(res, question_id)))
-  //},
-  //updateAnswer: (event, id) => {
-  //  event.preventDefault()
-  //  formToJSON(event.target).then(jform => dispatch(actions.updateAnswer(jform, id)))
-//  }
+  createAnswer: answer => actions.answers.createAnswer(answer),
+  updateAnswer: answer => actions.answers.updateAnswer(answer)
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(AnswerNew)

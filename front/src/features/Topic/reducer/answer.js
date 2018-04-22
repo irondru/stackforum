@@ -12,7 +12,8 @@ export default (state, action) => {
       case types.ANSWERS_UPDATE:
         return pushInPayload(state, {
           answers: state.payload.answers.map(answer =>
-          answer.id === action.payload.id ? action.payload : answer)
+          answer.id === action.payload.id ? action.payload : answer),
+          anyEdit: false
         })
       case types.ANSWERS_EDIT:
         return pushInPayload(state, {

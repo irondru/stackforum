@@ -23,8 +23,18 @@ class Topic extends React.Component {
 
   answersList = () =>
     this.props.answers ? this.props.answers.map(answer =>
-      answer.edit ? <AnswerNew key={answer.id} {...answer} /> :
-        <AnswerItem key={answer.id} {...answer} itsMyTopic={this.props.question.access} />
+      answer.edit ?
+        <AnswerNew
+          key={answer.id}
+          model={answer}
+          edit={true}
+          />
+        : <AnswerItem
+            key={answer.id}
+            {...answer}
+            edit={false}
+            itsMyTopic={this.props.question.access}
+          />
    ) : null
 
   render = () => {
@@ -36,7 +46,7 @@ class Topic extends React.Component {
       {this.answersList()}
       {
         user.abilities & abilities.CAN_CREATE_ANSWER && !this.props.anyEdit ? //если редактируется ответ - скрываем
-          <AnswerNew question_id={question.id} />
+          <AnswerNew model={{ question_id: question.id }} />
         : null
       }
     </div>

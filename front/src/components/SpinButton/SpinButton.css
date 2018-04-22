@@ -18,6 +18,6 @@
   animation: spinner .6s linear infinite;
 }
 
-.spinner {
+button.spinner {
   padding-right: 30px;
 }

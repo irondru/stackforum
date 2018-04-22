@@ -13,6 +13,8 @@ class Api::V1::AnswersController < Api::V1::ApplicationController
     @answer = Answer.new(answer_params.merge(question: set_question))
     if @answer.save
       render json: @answer, serializer: AnswerSerializer
+    else
+      render json: { answer: @answer.errors.messages }, status: 422
     end
   end
 
@@ -33,7 +35,7 @@ class Api::V1::AnswersController < Api::V1::ApplicationController
     if @answer.question.user == current_user
       @answer.set_best
       render json: { answer: { id: @answer.id } }
-    end  
+    end
   end
 
   private
