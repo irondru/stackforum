@@ -1,20 +1,21 @@
 import feedback from 'feedback'
 import * as apiConst from '../apiConst'
 import * as types from '../actionTypes'
+import { COMMENTABLE } from '../models'
 
-export const createComment = (comment, commentableType, commentableId) =>
+export const createComment = comment =>
   feedback.post(
     {
-      ['answer']: () => apiConst.COMMENTS_CREATE_FOR_ANSWER.replace('{id}', commentableId),
-      ['question']: () => apiConst.COMMENTS_CREATE_FOR_QUESTION.replace('{id}', commentableId)
-    }[commentableType](),
+      [COMMENTABLE.ANSWER]: () => apiConst.COMMENTS_CREATE_FOR_ANSWER.replace('{id}', comment.commentableId),
+      [COMMENTABLE.QUESTION]: () => apiConst.COMMENTS_CREATE_FOR_QUESTION.replace('{id}', comment.commentableId)
+    }[comment.commentableType](),
     types.COMMENTS_CREATE,
     { comment }
   )
 
-export const updateComment = (comment, id) =>
+export const updateComment = comment =>
   feedback.patch(
-    apiConst.COMMENTS + id,
+    apiConst.COMMENTS + comment.id,
     types.COMMENTS_UPDATE,
     { comment }
   )

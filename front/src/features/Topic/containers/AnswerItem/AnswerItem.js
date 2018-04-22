@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import { CommentItem, CommentNew, Vote } from '../../containers'
 import { AttachmentsList } from '../../components'
 import { abilities } from 'features/User'
+import { COMMENTABLE } from '../../models'
 import * as actions from '../../actions'
 
 const AnswerItem = ({ id, body, comments, score, access, author, posted_at, itsMyTopic, best, attachments,
@@ -48,7 +49,7 @@ const AnswerItem = ({ id, body, comments, score, access, author, posted_at, itsM
       { commentsList() }
       {
         user.abilities & abilities.CAN_CREATE_COMMENT ?
-        <CommentNew commentableId={id} commentableType={'answer'} /> : null
+        <CommentNew model={{ commentableType: COMMENTABLE.ANSWER, commentableId: id }} /> : null
       }
       <AttachmentsList attachments={attachments} />
     </div>

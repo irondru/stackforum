@@ -4,26 +4,25 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import * as actions from '../../actions'
-import { formToJSON } from 'features/helpers'
 import { Textarea, SpinButton } from 'components'
+import { createCommentItem } from '../../models'
+import * as types from '../../actionTypes'
 
 class CommentForm extends React.Component {
   constructor(props) {
     super(props)
+    const { model } = this.props
     this.state = {
       visible: props.edit,
+      comment: createCommentItem(model)
     }
-    this.baseState = this.state
+    this.initState = this.state
   }
 
-  //componentWillReceiveProps(nextProps) {
-  //  let fetching = nextProps.fetching ^ COMMENTS
-  //  fetching = fetching === CREATE || fetching === UPDATE
-  //  const errors = nextProps.errors
-  //  //this.setState ({ fetching })
-    //if (!fetching && errors) this.setState({ errors })
-  //  if (!fetching && !errors) this.setState(this.baseState)
-  //}
+  componentWillReceiveProps(nextProps) {
+    let fetching = nextProps.fetching === (types.COMMENTS_CREATE || types.COMMENTS_UPDATE)
+    if (!fetching && !nextProps.errors) this.setState(this.initState)
+  }
 
   formVisible = () => {
     if (this.state.visible) this.props.editComment(this.props.id)
@@ -32,8 +31,24 @@ class CommentForm extends React.Component {
     })
   }
 
+  handleChange = (propName, value) =>
+    this.setState(prev => ({
+      ...prev,
+      comment: {
+        ...prev.comment,
+        [propName]: value
+      }
+    }))
+
+  handleSubmit = () => {
+    const { updateComment, createComment, edit } = this.props
+    const { comment } = this.state
+    edit ? updateComment(comment) : createComment (comment)
+  }
+
   render = () => {
-    const { body, id, fetching, errors, updateComment, createComment, commentableId, commentableType, edit } = this.props
+    const { fetching, errors, edit } = this.props
+    const { body } = this.state.comment
     return (
       <div>
         {
@@ -43,13 +58,19 @@ class CommentForm extends React.Component {
                 <span>New comment</span>
                 <i onClick={this.formVisible} className="material-icons">cancel</i>
               </div>
-              <form onSubmit={(e) => edit ? updateComment(e, id)
-                  : createComment(e, commentableType, commentableId, id)}>
-                <Textarea body={body} />
-                <SpinButton spin={fetching} className="btn">
+              <div className="comment-form">
+                <Textarea
+                  body={body}
+                  key={Math.random()}
+                  onChange={this.handleChange}
+                />
+                <SpinButton
+                  spin={fetching === (types.COMMENTS_CREATE || types.COMMENTS_UPDATE)}
+                  className="btn" onClick={this.handleSubmit}
+                >
                   { edit ? 'Изменить' : 'Отправить' }
                 </SpinButton>
-              </form>
+              </div>
               { errors ? <p>{errors.body}</p> : null }
             </div>
           :
@@ -74,16 +95,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  createComment: (event, commentableType, commentableId) => {
-    event.preventDefault()
-    formToJSON(event.target)
-      .then(jform => actions.comments.createComment(jform, commentableType, commentableId))
-  },
-  updateComment: (event, id) => {
-    event.preventDefault()
-    formToJSON(event.target)
-     .then(jform => actions.comments.updateComment(jform, id))
-  }
+  createComment: comment => actions.comments.createComment(comment),
+  updateComment: comment => actions.comments.updateComment(comment)
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentForm)

@@ -1,9 +1,7 @@
 import { pushInPayload } from 'features/helpers'
 import { getStatus, getAction, statuses } from 'feedback'
 import * as types from '../actionTypes'
-
-const TYPE_ANSWER = 'Answer'
-const TYPE_QUESTION = 'Question'
+import { COMMENTABLE } from '../models'
 
 export default (state, action) => {
 
@@ -14,14 +12,14 @@ export default (state, action) => {
     switch (getAction(action.type)) {
       case types.COMMENTS_CREATE:
         return pushInPayload(state, {
-          [TYPE_ANSWER]: () => ({
+          [COMMENTABLE.ANSWER]: () => ({
             answers: state.payload.answers.map(answer =>
               answer.id === action.payload.commentable_id ? {
                 ...answer,
                 comments: [...answer.comments, action.payload.comment]
               } : answer )
           }),
-          [TYPE_QUESTION]: () => ({
+          [COMMENTABLE.QUESTION]: () => ({
             question: {
               ...state.payload.question,
               comments: [...state.payload.question.comments, action.payload.comment]
@@ -41,7 +39,7 @@ export default (state, action) => {
         })
       case types.COMMENTS_UPDATE:
         return pushInPayload(state, {
-          [TYPE_ANSWER]: () => ({
+          [COMMENTABLE.ANSWER]: () => ({
             answers: state.payload.answers.map(answer =>
               answer.id === action.payload.commentable_id ? {
                 ...answer,
@@ -49,7 +47,7 @@ export default (state, action) => {
                   comment.id === action.payload.comment.id ? action.payload.comment : comment)
               } : answer )
           }),
-          [TYPE_QUESTION]: () => ({
+          [COMMENTABLE.QUESTION]: () => ({
             question: {
               ...state.payload.question,
               comments: state.payload.question.comments.map(comment =>
@@ -59,7 +57,7 @@ export default (state, action) => {
         }[action.payload.commentable_type]())
       case types.COMMENTS_DESTROY:
         return pushInPayload(state, {
-          [TYPE_ANSWER]: () => ({
+          [COMMENTABLE.ANSWER]: () => ({
             answers: state.payload.answers.map(answer =>
               answer.id === action.payload.commentable_id ? {
                 ...answer,
@@ -68,7 +66,7 @@ export default (state, action) => {
                 )
               } : answer)
           }),
-          [TYPE_QUESTION]: () => ({
+          [COMMENTABLE.QUESTION]: () => ({
             question: {
               ...state.payload.question,
               comments: state.payload.question.comments.filter(comment =>

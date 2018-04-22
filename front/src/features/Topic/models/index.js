@@ -1,3 +1,4 @@
-import { createAnswerItem } from './answer'
+import createAnswerItem  from './answer'
+import { createCommentItem, COMMENTABLE } from './comment'
 
-export { createAnswerItem }
+export { createAnswerItem, createCommentItem, COMMENTABLE }

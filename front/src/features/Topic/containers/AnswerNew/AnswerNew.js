@@ -40,7 +40,7 @@ class AnswerNew extends React.Component {
   }
 
   render = () => {
-    const { user, fetching, editAnswer, edit, createAnswer, updateAnswer } = this.props
+    const { user, fetching, editAnswer, edit } = this.props
     const { id, body } = this.state.answer
     return (
       <div className="post-layout">
@@ -62,7 +62,7 @@ class AnswerNew extends React.Component {
             <Textarea
               key={Math.random()}
               body={body}
-              onSave={this.handleChange}
+              onChange={this.handleChange}
               minHeight="5rem"
             />
             <AttachmentsNew />

@@ -8,7 +8,7 @@ export default class AdvTexarea extends React.Component {
   }
 
   handleCopy = event =>
-    this.props.onSave(this.props.propName || 'body',
+    this.props.onChange(this.props.propName || 'body',
       event.target.innerHTML
         .replace(/((?!<div>)(<([^>]+)>))/ig, '') //выпиливаем все теги кроме <div>
         .replace(/<div>/g, '<br>')

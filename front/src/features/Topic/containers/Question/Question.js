@@ -8,13 +8,21 @@ import * as actions from '../../actions'
 import { CommentItem, CommentNew, Vote }  from '../../containers'
 import { AttachmentsList } from '../../components'
 import { abilities } from 'features/User'
+import { COMMENTABLE } from '../../models'
 
 const QuestionItem = ({ title, body, id, score, posted_at, comments, attachments, access, author, user, deleteTopic }) => {
 
 const commentsList = () =>
   comments ? comments.map(comment =>
-    comment.edit ? <CommentNew key={comment.id} {...comment} />
-      : <CommentItem key={comment.id} {...comment} />
+    comment.edit ?
+      <CommentNew
+        key={comment.id}
+        model={comment}
+      />
+    : <CommentItem
+        key={comment.id}
+        {...comment}
+      />
   ) : null
 
   const postText = target => {   //наебуем реакт с <br>
@@ -46,7 +54,7 @@ const commentsList = () =>
        { commentsList() }
        {
           user.abilities & abilities.CAN_CREATE_COMMENT ?
-          <CommentNew commentableType={'question'} commentableId={id} /> : null
+          <CommentNew model={{ commentableType: COMMENTABLE.QUESTION, commentableId: id }} /> : null
        }
        <AttachmentsList attachments={attachments} />
      </div>
