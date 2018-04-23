@@ -73,10 +73,13 @@ const mapStateToProps = state => ({
   user: state.user.payload
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  editAnswer: id => actions.answers.editAnswer(id),
-  bestAnswer: id => actions.answers.bestAnswer(id),
-  deleteAnswer: id => actions.answers.deleteAnswer(id)
-}, dispatch)
+const mapDispatchToProps = dispatch => {
+  const { editAnswer, bestAnswer, deleteAnswer } = actions.answers
+  return bindActionCreators({
+    editAnswer,
+    bestAnswer,
+    deleteAnswer
+  }, dispatch)
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(AnswerItem)

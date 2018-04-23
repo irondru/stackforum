@@ -23,7 +23,7 @@ class NewOrEditQuestion extends React.Component {
 
   componentDidMount() {
     const { id } = this.props.match.params
-    if (id && (!this.props.title && !this.props.body)) //при редактировании если наш store пуст, тащим с бэка
+    //if (id && (!this.props.title && !this.props.body)) //при редактировании если наш store пуст, тащим с бэка
       this.props.initialEditQuestion(id)
   }
 
@@ -90,9 +90,12 @@ const mapStateToProps = state => ({
   user: state.user.payload
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators ({
-  initialEditQuestion: id => actions.topics.initialEditQuestion(id),
-  newOrUpdateQuestion: question => actions.topics.newOrUpdateQuestion(question)
-}, dispatch)
+const mapDispatchToProps = dispatch => {
+  const { initialEditQuestion, newOrUpdateQuestion } = actions.topics
+  return bindActionCreators ({
+    initialEditQuestion,
+    newOrUpdateQuestion
+  }, dispatch)
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewOrEditQuestion)

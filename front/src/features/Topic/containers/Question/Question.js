@@ -80,7 +80,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  deleteTopic: id => actions.topic.deleteTopic(id)
+  ...actions.topic
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuestionItem)

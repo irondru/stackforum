@@ -93,10 +93,13 @@ const mapStateToProps = state => ({
   errors: state.topic.errors.answer
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  editAnswer: id => actions.answers.editAnswer(id),
-  createAnswer: answer => actions.answers.createAnswer(answer),
-  updateAnswer: answer => actions.answers.updateAnswer(answer)
-}, dispatch)
+const mapDispatchToProps = dispatch => {
+  const { createAnswer, editAnswer, updateAnswer } = actions.answers
+  return bindActionCreators({
+    editAnswer,
+    createAnswer,
+    updateAnswer
+  }, dispatch)
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(AnswerNew)

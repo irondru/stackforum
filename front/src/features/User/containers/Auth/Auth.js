@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { formToJSON } from 'features/helpers'
 import { bindActionCreators } from 'redux'
 
 
@@ -15,21 +14,11 @@ class Auth extends React.Component {
     this.state = {
       isOpenModal: false
     }
+    const { signIn, signUp, signOut } = this.props
     this.handles = {
-      signIn: event => {
-        event.preventDefault()
-        formToJSON(event.target)
-          .then(jform => this.props.signIn(jform))
-      },
-      signUp: event => {
-        event.preventDefault()
-        formToJSON(event.target)
-          .then(jform => this.props.signUp(jform))
-      },
-      signOut: event => {
-        event.preventDefault()
-        this.props.signOut()
-      }
+      signIn,
+      signUp,
+      signOut
     }
   }
 
@@ -66,14 +55,12 @@ class Auth extends React.Component {
 
 const mapStateToProps = state => ({
   signedIn: !!state.user.payload.id,
-  errors: state.user.errors
+  errors: state.user.errors,
+  fetching: state.user.fetching
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators ({
-  signIn: user => actions.auth.signIn(user),
-  signUp: user => actions.auth.signUp(user),
-  signOut: () => actions.auth.signOut(),
-  getUser: () => actions.auth.getUser()
+  ...actions.auth
 }, dispatch)
 
 export default connect(

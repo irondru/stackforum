@@ -67,10 +67,13 @@ const mapStateToProps = state => ({
   user: state.user.payload
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  getTopics: page => actions.topics.getTopics(page),
-  searchTopics: query => actions.topics.searchTopics(query)
-}, dispatch)
+const mapDispatchToProps = dispatch => {
+  const { getTopics, searchTopics } = actions.topics
+  return bindActionCreators({
+    getTopics,
+    searchTopics
+  }, dispatch)
+}
 
 Topics.propTypes = {
   topics: PropTypes.array

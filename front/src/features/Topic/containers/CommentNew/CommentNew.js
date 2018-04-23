@@ -94,9 +94,12 @@ const mapStateToProps = state => ({
   errors: state.topic.errors.comment
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  createComment: comment => actions.comments.createComment(comment),
-  updateComment: comment => actions.comments.updateComment(comment)
-}, dispatch)
+const mapDispatchToProps = dispatch => {
+  const { createComment, updateComment } = actions.comments
+  return bindActionCreators({
+    createComment,
+    updateComment
+  }, dispatch)
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentForm)

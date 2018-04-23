@@ -55,7 +55,7 @@ class Topic extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  getTopic: id => actions.topic.getTopic(id)
+  ...actions.topic
 }, dispatch)
 
 const mapStateToProps = state => ({

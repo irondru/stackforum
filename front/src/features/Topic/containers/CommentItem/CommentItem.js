@@ -32,10 +32,13 @@ CommentItem.propTypes = {
   posted_at: PropTypes.string.isRequired
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  editComment: id => actions.comments.editComment(id),
-  deleteComment: id => actions.comments.deleteComment(id)
-}, dispatch)
+const mapDispatchToProps = dispatch => {
+  const { editComment, deleteComment } = actions.comments
+  return bindActionCreators({
+    editComment,
+    deleteComment
+  }, dispatch)
+}
 
 
 export default connect(null, mapDispatchToProps)(CommentItem)
