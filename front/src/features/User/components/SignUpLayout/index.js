@@ -1,3 +1,3 @@
 import SignUpLayout from './SignUpLayout'
 
-export { SignUpLayout }
+export default SignUpLayout

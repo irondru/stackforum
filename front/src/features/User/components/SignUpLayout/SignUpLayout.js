@@ -23,45 +23,56 @@ class SignUpForm extends React.Component {
     }))
   }
 
-  render = () =>
-    <section id="sign-up-content">
-      <div className="auth-form">
-        <input
-          onChange={this.handleChange}
-          type="text"
-          placeholder="e-mail"
-          name="email"
-        />
-        <input
-          onChange={this.handleChange}
-          type="text"
-          placeholder="Никнейм"
-          name="name"
-        />
-        <input
-          onChange={this.handleChange}
-          type="password"
-          placeholder="Пароль"
-          name="password"
-        />
-        <input
-          onChange={this.handleChange}
-          type="password"
-          placeholder="Повторите пароль"
-          name="password_confirmation"
-        />
-        <SpinButton
-          onClick={this.handleChange}
-          className="btn"
-        >
-          Зарегестрироваться
-        </SpinButton>
-      </div>
-    </section>
+  handleSubmit = () => {
+    const { user } = this.state
+    const { signUp } = this.props.stack
+    signUp(user)
+  }
+
+  render = () => {
+    const { fetching } = this.props.stack
+    return (
+      <section id="sign-up-content">
+        <div className="auth-form">
+          <input
+            onChange={this.handleChange}
+            type="text"
+            placeholder="e-mail"
+            name="email"
+          />
+          <input
+            onChange={this.handleChange}
+            type="text"
+            placeholder="Никнейм"
+            name="name"
+          />
+          <input
+            onChange={this.handleChange}
+            type="password"
+            placeholder="Пароль"
+            name="password"
+          />
+          <input
+            onChange={this.handleChange}
+            type="password"
+            placeholder="Повторите пароль"
+            name="password_confirmation"
+          />
+          <SpinButton
+            spin={!!fetching}
+            onClick={this.handleSubmit}
+            className="btn"
+          >
+            Зарегестрироваться
+          </SpinButton>
+        </div>
+      </section>
+    )
+  }
 }
 
 SignUpForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired
+  stack: PropTypes.object.isRequired
 }
 
 export default SignUpForm

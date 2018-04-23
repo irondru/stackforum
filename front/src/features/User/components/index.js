@@ -1,3 +1,5 @@
-export { default as AuthMainLayout } from './AuthMainLayout'
-export { default as SignInLayout } from './SignInLayout'
-export { default as SignUpLayout } from './SignUpLayout'
+import AuthMainLayout from './AuthMainLayout'
+import SignUpLayout from './SignUpLayout'
+import SignInLayout from './SignInLayout'
+
+export { AuthMainLayout, SignUpLayout, SignInLayout }

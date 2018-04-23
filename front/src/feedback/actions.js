@@ -1,6 +1,8 @@
 import { PENDING, SUCCESS, FAILURE } from './actionStatuses'
 import fetch from 'isomorphic-fetch'
 
+const DEFAULT_ERROR_MSG = 'Что то пошло не так...'
+
 export const actions = (method, api_path, actionType, body = {}) => dispatch => {
 
   dispatch({
@@ -9,10 +11,19 @@ export const actions = (method, api_path, actionType, body = {}) => dispatch => 
 
   const checkResponse = response =>
     new Promise((resolve, reject) => {
-      if (response.ok) response.json().then(json => resolve(json))
-      else if (response.status === 401 || response.status === 422)
-        response.json().then(json => reject(json))
-      else reject({ msg: 'Что то пошло не так...'})
+      switch (response.status) {
+        case 200:
+          response.json().then(json => resolve(json))
+          break
+        case 401:
+        case 422:
+          response.json().then(json => reject(json))
+          break
+        default:
+          reject({
+            msg: DEFAULT_ERROR_MSG
+          })
+      }
     })
 
   let options = {
@@ -38,11 +49,14 @@ export const actions = (method, api_path, actionType, body = {}) => dispatch => 
       }))
     )
     .catch(errors => {
+      if (!errors.msg) errors = {
+        msg: DEFAULT_ERROR_MSG
+      }
       dispatch({
-      type: actionType + FAILURE,
-      errors
+        type: actionType + FAILURE,
+        errors
+      })
     })
-  })
 
 }
 

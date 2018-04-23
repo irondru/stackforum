@@ -24,33 +24,45 @@ class SignInLayout extends React.Component {
     }))
   }
 
-  render = () =>
-    <section id="sign-in-content">
-      <div className="auth-form">
-        <input
-          onChange={this.handleChange}
-          type="text"
-          placeholder="e-mail"
-          name="email"
-        />
-        <input
-          onChange={this.handleChange}
-          type="password"
-          placeholder="Пароль"
-          name="password"
-        />
-        <SpinButton
-          className="btn"
-          onClick={this.props.handleSubmit.bind(null, this.state.user)}
-        >
-          Войти
-        </SpinButton>
-      </div>
-    </section>
+  handleSubmit = () => {
+    const { user } = this.state
+    const { signIn } = this.props.stack
+    signIn(user)
+  }
+
+  render = () => {
+    const { fetching } = this.props.stack
+    return (
+      <section id="sign-in-content">
+        <div className="auth-form">
+          <input
+            onChange={this.handleChange}
+            type="text"
+            placeholder="e-mail"
+            name="email"
+          />
+          <input
+            onChange={this.handleChange}
+            type="password"
+            placeholder="Пароль"
+            name="password"
+          />
+          <SpinButton
+            spin={!!fetching}
+            className="btn"
+            onClick={this.handleSubmit}
+          >
+            Войти
+          </SpinButton>
+        </div>
+      </section>
+    )
+  }
+
 }
 
 SignInLayout.propTypes = {
-  handleSubmit: PropTypes.func.isRequired
+  stack: PropTypes.object.isRequired
 }
 
 export default SignInLayout

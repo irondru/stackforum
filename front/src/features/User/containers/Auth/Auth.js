@@ -15,18 +15,24 @@ class Auth extends React.Component {
       isOpenModal: false
     }
     const { signIn, signUp, signOut } = this.props
-    this.handles = {
+    this.stack = {
       signIn,
       signUp,
-      signOut
+      signOut,
     }
   }
 
   componentDidMount = () =>
-      this.props.getUser()
+    this.props.getUser()
 
   componentWillReceiveProps = nextProps => {
-    if (this.state.isOpenModal) this.toggleModal()
+    const { errors, fetching } = nextProps
+    this.stack = {
+      ...this.stack,
+      fetching,
+      errors
+    }
+    if (!nextProps.fetching && !nextProps.errors.msg && this.state.isOpenModal) this.toggleModal()
   }
 
   toggleModal = () =>
@@ -34,22 +40,28 @@ class Auth extends React.Component {
       isOpenModal: !this.state.isOpenModal
     })
 
-  render = () =>
-    <div>
-      <Modal show={this.state.isOpenModal} onClose={this.toggleModal}>
-        <AuthMainLayout handles={this.handles} />
+  render = () => {
+    const { isOpenModal } = this.state
+    const { errors } = this.props
+    const { signOut } = this.stack
+    return (
+       <div>
+        <Modal show={isOpenModal} onClose={this.toggleModal}>
+          <AuthMainLayout stack={this.stack} />
+          {
+            errors ?
+            <p>{errors.msg}</p>
+            : null
+          }
+        </Modal>
         {
-          this.props.errors ?
-          <p>{this.props.errors.msg}</p>
-          : null
+          this.props.signedIn ?
+            <div className="header-btn" onClick={signOut}>Sign out</div>
+          : <div className="header-btn" onClick={this.toggleModal}>Sign in</div>
         }
-      </Modal>
-      {
-        this.props.signedIn ?
-          <div className="header-btn" onClick={this.handles.signOut}>Sign out</div>
-        : <div className="header-btn" onClick={this.toggleModal}>Sign in</div>
-      }
-   </div>
+     </div>
+   )
+ }
 
 }
 
