@@ -21,3 +21,7 @@
 button.spinner {
   padding-right: 30px;
 }
+
+button.spinner:disabled {
+  
+}
