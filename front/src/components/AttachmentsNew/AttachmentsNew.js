@@ -12,6 +12,7 @@ export default class Attachments extends React.Component {
 
   newItem = id => ({
     id,
+    base64image: '',
     body: (
       <div className="attachment-item" key={id}>
         <input type='file' name='attachments_attributes'
@@ -25,6 +26,7 @@ export default class Attachments extends React.Component {
 
   handleFocus = (event, id) =>
     this.oldvalues[id] = event.target.value
+
 
   handleAddItem = (event, id) => {
     if (event.target.value === '') this.handleDeleteItem(event, id)
