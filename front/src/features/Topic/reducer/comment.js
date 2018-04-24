@@ -1,4 +1,4 @@
-import { pushInPayload } from 'features/helpers'
+import { pushInPayload } from 'features/utils'
 import { getStatus, getAction, statuses } from 'feedback'
 import * as types from '../actionTypes'
 import { COMMENTABLE } from '../models'

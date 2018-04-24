@@ -2,7 +2,7 @@ const question = {
   id: null,
   title: '',
   body: '',
-  attachments: [],
+  attachments_attributes: [],
   comments: [],
   created_at: ''
 }

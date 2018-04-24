@@ -4,7 +4,7 @@ const answer = {
   access: false,
   comments: [],
   score: null,
-  attachments: [],
+  attachments_attributes: [],
   author: {},
   posted_at: '',
   question_id: null

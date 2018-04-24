@@ -7,6 +7,7 @@ import { QUESTIONS } from '../../routes'
 import { Spinner, Textarea, AttachmentsNew, SpinButton } from 'components'
 import { createQuestionItem } from '../../models'
 import * as types from '../../actionTypes'
+import { base64Loader } from 'features/utils'
 
 class NewOrEditQuestion extends React.Component {
 
@@ -23,7 +24,7 @@ class NewOrEditQuestion extends React.Component {
 
   componentDidMount() {
     const { id } = this.props.match.params
-    //if (id && (!this.props.title && !this.props.body)) //при редактировании если наш store пуст, тащим с бэка
+    //if (id && (!this.props.title && !this.props.body))
       this.props.initialEditQuestion(id)
   }
 
@@ -36,11 +37,14 @@ class NewOrEditQuestion extends React.Component {
       }
     }))
 
-
   handleSubmit = () => {
     const { newOrUpdateQuestion } = this.props
     const { question } = this.state
-    newOrUpdateQuestion(question)
+    base64Loader(question.attachments_attributes)
+    .then(files => {
+      question.attachments_attributes = files
+      newOrUpdateQuestion(question)
+    })
   }
 
   render = () => {
@@ -69,7 +73,7 @@ class NewOrEditQuestion extends React.Component {
             body={body}
             minHeight="10rem"
           />
-          <AttachmentsNew />
+          <AttachmentsNew propName="attachments_attributes" onChange={this.handleChange} />
           <SpinButton
             className="btn"
             spin={fetching === types.QUESTIONS_NEW}

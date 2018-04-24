@@ -3,16 +3,39 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 
-import { formToJSON } from 'features/helpers'
+import { base64Loader } from 'features/utils'
+import { createProfile } from '../../models'
 import * as actions from '../../actions'
-import Spinner from 'components/Spinner'
+import { Spinner, SpinButton } from 'components'
 
 class Profile extends React.Component {
 
-  handleSubmit = event => {
-    event.preventDefault()
-    formToJSON(event.target)
-      .then(jform => this.props.avatarUpload(jform))
+  constructor(props) {
+    super(props)
+    this.state = {
+      avatar: {}
+    }
+  }
+
+  handleChange = event => {
+    const { name, files } = event.target
+    this.setState(prev => ({
+      ...prev,
+      avatar: {
+        [name]: files[0]
+      }
+    }))
+  }
+
+  handleSubmit = () => {
+    const { avatar } = this.state
+    const { avatarUpload } = this.props
+    console.log(avatar);
+    base64Loader([avatar.image])
+    .then(image => {
+      avatar.image = image
+      avatarUpload(avatar)
+    })
   }
 
   render = () =>  {
@@ -23,11 +46,23 @@ class Profile extends React.Component {
       <div id="profile-layout">
         <div id="profile-header"><h2>{name}</h2></div>
         <div id="profile-content">
-          <img alt="Avatar" id="avatar-box" src={process.env.REACT_APP_BACK_ROOT + avatar_large} />
-          <form onSubmit={this.handleSubmit}>
-            <input type="file" name="image" /><br/><br/>
-            <input className="btn" type="submit" value="Сохранить" />
-          </form>
+          <img
+            alt="Avatar"
+            id="avatar-box"
+            src={process.env.REACT_APP_BACK_ROOT + avatar_large}
+          />
+          <input
+            onChange={this.handleChange}
+            type="file"
+            name="image"
+          />
+          <SpinButton
+            onClick={this.handleSubmit}
+            className="btn"
+            spin={!!fetching}
+          >
+            Сохранить
+          </SpinButton>
           <div id="more-info">
             <span>Дата регистрации: {reg_date}</span><br/>
             <span>Вопросов: {questions_count}</span><br/>
@@ -52,7 +87,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators ({
-  avatarUpload: avatar => actions.profile.avatarUpload(avatar)
+  ...actions.profile
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)

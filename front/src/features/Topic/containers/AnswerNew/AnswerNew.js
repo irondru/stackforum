@@ -7,6 +7,7 @@ import { Textarea, AttachmentsNew, SpinButton } from 'components'
 import * as actions from '../../actions'
 import * as types from '../../actionTypes'
 import { createAnswerItem } from '../../models'
+import { base64Loader } from 'features/utils'
 
 class AnswerNew extends React.Component {
 
@@ -36,7 +37,11 @@ class AnswerNew extends React.Component {
   handleSubmit = () => {
     const { createAnswer, updateAnswer, edit } = this.props
     const { answer } = this.state
-    edit ? updateAnswer(answer) : createAnswer(answer)
+    base64Loader(answer.attachments_attributes)
+    .then(files => {
+      answer.attachments_attributes = files
+      edit ? updateAnswer(answer) : createAnswer(answer)
+    })
   }
 
   render = () => {
@@ -65,7 +70,7 @@ class AnswerNew extends React.Component {
               onChange={this.handleChange}
               minHeight="5rem"
             />
-            <AttachmentsNew />
+            <AttachmentsNew propName="attachments_attributes" onChange={this.handleChange} />
             <SpinButton
               spin={ fetching === (types.ANSWERS_CREATE || types.ANSWERS_UPDATE) }
               className="btn"

@@ -1,4 +1,4 @@
-import { pushInPayload } from 'features/helpers'
+import { pushInPayload } from 'features/utils'
 import { statuses } from 'feedback'
 import * as types from '../actionTypes'
 

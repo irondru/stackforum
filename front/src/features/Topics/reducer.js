@@ -1,6 +1,6 @@
 import feedback, { statuses } from 'feedback'
 import * as types from './actionTypes'
-import { pushInPayload } from 'features/helpers'
+import { pushInPayload } from 'features/utils'
 
 export default (state, action) =>
   action.type === types.QUESTIONS_PAGES + statuses.SUCCESS ?

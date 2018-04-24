@@ -8,18 +8,20 @@ export default class Attachments extends React.Component {
     super(props)
     this.state = { items: [this.newItem(0)] }
     this.oldvalues = {}
+    this.files = {}
   }
 
   newItem = id => ({
     id,
-    base64image: '',
     body: (
       <div className="attachment-item" key={id}>
-        <input type='file' name='attachments_attributes'
+        <input
+          type='file'
+          name='attachments_attributes'
           onFocus={e => this.handleFocus(e, id)}
           onChange={e => this.handleAddItem(e, id)}
         />
-        <i className="material-icons" onClick={e => this.handleDeleteItem(e, id)}>delete</i>
+        <i className="material-icons" onClick={this.handleDeleteItem.bind(null, id)}>delete</i>
       </div>
     )
   })
@@ -27,17 +29,22 @@ export default class Attachments extends React.Component {
   handleFocus = (event, id) =>
     this.oldvalues[id] = event.target.value
 
-
   handleAddItem = (event, id) => {
-    if (event.target.value === '') this.handleDeleteItem(event, id)
-    if (this.state.items.length < MAX_ATTACHMENTS && this.oldvalues[id] === '')
+    const { items } = this.state
+    const { onChange, propName } = this.props
+    const { value, files } = event.target
+    if (value === '') this.handleDeleteItem(id)
+    this.files[id] = files[0]
+    onChange(propName, Object.values(this.files))
+    if (items.length < MAX_ATTACHMENTS && this.oldvalues[id] === '')
     this.setState({
-      items: [...this.state.items, this.newItem(Date.now())]
+      items: [...items, this.newItem(Date.now())]
     })
   }
 
-  handleDeleteItem = (event, id) => {
-    event.preventDefault()
+  handleDeleteItem = id => {
+    delete this.files[id]
+    console.log(this.files);
     if (this.oldvalues[id] === undefined) return
     if (this.state.items.length === 1) {
       this.setState({ items: [this.newItem(Date.now())] })
