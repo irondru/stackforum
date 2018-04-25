@@ -1,7 +1,7 @@
 import { PENDING, SUCCESS, FAILURE } from './actionStatuses'
 import fetch from 'isomorphic-fetch'
 
-const DEFAULT_ERROR_MSG = 'Что то пошло не так...'
+const DEFAULT_ERROR_MSG = ['Что то пошло не так...']
 
 export const actions = (method, api_path, actionType, body = {}) => dispatch => {
 

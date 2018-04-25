@@ -1,7 +1,7 @@
 export const base64Loader = files => new Promise((resolve, reject) => {
   var result = []
   var pending = 0
-  files.forEach(file => {
+  if (files) files.forEach(file => {
     let reader = new FileReader()
     ++pending
     reader.readAsDataURL(file)

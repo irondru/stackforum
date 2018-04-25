@@ -10,7 +10,7 @@ class Answer < ApplicationRecord
 
   after_save ThinkingSphinx::RealTime.callback_for(:answer)
 
-  validates :body, presence: true, length: { in: 3..1000 }
+  validates :body, length: { in: 3..10000 }
 
   scope :ordered, -> { order('best desc, created_at') }
 

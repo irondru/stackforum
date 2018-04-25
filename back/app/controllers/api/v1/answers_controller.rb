@@ -9,18 +9,20 @@ class Api::V1::AnswersController < Api::V1::ApplicationController
   authorize_resource
 
   def create
-    puts answer_params
     @answer = Answer.new(answer_params.merge(question: set_question))
     if @answer.save
       render json: @answer, serializer: AnswerSerializer
     else
-      render json: { answer: @answer.errors.messages }, status: 422
+      #puts @answer.errors.methods
+      render json: { msg: @answer.errors.values }, status: 422
     end
   end
 
   def update
     if @answer.update(answer_params)
       render json: @answer, serializer: AnswerSerializer
+    else
+      render json: { msg: @answer.errors.values }, status: 422
     end
   end
 

@@ -18,8 +18,16 @@ class NewOrEditQuestion extends React.Component {
     }
   }
 
-  componentWillReceiveProps = (nextProps) => {
-    if (nextProps.redirectTo) nextProps.history.push(QUESTIONS + nextProps.redirectTo)
+  componentWillReceiveProps = nextProps => {
+    if (!nextProps.question) return
+    const { question } = nextProps
+    this.setState({
+      question: {
+        ...this.state.question,
+        ...question
+      }
+    })
+    if (question.redirectTo) nextProps.history.push(QUESTIONS + question.redirectTo)
   }
 
   componentDidMount() {
@@ -49,7 +57,8 @@ class NewOrEditQuestion extends React.Component {
 
   render = () => {
     const { id } = this.props.match.params
-    const { title, body, fetching, user } = this.props
+    const { title, body } = this.props.question || {}
+    const { fetching, user } = this.props
     return id && fetching ? <Spinner />
     :
     <div className="post-layout new-question-container">
@@ -89,7 +98,7 @@ class NewOrEditQuestion extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  ...state.topics.payload.question,
+  question: state.topics.payload.question,
   fetching: state.topics.fetching,
   user: state.user.payload
 })

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 
 import { base64Loader } from 'features/utils'
-import { createProfile } from '../../models'
 import * as actions from '../../actions'
 import { Spinner, SpinButton } from 'components'
 

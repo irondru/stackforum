@@ -17,7 +17,7 @@ export const searchTopics = query =>
 export const initialEditQuestion = id =>
   feedback.get(
     apiConst.TOPICS + id,
-    '@@QUESTION_SHOW'
+    types.QUESTION_SHOW
   )
 
 export const newOrUpdateQuestion = question => {

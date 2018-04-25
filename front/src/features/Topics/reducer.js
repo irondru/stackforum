@@ -15,6 +15,7 @@ export default (state, action) =>
     action,
     [
       types.QUESTIONS_INDEX,
-      types.QUESTIONS_NEW
+      types.QUESTIONS_NEW,
+      types.QUESTION_SHOW
     ]
   )

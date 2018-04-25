@@ -9,6 +9,7 @@ import { CommentItem, CommentNew, Vote }  from '../../containers'
 import { AttachmentsList } from '../../components'
 import { abilities } from 'features/User'
 import { COMMENTABLE } from '../../models'
+import { QUESTIONS_EDIT } from 'features/Topics/routes'
 
 const QuestionItem = ({ title, body, id, score, posted_at, comments, attachments, access, author, user, deleteTopic }) => {
 
@@ -42,7 +43,7 @@ const commentsList = () =>
          {
            access ?
            <div className="flex-right">
-             <Link to={'QUESTION_EDIT'.replace(':id', id)}>
+             <Link to={QUESTIONS_EDIT.replace(':id', id)}>
                  <i className="material-icons">mode_edit</i>
              </Link>
              <i onClick={deleteTopic.bind(null, id)} className="material-icons">delete</i>

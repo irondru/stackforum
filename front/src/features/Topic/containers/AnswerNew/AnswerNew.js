@@ -21,6 +21,7 @@ class AnswerNew extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log(nextProps.errors);
     let fetching = nextProps.fetching === (types.ANSWERS_CREATE || types.ANSWERS_UPDATE)
     if (!fetching && !nextProps.errors) this.setState(this.initState)
   }
@@ -37,6 +38,7 @@ class AnswerNew extends React.Component {
   handleSubmit = () => {
     const { createAnswer, updateAnswer, edit } = this.props
     const { answer } = this.state
+    if (!answer.body) return
     base64Loader(answer.attachments_attributes)
     .then(files => {
       answer.attachments_attributes = files
@@ -95,7 +97,7 @@ AnswerNew.propTypes = {
 const mapStateToProps = state => ({
   user: state.user.payload,
   fetching: state.topic.fetching,
-  errors: state.topic.errors.answer
+  errors: state.topic.errors.msg
 })
 
 const mapDispatchToProps = dispatch => {
