@@ -21,7 +21,6 @@ class AnswerNew extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.errors);
     let fetching = nextProps.fetching === (types.ANSWERS_CREATE || types.ANSWERS_UPDATE)
     if (!fetching && !nextProps.errors) this.setState(this.initState)
   }

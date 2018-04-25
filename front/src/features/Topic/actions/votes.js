@@ -1,13 +1,15 @@
 import feedback from 'feedback'
 import * as apiConst from '../apiConst'
 import * as types from '../actionTypes'
+import { votableTypes } from '../containers/Vote'
 
-export const changeVote = (votableType, votableId, action) =>
-  feedback.post(
+export const changeVote = (votableType, votableId, action) => {
+  return feedback.post(
     {
-      ['answer']: () => apiConst.COMMENTS_CREATE_FOR_ANSWER.replace('{id}', votableId),
-      ['question']: () => apiConst.COMMENTS_CREATE_FOR_QUESTION.replace('{id}', votableId)
+      [votableTypes.ANSWER]: () => apiConst.VOTE_CHANGE_ANSWER.replace('{id}', votableId),
+      [votableTypes.QUESTION]: () => apiConst.VOTE_CHANGE_QUESTION.replace('{id}', votableId)
     }[votableType](),
     types.VOTES,
     { vote: { action } }
   )
+}

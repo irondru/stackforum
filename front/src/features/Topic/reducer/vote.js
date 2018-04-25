@@ -1,14 +1,12 @@
 import { pushInPayload } from 'features/utils'
 import { statuses } from 'feedback'
 import * as types from '../actionTypes'
-
-const TYPE_ANSWER = 'Answer'
-const TYPE_QUESTION = 'Question'
+import { votableTypes } from '../containers/Vote'
 
 export default (state, action) => {
   if (action.type === types.VOTES + statuses.SUCCESS)
     return pushInPayload(state, {
-      [TYPE_ANSWER]: () => ({
+      [votableTypes.ANSWER]: () => ({
         answers: state.payload.answers.map(answer =>
         answer.id === action.payload.vote.votable_id ? {
           ...answer,
@@ -16,7 +14,7 @@ export default (state, action) => {
         }
         : answer )
       }),
-      [TYPE_QUESTION]: () => ({
+      [votableTypes.QUESTION]: () => ({
         question: {
           ...state.payload.question,
           score: action.payload.vote.score

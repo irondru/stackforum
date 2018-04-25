@@ -8,6 +8,7 @@ import { AttachmentsList } from '../../components'
 import { abilities } from 'features/User'
 import { COMMENTABLE } from '../../models'
 import * as actions from '../../actions'
+import { votableTypes } from '../Vote'
 
 const AnswerItem = ({ id, body, comments, score, access, author, posted_at, itsMyTopic, best, attachments,
   user, editAnswer, deleteAnswer, bestAnswer }) => {
@@ -25,7 +26,7 @@ const AnswerItem = ({ id, body, comments, score, access, author, posted_at, itsM
   return <div className="post-layout">
     <div className="post-layout-left">
       <img alt="avatar" className="post-avatar" src={process.env.REACT_APP_BACK_ROOT + author.avatar} />
-      <Vote votableType={'answer'} votableId={id} score={score} />
+      <Vote votableType={votableTypes.ANSWER} votableId={id} score={score} />
       {
         itsMyTopic ?
           <i className={`material-icons ${best ? 'best-answer' : null}`}

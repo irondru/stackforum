@@ -11,17 +11,19 @@ const DOWN_VOTE = 'DOWN_VOTE'
 
 const Vote = ({ votableType, votableId, score, user, changeVote }) => {
   const enable = user.abilities & abilities.CAN_VOTE
-  return <div className="votes">
-    <i disabled="true" className={`material-icons ${enable ? '' : 'disabled'}`}
-      onClick={enable ? (e) => changeVote(e, votableType, votableId, UP_VOTE) : null}>
-      keyboard_arrow_up
-    </i>
-    <div className="score">{score}</div>
-    <i className={`material-icons ${enable ? '' : 'disabled'}`}
-      onClick={enable ? (e) => changeVote(e, votableType, votableId, DOWN_VOTE) : null}>
-      keyboard_arrow_down
-    </i>
-  </div>
+  return (
+    <div className="votes">
+      <i disabled="true" className={`material-icons ${enable ? '' : 'disabled'}`}
+        onClick={enable ? changeVote.bind(null, votableType, votableId, UP_VOTE) : null}>
+        keyboard_arrow_up
+      </i>
+      <div className="score">{score}</div>
+      <i className={`material-icons ${enable ? '' : 'disabled'}`}
+        onClick={enable ? changeVote.bind(null, votableType, votableId, DOWN_VOTE) : null}>
+        keyboard_arrow_down
+      </i>
+   </div>
+  )
 }
 
 Vote.propTypes = {
@@ -35,10 +37,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  changeVote: (event, votableType, votableId, action) => {
-    event.preventDefault()
-    actions.votes.changeVote(votableType, votableId, action)
-  }
-})
+  ...actions.votes
+}, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Vote)

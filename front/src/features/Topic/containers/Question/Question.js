@@ -10,6 +10,7 @@ import { AttachmentsList } from '../../components'
 import { abilities } from 'features/User'
 import { COMMENTABLE } from '../../models'
 import { QUESTIONS_EDIT } from 'features/Topics/routes'
+import { votableTypes } from '../Vote'
 
 const QuestionItem = ({ title, body, id, score, posted_at, comments, attachments, access, author, user, deleteTopic }) => {
 
@@ -35,7 +36,7 @@ const commentsList = () =>
     <div className="post-layout">
      <div className="post-layout-left">
        <img alt="avatar" className="post-avatar" src={process.env.REACT_APP_BACK_ROOT + author.avatar} />
-       <Vote votableType={'question'} votableId={id} score={score} />
+       <Vote votableType={votableTypes.QUESTION} votableId={id} score={score} />
      </div>
      <div className="post-layout-right">
        <div className="post-layout-right-header">
