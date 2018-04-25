@@ -13,7 +13,6 @@ class Api::V1::AnswersController < Api::V1::ApplicationController
     if @answer.save
       render json: @answer, serializer: AnswerSerializer
     else
-      #puts @answer.errors.methods
       render json: { msg: @answer.errors.values }, status: 422
     end
   end
