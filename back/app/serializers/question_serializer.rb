@@ -3,6 +3,8 @@ class QuestionSerializer < ActiveModel::Serializer
 
   has_many :answers, each_serialiser: AnswerSerializer
 
+  delegate :request, to: :scope
+
   def question
     {
       id: object.id,
@@ -19,7 +21,7 @@ class QuestionSerializer < ActiveModel::Serializer
       author: {
         id: object.user.id,
         name: object.user.name,
-        avatar: object.user.avatar.image.thumb.url
+        avatar: object.user.avatar.present? ? scope.request.base_url + object.user.avatar.image.thumb.url : scope.request.base_url + '/images/def_avatar.jpg'
       }
     }
   end

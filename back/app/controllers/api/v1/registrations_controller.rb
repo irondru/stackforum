@@ -3,6 +3,13 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
   include CorsHeaders
   include AbilityScope
 
+  layout false
+
+  serialization_scope :view_context
+
+  protect_from_forgery
+  skip_before_action :verify_authenticity_token
+
   def create
       build_resource(sign_up_params)
       resource.save

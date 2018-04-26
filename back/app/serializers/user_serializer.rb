@@ -2,8 +2,10 @@ class UserSerializer < ActiveModel::Serializer
   attributes :id, :email, :reg_date, :name, :abilities, :avatar_large,
     :avatar_thumb, :answers_count, :questions_count
 
+  delegate :request, to: :scope
+
   def avatar_thumb
-    object.avatar.image.thumb.url if object.avatar.present?
+     object.avatar.present? ? scope.request.base_url + object.avatar.image.thumb.url : scope.request.base_url + '/images/def_avatar.jpg'
   end
 
   def reg_date
@@ -11,7 +13,7 @@ class UserSerializer < ActiveModel::Serializer
   end
 
   def avatar_large
-    object.avatar.image.large.url if object.avatar.present?
+    object.avatar.present? ? scope.request.base_url + object.avatar.image.large.url : scope.request.base_url + '/images/def_avatar.jpg'
   end
 
   def answers_count

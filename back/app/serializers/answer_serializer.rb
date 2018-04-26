@@ -3,16 +3,17 @@ class AnswerSerializer < ActiveModel::Serializer
 
   #has_many :comments, each_serialiser: CommentSerializer #its not working, wtf?
 
+  delegate :request, to: :scope
+
   def access
     scope.can?(:access, object)
   end
 
   def author
-    #puts request.base_url
     {
       id: object.user.id,
       name: object.user.name,
-      avatar: object.user.avatar.present? ? object.user.avatar.image.thumb.url : 'images/def_avatar.jpg'
+      avatar: object.user.avatar.present? ? scope.request.base_url + object.user.avatar.image.thumb.url : scope.request.base_url + '/images/def_avatar.jpg'
     }
   end
 

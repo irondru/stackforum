@@ -5,6 +5,8 @@ class Api::V1::SessionsController < Devise::SessionsController
 
   layout false
 
+  serialization_scope :view_context
+
   protect_from_forgery
   skip_before_action :verify_authenticity_token
 

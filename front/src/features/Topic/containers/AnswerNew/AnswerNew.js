@@ -55,7 +55,7 @@ class AnswerNew extends React.Component {
             height="50"
             alt="avatar"
             className="post-avatar"
-            src={process.env.REACT_APP_BACK_ROOT + user.avatar_thumb}
+            src={user.avatar_thumb}
           />
         </div>
         <div className="post-layout-right">

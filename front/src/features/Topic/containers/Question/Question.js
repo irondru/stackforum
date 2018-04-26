@@ -35,7 +35,12 @@ const commentsList = () =>
     <h1 id="question-title">{title}</h1>
     <div className="post-layout">
      <div className="post-layout-left">
-       <img alt="avatar" className="post-avatar" src={process.env.REACT_APP_BACK_ROOT + author.avatar} />
+       <img
+         height="50"
+         alt="avatar"
+         className="post-avatar"
+         src={author.avatar}
+        />
        <Vote votableType={votableTypes.QUESTION} votableId={id} score={score} />
      </div>
      <div className="post-layout-right">

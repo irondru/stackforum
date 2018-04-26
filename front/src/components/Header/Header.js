@@ -21,7 +21,7 @@ const Header = ({ user }) =>
             <img
               alt="avatar"
               height="42"
-              src={process.env.REACT_APP_BACK_ROOT + user.avatar_thumb} />
+              src={user.avatar_thumb} />
           </Link>
         : null
       }

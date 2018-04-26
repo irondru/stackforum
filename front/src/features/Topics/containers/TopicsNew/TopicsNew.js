@@ -33,7 +33,7 @@ class NewOrEditQuestion extends React.Component {
   componentDidMount() {
     const { id } = this.props.match.params
     //if (id && (!this.props.title && !this.props.body))
-      this.props.initialEditQuestion(id)
+    if (id) this.props.initialEditQuestion(id)
   }
 
   handleChange = (propName, value) =>

@@ -46,9 +46,10 @@ class Profile extends React.Component {
         <div id="profile-header"><h2>{name}</h2></div>
         <div id="profile-content">
           <img
+            height="100"
             alt="Avatar"
             id="avatar-box"
-            src={process.env.REACT_APP_BACK_ROOT + avatar_large}
+            src={avatar_large}
           />
           <input
             onChange={this.handleChange}

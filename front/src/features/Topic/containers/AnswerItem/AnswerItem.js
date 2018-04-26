@@ -26,7 +26,12 @@ const AnswerItem = ({ id, body, comments, score, access, author, posted_at, itsM
   return (
     <div className="post-layout">
       <div className="post-layout-left">
-        <img alt="avatar" className="post-avatar" src={process.env.REACT_APP_BACK_ROOT + author.avatar} />
+        <img
+          height="50"
+          alt="avatar"
+          className="post-avatar"
+          src={author.avatar}
+        />
         <Vote votableType={votableTypes.ANSWER} votableId={id} score={score} />
         {
           itsMyTopic ?
