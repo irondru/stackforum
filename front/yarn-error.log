@@ -7406,7 +7406,7 @@ Lockfile:
 
 Trace: 
   Error: Command failed.
-  Exit signal: SIGTERM
+  Exit code: 127
   Command: sh
   Arguments: -c react-scripts start
   Directory: /home/amd/ruby_projects/stackforum/front

@@ -9,7 +9,6 @@ import { abilities } from 'features/User'
 import { COMMENTABLE } from '../../models'
 import * as actions from '../../actions'
 import { votableTypes } from '../Vote'
-import { constants } from 'features/User'
 
 const AnswerItem = ({ id, body, comments, score, access, author, posted_at, itsMyTopic, best, attachments,
   user, editAnswer, deleteAnswer, bestAnswer }) => {
