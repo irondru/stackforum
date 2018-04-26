@@ -1,4 +1,4 @@
-import feedback, { statuses } from 'feedback'
+import feedback from 'feedback'
 import { USER } from './actionTypes'
 
 /*import { pushInPayload } from 'features/utils'
