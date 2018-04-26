@@ -18,7 +18,10 @@ const Header = ({ user }) =>
       {
         user.id ?
           <Link to={User.links.PROFILE}>
-            <img alt="avatar" height="42" src={process.env.REACT_APP_BACK_ROOT + user.avatar_thumb} />
+            <img
+              alt="avatar"
+              height="42"
+              src={process.env.REACT_APP_BACK_ROOT + user.avatar_thumb} />
           </Link>
         : null
       }

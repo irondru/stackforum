@@ -51,7 +51,12 @@ class AnswerNew extends React.Component {
     return (
       <div className="post-layout">
         <div className="post-layout-left">
-          <img alt="avatar" className="post-avatar" src={process.env.REACT_APP_BACK_ROOT + user.avatar_thumb} />
+          <img
+            height="50"
+            alt="avatar"
+            className="post-avatar"
+            src={process.env.REACT_APP_BACK_ROOT + user.avatar_thumb}
+          />
         </div>
         <div className="post-layout-right">
           <div className="post-layout-right-header answer-form">

@@ -8,10 +8,11 @@ class AnswerSerializer < ActiveModel::Serializer
   end
 
   def author
+    #puts request.base_url
     {
       id: object.user.id,
       name: object.user.name,
-      avatar: object.user.avatar.image.thumb.url
+      avatar: object.user.avatar.present? ? object.user.avatar.image.thumb.url : 'images/def_avatar.jpg'
     }
   end
 

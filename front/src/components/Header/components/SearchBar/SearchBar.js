@@ -1,10 +1,10 @@
 import React from 'react'
-import { push } from 'react-router-redux'
+import { withRouter } from "react-router-dom"
 
-export default class SearchBar extends React.Component {
+class SearchBar extends React.Component {
 
   handleSearch = () => {
-    push( '/search?query=' + this.refs.query.value )
+    this.props.history.push( '/search?query=' + this.refs.query.value )
   }
 
   render = () =>
@@ -13,3 +13,5 @@ export default class SearchBar extends React.Component {
       <i className="material-icons search-icon" onClick={this.handleSearch}>search</i>
     </div>
 }
+
+export default withRouter(SearchBar)

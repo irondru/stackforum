@@ -3,8 +3,8 @@ import * as apiConst from '../apiConst'
 import * as types from '../actionTypes'
 import { votableTypes } from '../containers/Vote'
 
-export const changeVote = (votableType, votableId, action) => {
-  return feedback.post(
+export const changeVote = (votableType, votableId, action) =>
+  feedback.post(
     {
       [votableTypes.ANSWER]: () => apiConst.VOTE_CHANGE_ANSWER.replace('{id}', votableId),
       [votableTypes.QUESTION]: () => apiConst.VOTE_CHANGE_QUESTION.replace('{id}', votableId)
@@ -12,4 +12,3 @@ export const changeVote = (votableType, votableId, action) => {
     types.VOTES,
     { vote: { action } }
   )
-}
