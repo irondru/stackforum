@@ -1,0 +1,10 @@
+
+.answer-form {
+  position: relative;
+}
+
+.answer-form>span>i {
+  position: absolute;
+  right: 1%;
+  top: 25%;
+}

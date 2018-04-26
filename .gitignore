@@ -13,28 +13,28 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-back/log/*.log
-back/tmp
+backend/log/*.log
+backend/tmp
 
 /node_modules
-/front/node_modules
-/back/log
+/frontend/node_modules
+/backend/log
 /public/packs
 
-/back/public/uploads
+/backend/public/uploads
 
 /db/sphinx
-back/db/sphinx
+backend/db/sphinx
 
 /public/uploads
-back/public/uploads
+backend/public/uploads
 
 .idea
 /.idea
 
 /doc/examples
-back/config/database.yml
-back/config/private_pub.yml
+config/database.yml
+config/private_pub.yml
 
 # Ignore uploaded files
 /public/system

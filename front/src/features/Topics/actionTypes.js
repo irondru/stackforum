@@ -1,6 +1,0 @@
-export const QUESTIONS_INDEX     = '@@QUESTIONS_INDEX'
-export const QUESTIONS_NEW       = '@@QUESTIONS_NEW'
-export const QUESTIONS_SEARCH    = '@@QUESTIONS_SEARCH'
-export const QUESTIONS_UPDATE    = '@@QUESTIONS_UPDATE'
-export const QUESTIONS_PAGES     = '@@QUESTIONS_PAGES'
-export const QUESTION_SHOW       = '@@QUESTION_SHOW'
