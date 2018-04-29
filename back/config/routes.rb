@@ -36,12 +36,12 @@ Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
 
 
-  match "*path", to: proc { |env| [200,
+  match "*path", to: proc { |env|
+    [200,
     {
     'Access-Control-Allow-Credentials' => 'true',
     'Access-Control-Allow-Methods' => 'GET, PATCH, PUT, DELETE, POST, OPTIONS',
-    'Access-Control-Allow-Origin' => 'http://localhost:3000',
-    'Access-Control-Allow-Origin' => 'http://185.238.136.25:5000',
+    'Access-Control-Allow-Origin' => ENV['ORIGIN'],
     'Access-Control-Expose-Headers' => '',
     'Access-Control-Max-Age' => '1728000',
     'Content-Type' => 'application/json',
