@@ -36,8 +36,7 @@ Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
 
 
-  match "*path", to: proc { |env|
-    [200,
+  match "*path", to: proc { |env| [200,
     {
     'Access-Control-Allow-Credentials' => 'true',
     'Access-Control-Allow-Methods' => 'GET, PATCH, PUT, DELETE, POST, OPTIONS',
