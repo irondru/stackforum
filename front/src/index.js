@@ -8,4 +8,4 @@ const target = document.querySelector('#root')
 
 render(<App />, target)
 
-registerServiceWorker();
+//registerServiceWorker();
