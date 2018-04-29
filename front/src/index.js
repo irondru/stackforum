@@ -1,4 +1,4 @@
-//import registerServiceWorker from './registerServiceWorker';
+import registerServiceWorker from './registerServiceWorker';
 
 import React from 'react'
 import { render } from 'react-dom'
@@ -8,4 +8,4 @@ const target = document.querySelector('#root')
 
 render(<App />, target)
 
-//registerServiceWorker();
+registerServiceWorker();
