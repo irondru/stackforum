@@ -29,7 +29,6 @@ class Profile extends React.Component {
   handleSubmit = () => {
     const { avatar } = this.state
     const { avatarUpload } = this.props
-    console.log(avatar);
     base64Loader([avatar.image])
     .then(image => {
       avatar.image = image

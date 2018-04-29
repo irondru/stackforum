@@ -18,6 +18,7 @@ back/tmp
 
 /node_modules
 /front/node_modules
+/front/build
 /back/log
 /public/packs
 
