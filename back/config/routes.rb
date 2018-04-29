@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   match "*path", to: proc { |env| [200, {
     'Access-Control-Allow-Credentials' => 'true',
     'Access-Control-Allow-Methods' => 'GET, PATCH, PUT, DELETE, POST, OPTIONS',
-    'Access-Control-Allow-Origin' => 'http://localhost:3000',
+    'Access-Control-Allow-Origin' => request.headers["Origin"],
     'Access-Control-Expose-Headers' => '',
     'Access-Control-Max-Age' => '1728000',
     'Content-Type' => 'application/json',
