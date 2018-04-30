@@ -1,0 +1,22 @@
+[Unit]
+Description=Back
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User=deployer
+WorkingDirectory=/home/deployer/stackforum/back
+ExecStart=/bin/bash -lc 'bundle exec pumactl -F config/puma.rb start'
+ExecStop=/bin/bash -lc 'bundle exec pumactl -F config/puma.rb stop'
+TimeoutSec=30
+RestartSec=15s
+Restart=always
+
+Environment="PORT=4200"
+Environment="SECRET_KEY_BASE=e419c22f846c3e608ba37878aa274b92c21d79610cadf68bf186030560f9f645ee49bf8c882d5b43d3f19a674ad4a9b44ab4bcaf9297d45e3b250d46708990bc"
+Environment="ORIGIN=http://185.238.136.25:5000"
+Environment="RAILS_ENV=production"
+Environment="RAILS_SERVE_STATIC_FILES=true"
+
+[Install]
+WantedBy=multi-user.target

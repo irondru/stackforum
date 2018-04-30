@@ -1,0 +1,15 @@
+[Unit]
+Description=Front
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User=deployer
+WorkingDirectory=/home/deployer/stackforum/front
+ExecStart=/bin/bash -lc '/home/deployer/.yarn/bin/serve -s build'
+TimeoutSec=30
+RestartSec=15s
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
