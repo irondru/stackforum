@@ -17,13 +17,13 @@ module Voted
   private
 
   def responce(change_to)
-    Oj.dump({
+    {
       vote: {
         score: @post.change_vote(current_user, change_to),
         votable_type: @post.class.to_s,
         votable_id: @post.id
       }
-    })
+    }
   end
 
   def set_post
