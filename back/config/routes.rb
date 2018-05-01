@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     'Access-Control-Allow-Credentials' => 'true',
     'Access-Control-Allow-Methods' => 'GET, PATCH, PUT, DELETE, POST, OPTIONS',
     'Access-Control-Allow-Origin' => ENV['ORIGIN'],
+    'Access-Control-Allow-Origin' => ENV['ORIGIN_DOMEN'],
     'Access-Control-Expose-Headers' => '',
     'Access-Control-Max-Age' => '1728000',
     'Content-Type' => 'application/json',
