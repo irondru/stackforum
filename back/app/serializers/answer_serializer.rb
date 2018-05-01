@@ -4,6 +4,7 @@ class AnswerSerializer < ActiveModel::Serializer
   #has_many :comments, each_serialiser: CommentSerializer #its not working, wtf?
 
   delegate :request, to: :scope
+  delegate :current_ability, to: :scope
 
   def access
     scope.can?(:access, object)

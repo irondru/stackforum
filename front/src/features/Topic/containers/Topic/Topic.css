@@ -7,6 +7,14 @@
   margin-bottom: 1.5rem;
 }
 
+.post-layout-right>div>p {
+  margin-top: 1rem;
+}
+
+.post-layout-right>div>button {
+  margin-top: 1rem;
+}
+
 .post-layout-left {
   flex-grow: 0;
   display: flex;

@@ -4,6 +4,7 @@ class QuestionSerializer < ActiveModel::Serializer
   has_many :answers, each_serialiser: AnswerSerializer
 
   delegate :request, to: :scope
+  delegate :current_ability, to: :scope
 
   def question
     {

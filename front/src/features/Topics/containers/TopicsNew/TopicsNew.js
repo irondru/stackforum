@@ -69,7 +69,7 @@ class NewOrEditQuestion extends React.Component {
         <div className="post-layout-right-header">
           <h4>Новый вопрос</h4>
         </div>
-        <div className="question-form">
+        <div>
           <p>Заголовок</p>
           <Textarea
             onChange={this.handleChange}

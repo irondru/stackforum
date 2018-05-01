@@ -1,7 +1,4 @@
 .attachment-item {
   display: flex;
-}
-
-.attachment-item>i {
-  margin-top: 0.85rem;
+  margin-top: 1rem;
 }

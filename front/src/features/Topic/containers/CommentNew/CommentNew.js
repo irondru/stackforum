@@ -13,7 +13,7 @@ class CommentForm extends React.Component {
     super(props)
     const { model } = this.props
     this.state = {
-      visible: props.edit,
+      visible: model.edit,
       comment: createCommentItem(model)
     }
     this.initState = this.state
@@ -95,10 +95,11 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => {
-  const { createComment, updateComment } = actions.comments
+  const { createComment, updateComment, editComment } = actions.comments
   return bindActionCreators({
     createComment,
-    updateComment
+    updateComment,
+    editComment
   }, dispatch)
 }
 
