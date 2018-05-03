@@ -15,7 +15,7 @@ const AnswerItem = ({ id, body, comments, score, access, author, posted_at, itsM
 
   const commentsList = () =>
     comments ? comments.map (comment =>
-      !!comment.edit ? <CommentNew key={comment.id} {...comment} /> :
+      !!comment.edit ? <CommentNew key={comment.id} model={comment} /> :
         <CommentItem key={comment.id} {...comment} />
     ) : null
 

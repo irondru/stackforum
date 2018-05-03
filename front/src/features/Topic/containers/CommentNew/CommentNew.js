@@ -20,7 +20,7 @@ class CommentForm extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    let fetching = nextProps.fetching === (types.COMMENTS_CREATE || types.COMMENTS_UPDATE)
+    let fetching = (nextProps.fetching === types.COMMENTS_CREATE || nextProps.fetching === types.COMMENTS_UPDATE)
     if (!fetching && !nextProps.errors) this.setState(this.initState)
   }
 
@@ -41,13 +41,15 @@ class CommentForm extends React.Component {
     }))
 
   handleSubmit = () => {
-    const { updateComment, createComment, edit } = this.props
+    const { updateComment, createComment } = this.props
+    const { edit } = this.props.model
     const { comment } = this.state
     edit ? updateComment(comment) : createComment (comment)
   }
 
   render = () => {
-    const { fetching, errors, edit } = this.props
+    const { fetching, errors } = this.props
+    const { edit } = this.props.model
     const { body } = this.state.comment
     return (
       <div>
